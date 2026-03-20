@@ -257,7 +257,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 
 .score-box .team-row.winner { font-weight: 700; color: var(--text); }
 .score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; }
-.record-inline { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.record-inline { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
 .score-box .week-label {
   font-size: 10px;
   color: var(--text-muted);
@@ -781,13 +781,11 @@ function viewTeam(teamId) {
     const teamScore = isHome ? g.homeScore : g.awayScore;
     const oppScore = isHome ? g.awayScore : g.homeScore;
     const result = teamScore > oppScore ? 'W' : teamScore < oppScore ? 'L' : 'T';
-    const hasBox = (isHome && g.homeStats) || (!isHome && g.awayStats);
     return `<tr>
-      <td>Wk ${g.week}</td>
+      <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
       <td>${fmtDate(g.date)}</td>
       <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
-      <td class="num"><strong>${result}</strong> ${teamScore}-${oppScore}</td>
-      <td>${hasBox ? `<a class="box-link" href="#/game/${g.id}">Box Score</a>` : ''}</td>
+      <td class="num"><a href="#/game/${g.id}"><strong>${result}</strong> ${teamScore}-${oppScore}</a></td>
     </tr>`;
   }).join('');
 
@@ -801,7 +799,7 @@ function viewTeam(teamId) {
     <div class="card">
       <div class="card-header">Schedule & Results</div>
       <div class="card-body"><div class="table-wrap">
-        <table><thead><tr><th>Week</th><th>Date</th><th>Opponent</th><th class="num">Result</th><th></th></tr></thead>
+        <table><thead><tr><th>Week</th><th>Date</th><th>Opponent</th><th class="num">Result</th></tr></thead>
         <tbody>${scheduleRows}</tbody></table>
       </div></div>
     </div>
@@ -901,9 +899,9 @@ function viewPlayer(playerId) {
 
       if (ps) {
         gamesWithStats.push(`<tr>
-          <td>Wk ${g.week}</td>
+          <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
           <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
-          <td class="num">${result} ${teamScore}-${oppScore}</td>
+          <td class="num"><a href="#/game/${g.id}">${result} ${teamScore}-${oppScore}</a></td>
           <td class="num">${ps.PA}</td>
           <td class="num">${ps.AB}</td>
           <td class="num">${ps.H}</td>
@@ -916,13 +914,12 @@ function viewPlayer(playerId) {
           <td class="num">${ps.BI}</td>
           <td class="num">${ps.E}</td>
           <td class="num">${calcAVG(ps.H, ps.AB)}</td>
-          <td><a class="box-link" href="#/game/${g.id}">Box</a></td>
         </tr>`);
       } else {
         gamesWithoutStats.push(`<tr>
-          <td>Wk ${g.week}</td>
+          <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
           <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
-          <td class="num">${result} ${teamScore}-${oppScore}</td>
+          <td class="num"><a href="#/game/${g.id}">${result} ${teamScore}-${oppScore}</a></td>
         </tr>`);
       }
     });
@@ -944,7 +941,9 @@ function viewPlayer(playerId) {
   const seasonRows = allSeasons.map(os => {
     const ps = os.player.seasonStats;
     const isCurrent = os.seasonId === currentSeason;
-    const label = isCurrent ? `<strong>${os.seasonLabel}</strong>` : os.seasonLabel;
+    const label = isCurrent
+      ? `<a href="#/"><strong>${os.seasonLabel}</strong></a>`
+      : `<a href="#" onclick="switchSeason('${os.seasonId}');location.hash='#/';return false;">${os.seasonLabel}</a>`;
     const teamLink = isCurrent
       ? `<a class="team-link" href="#/team/${os.player.teamId}">${os.team ? os.team.name : ''}</a>`
       : `<a class="team-link" href="#" onclick="switchSeason('${os.seasonId}');location.hash='#/team/${os.player.teamId}';return false;">${os.team ? os.team.name : ''}</a>`;
@@ -1006,7 +1005,7 @@ function viewPlayer(playerId) {
         <table><thead><tr>
           <th>Week</th><th>Opp</th><th class="num">Result</th>${hasDetailedLog ? `<th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
           <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
-          <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th></th>` : ''}
+          <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th>` : ''}
         </tr></thead>
         <tbody>${gameLogRows}</tbody></table>
       </div></div>
@@ -1083,6 +1082,54 @@ function viewBoxScore(gameId) {
 <p>The final margin came down to one swing. St. Catherines' Paul Besse quietly went 2-for-3 with 3 RBI, and Joe Bandel added 2 hits and 2 RBI &mdash; the kind of middle-of-the-order production that kept the Saints just ahead despite Franklin's furious hitting.</p>
 
 <p><strong>The takeaway:</strong> This was as encouraging a loss as Franklin could have. A team that went 0-10 just three seasons ago put up 24 hits and 14 runs against a legitimate contender. St. Catherines is hitting .724 as a team this season, and Franklin went toe-to-toe with them. The difference wasn't talent &mdash; it was one run. If this game is any indication, the Franklin rebuild is real.</p>`,
+
+    'week1-game2': `<p><strong>Lincoln Lions 8, Burlingame Expansion 3</strong> &mdash; Lincoln opened Spring 2026 with a commanding 8-3 victory over Burlingame Expansion, a balanced lineup attack that left the Expansion's new-look roster looking outmatched from the start.</p>
+
+<p>Chris Lau was the story for Lincoln, going a perfect 3-for-3 with 2 runs scored and a pair of doubles &mdash; he didn't make a single out all game. Mike Benveniste drove in a team-high 3 runs while going 2-for-3, and Peter Ou added 2 hits and 2 RBI from the bottom of the order. Barlow Gilmore (2-for-3, double, RBI), Arjun Moorthy (2-for-3, RBI), and Kenny Kim (2-for-3, double) each had multi-hit games to round out one of the deeper Lincoln lineups in recent memory. Nine of Lincoln's 13 batters recorded at least one hit &mdash; the kind of top-to-bottom production that's nearly impossible to contain.</p>
+
+<p>Jack Maguire was the lone Expansion bright spot, going 3-for-3 and accounting for all 3 of his team's RBI. His individual performance masked how thoroughly Lincoln controlled the game &mdash; the rest of the Expansion lineup went 6-for-26, with 7 different batters going hitless. For a team that went 1-9 last fall after losing most of their Spring 2025 championship core, the transition pains are real.</p>
+
+<p><strong>The takeaway:</strong> Lincoln looks like a legitimate title contender. A 13-man lineup with no obvious holes and consistent production up and down the order is exactly the kind of team that wins championships. Burlingame Expansion, meanwhile, faces a long road back to their 2025 form.</p>`,
+
+    'week1-game3': `<p><strong>Hoover 17, McKinley 2 2</strong> &mdash; Hoover made short work of expansion team McKinley 2 in the season opener, rolling to a 17-2 victory behind a relentless lineup that collected 19 hits and had nine of ten starters reach base at least once.</p>
+
+<p>Phillip Koblis set the pace at the top of the order, going 3-for-4 with 4 runs scored and a double &mdash; the most runs in any single Hoover lineup spot. Sean Lowenthal followed with 2 hits and a game-high 4 RBI, and Adam Ramirez added a double, 3 RBI, and 2 runs scored from the middle of the order. Levon Stepanian (2-for-4, 2 RBI), Jim Szafranski (2-for-4, 3 runs), Sunil Koshie (2-for-4, RBI), and Chris Cohendet (2 runs, 2 RBI) all contributed in a lineup with no weak spots. Hoover's nine multi-hit contributors combined for 19 hits with power scattered throughout.</p>
+
+<p>McKinley 2, in just their second week as an expansion franchise, showed the growing pains expected of a first-year squad. David Conti (2-for-2) and Sanjiv Parikh (2-for-2, double) were the lone bright spots in a lineup that managed just 8 hits. Three errors behind them only compounded the damage, giving Hoover extra opportunities they certainly didn't need.</p>
+
+<p><strong>The takeaway:</strong> Hoover arrives in Spring 2026 as one of the teams to beat. The same core that upset Franklin in the Fall 2025 playoffs is back and hitting with the same authority. McKinley 2 will need time to build chemistry, but working through games against top competition is exactly the kind of experience that accelerates development.</p>`,
+
+    'week1-game4': `<p><strong>Washington Wildkittens 14, Carey 13</strong> &mdash; In the most electrifying game of Week 1, Washington Wildkittens escaped with a 14-13 victory over Carey in a back-and-forth slugfest that went down to the final out. The two teams combined for 37 hits and 27 runs in a game that could have gone either way.</p>
+
+<p>Chris Geheran was the hero for Washington, delivering a clutch 3-for-4 afternoon with a double, a triple, and a game-high 6 RBI &mdash; exactly the kind of middle-of-the-order production that swings one-run games. Brian Roth (3-for-4, 3 runs, double), Darryl Saifher (3-for-4, 2 runs, 3 RBI), and Darren Miles (2-for-4, 3 runs, 2 RBI, 2 doubles) each had multi-hit games, and Bill Poucher added 2 hits and an RBI. Six different Wildkittens recorded multiple hits, leaving Carey's pitching with nowhere to hide.</p>
+
+<p>But Carey absolutely refused to roll over. Marc Acton (3-for-3, 3 runs, double) and Ryan Batenchuck (3-for-3, 3 runs, RBI, 2 doubles) both went perfect at the plate to ignite the Carey attack. Chris Coleman drove in 3 runs, Travis Barabin added 3 RBI including a double, and David Williams came through with 2 RBI on 2 hits. Carey scattered 17 hits across 15 batters and only Geheran's 6-RBI masterpiece prevented them from taking the opener.</p>
+
+<p><strong>The takeaway:</strong> Both teams showed they can hit &mdash; 37 combined hits is staggering offense. Washington gets the win and the 1-0 start, but Carey's lineup is far more dangerous than their record might eventually suggest. These two could be in similar spots in the standings when they meet again.</p>`,
+
+    'week2-game1': `<p><strong>St. Catherines 25, McKinley 2 0</strong> &mdash; There are blowouts, and then there are historically dominant performances. St. Catherines' 25-0 shutout of McKinley 2 in Week 2 fell firmly in the latter category &mdash; a relentless, lineup-wide demolition that had every Saint reaching base and McKinley held off the scoreboard entirely.</p>
+
+<p>Paul Besse headlined what may be the most complete team performance of the young season, going 3-for-3 with 3 runs, 5 RBI, and 2 triples. Mo Tancilau went 3-for-3 with 2 doubles and 2 RBI, Matt Germino went a perfect 3-for-3 with 3 runs scored, and Ray Malaspina added 3 hits and 3 runs. Joe Bandel drove in 4 runs on 2 hits, James Lin had 3 RBI on 2 hits with a double, and Jerry Ng added a double and an RBI on his 2-for-2 night. Art Wong, Danny Bahamondes, and Ricky Gomez each had 2 hits and multiple runs scored. The number that tells the full story: all 15 St. Catherines batters reached base at least once. There were no weak spots, no free outs, no escape.</p>
+
+<p>McKinley 2 managed just 2 hits in the game &mdash; Brandon Wright and Sanjiv Parikh each singled &mdash; and couldn't push a run across despite those base runners. The shutout was emphatic and, given the talent gap, probably inevitable.</p>
+
+<p><strong>The takeaway:</strong> St. Catherines has now scored 40 runs in two weeks and hasn't lost a game. This is a lineup that can put up crooked numbers against anyone, and they're showing no signs of slowing down. For McKinley 2, the growing pains continue &mdash; but every game against a team this good builds character and shows what the standard looks like.</p>`,
+
+    'week2-game3': `<p><strong>Hoover 15, Washington Wildkittens 14</strong> &mdash; For the second consecutive week, a Hoover game was decided by a single run. The two-time playoff contenders held off Washington Wildkittens 15-14 in a 45-hit slugfest that featured lead changes, clutch performances on both sides, and no shortage of drama in the late innings.</p>
+
+<p>Marc Snyder delivered the signature line of the game, going a perfect 4-for-4 with a triple, 3 RBI, and 2 runs scored &mdash; the only player on either team to go 4-for-4. Cayman Seacrest blasted a home run and a double on his 3-for-4 night, driving in 3 runs and scoring twice. Phillip Koblis (3-for-4, 2 doubles, 2 RBI), Bryan Dow (3-for-4, double, 2 RBI), and Fred Fabor (3-for-4, 2 runs) were relentless at the plate. Colin Bryant added 3 hits and 2 RBI, and every single Hoover starter recorded at least one hit &mdash; this was a total team effort when the game was on the line.</p>
+
+<p>Washington pushed Hoover to the absolute limit. Gareth Adams produced the most jaw-dropping line of the afternoon: 3-for-4 with a triple and 5 RBI, single-handedly keeping Washington in contention through the final inning. Josh Mello (3-for-4, double, 3 RBI) and Drew Simmons (3-for-4, 2 runs) each had 3 hits of their own, and Kentaro Matsurra drew 2 walks and scored twice in a disciplined performance. Washington's 19 hits and 14 runs would win most games. They just ran into the one team that couldn't be outscored.</p>
+
+<p><strong>The takeaway:</strong> Hoover is 2-0 with two one-run wins &mdash; the hallmark of a team that knows how to close. Washington is 1-1 and proved they can hang with anyone. When these two meet again, it could easily be the most competitive game of the season.</p>`,
+
+    'week2-game4': `<p><strong>Lincoln Lions 8, Roosevelt Blue 6</strong> &mdash; Lincoln Lions made it back-to-back wins to open Spring 2026, holding off a scrappy Roosevelt Blue squad 8-6 in a tighter contest than their Week 1 blowout suggested. The Lions showed they could grind out a close game when the offense didn't come as easily.</p>
+
+<p>The contributions came from across the lineup. Mike Benveniste (2-for-3, 2 runs, RBI) and Francisco Martinez (1-for-3, 2 runs, 2 RBI, double) anchored the middle of the order with the production Lincoln needed to stay ahead. Alan Ching and Peter Ou, coming in late in the lineup, combined to go 4-for-4 with 2 runs and an RBI between them &mdash; exactly the kind of bottom-of-the-order depth that separates good teams from great ones. Barlow Gilmore, Brett Reynolds, and Chris Lau each added an RBI, spreading the run production across seven different Lions.</p>
+
+<p>Roosevelt Blue made it interesting. Ankush Bhargava was the story, driving in 3 runs on just 1 hit &mdash; a clutch performance when his team needed runs. David Vinca (2-for-3, 2 runs) and Nick Adler (2-for-3, 1 run) provided the on-base presence, and Joe Carvillo scored twice. But Roosevelt left too many runners stranded and couldn't string together the back-to-back hits needed to erase the deficit in the final innings.</p>
+
+<p><strong>The takeaway:</strong> Lincoln is 2-0 and looking like one of the most complete teams in the league. The depth of their lineup &mdash; seven different RBI contributors tonight &mdash; makes them difficult to pitch around from top to bottom. Roosevelt Blue at 0-2 needs to find some early-inning momentum before the hole becomes too deep to climb out of.</p>`,
 
     'week2-game2': `<p><strong>Franklin 20, Carey 8</strong> &mdash; If the Week 1 loss to St. Catherines was a statement of legitimacy, Week 2 was a statement of dominance. Franklin hammered out 27 hits and 20 runs in a comprehensive dismantling of Carey, picking up their first win of the Spring 2026 season.</p>
 
@@ -1266,7 +1313,7 @@ function viewAllPlayers() {
   sortableTable('all-players-table', rows, cols, 'AVG', 'desc');
 }
 
-function viewSchedule() {
+function viewSchedule(scrollToWeek) {
   const weeks = {};
   DATA.games.forEach(g => {
     if (!weeks[g.week]) weeks[g.week] = { games: [], date: g.date };
@@ -1325,18 +1372,18 @@ function viewSchedule() {
       const hasBox = g.homeStats || g.awayStats;
       const awayRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][away.id] ? fmtRecord(recordBeforeGame[g.id][away.id]) : '';
       const homeRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][home.id] ? fmtRecord(recordBeforeGame[g.id][home.id]) : '';
-      return `<div class="score-box">
+      const clickable = hasBox ? `onclick="if(event.target.closest('a')===null)location.hash='#/game/${g.id}'" style="cursor:pointer"` : '';
+      return `<div class="score-box" ${clickable}>
         <div class="teams">
           <div class="team-row ${!hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${away.name}</a> <span class="record-inline">${awayRec}</span></span><span class="score">${g.awayScore}</span></div>
           <div class="team-row ${hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${home.name}</a> <span class="record-inline">${homeRec}</span></span><span class="score">${g.homeScore}</span></div>
         </div>
-        ${hasBox ? `<a class="box-link" href="#/game/${g.id}">Box Score</a>` : ''}
       </div>`;
     }).join('');
 
     const byeHtml = byes[wk] ? `<div class="bye-label">BYE: ${byes[wk].map(t => t.name).join(', ')}</div>` : '';
 
-    return `<div class="card">
+    return `<div class="card" id="week-${wk}">
       <div class="card-header">Week ${wk} &mdash; ${fmtDate(w.date)}</div>
       <div class="card-body">${gamesHtml}${byeHtml}</div>
     </div>`;
@@ -1347,6 +1394,12 @@ function viewSchedule() {
     <div class="page-subtitle">All games by week</div>
     ${html}
   `;
+  if (scrollToWeek) {
+    setTimeout(() => {
+      const el = document.getElementById('week-' + scrollToWeek);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
 }
 
 function router() {
@@ -1363,8 +1416,9 @@ function router() {
     viewBoxScore(hash.replace('#/game/', ''));
   } else if (hash === '#/players') {
     viewAllPlayers();
-  } else if (hash === '#/schedule') {
-    viewSchedule();
+  } else if (hash.startsWith('#/schedule')) {
+    const weekMatch = hash.match(/#\/schedule\/week\/(\d+)/);
+    viewSchedule(weekMatch ? parseInt(weekMatch[1]) : null);
   } else {
     viewStandings();
   }
