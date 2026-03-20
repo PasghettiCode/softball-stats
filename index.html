@@ -723,10 +723,10 @@ function viewStandings() {
     'Runs': DATA.players.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 5),
     'RBI': DATA.players.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 5),
     'OPS': qualified.map(p => ({ p, v: parseFloat(calcOPS(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Doubles': DATA.players.map(p => ({ p, v: p.seasonStats.D })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Triples': DATA.players.map(p => ({ p, v: p.seasonStats.T })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Home Runs': DATA.players.map(p => ({ p, v: p.seasonStats.HR })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Walks': DATA.players.map(p => ({ p, v: p.seasonStats.BB })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Doubles': DATA.players.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Triples': DATA.players.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Home Runs': DATA.players.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Walks': DATA.players.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
   };
 
   const leadersHtml = Object.entries(leaders).map(([cat, items]) => `
