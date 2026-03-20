@@ -785,7 +785,7 @@ function viewTeam(teamId) {
       <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
       <td>${fmtDate(g.date)}</td>
       <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
-      <td class="num"><a href="#/game/${g.id}"><strong>${result}</strong> ${teamScore}-${oppScore}</a></td>
+      <td><a href="#/game/${g.id}"><strong>${result}</strong> ${teamScore}-${oppScore}</a></td>
     </tr>`;
   }).join('');
 
@@ -799,7 +799,7 @@ function viewTeam(teamId) {
     <div class="card">
       <div class="card-header">Schedule & Results</div>
       <div class="card-body"><div class="table-wrap">
-        <table><thead><tr><th>Week</th><th>Date</th><th>Opponent</th><th class="num">Result</th></tr></thead>
+        <table><thead><tr><th>Week</th><th>Date</th><th>Opponent</th><th>Result</th></tr></thead>
         <tbody>${scheduleRows}</tbody></table>
       </div></div>
     </div>
@@ -938,6 +938,21 @@ function viewPlayer(playerId) {
   const allSeasons = findPlayerAcrossSeasons(playerId);
   allSeasons.sort((a, b) => SEASON_ORDER.indexOf(a.seasonId) - SEASON_ORDER.indexOf(b.seasonId));
 
+  // Compute career bests for each stat column (only highlight if >1 season)
+  const careerBest = {};
+  if (allSeasons.length > 1) {
+    const numKeys = ['G','PA','AB','H','R','D','T','HR','BB','SF','BI'];
+    numKeys.forEach(k => { careerBest[k] = Math.max(...allSeasons.map(os => os.player.seasonStats[k] || 0)); });
+    careerBest.AVG = Math.max(...allSeasons.map(os => parseFloat(calcAVG(os.player.seasonStats.H, os.player.seasonStats.AB))));
+    careerBest.SLG = Math.max(...allSeasons.map(os => parseFloat(calcSLG(os.player.seasonStats))));
+    careerBest.OPS = Math.max(...allSeasons.map(os => parseFloat(calcOPS(os.player.seasonStats))));
+  }
+  function b(val, key) {
+    if (!careerBest[key]) return val;
+    const num = parseFloat(val);
+    return (num > 0 && num === careerBest[key]) ? `<strong>${val}</strong>` : val;
+  }
+
   const seasonRows = allSeasons.map(os => {
     const ps = os.player.seasonStats;
     const isCurrent = os.seasonId === currentSeason;
@@ -950,12 +965,12 @@ function viewPlayer(playerId) {
     return `<tr>
       <td>${label}</td>
       <td>${teamLink}</td>
-      <td class="num">${ps.G}</td><td class="num">${ps.PA}</td><td class="num">${ps.AB}</td>
-      <td class="num">${ps.H}</td><td class="num">${ps.R}</td>
-      <td class="num">${ps.D}</td><td class="num">${ps.T}</td><td class="num">${ps.HR}</td>
-      <td class="num">${ps.BB}</td><td class="num">${ps.SF}</td><td class="num">${ps.BI}</td>
+      <td class="num">${b(ps.G,'G')}</td><td class="num">${b(ps.PA,'PA')}</td><td class="num">${b(ps.AB,'AB')}</td>
+      <td class="num">${b(ps.H,'H')}</td><td class="num">${b(ps.R,'R')}</td>
+      <td class="num">${b(ps.D,'D')}</td><td class="num">${b(ps.T,'T')}</td><td class="num">${b(ps.HR,'HR')}</td>
+      <td class="num">${b(ps.BB,'BB')}</td><td class="num">${b(ps.SF,'SF')}</td><td class="num">${b(ps.BI,'BI')}</td>
       <td class="num">${ps.E}</td>
-      <td class="num">${calcAVG(ps.H, ps.AB)}</td><td class="num">${calcSLG(ps)}</td><td class="num">${calcOPS(ps)}</td>
+      <td class="num">${b(calcAVG(ps.H,ps.AB),'AVG')}</td><td class="num">${b(calcSLG(ps),'SLG')}</td><td class="num">${b(calcOPS(ps),'OPS')}</td>
     </tr>`;
   }).join('');
 
