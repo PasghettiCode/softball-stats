@@ -257,6 +257,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 
 .score-box .team-row.winner { font-weight: 700; color: var(--text); }
 .score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; }
+.record-inline { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 4px; }
 .score-box .week-label {
   font-size: 10px;
   color: var(--text-muted);
@@ -535,6 +536,9 @@ function switchSeason(seasonId) {
   currentSeason = seasonId;
   DATA = SEASONS[currentSeason];
   document.getElementById('season-picker').value = seasonId;
+  const url = new URL(location.href);
+  url.searchParams.set('season', seasonId);
+  history.replaceState(null, '', url.toString());
   router();
 }
 
@@ -1186,13 +1190,29 @@ function viewBoxScore(gameId) {
     <div class="card-body padded" style="line-height:1.7">${GAME_RECAPS[gameId]}</div>
   </div>` : '';
 
+  // Compute records before this game's week
+  const cumRec = {};
+  DATA.teams.forEach(t => { cumRec[t.id] = { w: 0, l: 0, t: 0 }; });
+  DATA.games.forEach(g => {
+    if (g.week < game.week) {
+      if (!cumRec[g.homeTeamId]) cumRec[g.homeTeamId] = { w: 0, l: 0, t: 0 };
+      if (!cumRec[g.awayTeamId]) cumRec[g.awayTeamId] = { w: 0, l: 0, t: 0 };
+      if (g.homeScore > g.awayScore) { cumRec[g.homeTeamId].w++; cumRec[g.awayTeamId].l++; }
+      else if (g.awayScore > g.homeScore) { cumRec[g.awayTeamId].w++; cumRec[g.homeTeamId].l++; }
+      else { cumRec[g.homeTeamId].t++; cumRec[g.awayTeamId].t++; }
+    }
+  });
+  const fmtRec = r => r.t > 0 ? `(${r.w}-${r.l}-${r.t})` : `(${r.w}-${r.l})`;
+  const awayRec = away ? fmtRec(cumRec[away.id]) : '';
+  const homeRec = home ? fmtRec(cumRec[home.id]) : '';
+
   document.getElementById('app').innerHTML = `
     <a class="back-link" href="#/schedule">&larr; Schedule</a>
     <div class="boxscore-header">
       <div class="matchup">
         <div class="game-meta">Week ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}</div>
-        <div class="matchup-row ${!hw ? 'winner' : ''}"><a class="team-link" href="#/team/${away ? away.id : ''}">${away ? away.name : 'Unknown'}</a><span class="matchup-score">${game.awayScore}</span></div>
-        <div class="matchup-row ${hw ? 'winner' : ''}"><a class="team-link" href="#/team/${home ? home.id : ''}">${home ? home.name : 'Unknown'}</a><span class="matchup-score">${game.homeScore}</span></div>
+        <div class="matchup-row ${!hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away ? away.id : ''}">${away ? away.name : 'Unknown'}</a> <span class="record-inline">${awayRec}</span></span><span class="matchup-score">${game.awayScore}</span></div>
+        <div class="matchup-row ${hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home ? home.id : ''}">${home ? home.name : 'Unknown'}</a> <span class="record-inline">${homeRec}</span></span><span class="matchup-score">${game.homeScore}</span></div>
         <div class="game-meta" style="margin-top:4px">Final</div>
       </div>
     </div>
@@ -1253,6 +1273,36 @@ function viewSchedule() {
     weeks[g.week].games.push(g);
   });
 
+  // Build cumulative records: before each game, what is each team's W-L-T?
+  const sortedWeeks = Object.keys(weeks).map(Number).sort((a, b) => a - b);
+  const recordBeforeGame = {}; // gameId -> teamId -> {w, l, t}
+  const cumulative = {};
+  DATA.teams.forEach(t => { cumulative[t.id] = { w: 0, l: 0, t: 0 }; });
+  sortedWeeks.forEach(wk => {
+    weeks[wk].games.forEach(g => {
+      if (!cumulative[g.homeTeamId]) cumulative[g.homeTeamId] = { w: 0, l: 0, t: 0 };
+      if (!cumulative[g.awayTeamId]) cumulative[g.awayTeamId] = { w: 0, l: 0, t: 0 };
+      recordBeforeGame[g.id] = {
+        [g.homeTeamId]: { ...cumulative[g.homeTeamId] },
+        [g.awayTeamId]: { ...cumulative[g.awayTeamId] },
+      };
+      if (g.homeScore > g.awayScore) {
+        cumulative[g.homeTeamId].w++;
+        cumulative[g.awayTeamId].l++;
+      } else if (g.awayScore > g.homeScore) {
+        cumulative[g.awayTeamId].w++;
+        cumulative[g.homeTeamId].l++;
+      } else {
+        cumulative[g.homeTeamId].t++;
+        cumulative[g.awayTeamId].t++;
+      }
+    });
+  });
+
+  function fmtRecord(r) {
+    return r.t > 0 ? `(${r.w}-${r.l}-${r.t})` : `(${r.w}-${r.l})`;
+  }
+
   // Determine byes
   const byes = {};
   Object.entries(weeks).forEach(([wk, w]) => {
@@ -1273,10 +1323,12 @@ function viewSchedule() {
       if (!home || !away) return '';
       const hw = g.homeScore > g.awayScore;
       const hasBox = g.homeStats || g.awayStats;
+      const awayRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][away.id] ? fmtRecord(recordBeforeGame[g.id][away.id]) : '';
+      const homeRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][home.id] ? fmtRecord(recordBeforeGame[g.id][home.id]) : '';
       return `<div class="score-box">
         <div class="teams">
-          <div class="team-row ${!hw ? 'winner' : ''}"><a class="team-link" href="#/team/${away.id}">${away.name}</a><span class="score">${g.awayScore}</span></div>
-          <div class="team-row ${hw ? 'winner' : ''}"><a class="team-link" href="#/team/${home.id}">${home.name}</a><span class="score">${g.homeScore}</span></div>
+          <div class="team-row ${!hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${away.name}</a> <span class="record-inline">${awayRec}</span></span><span class="score">${g.awayScore}</span></div>
+          <div class="team-row ${hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${home.name}</a> <span class="record-inline">${homeRec}</span></span><span class="score">${g.homeScore}</span></div>
         </div>
         ${hasBox ? `<a class="box-link" href="#/game/${g.id}">Box Score</a>` : ''}
       </div>`;
@@ -1319,8 +1371,13 @@ function router() {
 }
 
 function init() {
+  const urlSeason = new URLSearchParams(location.search).get('season');
+  if (urlSeason && SEASONS[urlSeason]) {
+    currentSeason = urlSeason;
+  }
   DATA = SEASONS[currentSeason];
   document.getElementById('season-picker').value = currentSeason;
+  const subtitleEl = document.getElementById('season-subtitle'); if (subtitleEl) subtitleEl.textContent = 'Burlingame · ' + SEASON_LABELS[currentSeason];
   window.addEventListener('hashchange', router);
   router();
 }
