@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burlingame Dad's American League - Spring 2026</title>
+  <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --mlb-blue: #002D72;
+  --mlb-red: #E4002B;
+  --mlb-dark: #041E42;
+  --mlb-nav: #002147;
+  --link-blue: #0056b3;
+  --bg: #f4f4f4;
+  --white: #fff;
+  --border: #ddd;
+  --border-light: #eee;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --row-alt: #f9fbfd;
+  --row-hover: #edf2f7;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+header {
+  background: var(--mlb-dark);
+  color: var(--white);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.3px;
+  text-transform: none;
+}
+
+header .subtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,.55);
+  margin-left: 14px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  text-transform: none;
+  align-self: center;
+}
+
+/* ── Nav ── */
+nav {
+  background: var(--mlb-blue);
+  padding: 0 24px;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  position: sticky;
+  top: 56px;
+  z-index: 199;
+  border-bottom: 3px solid var(--mlb-red);
+}
+
+nav a {
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  padding: 11px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: none;
+  letter-spacing: .5px;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: color .15s, border-color .15s;
+}
+
+nav a:hover { color: var(--white); }
+nav a.active {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+/* ── Scores ticker ── */
+.scores-ticker {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  display: flex;
+  gap: 0;
+  padding: 0;
+}
+
+.ticker-game {
+  min-width: 180px;
+  padding: 10px 16px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.ticker-game:hover { background: var(--row-hover); }
+.ticker-game:last-child { border-right: none; }
+
+.ticker-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.ticker-row.winner { color: var(--text); font-weight: 700; }
+.ticker-score { font-weight: 700; font-size: 14px; min-width: 20px; text-align: right; }
+.ticker-label { font-size: 10px; color: var(--text-muted); letter-spacing: .5px; text-align: center; padding-top: 2px; }
+
+/* ── Main container ── */
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.card-header {
+  background: var(--white);
+  color: var(--mlb-blue);
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: .3px;
+  border-bottom: 2px solid var(--mlb-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body { padding: 0; }
+.card-body.padded { padding: 20px; }
+
+/* ── Tables ── */
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th {
+  background: var(--mlb-blue);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 11px;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: .5px;
+  padding: 10px 12px;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  border-bottom: none;
+}
+
+th.sortable { cursor: pointer; }
+th.sortable:hover { background: #003a8c; }
+th.sort-asc::after { content: ' \25B2'; font-size: 9px; }
+th.sort-desc::after { content: ' \25BC'; font-size: 9px; }
+
+th.num, td.num { text-align: right; }
+
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) td { background: var(--row-alt); }
+tbody tr:hover td { background: var(--row-hover); }
+
+tr.totals td {
+  font-weight: 700;
+  border-top: 2px solid var(--mlb-blue);
+  background: #edf2f7;
+}
+
+/* ── Links ── */
+a.player-link, a.team-link, a.game-link {
+  color: var(--link-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a.player-link:hover, a.team-link:hover, a.game-link:hover {
+  color: var(--mlb-red);
+  text-decoration: underline;
+}
+
+/* ── Score boxes (schedule & box score pages) ── */
+.score-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-light);
+  transition: background .1s;
+}
+
+.score-box:hover { background: var(--row-hover); }
+.score-box:last-child { border-bottom: none; }
+.score-box .teams { flex: 1; }
+
+.score-box .team-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.score-box .team-row.winner { font-weight: 700; color: var(--text); }
+.score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; }
+.score-box .week-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: .5px;
+  font-weight: 700;
+  margin-right: 12px;
+  min-width: 50px;
+}
+
+.box-link {
+  font-size: 12px;
+  color: var(--white);
+  background: var(--mlb-blue);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 4px;
+  text-transform: none;
+  letter-spacing: .5px;
+  transition: background .15s;
+}
+
+.box-link:hover { background: var(--mlb-red); text-decoration: none; }
+
+/* ── Leaders ── */
+.leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0;
+  padding: 0;
+}
+
+.leader-cat {
+  padding: 16px 20px;
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.leader-cat h4 {
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: .8px;
+  color: var(--mlb-blue);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--mlb-red);
+  font-weight: 800;
+}
+
+.leader-cat .leader-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.leader-cat .leader-item .val {
+  font-weight: 800;
+  color: var(--mlb-blue);
+  font-size: 14px;
+}
+
+/* ── Bye label ── */
+.bye-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--row-alt);
+}
+
+/* ── Back link ── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--link-blue);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: .3px;
+}
+
+.back-link:hover { color: var(--mlb-red); }
+
+/* ── Page titles ── */
+.page-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--mlb-dark);
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ── Team page hero ── */
+.team-hero {
+  background: linear-gradient(135deg, var(--mlb-dark), var(--mlb-blue));
+  color: var(--white);
+  padding: 32px 28px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.team-hero .page-title { color: var(--white); font-size: 32px; }
+.team-hero .page-subtitle { color: rgba(255,255,255,.7); margin-bottom: 0; }
+
+.team-hero .record-big {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 4px;
+  color: rgba(255,255,255,.9);
+}
+
+/* ── Player page hero ── */
+.player-hero {
+  background: linear-gradient(135deg, var(--mlb-dark), var(--mlb-blue));
+  color: var(--white);
+  padding: 28px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.player-hero .page-title { color: var(--white); font-size: 28px; }
+.player-hero .page-subtitle { color: rgba(255,255,255,.7); margin-bottom: 0; }
+.player-hero .page-subtitle a { color: rgba(255,255,255,.85); }
+.player-hero .page-subtitle a:hover { color: var(--white); }
+
+/* ── Box score header ── */
+.boxscore-header {
+  background: var(--mlb-dark);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 20px 28px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.boxscore-header .matchup { flex: 1; }
+
+.boxscore-header .matchup-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 18px;
+}
+
+.boxscore-header .matchup-row a { color: rgba(255,255,255,.75); font-size: 18px; }
+.boxscore-header .matchup-row.winner a { color: var(--white); }
+.boxscore-header .matchup-score { font-weight: 800; font-size: 24px; color: var(--white); }
+.boxscore-header .matchup-row.winner .matchup-score { color: var(--white); }
+
+.boxscore-header .game-meta {
+  font-size: 11px;
+  color: rgba(255,255,255,.5);
+  text-transform: none;
+  letter-spacing: .5px;
+}
+
+/* ── Layout ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; }
+  .leaders-grid { grid-template-columns: 1fr 1fr; }
+  nav a { padding: 10px 14px; font-size: 11px; }
+  #app { padding: 16px; }
+  header { padding: 0 16px; }
+  .team-hero, .player-hero, .boxscore-header { padding: 20px; border-radius: 0; }
+}
+
+@media (max-width: 600px) {
+  .leaders-grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 16px; }
+  header .subtitle { display: none; }
+  table { font-size: 12px; }
+  th, td { padding: 7px 8px; }
+  .page-title { font-size: 22px; }
+  .boxscore-header .matchup-row { font-size: 15px; }
+  .boxscore-header .matchup-score { font-size: 20px; }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dad's American League</h1>
+    <div class="subtitle">Burlingame &middot; Spring 2026</div>
+  </header>
+  <nav id="nav"></nav>
+  <div id="scores-ticker"></div>
+  <div id="app"></div>
+  <script>
+window.INLINE_DATA = {"league": {"name": "Burlingame 2026 Spring Dad's American League", "season": "Spring 2026", "lastUpdated": "2026-03-18"}, "teams": [{"id": "st-catherines", "name": "St. Catherines", "wins": 2, "losses": 0, "ties": 0}, {"id": "lincoln-lions", "name": "Lincoln Lions", "wins": 2, "losses": 0, "ties": 0}, {"id": "hoover", "name": "Hoover", "wins": 2, "losses": 0, "ties": 0}, {"id": "franklin", "name": "Franklin", "wins": 1, "losses": 1, "ties": 0}, {"id": "washington-wildkittens", "name": "Washington Wildkittens", "wins": 1, "losses": 1, "ties": 0}, {"id": "burlingame-expansion", "name": "Burlingame Expansion", "wins": 0, "losses": 1, "ties": 0}, {"id": "roosevelt-blue", "name": "Roosevelt Blue", "wins": 0, "losses": 1, "ties": 0}, {"id": "carey", "name": "Carey", "wins": 0, "losses": 2, "ties": 0}, {"id": "mckinley-2", "name": "McKinley 2", "wins": 0, "losses": 2, "ties": 0}], "players": [{"id": "ng-jerry", "name": "Ng, Jerry", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 5, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "tancilau-mo", "name": "Tancilau, Mo", "teamId": "st-catherines", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 3, "R": 1, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "bahamondes-danny", "name": "Bahamondes, Danny", "teamId": "st-catherines", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "barr-matt", "name": "Barr, Matt", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 5, "R": 5, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "besse-paul", "name": "Besse, Paul", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 5, "R": 4, "E": 0, "D": 1, "T": 2, "HR": 0, "BB": 0, "SF": 0, "BI": 8}}, {"id": "germino-matt", "name": "Germino, Matt", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 5, "R": 5, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "malaspina-ray", "name": "Malaspina, Ray", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 5, "R": 5, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "bandel-joe", "name": "Bandel, Joe", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 5, "H": 4, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 6}}, {"id": "lin-james", "name": "Lin, James", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 2, "SF": 0, "BI": 3}}, {"id": "delossantos-anthony", "name": "DeLosSantos, Anthony", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 4, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 5}}, {"id": "gomez-ricky", "name": "Gomez, Ricky", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 4, "R": 4, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "wong-art", "name": "Wong, Art", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 3, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "driscoll-tim", "name": "Driscoll, Tim", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "nunez-cj", "name": "Nunez, CJ", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "bachwich-ethan", "name": "Bachwich, Ethan", "teamId": "st-catherines", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "ching-alan", "name": "Ching, Alan", "teamId": "lincoln-lions", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "lau-chris", "name": "Lau, Chris", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 4, "R": 2, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "ou-peter", "name": "Ou, Peter", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 4, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "benveniste-mike", "name": "Benveniste, Mike", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 4, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 4}}, {"id": "huck-paul", "name": "Huck, Paul", "teamId": "lincoln-lions", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "gilmore-barlow", "name": "Gilmore, Barlow", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 6, "AB": 5, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 2}}, {"id": "kim-kenny", "name": "Kim, Kenny", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "kloster-jeff", "name": "Kloster, Jeff", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "martinez-francisco", "name": "Martinez, Francisco", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 2, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "moorthy-arjun", "name": "Moorthy, Arjun", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 2, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "csongradi-eric", "name": "Csongradi, Eric", "teamId": "lincoln-lions", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "reynolds-brett", "name": "Reynolds, Brett", "teamId": "lincoln-lions", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 2, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "french-nick", "name": "French, Nick", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 1, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "katz-elliot", "name": "Katz, Elliot", "teamId": "lincoln-lions", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 1, "R": 1, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "zeman-jan", "name": "Zeman, Jan", "teamId": "lincoln-lions", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "kapoor-aashrey", "name": "Kapoor, Aashrey", "teamId": "lincoln-lions", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "dow-bryan", "name": "Dow, Bryan", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 3, "H": 3, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 2}}, {"id": "koblis-phillip", "name": "Koblis, Phillip", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 8, "AB": 7, "H": 6, "R": 6, "E": 0, "D": 3, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 3}}, {"id": "bryant-colin", "name": "Bryant, Colin", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 3, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "fabor-fred", "name": "Fabor, Fred", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "seacrest-cayman", "name": "Seacrest, Cayman", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 1, "BB": 0, "SF": 0, "BI": 3}}, {"id": "snyder-marc", "name": "Snyder, Marc", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 5, "R": 3, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 4}}, {"id": "koshie-sunil", "name": "Koshie, Sunil", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "ramirez-adam", "name": "Ramirez, Adam", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 1, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "szafranski-jim", "name": "Szafranski, Jim", "teamId": "hoover", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 2, "R": 3, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "lowenthal-sean", "name": "Lowenthal, Sean", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 8, "AB": 7, "H": 3, "R": 3, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 5}}, {"id": "jenkins-brett", "name": "Jenkins, Brett", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 7, "AB": 7, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "cohendet-chris", "name": "Cohendet, Chris", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 8, "AB": 7, "H": 2, "R": 3, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 3}}, {"id": "dicarlo-christian", "name": "Dicarlo, Christian", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 7, "AB": 7, "H": 2, "R": 2, "E": 3, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "stepanian-levon", "name": "Stepanian, Levon", "teamId": "hoover", "seasonStats": {"G": 2, "PA": 7, "AB": 7, "H": 2, "R": 2, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "lanam-todd", "name": "Lanam, Todd", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 7, "R": 4, "E": 0, "D": 3, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "pierce-ryan", "name": "Pierce, Ryan", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 7, "H": 6, "R": 4, "E": 0, "D": 3, "T": 1, "HR": 0, "BB": 0, "SF": 1, "BI": 7}}, {"id": "wong-uland", "name": "Wong, Uland", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 6, "R": 4, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "jefferson-steven", "name": "Jefferson, Steven", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 5, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "jing-mu", "name": "Jing, Mu", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 5, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "samuelson-robby", "name": "Samuelson, Robby", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 5, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "vanzandt-jonah", "name": "VanZandt, Jonah", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 5, "R": 3, "E": 0, "D": 0, "T": 2, "HR": 0, "BB": 0, "SF": 0, "BI": 6}}, {"id": "sosnick-jason", "name": "Sosnick, Jason", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 4, "R": 4, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 4}}, {"id": "lagory-ed", "name": "LaGory, Ed", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 7, "AB": 6, "H": 3, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 1}}, {"id": "rokovich-mike", "name": "Rokovich, Mike", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 3, "R": 3, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "linge-mario", "name": "Linge, Mario", "teamId": "franklin", "seasonStats": {"G": 2, "PA": 7, "AB": 7, "H": 2, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "adams-gareth", "name": "Adams, Gareth", "teamId": "washington-wildkittens", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 5}}, {"id": "simmons-drew", "name": "Simmons, Drew", "teamId": "washington-wildkittens", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "geheran-chris", "name": "Geheran, Chris", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 8, "AB": 7, "H": 5, "R": 2, "E": 0, "D": 1, "T": 1, "HR": 0, "BB": 0, "SF": 1, "BI": 8}}, {"id": "mello-josh", "name": "Mello, Josh", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 4, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "poucher-bill", "name": "Poucher, Bill", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 4, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "roth-brian", "name": "Roth, Brian", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 4, "R": 4, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "saifher-darryl", "name": "Saifher, Darryl", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 8, "AB": 8, "H": 4, "R": 3, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 5}}, {"id": "sison-francis", "name": "Sison, Francis", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 7, "AB": 6, "H": 3, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}}, {"id": "miles-darren", "name": "Miles, Darren", "teamId": "washington-wildkittens", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 2, "R": 3, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "sandell-chris", "name": "Sandell, Chris", "teamId": "washington-wildkittens", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "sando-dave", "name": "Sando, Dave", "teamId": "washington-wildkittens", "seasonStats": {"G": 1, "PA": 4, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}}, {"id": "matsurra-kentaro", "name": "Matsurra, Kentaro", "teamId": "washington-wildkittens", "seasonStats": {"G": 2, "PA": 8, "AB": 6, "H": 1, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 2, "SF": 0, "BI": 1}}, {"id": "ciccarelli-nick", "name": "Ciccarelli, Nick", "teamId": "washington-wildkittens", "seasonStats": {"G": 1, "PA": 4, "AB": 4, "H": 0, "R": 0, "E": 2, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "maguire-jack", "name": "Maguire, Jack", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 3, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "lasky-jason", "name": "Lasky, Jason", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}}, {"id": "murphy-steve", "name": "Murphy, Steve", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}}, {"id": "soto-kurt", "name": "Soto, Kurt", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "doll-michael", "name": "Doll, Michael", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "jauregui-rudy", "name": "Jauregui, Rudy", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "oleary-chris-burl", "name": "O'Leary, Chris", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "gallant-nolan", "name": "Gallant, Nolan", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "kraska-bob", "name": "Kraska, Bob", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "marguilies-elliott", "name": "Marguilies, Elliott", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "ridge-matt", "name": "Ridge, Matt", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "alemany-tim", "name": "Alemany, Tim", "teamId": "burlingame-expansion", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "adler-nick", "name": "Adler, Nick", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "vinca-david", "name": "Vinca, David", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "shapiro-ben", "name": "Shapiro, Ben", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "carvillo-joe", "name": "Carvillo, Joe", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 2, "H": 1, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}}, {"id": "bhargava-ankush", "name": "Bhargava, Ankush", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "cockle-will", "name": "Cockle, Will", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "ding-david", "name": "Ding, David", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "tobias-dave", "name": "Tobias, Dave", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "frank-chris", "name": "Frank, Chris", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "oleary-joe", "name": "O'Leary, Joe", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 3, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}}, {"id": "allred-kendall", "name": "Allred, Kendall", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "ganguly-bishu", "name": "Ganguly, Bishu", "teamId": "roosevelt-blue", "seasonStats": {"G": 1, "PA": 2, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}}, {"id": "williams-david", "name": "Williams, David", "teamId": "carey", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 4, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "meister-matthew", "name": "Meister, Matthew", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "acton-marc", "name": "Acton, Marc", "teamId": "carey", "seasonStats": {"G": 2, "PA": 6, "AB": 6, "H": 5, "R": 5, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "batenchuch-ryan", "name": "Batenchuch, Ryan", "teamId": "carey", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 4, "R": 4, "E": 0, "D": 3, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "boice-michael", "name": "Boice, Michael", "teamId": "carey", "seasonStats": {"G": 2, "PA": 5, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}}, {"id": "coleman-chris", "name": "Coleman, Chris", "teamId": "carey", "seasonStats": {"G": 2, "PA": 5, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 2, "BI": 4}}, {"id": "jewett-peter", "name": "Jewett, Peter", "teamId": "carey", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "wicks-simon", "name": "Wicks, Simon", "teamId": "carey", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "colaco-pudge", "name": "Colaco, Pudge", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "jan-de-voogd-robert", "name": "Jan de Voogd, Robert", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "ohare-rob", "name": "O'Hare, Rob", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "gellas-jim", "name": "Gellas, Jim", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "chow-ryan", "name": "Chow, Ryan", "teamId": "carey", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "barabin-travis", "name": "Barabin, Travis", "teamId": "carey", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 3, "E": 1, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}}, {"id": "morganroth-kyle", "name": "Morganroth, Kyle", "teamId": "carey", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "siegmund-david", "name": "Siegmund, David", "teamId": "carey", "seasonStats": {"G": 1, "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "hart-ted", "name": "Hart, Ted", "teamId": "carey", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "jakobowski-bill", "name": "Jakobowski, Bill", "teamId": "carey", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "craig-nick", "name": "Craig, Nick", "teamId": "carey", "seasonStats": {"G": 2, "PA": 5, "AB": 5, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}}, {"id": "wuerfel-kevin", "name": "Wuerfel, Kevin", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "allan-john", "name": "Allan, John", "teamId": "carey", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "parikh-sanjiv", "name": "Parikh, Sanjiv", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 3, "AB": 3, "H": 3, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "conti-david", "name": "Conti, David", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 3, "AB": 3, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "wright-brandon", "name": "Wright, Brandon", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 2, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "johnston-matthew", "name": "Johnston, Matthew", "teamId": "mckinley-2", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "rodriguez-darwin", "name": "Rodriguez, Darwin", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "anguera-joaquin", "name": "Anguera, Joaquin", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}}, {"id": "whittier-rob", "name": "Whittier, Rob", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 4, "AB": 4, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "blohowiak-aaron", "name": "Blohowiak, Aaron", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "ersun-kaan", "name": "Ersun, Kaan", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "williams-justin", "name": "Williams, Justin", "teamId": "mckinley-2", "seasonStats": {"G": 2, "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "schlotter-bill", "name": "Schlotter, Bill", "teamId": "mckinley-2", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "oleary-chris-mck", "name": "O'Leary, Chris", "teamId": "mckinley-2", "seasonStats": {"G": 1, "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "dabrik-doug", "name": "Dabrik, Doug", "teamId": "mckinley-2", "seasonStats": {"G": 1, "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "sparhawk-mark", "name": "Sparhawk, Mark", "teamId": "mckinley-2", "seasonStats": {"G": 1, "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}, {"id": "barisone-tony", "name": "Barisone, Tony", "teamId": "mckinley-2", "seasonStats": {"G": 1, "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}}], "games": [{"id": "week1-game1", "week": 1, "date": "2026-03-11", "location": "Bayside Park Field #2", "homeTeamId": "st-catherines", "awayTeamId": "franklin", "homeScore": 15, "awayScore": 14, "homeStats": [{"playerId": "bachwich-ethan", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "malaspina-ray", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "barr-matt", "PA": 3, "AB": 3, "H": 3, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "besse-paul", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "bandel-joe", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "gomez-ricky", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "germino-matt", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "lin-james", "PA": 3, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "delossantos-anthony", "PA": 3, "AB": 3, "H": 3, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 4}, {"playerId": "wong-art", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "nunez-cj", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "driscoll-tim", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "ng-jerry", "PA": 3, "AB": 3, "H": 3, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}], "awayStats": [{"playerId": "lanam-todd", "PA": 4, "AB": 4, "H": 4, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "sosnick-jason", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "pierce-ryan", "PA": 4, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 1, "T": 1, "HR": 0, "BB": 0, "SF": 1, "BI": 3}, {"playerId": "rokovich-mike", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "samuelson-robby", "PA": 4, "AB": 4, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "wong-uland", "PA": 4, "AB": 4, "H": 4, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "vanzandt-jonah", "PA": 4, "AB": 4, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "jefferson-steven", "PA": 4, "AB": 4, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "jing-mu", "PA": 4, "AB": 4, "H": 4, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "lagory-ed", "PA": 3, "AB": 2, "H": 1, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "linge-mario", "PA": 3, "AB": 3, "H": 1, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}]}, {"id": "week1-game2", "week": 1, "date": "2026-03-11", "location": "Bayside Park Field #2", "homeTeamId": "lincoln-lions", "awayTeamId": "burlingame-expansion", "homeScore": 8, "awayScore": 3, "homeStats": [{"playerId": "katz-elliot", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "martinez-francisco", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "gilmore-barlow", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "lau-chris", "PA": 3, "AB": 3, "H": 3, "R": 2, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "benveniste-mike", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "huck-paul", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "moorthy-arjun", "PA": 3, "AB": 3, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "kloster-jeff", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "kim-kenny", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "french-nick", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "ou-peter", "PA": 3, "AB": 3, "H": 2, "R": 0, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "zeman-jan", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "kapoor-aashrey", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}], "awayStats": [{"playerId": "jauregui-rudy", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "murphy-steve", "PA": 3, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "doll-michael", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "gallant-nolan", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "lasky-jason", "PA": 3, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "maguire-jack", "PA": 3, "AB": 3, "H": 3, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "oleary-chris-burl", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "kraska-bob", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "marguilies-elliott", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "soto-kurt", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "alemany-tim", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ridge-matt", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}]}, {"id": "week1-game3", "week": 1, "date": "2026-03-11", "location": "Bayside Park Field #1", "homeTeamId": "hoover", "awayTeamId": "mckinley-2", "homeScore": 17, "awayScore": 2, "homeStats": [{"playerId": "snyder-marc", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "szafranski-jim", "PA": 4, "AB": 4, "H": 2, "R": 3, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "koblis-phillip", "PA": 4, "AB": 3, "H": 3, "R": 4, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}, {"playerId": "cohendet-chris", "PA": 4, "AB": 4, "H": 1, "R": 2, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "lowenthal-sean", "PA": 4, "AB": 3, "H": 2, "R": 2, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 4}, {"playerId": "ramirez-adam", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 1, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "stepanian-levon", "PA": 4, "AB": 4, "H": 2, "R": 1, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "jenkins-brett", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "dicarlo-christian", "PA": 4, "AB": 4, "H": 0, "R": 1, "E": 3, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "koshie-sunil", "PA": 4, "AB": 4, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}], "awayStats": [{"playerId": "wright-brandon", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "anguera-joaquin", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "whittier-rob", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "blohowiak-aaron", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "rodriguez-darwin", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "conti-david", "PA": 2, "AB": 2, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "oleary-chris-mck", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "johnston-matthew", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "ersun-kaan", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "schlotter-bill", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "parikh-sanjiv", "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "williams-justin", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}]}, {"id": "week1-game4", "week": 1, "date": "2026-03-11", "location": "Bayside Park Field #1", "homeTeamId": "washington-wildkittens", "awayTeamId": "carey", "homeScore": 14, "awayScore": 13, "homeStats": [{"playerId": "sandell-chris", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "roth-brian", "PA": 4, "AB": 4, "H": 3, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "saifher-darryl", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "miles-darren", "PA": 4, "AB": 4, "H": 2, "R": 3, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "poucher-bill", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "mello-josh", "PA": 4, "AB": 4, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "geheran-chris", "PA": 4, "AB": 3, "H": 3, "R": 1, "E": 0, "D": 1, "T": 1, "HR": 0, "BB": 0, "SF": 1, "BI": 6}, {"playerId": "ciccarelli-nick", "PA": 4, "AB": 4, "H": 0, "R": 0, "E": 2, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "matsurra-kentaro", "PA": 4, "AB": 4, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "sison-francis", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}], "awayStats": [{"playerId": "acton-marc", "PA": 3, "AB": 3, "H": 3, "R": 3, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "batenchuch-ryan", "PA": 3, "AB": 3, "H": 3, "R": 3, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "morganroth-kyle", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "barabin-travis", "PA": 3, "AB": 3, "H": 1, "R": 3, "E": 1, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "coleman-chris", "PA": 3, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 3}, {"playerId": "boice-michael", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "siegmund-david", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "craig-nick", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "chow-ryan", "PA": 3, "AB": 3, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "wicks-simon", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "wuerfel-kevin", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "hart-ted", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "jewett-peter", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "williams-david", "PA": 2, "AB": 2, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "jakobowski-bill", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}]}, {"id": "week2-game1", "week": 2, "date": "2026-03-18", "location": "Bayside Park", "homeTeamId": "st-catherines", "awayTeamId": "mckinley-2", "homeScore": 25, "awayScore": 0, "homeStats": [{"playerId": "bachwich-ethan", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "malaspina-ray", "PA": 3, "AB": 3, "H": 3, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "barr-matt", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "besse-paul", "PA": 3, "AB": 3, "H": 3, "R": 3, "E": 0, "D": 0, "T": 2, "HR": 0, "BB": 0, "SF": 0, "BI": 5}, {"playerId": "bandel-joe", "PA": 3, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 4}, {"playerId": "gomez-ricky", "PA": 3, "AB": 3, "H": 2, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "germino-matt", "PA": 3, "AB": 3, "H": 3, "R": 3, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "tancilau-mo", "PA": 3, "AB": 3, "H": 3, "R": 1, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "lin-james", "PA": 3, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 3}, {"playerId": "delossantos-anthony", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "wong-art", "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "nunez-cj", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "bahamondes-danny", "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "driscoll-tim", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ng-jerry", "PA": 2, "AB": 2, "H": 2, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}], "awayStats": [{"playerId": "whittier-rob", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "anguera-joaquin", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "wright-brandon", "PA": 1, "AB": 1, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "blohowiak-aaron", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "conti-david", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "dabrik-doug", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "rodriguez-darwin", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "sparhawk-mark", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "parikh-sanjiv", "PA": 1, "AB": 1, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ersun-kaan", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "barisone-tony", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "williams-justin", "PA": 1, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}]}, {"id": "week2-game2", "week": 2, "date": "2026-03-18", "location": "Bayside Park", "homeTeamId": "franklin", "awayTeamId": "carey", "homeScore": 20, "awayScore": 8, "homeStats": [{"playerId": "lanam-todd", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "sosnick-jason", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "pierce-ryan", "PA": 4, "AB": 4, "H": 4, "R": 3, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 4}, {"playerId": "rokovich-mike", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "samuelson-robby", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "wong-uland", "PA": 4, "AB": 4, "H": 2, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "vanzandt-jonah", "PA": 4, "AB": 4, "H": 3, "R": 3, "E": 0, "D": 0, "T": 2, "HR": 0, "BB": 0, "SF": 0, "BI": 5}, {"playerId": "jefferson-steven", "PA": 4, "AB": 4, "H": 4, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "jing-mu", "PA": 4, "AB": 4, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "linge-mario", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "lagory-ed", "PA": 4, "AB": 4, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}], "awayStats": [{"playerId": "acton-marc", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "ohare-rob", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "batenchuch-ryan", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "coleman-chris", "PA": 2, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}, {"playerId": "colaco-pudge", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "boice-michael", "PA": 2, "AB": 1, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "meister-matthew", "PA": 2, "AB": 2, "H": 2, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "craig-nick", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "chow-ryan", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "wicks-simon", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "jan-de-voogd-robert", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "gellas-jim", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "hart-ted", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "jewett-peter", "PA": 2, "AB": 2, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "williams-david", "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "jakobowski-bill", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "allan-john", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}]}, {"id": "week2-game3", "week": 2, "date": "2026-03-18", "location": "Bayside Park", "homeTeamId": "hoover", "awayTeamId": "washington-wildkittens", "homeScore": 15, "awayScore": 14, "homeStats": [{"playerId": "seacrest-cayman", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 1, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "fabor-fred", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "koblis-phillip", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 2, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "cohendet-chris", "PA": 4, "AB": 3, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}, {"playerId": "dow-bryan", "PA": 4, "AB": 3, "H": 3, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 2}, {"playerId": "lowenthal-sean", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "snyder-marc", "PA": 4, "AB": 4, "H": 4, "R": 2, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "bryant-colin", "PA": 4, "AB": 4, "H": 3, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "stepanian-levon", "PA": 3, "AB": 3, "H": 0, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "jenkins-brett", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "dicarlo-christian", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}], "awayStats": [{"playerId": "geheran-chris", "PA": 4, "AB": 4, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "roth-brian", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "saifher-darryl", "PA": 4, "AB": 4, "H": 1, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "sando-dave", "PA": 4, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}, {"playerId": "poucher-bill", "PA": 4, "AB": 4, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "simmons-drew", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "mello-josh", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "matsurra-kentaro", "PA": 4, "AB": 2, "H": 1, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 2, "SF": 0, "BI": 1}, {"playerId": "sison-francis", "PA": 4, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "adams-gareth", "PA": 4, "AB": 4, "H": 3, "R": 2, "E": 0, "D": 0, "T": 1, "HR": 0, "BB": 0, "SF": 0, "BI": 5}]}, {"id": "week2-game4", "week": 2, "date": "2026-03-18", "location": "Bayside Park", "homeTeamId": "lincoln-lions", "awayTeamId": "roosevelt-blue", "homeScore": 8, "awayScore": 6, "homeStats": [{"playerId": "katz-elliot", "PA": 3, "AB": 3, "H": 1, "R": 1, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "martinez-francisco", "PA": 3, "AB": 3, "H": 1, "R": 2, "E": 0, "D": 1, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 2}, {"playerId": "benveniste-mike", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "gilmore-barlow", "PA": 3, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}, {"playerId": "reynolds-brett", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 2, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "csongradi-eric", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "moorthy-arjun", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "kloster-jeff", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "kim-kenny", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "french-nick", "PA": 2, "AB": 2, "H": 0, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ching-alan", "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ou-peter", "PA": 2, "AB": 2, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "lau-chris", "PA": 2, "AB": 2, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}], "awayStats": [{"playerId": "adler-nick", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "frank-chris", "PA": 3, "AB": 3, "H": 0, "R": 0, "E": 1, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ding-david", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "tobias-dave", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "oleary-joe", "PA": 3, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 1, "BI": 1}, {"playerId": "vinca-david", "PA": 3, "AB": 3, "H": 2, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "carvillo-joe", "PA": 3, "AB": 2, "H": 1, "R": 2, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "shapiro-ben", "PA": 3, "AB": 3, "H": 2, "R": 1, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 1}, {"playerId": "bhargava-ankush", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 3}, {"playerId": "cockle-will", "PA": 3, "AB": 3, "H": 1, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}, {"playerId": "ganguly-bishu", "PA": 2, "AB": 1, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 1, "SF": 0, "BI": 0}, {"playerId": "allred-kendall", "PA": 2, "AB": 2, "H": 0, "R": 0, "E": 0, "D": 0, "T": 0, "HR": 0, "BB": 0, "SF": 0, "BI": 0}]}]};
+  </script>
+  <script>
+let DATA = null;
+
+const NAV_ITEMS = [
+  { hash: '#/', label: 'Standings' },
+  { hash: '#/schedule', label: 'Schedule' },
+  { hash: '#/players', label: 'Players' },
+];
+
+function calcAVG(h, ab) { return ab === 0 ? '.000' : (h / ab).toFixed(3).replace(/^0/, ''); }
+
+function calcSLG(s) {
+  if (s.AB === 0) return '.000';
+  const singles = s.H - s.D - s.T - s.HR;
+  const tb = singles + 2 * s.D + 3 * s.T + 4 * s.HR;
+  return (tb / s.AB).toFixed(3).replace(/^0/, '');
+}
+
+function calcOBP(s) {
+  const denom = s.PA;
+  if (denom === 0) return '.000';
+  return ((s.H + s.BB) / denom).toFixed(3).replace(/^0/, '');
+}
+
+function calcOPS(s) {
+  const obp = s.PA === 0 ? 0 : (s.H + s.BB) / s.PA;
+  const singles = s.H - s.D - s.T - s.HR;
+  const tb = singles + 2 * s.D + 3 * s.T + 4 * s.HR;
+  const slg = s.AB === 0 ? 0 : tb / s.AB;
+  return (obp + slg).toFixed(3).replace(/^0/, '');
+}
+
+function fmtDate(d) {
+  const [y, m, day] = d.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return months[parseInt(m, 10) - 1] + ' ' + parseInt(day, 10);
+}
+
+function displayName(name) {
+  if (name.includes(', ')) { const [last, first] = name.split(', '); return first + ' ' + last; }
+  return name;
+}
+
+function getTeam(id) { return DATA.teams.find(t => t.id === id); }
+function getPlayer(id) { return DATA.players.find(p => p.id === id); }
+function getTeamPlayers(teamId) { return DATA.players.filter(p => p.teamId === teamId); }
+function getTeamGames(teamId) { return DATA.games.filter(g => g.homeTeamId === teamId || g.awayTeamId === teamId); }
+
+function renderNav() {
+  const nav = document.getElementById('nav');
+  nav.innerHTML = NAV_ITEMS.map(n =>
+    `<a href="${n.hash}" class="${location.hash === n.hash || (n.hash === '#/' && (!location.hash || location.hash === '#')) ? 'active' : ''}">${n.label}</a>`
+  ).join('');
+}
+
+function renderTicker() {
+  const el = document.getElementById('scores-ticker');
+  const games = [...DATA.games].sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+  el.className = 'scores-ticker';
+  el.innerHTML = games.map(g => {
+    const home = getTeam(g.homeTeamId);
+    const away = getTeam(g.awayTeamId);
+    const hw = g.homeScore > g.awayScore;
+    return `<a class="ticker-game" href="#/game/${g.id}" style="text-decoration:none;color:inherit">
+      <div class="ticker-label">Wk ${g.week} &middot; Final</div>
+      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${away.name}</span><span class="ticker-score">${g.awayScore}</span></div>
+      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${home.name}</span><span class="ticker-score">${g.homeScore}</span></div>
+    </a>`;
+  }).join('');
+}
+
+function sortableTable(id, data, columns, defaultSort, defaultDir) {
+  let sortCol = defaultSort || columns[0].key;
+  let sortDir = defaultDir || 'desc';
+
+  function render() {
+    const sorted = [...data].sort((a, b) => {
+      let va = typeof columns.find(c => c.key === sortCol).val === 'function'
+        ? columns.find(c => c.key === sortCol).val(a) : a[sortCol];
+      let vb = typeof columns.find(c => c.key === sortCol).val === 'function'
+        ? columns.find(c => c.key === sortCol).val(b) : b[sortCol];
+      if (typeof va === 'string') va = va.toLowerCase();
+      if (typeof vb === 'string') vb = vb.toLowerCase();
+      if (va < vb) return sortDir === 'asc' ? -1 : 1;
+      if (va > vb) return sortDir === 'asc' ? 1 : -1;
+      return 0;
+    });
+
+    const thead = columns.map(c => {
+      const cls = [c.num ? 'num' : '', 'sortable', sortCol === c.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : ''].filter(Boolean).join(' ');
+      return `<th class="${cls}" data-col="${c.key}">${c.label}</th>`;
+    }).join('');
+
+    const tbody = sorted.map(row => {
+      return '<tr>' + columns.map(c => {
+        const val = typeof c.render === 'function' ? c.render(row) : (typeof c.val === 'function' ? c.val(row) : row[c.key]);
+        return `<td class="${c.num ? 'num' : ''}">${val}</td>`;
+      }).join('') + '</tr>';
+    }).join('');
+
+    document.getElementById(id).innerHTML = `<div class="table-wrap"><table><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+
+    document.querySelectorAll(`#${id} th.sortable`).forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.col;
+        if (sortCol === col) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        else { sortCol = col; sortDir = 'desc'; }
+        render();
+      });
+    });
+  }
+  render();
+}
+
+function pctDisplay(w, l, t) {
+  const games = w + l + t;
+  if (games === 0) return '.000';
+  return ((w + t * 0.5) / games).toFixed(3).replace(/^0/, '');
+}
+
+function viewStandings() {
+  const teams = DATA.teams.map(t => {
+    const tp = getTeamPlayers(t.id);
+    const sum = (key) => tp.reduce((s, p) => s + p.seasonStats[key], 0);
+    const ab = sum('AB'), h = sum('H'), bb = sum('BB'), pa = sum('PA');
+    const d = sum('D'), tr = sum('T'), hr = sum('HR');
+    const singles = h - d - tr - hr;
+    const tb = singles + 2*d + 3*tr + 4*hr;
+    const slg = ab === 0 ? 0 : tb / ab;
+    const obp = pa === 0 ? 0 : (h + bb) / pa;
+    return {
+      ...t,
+      gp: t.wins + t.losses + t.ties,
+      pct: parseFloat(pctDisplay(t.wins, t.losses, t.ties)),
+      rs: DATA.games.reduce((s, g) => {
+        if (g.homeTeamId === t.id) return s + g.homeScore;
+        if (g.awayTeamId === t.id) return s + g.awayScore;
+        return s;
+      }, 0),
+      ra: DATA.games.reduce((s, g) => {
+        if (g.homeTeamId === t.id) return s + g.awayScore;
+        if (g.awayTeamId === t.id) return s + g.homeScore;
+        return s;
+      }, 0),
+      tAB: ab, tH: h, tR: sum('R'), tHR: hr, tBB: bb, tBI: sum('BI'), tE: sum('E'),
+      tD: d, tT: tr,
+      tAVG: ab === 0 ? 0 : h / ab,
+      tSLG: slg,
+      tOPS: obp + slg,
+    };
+  }).sort((a, b) => b.pct - a.pct || b.wins - a.wins || a.losses - b.losses);
+
+  const fmtR = (v) => v.toFixed(3).replace(/^0/, '');
+
+  const standingsRows = teams.map((t, i) => `<tr>
+    <td class="num">${i + 1}</td>
+    <td><a class="team-link" href="#/team/${t.id}">${t.name}</a></td>
+    <td class="num">${t.wins}</td>
+    <td class="num">${t.losses}</td>
+    <td class="num">${t.ties}</td>
+    <td class="num">${pctDisplay(t.wins, t.losses, t.ties)}</td>
+    <td class="num">${t.rs}</td>
+    <td class="num">${t.ra}</td>
+    <td class="num">${t.tAB}</td>
+    <td class="num">${t.tH}</td>
+    <td class="num">${t.tR}</td>
+    <td class="num">${t.tD}</td>
+    <td class="num">${t.tT}</td>
+    <td class="num">${t.tHR}</td>
+    <td class="num">${t.tBB}</td>
+    <td class="num">${t.tBI}</td>
+    <td class="num">${t.tE}</td>
+    <td class="num">${fmtR(t.tAVG)}</td>
+    <td class="num">${fmtR(t.tSLG)}</td>
+    <td class="num">${fmtR(t.tOPS)}</td>
+  </tr>`).join('');
+
+  // League leaders
+  const qualified = DATA.players.filter(p => p.seasonStats.PA >= 3);
+  const leaders = {
+    'Batting Avg': qualified.map(p => ({ p, v: parseFloat(calcAVG(p.seasonStats.H, p.seasonStats.AB)) })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Hits': DATA.players.map(p => ({ p, v: p.seasonStats.H })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Runs': DATA.players.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'RBI': DATA.players.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'OPS': qualified.map(p => ({ p, v: parseFloat(calcOPS(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Doubles': DATA.players.map(p => ({ p, v: p.seasonStats.D })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Triples': DATA.players.map(p => ({ p, v: p.seasonStats.T })).sort((a, b) => b.v - a.v).slice(0, 5),
+  };
+
+  const leadersHtml = Object.entries(leaders).map(([cat, items]) => `
+    <div class="leader-cat">
+      <h4>${cat}</h4>
+      ${items.map(i => `<div class="leader-item">
+        <a class="player-link" href="#/player/${i.p.id}">${displayName(i.p.name)}</a>
+        <span class="val">${cat === 'Batting Avg' ? calcAVG(i.p.seasonStats.H, i.p.seasonStats.AB) : cat === 'OPS' ? calcOPS(i.p.seasonStats) : i.v}</span>
+      </div>`).join('')}
+    </div>
+  `).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="card">
+      <div class="card-header">Standings</div>
+      <div class="card-body"><div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">RS</th><th class="num">RA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
+          </tr></thead>
+          <tbody>${standingsRows}</tbody>
+        </table>
+      </div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">League Leaders</div>
+      <div class="card-body">
+        <div class="leaders-grid">${leadersHtml}</div>
+      </div>
+    </div>
+  `;
+}
+
+function viewTeam(teamId) {
+  const team = getTeam(teamId);
+  if (!team) { document.getElementById('app').innerHTML = '<p>Team not found.</p>'; return; }
+  const players = getTeamPlayers(teamId);
+  const games = getTeamGames(teamId).sort((a, b) => a.date.localeCompare(b.date));
+
+  const scheduleRows = games.map(g => {
+    const isHome = g.homeTeamId === teamId;
+    const opp = getTeam(isHome ? g.awayTeamId : g.homeTeamId);
+    const teamScore = isHome ? g.homeScore : g.awayScore;
+    const oppScore = isHome ? g.awayScore : g.homeScore;
+    const result = teamScore > oppScore ? 'W' : teamScore < oppScore ? 'L' : 'T';
+    return `<tr>
+      <td>Wk ${g.week}</td>
+      <td>${fmtDate(g.date)}</td>
+      <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp.id}">${opp.name}</a></td>
+      <td class="num"><strong>${result}</strong> ${teamScore}-${oppScore}</td>
+      <td><a class="box-link" href="#/game/${g.id}">Box Score</a></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML = `
+    <a class="back-link" href="#/">&larr; Standings</a>
+    <div class="team-hero">
+      <div class="page-title">${team.name}</div>
+      <div class="record-big">${team.wins}-${team.losses}-${team.ties}</div>
+      <div class="page-subtitle">${pctDisplay(team.wins, team.losses, team.ties)} PCT</div>
+    </div>
+    <div class="card">
+      <div class="card-header">Schedule & Results</div>
+      <div class="card-body"><div class="table-wrap">
+        <table><thead><tr><th>Week</th><th>Date</th><th>Opponent</th><th class="num">Result</th><th></th></tr></thead>
+        <tbody>${scheduleRows}</tbody></table>
+      </div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">Roster & Season Stats</div>
+      <div class="card-body" id="team-stats"></div>
+    </div>
+  `;
+
+  const rows = players.map(p => {
+    const s = p.seasonStats;
+    return {
+      id: p.id, name: p.name,
+      G: s.G, PA: s.PA, AB: s.AB, H: s.H, R: s.R, D: s.D, T: s.T, HR: s.HR, BB: s.BB, SF: s.SF, BI: s.BI, E: s.E,
+      AVG: parseFloat(calcAVG(s.H, s.AB)),
+      SLG: parseFloat(calcSLG(s)),
+      OPS: parseFloat(calcOPS(s)),
+    };
+  });
+
+  const cols = [
+    { key: 'name', label: 'Player', render: r => `<a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
+    { key: 'G', label: 'G', num: true, val: r => r.G },
+    { key: 'PA', label: 'PA', num: true, val: r => r.PA },
+    { key: 'AB', label: 'AB', num: true, val: r => r.AB },
+    { key: 'H', label: 'H', num: true, val: r => r.H },
+    { key: 'R', label: 'R', num: true, val: r => r.R },
+    { key: 'D', label: '2B', num: true, val: r => r.D },
+    { key: 'T', label: '3B', num: true, val: r => r.T },
+    { key: 'HR', label: 'HR', num: true, val: r => r.HR },
+    { key: 'BB', label: 'BB', num: true, val: r => r.BB },
+    { key: 'SF', label: 'SF', num: true, val: r => r.SF },
+    { key: 'BI', label: 'RBI', num: true, val: r => r.BI },
+    { key: 'E', label: 'E', num: true, val: r => r.E },
+    { key: 'AVG', label: 'AVG', num: true, render: r => calcAVG(r.H, r.AB), val: r => r.AVG },
+    { key: 'SLG', label: 'SLG', num: true, render: r => r.SLG.toFixed(3).replace(/^0/, ''), val: r => r.SLG },
+    { key: 'OPS', label: 'OPS', num: true, render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
+  ];
+
+  sortableTable('team-stats', rows, cols, 'AVG', 'desc');
+}
+
+function ordinal(n) {
+  if (typeof n === 'string') return n;
+  const s = ['th','st','nd','rd'];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function playerRankings(player) {
+  const all = DATA.players;
+  function rank(sortFn) {
+    const sorted = [...all].sort(sortFn);
+    const idx = sorted.findIndex(p => p.id === player.id);
+    return ordinal(idx + 1);
+  }
+  const cats = [
+    rank((a, b) => b.seasonStats.H - a.seasonStats.H),
+    rank((a, b) => {
+      const aa = a.seasonStats.AB === 0 ? 0 : a.seasonStats.H / a.seasonStats.AB;
+      const bb = b.seasonStats.AB === 0 ? 0 : b.seasonStats.H / b.seasonStats.AB;
+      return bb - aa;
+    }),
+    rank((a, b) => b.seasonStats.R - a.seasonStats.R),
+    rank((a, b) => b.seasonStats.D - a.seasonStats.D),
+    rank((a, b) => b.seasonStats.T - a.seasonStats.T),
+    rank((a, b) => b.seasonStats.HR - a.seasonStats.HR),
+    rank((a, b) => b.seasonStats.BB - a.seasonStats.BB),
+    rank((a, b) => b.seasonStats.SF - a.seasonStats.SF),
+  ];
+  return cats.map(r => `<td class="num">${r}</td>`).join('');
+}
+
+function viewPlayer(playerId) {
+  const player = getPlayer(playerId);
+  if (!player) { document.getElementById('app').innerHTML = '<p>Player not found.</p>'; return; }
+  const team = getTeam(player.teamId);
+  const s = player.seasonStats;
+
+  const games = DATA.games.filter(g => {
+    const stats = g.homeTeamId === player.teamId ? g.homeStats : (g.awayTeamId === player.teamId ? g.awayStats : null);
+    return stats && stats.some(ps => ps.playerId === player.id);
+  }).sort((a, b) => a.date.localeCompare(b.date));
+
+  const gameLogRows = games.map(g => {
+    const isHome = g.homeTeamId === player.teamId;
+    const stats = isHome ? g.homeStats : g.awayStats;
+    const ps = stats.find(x => x.playerId === player.id);
+    const opp = getTeam(isHome ? g.awayTeamId : g.homeTeamId);
+    const teamScore = isHome ? g.homeScore : g.awayScore;
+    const oppScore = isHome ? g.awayScore : g.homeScore;
+    const result = teamScore > oppScore ? 'W' : 'L';
+    return `<tr>
+      <td>Wk ${g.week}</td>
+      <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp.id}">${opp.name}</a></td>
+      <td class="num">${result} ${teamScore}-${oppScore}</td>
+      <td class="num">${ps.PA}</td>
+      <td class="num">${ps.AB}</td>
+      <td class="num">${ps.H}</td>
+      <td class="num">${ps.R}</td>
+      <td class="num">${ps.D}</td>
+      <td class="num">${ps.T}</td>
+      <td class="num">${ps.HR}</td>
+      <td class="num">${ps.BB}</td>
+      <td class="num">${ps.SF}</td>
+      <td class="num">${ps.BI}</td>
+      <td class="num">${ps.E}</td>
+      <td class="num">${calcAVG(ps.H, ps.AB)}</td>
+      <td><a class="box-link" href="#/game/${g.id}">Box</a></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML = `
+    <a class="back-link" href="#/team/${player.teamId}">&larr; ${team.name}</a>
+    <div class="player-hero">
+      <div class="page-title">${displayName(player.name)}</div>
+      <div class="page-subtitle"><a href="#/team/${team.id}">${team.name}</a></div>
+    </div>
+    <div class="card">
+      <div class="card-header">Season Totals</div>
+      <div class="card-body"><div class="table-wrap">
+        <table><thead><tr>
+          <th class="num">G</th><th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
+          <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
+          <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
+        </tr></thead>
+        <tbody><tr>
+          <td class="num">${s.G}</td><td class="num">${s.PA}</td><td class="num">${s.AB}</td><td class="num">${s.H}</td><td class="num">${s.R}</td>
+          <td class="num">${s.D}</td><td class="num">${s.T}</td><td class="num">${s.HR}</td><td class="num">${s.BB}</td><td class="num">${s.SF}</td>
+          <td class="num">${s.BI}</td><td class="num">${s.E}</td><td class="num">${calcAVG(s.H, s.AB)}</td>
+          <td class="num">${calcSLG(s)}</td><td class="num">${calcOPS(s)}</td>
+        </tr></tbody></table>
+      </div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">Game Log</div>
+      <div class="card-body"><div class="table-wrap">
+        <table><thead><tr>
+          <th>Week</th><th>Opp</th><th class="num">Result</th><th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
+          <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
+          <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th></th>
+        </tr></thead>
+        <tbody>${gameLogRows}</tbody></table>
+      </div></div>
+    </div>
+    <div class="card">
+      <div class="card-header">League Rankings</div>
+      <div class="card-body"><div class="table-wrap">
+        <table><thead><tr>
+          <th class="num">H</th><th class="num">AVG</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
+        </tr></thead>
+        <tbody><tr>
+          ${playerRankings(player)}
+        </tr></tbody></table>
+      </div></div>
+    </div>
+  `;
+}
+
+function viewBoxScore(gameId) {
+  const game = DATA.games.find(g => g.id === gameId);
+  if (!game) { document.getElementById('app').innerHTML = '<p>Game not found.</p>'; return; }
+  const home = getTeam(game.homeTeamId);
+  const away = getTeam(game.awayTeamId);
+
+  function teamTable(stats, teamName) {
+    const totals = stats.reduce((acc, ps) => {
+      ['PA','AB','H','R','E','D','T','HR','BB','SF','BI'].forEach(k => acc[k] = (acc[k]||0) + ps[k]);
+      return acc;
+    }, {});
+
+    const rows = stats.map(ps => {
+      const p = getPlayer(ps.playerId);
+      return `<tr>
+        <td><a class="player-link" href="#/player/${ps.playerId}">${p ? displayName(p.name) : ps.playerId}</a></td>
+        <td class="num">${ps.PA}</td><td class="num">${ps.AB}</td><td class="num">${ps.H}</td><td class="num">${ps.R}</td>
+        <td class="num">${ps.D}</td><td class="num">${ps.T}</td><td class="num">${ps.HR}</td>
+        <td class="num">${ps.BB}</td><td class="num">${ps.SF}</td><td class="num">${ps.BI}</td><td class="num">${ps.E}</td>
+        <td class="num">${calcAVG(ps.H, ps.AB)}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="card">
+      <div class="card-header">${teamName}</div>
+      <div class="card-body"><div class="table-wrap">
+        <table><thead><tr>
+          <th>Player</th><th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
+          <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
+          <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th>
+        </tr></thead>
+        <tbody>${rows}
+          <tr class="totals">
+            <td>Totals</td>
+            <td class="num">${totals.PA}</td><td class="num">${totals.AB}</td><td class="num">${totals.H}</td><td class="num">${totals.R}</td>
+            <td class="num">${totals.D}</td><td class="num">${totals.T}</td><td class="num">${totals.HR}</td>
+            <td class="num">${totals.BB}</td><td class="num">${totals.SF}</td><td class="num">${totals.BI}</td><td class="num">${totals.E}</td>
+            <td class="num">${calcAVG(totals.H, totals.AB)}</td>
+          </tr>
+        </tbody></table>
+      </div></div>
+    </div>`;
+  }
+
+  const hw = game.homeScore > game.awayScore;
+
+  document.getElementById('app').innerHTML = `
+    <a class="back-link" href="#/schedule">&larr; Schedule</a>
+    <div class="boxscore-header">
+      <div class="matchup">
+        <div class="game-meta">Week ${game.week} &middot; ${fmtDate(game.date)} &middot; ${game.location}</div>
+        <div class="matchup-row ${!hw ? 'winner' : ''}"><a class="team-link" href="#/team/${away.id}">${away.name}</a><span class="matchup-score">${game.awayScore}</span></div>
+        <div class="matchup-row ${hw ? 'winner' : ''}"><a class="team-link" href="#/team/${home.id}">${home.name}</a><span class="matchup-score">${game.homeScore}</span></div>
+        <div class="game-meta" style="margin-top:4px">Final</div>
+      </div>
+    </div>
+    ${teamTable(game.awayStats, away.name + ' (Away)')}
+    ${teamTable(game.homeStats, home.name + ' (Home)')}
+  `;
+}
+
+function viewAllPlayers() {
+  const rows = DATA.players.map(p => {
+    const s = p.seasonStats;
+    const team = getTeam(p.teamId);
+    return {
+      id: p.id, name: p.name, teamId: p.teamId, teamName: team ? team.name : '',
+      G: s.G, PA: s.PA, AB: s.AB, H: s.H, R: s.R, D: s.D, T: s.T, HR: s.HR, BB: s.BB, SF: s.SF, BI: s.BI, E: s.E,
+      AVG: parseFloat(calcAVG(s.H, s.AB)),
+      SLG: parseFloat(calcSLG(s)),
+      OPS: parseFloat(calcOPS(s)),
+    };
+  });
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">Player Stats</div>
+    <div class="page-subtitle">Click any column header to sort</div>
+    <div class="card">
+      <div class="card-body" id="all-players-table"></div>
+    </div>
+  `;
+
+  const cols = [
+    { key: 'name', label: 'Player', render: r => `<a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
+    { key: 'teamName', label: 'Team', render: r => `<a class="team-link" href="#/team/${r.teamId}">${r.teamName}</a>`, val: r => r.teamName },
+    { key: 'G', label: 'G', num: true, val: r => r.G },
+    { key: 'PA', label: 'PA', num: true, val: r => r.PA },
+    { key: 'AB', label: 'AB', num: true, val: r => r.AB },
+    { key: 'H', label: 'H', num: true, val: r => r.H },
+    { key: 'R', label: 'R', num: true, val: r => r.R },
+    { key: 'D', label: '2B', num: true, val: r => r.D },
+    { key: 'T', label: '3B', num: true, val: r => r.T },
+    { key: 'HR', label: 'HR', num: true, val: r => r.HR },
+    { key: 'BB', label: 'BB', num: true, val: r => r.BB },
+    { key: 'SF', label: 'SF', num: true, val: r => r.SF },
+    { key: 'BI', label: 'RBI', num: true, val: r => r.BI },
+    { key: 'E', label: 'E', num: true, val: r => r.E },
+    { key: 'AVG', label: 'AVG', num: true, render: r => calcAVG(r.H, r.AB), val: r => r.AVG },
+    { key: 'SLG', label: 'SLG', num: true, render: r => r.SLG.toFixed(3).replace(/^0/, ''), val: r => r.SLG },
+    { key: 'OPS', label: 'OPS', num: true, render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
+  ];
+
+  sortableTable('all-players-table', rows, cols, 'AVG', 'desc');
+}
+
+function viewSchedule() {
+  const weeks = {};
+  DATA.games.forEach(g => {
+    if (!weeks[g.week]) weeks[g.week] = { games: [], date: g.date };
+    weeks[g.week].games.push(g);
+  });
+
+  // Determine byes
+  const byes = {};
+  Object.entries(weeks).forEach(([wk, w]) => {
+    const teamsPlaying = new Set();
+    w.games.forEach(g => { teamsPlaying.add(g.homeTeamId); teamsPlaying.add(g.awayTeamId); });
+    DATA.teams.forEach(t => {
+      if (!teamsPlaying.has(t.id)) {
+        if (!byes[wk]) byes[wk] = [];
+        byes[wk].push(t);
+      }
+    });
+  });
+
+  const html = Object.entries(weeks).sort((a, b) => a[0] - b[0]).map(([wk, w]) => {
+    const gamesHtml = w.games.map(g => {
+      const home = getTeam(g.homeTeamId);
+      const away = getTeam(g.awayTeamId);
+      const hw = g.homeScore > g.awayScore;
+      return `<div class="score-box">
+        <div class="teams">
+          <div class="team-row ${!hw ? 'winner' : ''}"><a class="team-link" href="#/team/${away.id}">${away.name}</a><span class="score">${g.awayScore}</span></div>
+          <div class="team-row ${hw ? 'winner' : ''}"><a class="team-link" href="#/team/${home.id}">${home.name}</a><span class="score">${g.homeScore}</span></div>
+        </div>
+        <a class="box-link" href="#/game/${g.id}">Box Score</a>
+      </div>`;
+    }).join('');
+
+    const byeHtml = byes[wk] ? `<div class="bye-label">BYE: ${byes[wk].map(t => t.name).join(', ')}</div>` : '';
+
+    return `<div class="card">
+      <div class="card-header">Week ${wk} &mdash; ${fmtDate(w.date)}</div>
+      <div class="card-body">${gamesHtml}${byeHtml}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">Schedule</div>
+    <div class="page-subtitle">All games by week</div>
+    ${html}
+  `;
+}
+
+function router() {
+  const hash = location.hash || '#/';
+  renderNav();
+  renderTicker();
+
+  if (hash.startsWith('#/team/')) {
+    viewTeam(hash.replace('#/team/', ''));
+  } else if (hash.startsWith('#/player/')) {
+    viewPlayer(hash.replace('#/player/', ''));
+  } else if (hash.startsWith('#/game/')) {
+    viewBoxScore(hash.replace('#/game/', ''));
+  } else if (hash === '#/players') {
+    viewAllPlayers();
+  } else if (hash === '#/schedule') {
+    viewSchedule();
+  } else {
+    viewStandings();
+  }
+}
+
+function init() {
+  DATA = window.INLINE_DATA;
+  window.addEventListener('hashchange', router);
+  router();
+}
+
+init();
+
+  </script>
+</body>
+</html>
