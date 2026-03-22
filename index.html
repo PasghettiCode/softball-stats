@@ -136,6 +136,7 @@ nav a.active {
 }
 
 .ticker-row.winner { color: var(--text); font-weight: 700; }
+.ticker-row .team-inline-logo { width: 16px; height: 16px; }
 .ticker-score { font-weight: 700; font-size: 14px; min-width: 20px; text-align: right; }
 .ticker-label { font-size: 10px; color: var(--text-muted); letter-spacing: .5px; text-align: center; padding-top: 2px; }
 
@@ -320,7 +321,14 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   font-weight: 800;
   color: var(--mlb-blue);
   font-size: 14px;
+  white-space: nowrap;
+  margin-left: 8px;
 }
+.leader-cat .leader-item .leader-name { display: flex; align-items: center; gap: 4px; min-width: 0; overflow: hidden; }
+.leader-cat .leader-item .leader-name a { flex-shrink: 0; }
+.leader-team-name { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 3px; min-width: 0; overflow: hidden; }
+.leader-team-name .team-inline-logo { width: 14px; height: 14px; flex-shrink: 0; margin-right: 0; }
+.leader-team-name-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ── Bye label ── */
 .bye-label {
@@ -370,6 +378,10 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   margin-bottom: 24px;
 }
 
+.team-hero-content { display: flex; align-items: center; gap: 20px; }
+.team-inline-logo { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; margin-right: 4px; flex-shrink: 0; }
+.team-name-with-logo { display: inline-flex; align-items: center; }
+.team-hero-logo { width: 80px; height: 80px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.4)); flex-shrink: 0; }
 .team-hero .page-title { color: var(--white); font-size: 32px; }
 .team-hero .page-subtitle { color: rgba(255,255,255,.7); margin-bottom: 0; }
 
@@ -480,39 +492,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 }
 
 /* ── Dark mode ── */
-body.dark {
-  --bg: #0f1117;
-  --white: #1a1f2e;
-  --border: #2a3142;
-  --border-light: #232938;
-  --text: #e8eaf0;
-  --text-secondary: #a0a8be;
-  --text-muted: #6b7494;
-  --row-alt: #161b27;
-  --row-hover: #1e2436;
-  --link-blue: #6aabff;
-}
-body.dark header { background: #080b12; }
-body.dark nav { background: #0d1220; }
-body.dark .card { border-color: var(--border); }
-body.dark th { background: #1a2340; }
-body.dark tr.totals td { background: #1a2340; }
-body.dark .team-hero, body.dark .player-hero, body.dark .boxscore-header { background: linear-gradient(135deg, #080b12, #0d1a38); }
 
-.dark-toggle {
-  margin-left: auto;
-  background: none;
-  border: 1px solid rgba(255,255,255,.25);
-  color: rgba(255,255,255,.7);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .15s;
-  white-space: nowrap;
-}
-.dark-toggle:hover { background: rgba(255,255,255,.12); color: white; }
 
 /* ── Player avatar ── */
 .player-hero-inner {
@@ -709,7 +689,6 @@ body.dark .team-hero, body.dark .player-hero, body.dark .boxscore-header { backg
 .compare-stats-table td:nth-child(3) { text-align: left; }
 .compare-stats-table tr:nth-child(even) td { background: var(--row-alt); }
 .compare-stats-table tr:nth-child(even) .c-label { background: #e8eef5; }
-body.dark .compare-stats-table tr:nth-child(even) .c-label { background: #1a2030; }
 
 /* ── Game preview ── */
 .preview-header {
@@ -747,6 +726,83 @@ body.dark .compare-stats-table tr:nth-child(even) .c-label { background: #1a2030
   .key-players-grid { grid-template-columns: 1fr; }
   .key-player-col { border-right: none; border-bottom: 1px solid var(--border-light); }
 }
+
+
+/* ── Share button ── */
+.share-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all .15s;
+  margin-left: auto;
+}
+.share-btn:hover { border-color: var(--mlb-blue); color: var(--mlb-blue); }
+.page-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.page-title-row .page-title { margin-bottom: 0; }
+
+/* ── Last updated ── */
+.last-updated {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 16px;
+  border-top: 1px solid var(--border-light);
+  margin-top: 8px;
+}
+
+/* ── Sparkline ── */
+.sparkline-wrap { padding: 16px 20px; }
+.sparkline-label { font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: .5px; margin-bottom: 8px; }
+.sparkline-trend { font-size: 12px; font-weight: 700; margin-left: 8px; }
+.sparkline-trend.up { color: #22a861; }
+.sparkline-trend.down { color: var(--mlb-red); }
+
+/* ── Career chart ── */
+.career-chart { padding: 0 20px 4px; }
+.cc-row { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border-light); }
+.cc-row:last-child { border-bottom: none; }
+.cc-season { font-size: 12px; color: var(--text-muted); width: 88px; flex-shrink: 0; font-weight: 600; }
+.cc-bars { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.cc-bar-row { display: flex; align-items: center; gap: 6px; font-size: 10px; }
+.cc-bar-key { width: 26px; color: var(--text-muted); font-weight: 700; letter-spacing: .3px; }
+.cc-bar-track { flex: 1; background: var(--border-light); border-radius: 3px; height: 10px; overflow: hidden; }
+.cc-bar-fill { height: 100%; border-radius: 3px; background: var(--mlb-blue); transition: width .4s ease; }
+.cc-bar-fill.ops { background: var(--mlb-red); }
+.cc-bar-val { font-size: 11px; font-weight: 800; color: var(--text); min-width: 34px; }
+
+/* ── Awards panel ── */
+.awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.award-item { padding: 14px 16px; border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+.award-icon { font-size: 20px; margin-bottom: 4px; }
+.award-label { font-size: 10px; font-weight: 800; letter-spacing: .7px; color: var(--text-muted); margin-bottom: 5px; }
+.award-player { font-size: 14px; font-weight: 700; min-width: 0; overflow: hidden; }
+.award-player a { color: var(--mlb-blue); text-decoration: none; }
+.award-player a:hover { color: var(--mlb-red); }
+.award-winner-row { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.award-winner-row > a { flex-shrink: 0; }
+.award-team-name { display: flex; align-items: center; gap: 3px; min-width: 0; overflow: hidden; font-size: 11px; color: var(--text-muted); }
+.award-team-name .team-inline-logo { width: 13px; height: 13px; flex-shrink: 0; margin-right: 0; }
+.award-team-name-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.award-stat { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+/* ── Game of the week badge ── */
+.game-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  align-self: center;
+  flex-shrink: 0;
+}
+.game-badge.barnburner { background: rgba(228,0,43,.1); color: var(--mlb-red); border: 1px solid rgba(228,0,43,.25); }
+.game-badge.nailbiter { background: rgba(0,45,114,.08); color: var(--mlb-blue); border: 1px solid rgba(0,45,114,.2); }
+.score-box { gap: 8px; }
+
   </style>
 </head>
 <body>
@@ -760,7 +816,6 @@ body.dark .compare-stats-table tr:nth-child(even) .c-label { background: #1a2030
       <option value="spring-2024">Spring 2024</option>
       <option value="spring-2023">Spring 2023</option>
     </select>
-    <button class="dark-toggle" id="dark-toggle" onclick="toggleDark()">&#9790; Dark</button>
   </header>
   <nav id="nav"></nav>
   <div id="scores-ticker"></div>
@@ -834,12 +889,208 @@ function displayName(name) {
 
 function getTeam(id) { return DATA.teams.find(t => t.id === id); }
 
-// ── Dark mode ──
-function toggleDark() {
-  document.body.classList.toggle('dark');
-  const isDark = document.body.classList.contains('dark');
-  document.getElementById('dark-toggle').textContent = isDark ? '\u2600 Light' : '\u263E Dark';
-  try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch(e) {}
+// ── Breadcrumb ──
+
+// ── Share button ──
+function shareBtn() {
+  return `<button class="share-btn" id="share-btn" onclick="
+    navigator.clipboard.writeText(location.href).then(()=>{
+      const b=document.getElementById('share-btn');
+      b.textContent='Copied!';setTimeout(()=>b.textContent='Share \u{1F517}',2000);
+    })
+  ">Share &#128279;</button>`;
+}
+
+// ── Per-game stats list for a player ──
+function getPlayerGameStats(seasonData, pid, teamId) {
+  return seasonData.games
+    .filter(g => (g.homeTeamId === teamId || g.awayTeamId === teamId) && g.homeScore !== undefined)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .reduce((acc, g) => {
+      const isHome = g.homeTeamId === teamId;
+      const stats = isHome ? g.homeStats : g.awayStats;
+      const ps = stats ? stats.find(x => x.playerId === pid) : null;
+      if (ps) acc.push({ week: g.week, gameId: g.id, ...ps });
+      return acc;
+    }, []);
+}
+
+// ── AVG sparkline SVG ──
+function sparklineSVG(gameStats) {
+  if (gameStats.length < 2) return '';
+  const W = 280, H = 56, PAD = 12;
+  let cumH = 0, cumAB = 0;
+  const pts = gameStats.map((gs, i) => {
+    cumH += gs.H; cumAB += gs.AB;
+    const avg = cumAB > 0 ? cumH / cumAB : 0;
+    const x = PAD + (gameStats.length === 1 ? W/2 : (i / (gameStats.length - 1)) * W);
+    const y = PAD + (1 - avg) * H;
+    return { x, y, avg };
+  });
+  const first = pts[0], last = pts[pts.length - 1];
+  const up = last.avg >= first.avg;
+  const color = up ? '#22a861' : '#e4002b';
+  const polyline = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+  const area = [`${first.x.toFixed(1)},${(PAD + H + 4).toFixed(1)}`,
+    ...pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`),
+    `${last.x.toFixed(1)},${(PAD + H + 4).toFixed(1)}`].join(' ');
+  const fmtA = v => v.toFixed(3).replace(/^0/, '');
+  const trendLabel = (up ? '▲' : '▼') + ' ' + fmtA(last.avg);
+  return `<div class="sparkline-wrap">
+    <div class="sparkline-label">AVG TRAJECTORY &nbsp;<span class="sparkline-trend ${up?'up':'down'}">${trendLabel}</span></div>
+    <svg viewBox="0 0 ${W+PAD*2} ${H+PAD*2+18}" style="width:100%;max-width:380px;display:block;overflow:visible">
+      <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${color}" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </linearGradient></defs>
+      <polygon points="${area}" fill="url(#sg)"/>
+      <polyline points="${polyline}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      ${pts.map((p, i) => i === 0 || i === pts.length - 1 ? `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="${color}" stroke="var(--white)" stroke-width="1.5"/>` : '').join('')}
+      <text x="${first.x.toFixed(1)}" y="${(PAD+H+16).toFixed(1)}" text-anchor="middle" font-size="9" fill="var(--text-muted)">${fmtA(first.avg)}</text>
+      <text x="${last.x.toFixed(1)}" y="${(PAD+H+16).toFixed(1)}" text-anchor="middle" font-size="9" fill="${color}" font-weight="700">${fmtA(last.avg)}</text>
+      ${pts.filter((_, i) => i > 0 && i < pts.length - 1).map(p =>
+        `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.5" fill="${color}" opacity=".5"/>`).join('')}
+    </svg>
+  </div>`;
+}
+
+// ── Career bar chart (multi-season) ──
+function careerChartHtml(allSeasons, currentSeason) {
+  if (allSeasons.length < 2) return '';
+  const maxAVG = Math.max(...allSeasons.map(os => os.player.seasonStats.AB > 0 ? os.player.seasonStats.H / os.player.seasonStats.AB : 0), 0.001);
+  const maxOPS = Math.max(...allSeasons.map(os => parseFloat(calcOPS(os.player.seasonStats))), 0.001);
+  const rows = allSeasons.map(os => {
+    const ps = os.player.seasonStats;
+    const avg = ps.AB > 0 ? ps.H / ps.AB : 0;
+    const ops = parseFloat(calcOPS(ps));
+    const avgW = Math.round((avg / maxAVG) * 100);
+    const opsW = Math.round((ops / maxOPS) * 100);
+    const isCur = os.seasonId === currentSeason;
+    return `<div class="cc-row">
+      <div class="cc-season">${os.seasonLabel}${isCur ? ' <span style="font-size:9px;color:var(--mlb-red);font-weight:800">NOW</span>' : ''}</div>
+      <div class="cc-bars">
+        <div class="cc-bar-row"><span class="cc-bar-key">AVG</span><div class="cc-bar-track"><div class="cc-bar-fill" style="width:${avgW}%"></div></div><span class="cc-bar-val">${avg.toFixed(3).replace(/^0/,'')}</span></div>
+        <div class="cc-bar-row"><span class="cc-bar-key">OPS</span><div class="cc-bar-track"><div class="cc-bar-fill ops" style="width:${opsW}%"></div></div><span class="cc-bar-val">${ops.toFixed(3).replace(/^0/,'')}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="card">
+    <div class="card-header">Career at a Glance</div>
+    <div class="card-body"><div class="career-chart">${rows}</div></div>
+  </div>`;
+}
+
+// ── Unsung hero (box score) ──
+
+// ── Awards panel (season) ──
+function awardsPanelHtml() {
+  // Only show awards when the season is complete (no unplayed games remain)
+  const seasonComplete = DATA.games.every(g => g.homeScore !== undefined);
+  if (!seasonComplete) return '';
+
+  // Qualification: player must have played in at least half the games their team played
+  const teamGamesPlayed = {};
+  DATA.teams.forEach(t => {
+    teamGamesPlayed[t.id] = DATA.games.filter(g =>
+      (g.homeTeamId === t.id || g.awayTeamId === t.id) && g.homeScore !== undefined
+    ).length;
+  });
+  const qualified = DATA.players.filter(p => {
+    const tgp = teamGamesPlayed[p.teamId] || 0;
+    return tgp > 0 && p.seasonStats.G >= tgp / 2;
+  });
+
+  // Return all tied winners for a given scoring function
+  function topAll(list, fn, lowerBetter) {
+    if (!list.length) return [];
+    const sorted = [...list].sort((a, b) => lowerBetter ? fn(a) - fn(b) : fn(b) - fn(a));
+    const best = fn(sorted[0]);
+    return sorted.filter(p => fn(p) === best);
+  }
+
+  // MVP composite: normalize OPS (40%), SLG (30%), Runs (30%) to 0-1 then weight
+  const maxOPS = Math.max(...qualified.map(p => parseFloat(calcOPS(p.seasonStats))), 0.001);
+  const maxSLG = Math.max(...qualified.map(p => parseFloat(calcSLG(p.seasonStats))), 0.001);
+  const maxR   = Math.max(...qualified.map(p => p.seasonStats.R), 1);
+  const mvpScore = p => (parseFloat(calcOPS(p.seasonStats)) / maxOPS) * 0.40
+                      + (parseFloat(calcSLG(p.seasonStats)) / maxSLG) * 0.30
+                      + (p.seasonStats.R / maxR) * 0.30;
+  const mvpWinners     = topAll(qualified, mvpScore);
+  const bavgWinners    = topAll(qualified, p => p.seasonStats.AB > 0 ? p.seasonStats.H / p.seasonStats.AB : 0);
+  const clutchWinners  = topAll(qualified, p => p.seasonStats.BI);
+  const scorerWinners  = topAll(qualified, p => p.seasonStats.R);
+  const xbhWinners     = topAll(qualified, p => p.seasonStats.D + p.seasonStats.T + p.seasonStats.HR);
+  const ironWinners    = topAll(qualified, p => p.seasonStats.G);
+
+  function awardStat(winners, fn) {
+    if (!winners.length) return '—';
+    const p = winners[0], s = p.seasonStats;
+    return fn(p, s);
+  }
+
+  const awards = [
+    { icon: '\uD83C\uDFC6', label: 'MVP',          winners: mvpWinners,    stat: awardStat(mvpWinners,    p => calcOPS(p.seasonStats) + ' OPS \u00B7 ' + calcSLG(p.seasonStats) + ' SLG \u00B7 ' + p.seasonStats.R + ' R') },
+    { icon: '\uD83E\uDD47', label: 'BATTING CHAMP', winners: bavgWinners,   stat: awardStat(bavgWinners,   p => calcAVG(p.seasonStats.H, p.seasonStats.AB) + ' AVG') },
+    { icon: '\uD83D\uDD25', label: 'MR. CLUTCH',    winners: clutchWinners, stat: awardStat(clutchWinners, p => p.seasonStats.BI + ' RBI') },
+    { icon: '\u26A1',       label: 'SPEEDSTER',     winners: scorerWinners, stat: awardStat(scorerWinners, p => p.seasonStats.R + ' runs') },
+    { icon: '\uD83D\uDCA5', label: 'XBH LEADER',    winners: xbhWinners,    stat: awardStat(xbhWinners,    p => (p.seasonStats.D+p.seasonStats.T+p.seasonStats.HR) + ' extra-base hits') },
+    { icon: '\uD83D\uDEE1\uFE0F', label: 'IRON MAN', winners: ironWinners,  stat: awardStat(ironWinners,   p => p.seasonStats.G + ' games') },
+  ];
+
+  const itemsHtml = awards.map(a => {
+    const playersHtml = a.winners.length
+      ? a.winners.map(p => {
+          const t = getTeam(p.teamId);
+          return `<div class="award-winner-row"><a href="#/player/${p.id}">${displayName(p.name)}</a>${t ? ` <span class="award-team-name">${teamLogoImg(t.id)}<span class="award-team-name-text">${t.name}</span></span>` : ''}</div>`;
+        }).join('')
+      : '—';
+    return `<div class="award-item">
+      <div class="award-icon">${a.icon}</div>
+      <div class="award-label">${a.label}</div>
+      <div class="award-player">${playersHtml}</div>
+      <div class="award-stat">${a.stat}</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="card">
+    <div class="card-header">Season Awards</div>
+    <div class="card-body"><div class="awards-grid">${itemsHtml}</div></div>
+  </div>`;
+}
+
+const TEAM_LOGOS = {
+  // Burlingame Elementary Schools
+  'lincoln-lions':         'logos/lincoln-lions.png',
+  'lincoln-lagers':        'logos/lincoln-lions.png',
+  'lincoln-legends':       'logos/lincoln-lions.png',
+  'hoover':                'logos/hoover.png',
+  'franklin':              'logos/franklin.png',
+  'washington-wildkittens':'logos/washington-wildkittens.png',
+  'washington-wildcats':   'logos/washington-wildkittens.png',
+  'roosevelt-blue':        'logos/roosevelt-blue.png',
+  'roosevelt-gold':        'logos/roosevelt-blue.png',
+  'mckinley-1':            'logos/mckinley-2.png',
+  'mckinley-2':            'logos/mckinley-2.png',
+  // Middle/High Schools
+  'bis':                   'logos/bis.png',
+  'bhs':                   'logos/bhs.png',
+  'taylor-bulldogs':       'logos/taylor-bulldogs.png',
+  // Private Schools
+  'st-catherines':         'logos/st-catherines.png',
+  'carey':                 'logos/carey.png',
+  // Other
+  'ola':                   'logos/ola.jpg',
+  'burlingame-expansion':  'logos/burlingame-expansion.png',
+  'millbrae-spring-valley':'logos/millbrae-spring-valley.png',
+  'millbrae-sv-green':     'logos/millbrae-spring-valley.png',
+  'millbrae-sv-red':       'logos/millbrae-spring-valley.png',
+  'millbrae-sv-white':     'logos/millbrae-spring-valley.png',
+};
+
+function teamLogoImg(teamId) {
+  const url = TEAM_LOGOS[teamId];
+  if (!url) return '';
+  return `<img class="team-inline-logo" src="${url}" alt="">`;
 }
 
 // ── Player avatars (DiceBear — free, no key needed) ──
@@ -1059,8 +1310,8 @@ function renderTicker() {
     const hw = g.homeScore > g.awayScore;
     return `<a class="ticker-game" href="#/game/${g.id}" style="text-decoration:none;color:inherit">
       <div class="ticker-label">Wk ${g.week} &middot; Final</div>
-      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${away.name}</span><span class="ticker-score">${g.awayScore}</span></div>
-      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${home.name}</span><span class="ticker-score">${g.homeScore}</span></div>
+      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${teamLogoImg(away.id)}${away.name}</span><span class="ticker-score">${g.awayScore}</span></div>
+      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${teamLogoImg(home.id)}${home.name}</span><span class="ticker-score">${g.homeScore}</span></div>
     </a>`;
   }).join('');
 }
@@ -1129,11 +1380,13 @@ function viewStandings() {
       gp: t.wins + t.losses + t.ties,
       pct: parseFloat(pctDisplay(t.wins, t.losses, t.ties)),
       rs: DATA.games.reduce((s, g) => {
+        if (g.homeScore === undefined) return s;
         if (g.homeTeamId === t.id) return s + g.homeScore;
         if (g.awayTeamId === t.id) return s + g.awayScore;
         return s;
       }, 0),
       ra: DATA.games.reduce((s, g) => {
+        if (g.homeScore === undefined) return s;
         if (g.homeTeamId === t.id) return s + g.awayScore;
         if (g.awayTeamId === t.id) return s + g.homeScore;
         return s;
@@ -1150,7 +1403,7 @@ function viewStandings() {
 
   const standingsRows = teams.map((t, i) => `<tr>
     <td class="num">${i + 1}</td>
-    <td><a class="team-link" href="#/team/${t.id}">${t.name}</a></td>
+    <td><a class="team-link" href="#/team/${t.id}">${teamLogoImg(t.id)}${t.name}</a></td>
     <td class="num">${t.wins}</td>
     <td class="num">${t.losses}</td>
     <td class="num">${t.ties}</td>
@@ -1171,29 +1424,42 @@ function viewStandings() {
     <td class="num">${fmtR(t.tOPS)}</td>
   </tr>`).join('');
 
-  // League leaders
-  const qualified = DATA.players.filter(p => p.seasonStats.PA >= 3);
+  // League leaders — player must have played at least half their team's games
+  const leaderTeamGP = {};
+  DATA.teams.forEach(t => {
+    leaderTeamGP[t.id] = DATA.games.filter(g =>
+      (g.homeTeamId === t.id || g.awayTeamId === t.id) && g.homeScore !== undefined
+    ).length;
+  });
+  const leaderPool = DATA.players.filter(p => {
+    const tgp = leaderTeamGP[p.teamId] || 0;
+    return tgp > 0 && p.seasonStats.G >= tgp / 2;
+  });
+  const qualified = leaderPool.filter(p => p.seasonStats.PA >= 3);
   const leaders = {
     'Batting Avg': qualified.map(p => ({ p, v: parseFloat(calcAVG(p.seasonStats.H, p.seasonStats.AB)) })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Hits': DATA.players.map(p => ({ p, v: p.seasonStats.H })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Runs': DATA.players.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'RBI': DATA.players.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'OPS': qualified.map(p => ({ p, v: parseFloat(calcOPS(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Doubles': DATA.players.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Triples': DATA.players.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Home Runs': DATA.players.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Walks': DATA.players.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Hits':        leaderPool.map(p => ({ p, v: p.seasonStats.H })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Runs':        leaderPool.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'RBI':         leaderPool.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'OPS':         qualified.map(p => ({ p, v: parseFloat(calcOPS(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Doubles':     leaderPool.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Triples':     leaderPool.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Home Runs':   leaderPool.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Walks':       leaderPool.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
   };
 
   const leadersHtml = Object.entries(leaders).map(([cat, items]) => `
     <div class="leader-cat">
       <h4>${cat}</h4>
-      ${items.map(i => `<div class="leader-item">
-        <a class="player-link" href="#/player/${i.p.id}">${displayName(i.p.name)}</a>
+      ${items.map(i => { const t = getTeam(i.p.teamId); return `<div class="leader-item">
+        <span class="leader-name"><a class="player-link" href="#/player/${i.p.id}">${displayName(i.p.name)}</a>${t ? ` <span class="leader-team-name">${teamLogoImg(t.id)}<span class="leader-team-name-text">${t.name}</span></span>` : ''}</span>
         <span class="val">${cat === 'Batting Avg' ? calcAVG(i.p.seasonStats.H, i.p.seasonStats.AB) : cat === 'OPS' ? calcOPS(i.p.seasonStats) : i.v}</span>
-      </div>`).join('')}
+      </div>`; }).join('')}
     </div>
   `).join('');
+
+  const lastUpdated = DATA.league && DATA.league.lastUpdated
+    ? `<div class="last-updated">Stats as of ${fmtDate(DATA.league.lastUpdated)} &middot; ${DATA.league.season}</div>` : '';
 
   document.getElementById('app').innerHTML = `
     <div class="card">
@@ -1207,12 +1473,14 @@ function viewStandings() {
         </table>
       </div></div>
     </div>
+    ${awardsPanelHtml()}
     <div class="card">
-      <div class="card-header">League Leaders</div>
+      <div class="card-header"><span>League Leaders <span style="font-size:11px;font-weight:400;opacity:.6;margin-left:4px">min. half of team's games played</span></span></div>
       <div class="card-body">
         <div class="leaders-grid">${leadersHtml}</div>
       </div>
     </div>
+    ${lastUpdated}
   `;
 }
 
@@ -1231,21 +1499,30 @@ function viewTeam(teamId) {
     const result = played ? (teamScore > oppScore ? 'W' : teamScore < oppScore ? 'L' : 'T') : null;
     const resultCell = played
       ? `<a href="#/game/${g.id}"><strong>${result}</strong> ${teamScore}-${oppScore}</a>`
-      : `<span style="color:var(--text-muted)">—</span>`;
+      : `<a href="#/game/${g.id}" style="font-size:12px;font-weight:600;color:var(--link-blue)">Preview</a>`;
     return `<tr>
       <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
       <td>${fmtDate(g.date)}</td>
-      <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
+      <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
       <td>${resultCell}</td>
     </tr>`;
   }).join('');
 
+  const teamLogoUrl = TEAM_LOGOS[teamId];
+  const teamLogoHtml = teamLogoUrl
+    ? `<img class="team-hero-logo" src="${teamLogoUrl}" alt="${team.name} logo" onerror="this.style.display='none'">`
+    : '';
   document.getElementById('app').innerHTML = `
     <a class="back-link" href="#/">&larr; Standings</a>
     <div class="team-hero">
-      <div class="page-title">${team.name}</div>
-      <div class="record-big">${team.wins}-${team.losses}-${team.ties}</div>
-      <div class="page-subtitle">${pctDisplay(team.wins, team.losses, team.ties)} PCT</div>
+      <div class="team-hero-content">
+        ${teamLogoHtml}
+        <div>
+          <div class="page-title">${team.name}</div>
+          <div class="record-big">${team.wins}-${team.losses}-${team.ties}</div>
+          <div class="page-subtitle">${pctDisplay(team.wins, team.losses, team.ties)} PCT</div>
+        </div>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">Schedule & Results</div>
@@ -1257,6 +1534,10 @@ function viewTeam(teamId) {
     <div class="card">
       <div class="card-header">Roster & Season Stats</div>
       <div class="card-body" id="team-stats"></div>
+    </div>
+    <div class="card" id="team-leaders-card">
+      <div class="card-header">Team Leaders</div>
+      <div class="card-body" id="team-leaders"></div>
     </div>
   `;
 
@@ -1291,6 +1572,36 @@ function viewTeam(teamId) {
   ];
 
   sortableTable('team-stats', rows, cols, 'AVG', 'desc');
+
+  // Team leaders — top 3 per category, show name only (no team column needed)
+  const hasAB = players.filter(p => p.seasonStats.AB > 0);
+  const teamLeaders = {
+    'Batting Avg': hasAB.map(p => ({ p, v: parseFloat(calcAVG(p.seasonStats.H, p.seasonStats.AB)) })).sort((a, b) => b.v - a.v).slice(0, 3),
+    'Hits':        players.map(p => ({ p, v: p.seasonStats.H })).sort((a, b) => b.v - a.v).slice(0, 3),
+    'Runs':        players.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 3),
+    'RBI':         players.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 3),
+    'OPS':         hasAB.map(p => ({ p, v: parseFloat(calcOPS(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 3),
+    'Doubles':     players.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
+    'Triples':     players.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
+    'Home Runs':   players.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
+    'Walks':       players.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
+  };
+
+  const teamLeadersHtml = Object.entries(teamLeaders)
+    .filter(([, items]) => items.length > 0)
+    .map(([cat, items]) => `
+      <div class="leader-cat">
+        <h4>${cat}</h4>
+        ${items.map(i => `<div class="leader-item">
+          <a class="player-link" href="#/player/${i.p.id}">${displayName(i.p.name)}</a>
+          <span class="val">${cat === 'Batting Avg' ? calcAVG(i.p.seasonStats.H, i.p.seasonStats.AB) : cat === 'OPS' ? calcOPS(i.p.seasonStats) : i.v}</span>
+        </div>`).join('')}
+      </div>`).join('');
+
+  document.getElementById('team-leaders').innerHTML = `<div class="leaders-grid">${teamLeadersHtml}</div>`;
+
+  // Hide the card entirely if no stats yet
+  if (!teamLeadersHtml.trim()) document.getElementById('team-leaders-card').style.display = 'none';
 }
 
 function ordinal(n) {
@@ -1352,7 +1663,7 @@ function viewPlayer(playerId) {
       if (ps) {
         gamesWithStats.push(`<tr>
           <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
-          <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
+          <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
           <td class="num"><a href="#/game/${g.id}">${result} ${teamScore}-${oppScore}</a></td>
           <td class="num">${ps.PA}</td>
           <td class="num">${ps.AB}</td>
@@ -1370,7 +1681,7 @@ function viewPlayer(playerId) {
       } else {
         gamesWithoutStats.push(`<tr>
           <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
-          <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? opp.name : 'Unknown'}</a></td>
+          <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
           <td class="num"><a href="#/game/${g.id}">${result} ${teamScore}-${oppScore}</a></td>
         </tr>`);
       }
@@ -1381,16 +1692,7 @@ function viewPlayer(playerId) {
 
   // Compute hot/cold streak from raw game data
   function computeStreak(seasonData, pid, teamId) {
-    const teamGames = seasonData.games
-      .filter(g => (g.homeTeamId === teamId || g.awayTeamId === teamId) && g.homeScore !== undefined)
-      .sort((a, b) => a.date.localeCompare(b.date));
-    const recentStats = [];
-    teamGames.forEach(g => {
-      const isHome = g.homeTeamId === teamId;
-      const stats = isHome ? g.homeStats : g.awayStats;
-      const ps = stats ? stats.find(x => x.playerId === pid) : null;
-      if (ps) recentStats.push(ps);
-    });
+    const recentStats = getPlayerGameStats(seasonData, pid, teamId);
     if (recentStats.length < 3) return null;
     const last3 = recentStats.slice(-3);
     // Slowpitch softball: hitting is easy, so thresholds are much stricter
@@ -1439,8 +1741,8 @@ function viewPlayer(playerId) {
       ? `<a href="#/"><strong>${os.seasonLabel}</strong></a>`
       : `<a href="#" onclick="switchSeason('${os.seasonId}');location.hash='#/';return false;">${os.seasonLabel}</a>`;
     const teamLink = isCurrent
-      ? `<a class="team-link" href="#/team/${os.player.teamId}">${os.team ? os.team.name : ''}</a>`
-      : `<a class="team-link" href="#" onclick="switchSeason('${os.seasonId}');location.hash='#/team/${os.player.teamId}';return false;">${os.team ? os.team.name : ''}</a>`;
+      ? `<a class="team-link" href="#/team/${os.player.teamId}">${os.team ? teamLogoImg(os.player.teamId) + os.team.name : ''}</a>`
+      : `<a class="team-link" href="#" onclick="switchSeason('${os.seasonId}');location.hash='#/team/${os.player.teamId}';return false;">${os.team ? teamLogoImg(os.player.teamId) + os.team.name : ''}</a>`;
     return `<tr>
       <td>${label}</td>
       <td>${teamLink}</td>
@@ -1486,8 +1788,12 @@ function viewPlayer(playerId) {
     </div></div>
   </div>`;
 
+  const playerGameStats = getPlayerGameStats(DATA, playerId, player.teamId);
+  const sparkHtml = playerGameStats.length >= 2 ? `<div class="card"><div class="card-body">${sparklineSVG(playerGameStats)}</div></div>` : '';
+  const careerHtml = careerChartHtml(allSeasons, currentSeason);
+
   document.getElementById('app').innerHTML = `
-    <a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? team.name : ''}</a>
+    <div style="display:flex;align-items:center"><a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? teamLogoImg(team.id) + team.name : ''}</a>${shareBtn()}</div>
     <div class="player-hero">
       <div class="player-hero-inner">
         <img class="player-avatar" src="${avatarUrl(player.name, 80)}" alt="${displayName(player.name)}">
@@ -1496,7 +1802,7 @@ function viewPlayer(playerId) {
             <div class="page-title">${displayName(player.name)}</div>
             <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a>
           </div>
-          <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
+          <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? teamLogoImg(team.id) + team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
           ${playerBadges(player)}
         </div>
       </div>
@@ -1524,6 +1830,8 @@ function viewPlayer(playerId) {
         </tr></tbody></table>
       </div></div>
     </div>
+    ${sparkHtml}
+    ${careerHtml}
   `;
 }
 
@@ -1691,11 +1999,10 @@ function viewGamePreview(game) {
     return html;
   }
 
-  // Only show written analysis for the very next upcoming game
-  const nextGame = DATA.games
-    .filter(g => g.homeScore === undefined)
-    .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))[0];
-  const isNextGame = nextGame && nextGame.id === game.id;
+  // Show written analysis for all games in the next upcoming week
+  const unplayed = DATA.games.filter(g => g.homeScore === undefined);
+  const nextWeek = unplayed.length ? Math.min(...unplayed.map(g => g.week)) : null;
+  const isNextGame = nextWeek !== null && game.week === nextWeek;
 
   // writePreview(ts1=away, ts2=home, t1=away, t2=home) — away listed first throughout
   const previewAnalysis = isNextGame ? writePreview(as_, hs, away, home) : null;
@@ -1707,34 +2014,32 @@ function viewGamePreview(game) {
       <div class="preview-matchup">
         <div>
           <div class="preview-record">${fmtRec(as_)}</div>
-          <div class="preview-team"><a href="#/team/${away ? away.id : ''}">${away ? away.name : 'Away'}</a></div>
+          <div class="preview-team"><a href="#/team/${away ? away.id : ''}">${away ? teamLogoImg(away.id) + away.name : 'Away'}</a></div>
         </div>
         <div class="preview-vs">@</div>
         <div>
           <div class="preview-record">${fmtRec(hs)}</div>
-          <div class="preview-team"><a href="#/team/${home ? home.id : ''}">${home ? home.name : 'Home'}</a></div>
+          <div class="preview-team"><a href="#/team/${home ? home.id : ''}">${home ? teamLogoImg(home.id) + home.name : 'Home'}</a></div>
         </div>
       </div>
     </div>
+    ${previewAnalysis ? `<div class="card">
+      <div class="card-header">Preview</div>
+      <div class="card-body padded" style="line-height:1.75">${previewAnalysis}</div>
+    </div>` : ''}
     <div class="two-col">
-      <div>
-        <div class="card">
-          <div class="card-header">Team Comparison</div>
-          <div class="card-body"><div class="table-wrap">
-            <table style="width:100%;border-collapse:collapse;font-size:13px">
-              <thead><tr>
-                <th style="text-align:right;background:var(--mlb-blue)">${away ? away.name : 'Away'}</th>
-                <th style="text-align:center;background:#1a2a4a;width:110px">Stat</th>
-                <th style="text-align:left;background:var(--mlb-red)">${home ? home.name : 'Home'}</th>
-              </tr></thead>
-              <tbody>${cmpRows}</tbody>
-            </table>
-          </div></div>
-        </div>
-        ${previewAnalysis ? `<div class="card">
-          <div class="card-header">Preview</div>
-          <div class="card-body padded" style="line-height:1.75">${previewAnalysis}</div>
-        </div>` : ''}
+      <div class="card">
+        <div class="card-header">Team Comparison</div>
+        <div class="card-body"><div class="table-wrap">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead><tr>
+              <th style="text-align:right;background:var(--mlb-blue)">${away ? teamLogoImg(away.id) + away.name : 'Away'}</th>
+              <th style="text-align:center;background:#1a2a4a;width:110px">Stat</th>
+              <th style="text-align:left;background:var(--mlb-red)">${home ? teamLogoImg(home.id) + home.name : 'Home'}</th>
+            </tr></thead>
+            <tbody>${cmpRows}</tbody>
+          </table>
+        </div></div>
       </div>
       <div class="card">
         <div class="card-header">Key Players to Watch</div>
@@ -1808,164 +2113,62 @@ function viewBoxScore(gameId) {
   const hw = game.homeScore > game.awayScore;
 
   const GAME_RECAPS = {
-    'week1-game1': `<p><strong>Franklin 14, St. Catherines 15</strong> &mdash; In the season opener, Franklin came within a single run of upsetting the hottest team in the league, falling 14-15 to St. Catherines in a back-and-forth slugfest at Bayside Park.</p>
+    'week1-game1': `<p><strong>St. Catherines 15, Franklin 14</strong> &mdash; One run. That&rsquo;s all that separated Franklin from one of the most stunning opening-week upsets in recent league memory. Instead, St. Catherines survived a 24-hit onslaught and escaped with a 15-14 victory that was anything but comfortable.</p>
 
-<p>St. Catherines came out swinging, racking up 24 hits across their 13-man lineup. Matt Barr set the tone, going 3-for-3 with 3 runs scored and a double, while Anthony DeLosSantos matched him at 3-for-3 with a game-high 4 RBI. Jerry Ng also went a perfect 3-for-3 at the top of the order. Incredibly, 10 of St. Catherines' 13 batters recorded at least one hit &mdash; the kind of lineup depth that powered their transformation from an 0-9-1 team in Spring 2024 to early title contenders this season.</p>
+<p>Matt Barr delivered the opening statement for the Saints: three hits, three runs, a double, constant presence. Anthony DeLosSantos matched the energy at the bottom of the order with a 3-for-3 afternoon and a game-high 4 RBI. Jerry Ng was perfect from the leadoff spot. Ten of 13 St. Catherines batters reached base at least once. For a team that finished 0-9-1 just two seasons ago, this wasn&rsquo;t just a win &mdash; it was a declaration.</p>
 
-<p>But Franklin matched them blow for blow. Todd Lanam, Uland Wong, and Mu Jing each went a perfect 4-for-4, combining for 12 of Franklin's 24 hits. Jason Sosnick added 2 hits and a team-high 3 RBI, and Ryan Pierce delivered a 2-for-3 line that included both a double and a triple, driving in 3 runs. Mike Rokovich added a triple of his own. Every single Franklin batter recorded at least one hit &mdash; all 11 players who stepped to the plate got on base.</p>
+<p>But Franklin refused to fold. Todd Lanam, Uland Wong, and Mu Jing each went 4-for-4, turning the middle of the lineup into a run factory. Ryan Pierce had both a double and a triple on the same afternoon. Jason Sosnick drove in three. Mike Rokovich added a triple of his own. All 11 Franklin batters recorded hits &mdash; not a single out made at the plate across a 24-hit, 14-run performance. Still not enough.</p>
 
-<p>The final margin came down to one swing. St. Catherines' Paul Besse quietly went 2-for-3 with 3 RBI, and Joe Bandel added 2 hits and 2 RBI &mdash; the kind of middle-of-the-order production that kept the Saints just ahead despite Franklin's furious hitting.</p>
+<p>Paul Besse and Joe Bandel quietly provided the margin &mdash; 5 combined RBI, just enough cushion to hold on when Franklin threatened late. A different bounce, a different at-bat, and the standings look entirely different. This Franklin team isn&rsquo;t rebuilding anymore. They&rsquo;re competing.</p>`,
 
-<p><strong>The takeaway:</strong> This was as encouraging a loss as Franklin could have. A team that went 0-10 just three seasons ago put up 24 hits and 14 runs against a legitimate contender. St. Catherines is hitting .724 as a team this season, and Franklin went toe-to-toe with them. The difference wasn't talent &mdash; it was one run. If this game is any indication, the Franklin rebuild is real.</p>`,
+    'week1-game2': `<p><strong>Lincoln Lions 8, Burlingame Expansion 3</strong> &mdash; Chris Lau didn&rsquo;t make a single out. Three trips to the plate, three hits, two doubles, two runs scored. That kind of top-of-the-order production sets a tone, and Lincoln Lions followed it all the way to a controlled 8-3 wire-to-wire win over Burlingame Expansion.</p>
 
-    'week1-game2': `<p><strong>Lincoln Lions 8, Burlingame Expansion 3</strong> &mdash; Lincoln opened Spring 2026 with a commanding 8-3 victory over Burlingame Expansion, a balanced lineup attack that left the Expansion's new-look roster looking outmatched from the start.</p>
+<p>The Lions used everybody. Mike Benveniste drove in a team-high 3 runs. Peter Ou added 2 RBI out of the eighth spot. Barlow Gilmore, Arjun Moorthy, and Kenny Kim each delivered multi-hit games. Nine of Lincoln&rsquo;s 13 batters reached base. There&rsquo;s no soft spot in this lineup &mdash; no place to hide, no free out to be had anywhere in the order.</p>
 
-<p>Chris Lau was the story for Lincoln, going a perfect 3-for-3 with 2 runs scored and a pair of doubles &mdash; he didn't make a single out all game. Mike Benveniste drove in a team-high 3 runs while going 2-for-3, and Peter Ou added 2 hits and 2 RBI from the bottom of the order. Barlow Gilmore (2-for-3, double, RBI), Arjun Moorthy (2-for-3, RBI), and Kenny Kim (2-for-3, double) each had multi-hit games to round out one of the deeper Lincoln lineups in recent memory. Nine of Lincoln's 13 batters recorded at least one hit &mdash; the kind of top-to-bottom production that's nearly impossible to contain.</p>
+<p>Jack Maguire gave the Expansion something to cheer about, going a perfect 3-for-3 with all 3 of his team&rsquo;s RBI in a performance completely lost in the final score. The rest of the Expansion lineup went 6-for-26. Seven batters went hitless. For a team still piecing itself together after a near-complete roster overhaul, the gap between where they are and where they need to be showed up clearly in the box score.</p>
 
-<p>Jack Maguire was the lone Expansion bright spot, going 3-for-3 and accounting for all 3 of his team's RBI. His individual performance masked how thoroughly Lincoln controlled the game &mdash; the rest of the Expansion lineup went 6-for-26, with 7 different batters going hitless. For a team that went 1-9 last fall after losing most of their Spring 2025 championship core, the transition pains are real.</p>
+<p>Lincoln is 1-0 and looks every bit the contender they were built to be. The Expansion&rsquo;s path back to relevance is going to take some time.</p>`,
 
-<p><strong>The takeaway:</strong> Lincoln looks like a legitimate title contender. A 13-man lineup with no obvious holes and consistent production up and down the order is exactly the kind of team that wins championships. Burlingame Expansion, meanwhile, faces a long road back to their 2025 form.</p>`,
+    'week1-game3': `<p><strong>Hoover 17, McKinley 2 2</strong> &mdash; There was never a moment this felt close. Hoover dismantled McKinley 2 from the first inning, piling up 19 hits in a statement-making 17-2 victory that showcased exactly the offensive depth that made them playoff contenders last fall.</p>
 
-    'week1-game3': `<p><strong>Hoover 17, McKinley 2 2</strong> &mdash; Hoover made short work of expansion team McKinley 2 in the season opener, rolling to a 17-2 victory behind a relentless lineup that collected 19 hits and had nine of ten starters reach base at least once.</p>
+<p>Phillip Koblis led the onslaught from the top of the order &mdash; three hits, a double, and 4 runs scored, a constant presence that forced McKinley pitching to make perfect pitches that never came. Sean Lowenthal drove in 4 from the cleanup spot. Adam Ramirez doubled, drove in 3, and crossed the plate twice. Jim Szafranski scored 3 times. Levon Stepanian, Sunil Koshie, and Chris Cohendet all added multiple contributions in a lineup with no obvious weak link. Nine of ten Hoover starters reached base at least once.</p>
 
-<p>Phillip Koblis set the pace at the top of the order, going 3-for-4 with 4 runs scored and a double &mdash; the most runs in any single Hoover lineup spot. Sean Lowenthal followed with 2 hits and a game-high 4 RBI, and Adam Ramirez added a double, 3 RBI, and 2 runs scored from the middle of the order. Levon Stepanian (2-for-4, 2 RBI), Jim Szafranski (2-for-4, 3 runs), Sunil Koshie (2-for-4, RBI), and Chris Cohendet (2 runs, 2 RBI) all contributed in a lineup with no weak spots. Hoover's nine multi-hit contributors combined for 19 hits with power scattered throughout.</p>
+<p>McKinley 2 is an expansion franchise in their second week of existence. David Conti and Sanjiv Parikh each went 2-for-2, flashing the contact ability that will serve them well as the season develops. But three errors behind them opened the door to extra Hoover damage, and facing a lineup this potent while still building team chemistry is about as hard as it gets in this league.</p>
 
-<p>McKinley 2, in just their second week as an expansion franchise, showed the growing pains expected of a first-year squad. David Conti (2-for-2) and Sanjiv Parikh (2-for-2, double) were the lone bright spots in a lineup that managed just 8 hits. Three errors behind them only compounded the damage, giving Hoover extra opportunities they certainly didn't need.</p>
+<p>Hoover isn&rsquo;t just back. They&rsquo;re better.</p>`,
 
-<p><strong>The takeaway:</strong> Hoover arrives in Spring 2026 as one of the teams to beat. The same core that upset Franklin in the Fall 2025 playoffs is back and hitting with the same authority. McKinley 2 will need time to build chemistry, but working through games against top competition is exactly the kind of experience that accelerates development.</p>`,
+    'week1-game4': `<p><strong>Washington Wildkittens 14, Carey 13</strong> &mdash; Every field should have games like this one. Washington and Carey combined for 37 hits and 27 runs in a full-throttle offensive war, and when the final out was recorded, Washington stood on top 14-13 in the most entertaining contest of opening week.</p>
 
-    'week1-game4': `<p><strong>Washington Wildkittens 14, Carey 13</strong> &mdash; In the most electrifying game of Week 1, Washington Wildkittens escaped with a 14-13 victory over Carey in a back-and-forth slugfest that went down to the final out. The two teams combined for 37 hits and 27 runs in a game that could have gone either way.</p>
+<p>Chris Geheran was the difference. A double, a triple, and a game-high 6 RBI in a 3-for-4 afternoon that will be referenced in this league for years. Brian Roth went 3-for-4 and scored 3 times. Darryl Saifher collected 3 hits and 3 RBI. Darren Miles doubled twice and drove in 2. Washington threw everything at Carey and just barely had more.</p>
 
-<p>Chris Geheran was the hero for Washington, delivering a clutch 3-for-4 afternoon with a double, a triple, and a game-high 6 RBI &mdash; exactly the kind of middle-of-the-order production that swings one-run games. Brian Roth (3-for-4, 3 runs, double), Darryl Saifher (3-for-4, 2 runs, 3 RBI), and Darren Miles (2-for-4, 3 runs, 2 RBI, 2 doubles) each had multi-hit games, and Bill Poucher added 2 hits and an RBI. Six different Wildkittens recorded multiple hits, leaving Carey's pitching with nowhere to hide.</p>
+<p>Because Carey could play, too. Marc Acton and Ryan Batenchuck each went a perfect 3-for-3 and scored three times apiece &mdash; Batenchuck hit two doubles and looked like the best hitter on the field for stretches. Chris Coleman drove in 3. Travis Barabin added 3 RBI with a double of his own. Carey scattered 17 hits and trailed by just one run in the final inning. They ran out of outs.</p>
 
-<p>But Carey absolutely refused to roll over. Marc Acton (3-for-3, 3 runs, double) and Ryan Batenchuck (3-for-3, 3 runs, RBI, 2 doubles) both went perfect at the plate to ignite the Carey attack. Chris Coleman drove in 3 runs, Travis Barabin added 3 RBI including a double, and David Williams came through with 2 RBI on 2 hits. Carey scattered 17 hits across 15 batters and only Geheran's 6-RBI masterpiece prevented them from taking the opener.</p>
+<p>Washington is 1-0. Carey is 0-1 and already has more offensive firepower than that record suggests.</p>`,
 
-<p><strong>The takeaway:</strong> Both teams showed they can hit &mdash; 37 combined hits is staggering offense. Washington gets the win and the 1-0 start, but Carey's lineup is far more dangerous than their record might eventually suggest. These two could be in similar spots in the standings when they meet again.</p>`,
+    'week2-game1': `<p><strong>St. Catherines 25, McKinley 2 0</strong> &mdash; Somewhere around the 15th hit, it stopped being a game and became a history lesson. St. Catherines delivered the most dominant performance of the young season, shutting out McKinley 2 by a 25-0 count in a surgical team offensive display where every single Saint who stepped to the plate reached base.</p>
 
-    'week2-game1': `<p><strong>St. Catherines 25, McKinley 2 0</strong> &mdash; There are blowouts, and then there are historically dominant performances. St. Catherines' 25-0 shutout of McKinley 2 in Week 2 fell firmly in the latter category &mdash; a relentless, lineup-wide demolition that had every Saint reaching base and McKinley held off the scoreboard entirely.</p>
+<p>Paul Besse was the centerpiece of an evening that defied reasonable expectations: 3-for-3, 5 RBI, 3 runs scored, 2 triples. Mo Tancilau went 3-for-3 with two doubles. Matt Germino scored three times without making an out. Ray Malaspina collected 3 hits and scored 3. Joe Bandel drove in 4. James Lin added 3 RBI. Art Wong, Danny Bahamondes, and Ricky Gomez each went 2-for-2. All 15 St. Catherines batters reached base at least once. There was nowhere for McKinley to hide and no pause in the pressure from the first inning to the last.</p>
 
-<p>Paul Besse headlined what may be the most complete team performance of the young season, going 3-for-3 with 3 runs, 5 RBI, and 2 triples. Mo Tancilau went 3-for-3 with 2 doubles and 2 RBI, Matt Germino went a perfect 3-for-3 with 3 runs scored, and Ray Malaspina added 3 hits and 3 runs. Joe Bandel drove in 4 runs on 2 hits, James Lin had 3 RBI on 2 hits with a double, and Jerry Ng added a double and an RBI on his 2-for-2 night. Art Wong, Danny Bahamondes, and Ricky Gomez each had 2 hits and multiple runs scored. The number that tells the full story: all 15 St. Catherines batters reached base at least once. There were no weak spots, no free outs, no escape.</p>
+<p>McKinley managed exactly 2 hits &mdash; singles by Brandon Wright and Sanjiv Parikh &mdash; and despite reaching base, never crossed the plate. The shutout was the inevitable conclusion to a talent gap that was apparent from the opening at-bat.</p>
 
-<p>McKinley 2 managed just 2 hits in the game &mdash; Brandon Wright and Sanjiv Parikh each singled &mdash; and couldn't push a run across despite those base runners. The shutout was emphatic and, given the talent gap, probably inevitable.</p>
+<p>St. Catherines has scored 40 runs in two games. They&rsquo;re not just good. They&rsquo;re on a different level entirely.</p>`,
 
-<p><strong>The takeaway:</strong> St. Catherines has now scored 40 runs in two weeks and hasn't lost a game. This is a lineup that can put up crooked numbers against anyone, and they're showing no signs of slowing down. For McKinley 2, the growing pains continue &mdash; but every game against a team this good builds character and shows what the standard looks like.</p>`,
+    'week2-game3': `<p><strong>Hoover 15, Washington Wildkittens 14</strong> &mdash; Marc Snyder was the only player on either team to go 4-for-4. In a game with 45 combined hits, two lineups capable of beating anyone, and a one-run final margin, that single distinction told the story of how Hoover escaped with their second straight narrow victory.</p>
 
-    'week2-game3': `<p><strong>Hoover 15, Washington Wildkittens 14</strong> &mdash; For the second consecutive week, a Hoover game was decided by a single run. The two-time playoff contenders held off Washington Wildkittens 15-14 in a 45-hit slugfest that featured lead changes, clutch performances on both sides, and no shortage of drama in the late innings.</p>
+<p>Snyder tripled, drove in 3, and scored twice. Cayman Seacrest launched a home run and a double in a 3-for-4 afternoon that produced 3 RBI and 2 runs. Phillip Koblis doubled twice and drove in 2. Bryan Dow went 3-for-4 with a double and 2 RBI. Fred Fabor scored twice. Colin Bryant added 3 hits and 2 RBI. Every single Hoover starter reached base, and the collective output just barely cleared the bar when it needed to.</p>
 
-<p>Marc Snyder delivered the signature line of the game, going a perfect 4-for-4 with a triple, 3 RBI, and 2 runs scored &mdash; the only player on either team to go 4-for-4. Cayman Seacrest blasted a home run and a double on his 3-for-4 night, driving in 3 runs and scoring twice. Phillip Koblis (3-for-4, 2 doubles, 2 RBI), Bryan Dow (3-for-4, double, 2 RBI), and Fred Fabor (3-for-4, 2 runs) were relentless at the plate. Colin Bryant added 3 hits and 2 RBI, and every single Hoover starter recorded at least one hit &mdash; this was a total team effort when the game was on the line.</p>
+<p>Washington made them earn every run. Gareth Adams was extraordinary &mdash; 3-for-4 with a triple and 5 RBI, putting up numbers that win most games. Josh Mello drove in 3 on 3 hits. Drew Simmons went 3-for-4 and scored twice. Kentaro Matsurra drew two walks and crossed the plate twice in a quietly impactful performance. Washington&rsquo;s 14 runs and 19 hits would have beaten almost any other team in this league. Hoover is apparently the exception.</p>
 
-<p>Washington pushed Hoover to the absolute limit. Gareth Adams produced the most jaw-dropping line of the afternoon: 3-for-4 with a triple and 5 RBI, single-handedly keeping Washington in contention through the final inning. Josh Mello (3-for-4, double, 3 RBI) and Drew Simmons (3-for-4, 2 runs) each had 3 hits of their own, and Kentaro Matsurra drew 2 walks and scored twice in a disciplined performance. Washington's 19 hits and 14 runs would win most games. They just ran into the one team that couldn't be outscored.</p>
+<p>Two games. Two one-run wins. Whatever Hoover is doing right now, it&rsquo;s working.</p>`,
 
-<p><strong>The takeaway:</strong> Hoover is 2-0 with two one-run wins &mdash; the hallmark of a team that knows how to close. Washington is 1-1 and proved they can hang with anyone. When these two meet again, it could easily be the most competitive game of the season.</p>`,
+    'week2-game4': `<p><strong>Lincoln Lions 8, Roosevelt Blue 6</strong> &mdash; This one didn&rsquo;t come easy. Lincoln made it 2-0 on the season with an 8-6 win over a Roosevelt Blue squad that pushed them to the final out, grinding out a victory that looked more like a fight than a formality.</p>
 
-    'week2-game4': `<p><strong>Lincoln Lions 8, Roosevelt Blue 6</strong> &mdash; Lincoln Lions made it back-to-back wins to open Spring 2026, holding off a scrappy Roosevelt Blue squad 8-6 in a tighter contest than their Week 1 blowout suggested. The Lions showed they could grind out a close game when the offense didn't come as easily.</p>
+<p>Mike Benveniste did the heavy lifting again &mdash; 2-for-3, 2 runs, an RBI, back-to-back multi-hit performances to open the season. Francisco Martinez drove in 2 with a double and scored twice out of the sixth spot. Alan Ching and Peter Ou combined to go 4-for-4, the kind of production from the bottom of the order that gives Lincoln the depth to outrun deficits. Seven different Lions drove in at least one run. In a lineup this complete, there&rsquo;s no single player you can pitch around.</p>
 
-<p>The contributions came from across the lineup. Mike Benveniste (2-for-3, 2 runs, RBI) and Francisco Martinez (1-for-3, 2 runs, 2 RBI, double) anchored the middle of the order with the production Lincoln needed to stay ahead. Alan Ching and Peter Ou, coming in late in the lineup, combined to go 4-for-4 with 2 runs and an RBI between them &mdash; exactly the kind of bottom-of-the-order depth that separates good teams from great ones. Barlow Gilmore, Brett Reynolds, and Chris Lau each added an RBI, spreading the run production across seven different Lions.</p>
+<p>Roosevelt refused to go quietly. Ankush Bhargava drove in 3 runs on a single hit &mdash; a clutch, high-leverage performance that briefly made this a different game. David Vinca and Nick Adler each went 2-for-3 and scored. Joe Carvillo crossed the plate twice. Roosevelt had the opportunities, stranded too many runners, and couldn&rsquo;t string together the hits needed to erase the deficit when it mattered most.</p>
 
-<p>Roosevelt Blue made it interesting. Ankush Bhargava was the story, driving in 3 runs on just 1 hit &mdash; a clutch performance when his team needed runs. David Vinca (2-for-3, 2 runs) and Nick Adler (2-for-3, 1 run) provided the on-base presence, and Joe Carvillo scored twice. But Roosevelt left too many runners stranded and couldn't string together the back-to-back hits needed to erase the deficit in the final innings.</p>
-
-<p><strong>The takeaway:</strong> Lincoln is 2-0 and looking like one of the most complete teams in the league. The depth of their lineup &mdash; seven different RBI contributors tonight &mdash; makes them difficult to pitch around from top to bottom. Roosevelt Blue at 0-2 needs to find some early-inning momentum before the hole becomes too deep to climb out of.</p>`,
-
-    'week2-game2': `<p><strong>Franklin 20, Carey 8</strong> &mdash; If the Week 1 loss to St. Catherines was a statement of legitimacy, Week 2 was a statement of dominance. Franklin hammered out 27 hits and 20 runs in a comprehensive dismantling of Carey, picking up their first win of the Spring 2026 season.</p>
-
-<p>Ryan Pierce was the player of the game, going a perfect 4-for-4 with 2 doubles, 3 runs scored, and a team-high 4 RBI. Pierce has now started the season 6-for-7 (.857) with 4 extra-base hits &mdash; a scorching pace that matches any hitter in the league. But the real headliner was Jonah VanZandt, who crushed 2 triples on a 3-for-4 night with 3 runs scored and a game-high 5 RBI. The 2 triples were vintage VanZandt, who now has 3 career three-baggers and a knack for finding the gaps.</p>
-
-<p>The lineup was relentless from top to bottom. Steven Jefferson went 4-for-4, Todd Lanam went 3-for-4 with 2 doubles (giving him 3 doubles through 2 games), and Robby Samuelson added 3 hits and 2 RBI. Jason Sosnick chipped in 2 hits including a double, and Uland Wong went 2-for-4 with another double. For the second consecutive game, every single Franklin batter recorded at least one hit &mdash; an 11-for-11 contribution rate that speaks to the remarkable depth of this lineup.</p>
-
-<p>Carey, playing their second game with a largely overhauled roster after losing their entire Spring 2025 championship core, showed flashes of potential. Marc Acton went 2-for-3 with 2 runs, and Pudge Colaco drove in a run with a triple. But with 6 brand-new-to-the-league players still finding their footing, the defending champs simply couldn't keep up with Franklin's onslaught &mdash; 8 of their 17 batters went hitless.</p>
-
-<p><strong>The takeaway:</strong> Through two games, Franklin is hitting .607 as a team with 51 hits in 84 at-bats. They've scored 34 runs and have an 11-for-11 hit contribution rate in both games. For context, this franchise went 0-10 in Spring 2023, 0-10 in Fall 2024, and just 1-8 in Spring 2025. The current core &mdash; fully assembled since Fall 2025 when they went 5-6 &mdash; is now playing like a genuine contender. The bats are real, and the league is on notice.</p>`,
-
-    'fall25-game8': `<p><strong>Franklin 35, Roosevelt Blue 10</strong> &mdash; Franklin opened the Fall 2025 season with a thunderous statement, pounding out 43 hits and 35 runs in an emphatic rout of Roosevelt Blue at Bayside Park.</p>
-
-<p>This was offense from another dimension. Every single Franklin batter had at least 2 hits, led by Todd Lanam who went a perfect 6-for-6 with 5 runs scored and 2 doubles. Jason Sosnick was right behind at 5-for-6 with 4 runs and 2 doubles of his own, while Robby Samuelson went 5-for-5 with 5 runs and 5 RBI. Jonah VanZandt added 5 hits including a double, and Steven Jefferson drove in 5 runs on a 4-for-6 night that included a double and a triple.</p>
-
-<p>Mike Rokovich anchored the middle of the lineup with 4 hits and 5 RBI, while Mu Jing (4-for-6, 4 runs) and Alex Liu (4-for-5, 4 RBI including a double) made their presence felt. Even Mario Linge, the last batter in the order, drove in 3 runs. The 43-hit, 35-run explosion was a franchise record by any measure.</p>
-
-<p>Roosevelt Blue, to their credit, managed 10 runs behind Nick Adler's 3-for-3 night with 2 triples and 4 RBI, and Brian Chang's 3-for-3 outing. But they were overwhelmed from the start by a Franklin lineup that simply refused to make an out.</p>
-
-<p><strong>The takeaway:</strong> This wasn't just a win &mdash; it was a declaration. Coming off a 2-8 Spring 2025, Franklin entered the fall with their core fully intact for the first time and immediately showed what this roster was capable of. The 35 runs set a tone that would carry through the entire season.</p>`,
-
-    'fall25-game9': `<p><strong>Franklin 5, Burlingame Expansion 19</strong> &mdash; The high of the season opener came crashing down in Week 2, as Burlingame Expansion &mdash; the reigning Spring 2025 runners-up &mdash; handed Franklin a humbling 5-19 defeat.</p>
-
-<p>The story of this game was one man: Jack Maguire. Burlingame Expansion's slugger went 4-for-4 with an astonishing 3 home runs and 10 RBI, single-handedly outscoring the entire Franklin team. Christian Kohn added 3 hits with 2 doubles and a triple, and Dean Wilson reached base all 4 times with 2 hits, 2 walks, and 4 runs scored. Burlingame's lineup was simply overpowering.</p>
-
-<p>Franklin managed 15 hits but couldn't string them together when it mattered. Nate Lawler led with 3-for-3 including a double, and Sosnick had a triple in his 2-for-3 game. Jing went 2-for-2 with a double. But 5 runs was never going to be enough against a Burlingame team that was firing on all cylinders.</p>
-
-<p><strong>The takeaway:</strong> A reality check after the 35-run opener. Burlingame Expansion was one of the league's best teams, and Maguire's 3-homer game was the kind of individual performance that can't be game-planned away. Franklin would need to find a way to compete with the top tier &mdash; a challenge that would define the rest of their season.</p>`,
-
-    'fall25-game13': `<p><strong>Franklin 12, BHS 16</strong> &mdash; In a hard-fought battle against the undefeated league leaders, Franklin put up a strong fight before falling 12-16 to BHS in a game that was closer than the final score suggests.</p>
-
-<p>Franklin came out swinging. Lanam went 4-for-4 with 3 runs scored, and Nate Lawler matched him at 4-for-4 with a triple and 2 RBI. VanZandt was perfect at 3-for-3. The Falcons racked up 21 hits and 12 runs &mdash; enough to win most games.</p>
-
-<p>But BHS was relentless. Ron Johnstone set the pace at 4-for-4 with a double, a triple, and 4 runs. Ryan Aguilar (3-for-3 with a triple) and Ken Heller (3-for-4 with a triple and 3 RBI) provided the firepower, while Prentice Ng drove in 3 with a perfect 3-for-3 night. BHS hit .615 as a team and simply outhit Franklin at every turn.</p>
-
-<p><strong>The takeaway:</strong> This was the kind of loss that builds confidence. Franklin went toe-to-toe with the best team in the league and put up 12 runs. The 21 hits showed the offense was no fluke. BHS would finish the season 10-0 &mdash; and this was one of their tighter games. Franklin was proving they belonged in the conversation.</p>`,
-
-    'fall25-game18': `<p><strong>Franklin 7, St. Catherines 40</strong> &mdash; There are no other words for it: this was a shellacking. St. Catherines erupted for 40 runs on what seemed like an endless barrage of hits, handing Franklin the most lopsided loss of their season.</p>
-
-<p>The Saints were otherworldly. Ray Malaspina went 5-for-5 with 5 runs and 5 RBI, including 2 doubles. Paul Besse matched him at 5-for-5 with 5 runs and a staggering 8 RBI, adding 2 doubles and a triple. Joe Bandel (4-for-4, 5 runs, 4 RBI), Andrew Phu (4-for-4, 4 runs, 5 RBI with a double and a home run), and Mo Tancilau (4-for-4, 3 runs, a double) all feasted. It was a lineup performing at a level rarely seen in this league.</p>
-
-<p>Franklin managed 13 hits and 7 runs &mdash; a respectable offensive output on any normal night. Ed LaGory led with 3-for-3 and 2 runs. Sosnick went 2-for-2 with a walk and scored, while Rokovich drove in 3 with a 2-for-3 line that included a triple. But when the other team hangs 40, nothing is enough.</p>
-
-<p><strong>The takeaway:</strong> Sometimes you just run into a buzzsaw. St. Catherines was on a historic tear, and this was the game where everything clicked for them. For Franklin, the key was not letting this kind of blowout define the season. The true test would be how they responded.</p>`,
-
-    'fall25-game22': `<p><strong>Franklin 24, Washington Wildkittens 4</strong> &mdash; Franklin responded to the 40-run loss to St. Catherines in the best way possible: a 24-4 demolition of Washington Wildkittens that showed this team's resilience.</p>
-
-<p>The offense was balanced and devastating. Lanam (4-for-4, double), Sosnick (4-for-4, double, 3 RBI), VanZandt (3-for-3, double, triple, 2 RBI), and Jing (3-for-3, double, 4 RBI) led the charge, but the entire lineup contributed. Rokovich drove in 4 runs on 2 hits including a double and a triple, while Pierce (2-for-3, 3 RBI) and Lawler (2-for-4, double, triple, 3 RBI) provided extra-base pop throughout. Nine different Franklin players drove in at least one run.</p>
-
-<p>Washington managed just 7 hits, with Kentaro Matsurra (2-for-2, 2 runs) and Matt Frantz (2-for-2) providing the bulk of their offense. Collin Woo did drive in 3 runs, but the Wildkittens were overmatched from the first inning.</p>
-
-<p><strong>The takeaway:</strong> Bounce-back games reveal character, and this was a statement from Franklin. After being embarrassed 7-40, the Falcons came out and put up 24 runs of their own. The 26-hit attack featured 10 extra-base hits &mdash; doubles and triples scattered throughout the lineup. This team was not going to fold.</p>`,
-
-    'fall25-game27': `<p><strong>Franklin 10, BIS 19</strong> &mdash; Franklin dropped their fourth loss of the season as BIS's deep lineup proved too much, outgunning the Falcons 19-10 in a game where both teams swung freely.</p>
-
-<p>Franklin hit the ball well, collecting 18 hits. Lanam (3-for-4, double), Sosnick (3-for-4, 3 RBI), and Jing (3-for-4) each had multi-hit games. Pierce added 2 hits with a double, and Rokovich drove in 3 with a double in his 2-for-3 night. Samuelson also contributed 3 RBI on a 1-for-3 line with a walk.</p>
-
-<p>But BIS was simply overpowering. Kevin Lemire led off with a 4-for-5 game and scored 4 runs. Miky Kuo went 4-for-4 with 2 triples and 4 RBI, and Tony Delucchi was 4-for-4 with 3 RBI. BIS piled up hits across the board, and Franklin couldn't keep pace despite a solid offensive effort.</p>
-
-<p><strong>The takeaway:</strong> Another case of Franklin hitting well enough to win &mdash; 18 hits and 10 runs &mdash; but being outclassed in run prevention. The pattern was becoming clear: Franklin could match most teams offensively, but their Achilles' heel was giving up big innings to potent lineups.</p>`,
-
-    'fall25-game31': `<p><strong>Franklin 15, Lincoln Lions 11</strong> &mdash; In a crucial mid-season matchup, Franklin outlasted Lincoln 15-11 in a game that showcased the Falcons' balanced attack and ability to win a slugfest.</p>
-
-<p>Lanam was magnificent, going 4-for-5 with a double, 3 RBI, and 2 runs scored. Nate Lawler stepped up huge with 3-for-4, a double, 3 RBI, and 3 runs scored. Uland Wong had perhaps the best all-around game, going 3-for-4 with a double, a triple, and 2 RBI. Samuelson was steady at 3-for-4 as well, and even Mu Jing &mdash; despite going 1-for-3 &mdash; scored 3 runs and drove in one, working a walk to keep rallies alive.</p>
-
-<p>Lincoln didn't go quietly. Paul Huck (3-for-3, triple, 3 RBI) and Elliot Katz (2-for-3, triple, home run) provided the power, while Barlow Gilmore (2-for-3, triple, 2 RBI) and Brett Reynolds (2-for-3, triple) kept the pressure on. Lincoln had 5 triples and a home run in the game &mdash; they were hitting for serious extra-base power.</p>
-
-<p><strong>The takeaway:</strong> This was Franklin's most important win of the season to this point. Lincoln was a team in their tier, and beating them 15-11 in a game where both teams hit well showed that Franklin could close out a competitive contest. The 10 different Franklin batters who recorded hits demonstrated the lineup depth that would become this team's calling card. This would also prove to be a key preview of a potential Spring 2026 matchup.</p>`,
-
-    'fall25-game36': `<p><strong>Franklin 6, Hoover 21</strong> &mdash; Hoover's lineup erupted for 21 runs, and Franklin had no answers in their most lopsided loss since the St. Catherines debacle.</p>
-
-<p>Hoover was dominant from top to bottom. Cayman Seacrest (4-for-4, double, 4 runs), Chris Cohendet (4-for-4, 2 doubles, 5 RBI), and Marc Snyder (3-for-4, home run, 4 RBI) anchored a lineup that seemed to hit every pitch Franklin threw. Fred Fabor and Colin Bryant each added 3 hits.</p>
-
-<p>Franklin mustered just 15 hits and struggled to drive runners in. Rokovich was the bright spot, going 3-for-3 with a double, a triple, and an RBI. Lanam, Samuelson, VanZandt, and Linge each had 2 hits, but the Falcons scored just 6 runs on those 15 hits &mdash; a stark contrast to their usual offensive efficiency. Ryan Pierce (0-for-4) and Nate Lawler (0-for-4) were both blanked, a rare off night for two of the team's key bats.</p>
-
-<p><strong>The takeaway:</strong> The loss dropped Franklin to 3-5, and the pattern continued: Franklin could hit with anyone, but when they faced a top-tier offense, they gave up too many runs to keep pace. The 15-hit, 6-run disconnect was frustrating &mdash; this team needed to find a way to convert hits into runs more efficiently.</p>`,
-
-    'fall25-game38': `<p><strong>Fall 2025 Playoff Game &mdash; Franklin 12, Burlingame Expansion 10</strong> &mdash; Sweet revenge, on the biggest stage. After being crushed 5-19 by Burlingame Expansion in the regular season, Franklin flipped the script in the playoffs, rallying for a hard-fought 12-10 victory to advance in the postseason bracket.</p>
-
-<p>Mike Rokovich delivered the signature playoff moment of Franklin's season, going 4-for-4 with a walk, a home run, 5 RBI, and 4 runs scored &mdash; an all-time performance when it mattered most. It was Rokovich's first career home run, and he picked the perfect time to hit it: a win-or-go-home playoff game against the team that had embarrassed them earlier in the year. Samuelson backed him up at 4-for-5 with 2 runs scored, and Lanam added 3 hits.</p>
-
-<p>Uland Wong (3-for-4, 2 RBI) and Jing (3-for-4) provided key contributions, and the entire lineup chipped in with 24 hits as a team. Burlingame fought hard &mdash; Steve Murphy (3-for-4, double), Vic Gallant (3-for-4, 2 triples, 2 RBI), and the dangerous Jack Maguire (2-for-2 with a walk) all contributed &mdash; but Franklin held on in the kind of tight, gutsy victory that defines a playoff team.</p>
-
-<p><strong>The takeaway:</strong> This was the game that announced Franklin had arrived. Beating the team that blew you out 19-5 &mdash; in the playoffs, no less &mdash; is the kind of revenge narrative that defines franchise turnarounds. Rokovich's breakout homer was the exclamation point on a statement win. For a franchise that went 0-10 and 1-8-1 in prior seasons, winning a playoff game was uncharted territory. Franklin wasn't just competitive anymore &mdash; they were a postseason team, and this victory set up a deeper run through the bracket.</p>`,
-
-    'fall25-game42': `<p><strong>Fall 2025 Playoff Game &mdash; Franklin 11, BIS 8</strong> &mdash; In a win-or-go-home playoff matchup, Franklin gutted out an 11-8 victory over BIS to keep their postseason alive. This was the game that punched Franklin's ticket to the championship &mdash; and the Falcons played like a team that belonged.</p>
-
-<p>The playoff intensity was palpable, and Franklin's lineup responded. Lawler and Samuelson each went 3-for-4 to lead the charge, providing the kind of steady, reliable production that had defined the second half of the season. Pierce was a one-man OBP machine, drawing 2 walks and scoring 3 times on 2 hits including a double &mdash; exactly the kind of disciplined at-bats that win playoff games. Rokovich delivered in the clutch with a 2-RBI triple, and Jefferson added 2 hits, a walk, and a double. Jing quietly went 2-for-3 with an RBI, continuing his under-the-radar contributions.</p>
-
-<p>BIS didn't go down easy. Miky Kuo (3-for-3, double), Scott Cairns (2-for-3, double, 3 RBI), and Eric Negherbon (2-for-2, 2 RBI) kept the pressure on throughout. But Franklin's lineup was simply too deep &mdash; ten of 12 batters recorded at least one hit, the kind of top-to-bottom production that's nearly impossible to pitch around.</p>
-
-<p><strong>The takeaway:</strong> This was the game that validated everything Franklin had built. Winning a playoff game &mdash; for a franchise that went 0-10, 1-8-1, 0-10, and 2-8 in their previous four seasons &mdash; was historic. The 5-6 regular season record was enough to earn a postseason berth, and the Falcons made the most of it. The lineup that hit .570 as a team showed it could perform under pressure, and the playoff victory punched their ticket to the championship game against undefeated BHS. The rebuild wasn't just working &mdash; it was producing postseason wins.</p>`,
-
-    'fall25-game43': `<p><strong>Fall 2025 Championship &mdash; Franklin 9, BHS 17</strong> &mdash; Franklin's Cinderella run through the Fall 2025 playoffs ended in the championship game against undefeated BHS. After knocking off BIS and Burlingame Expansion to get here, the Falcons found themselves on the biggest stage in league history &mdash; and while the 9-17 final didn't go their way, just being there was a statement.</p>
-
-<p>Franklin collected 21 hits in the championship and never stopped competing. Rokovich led the charge with 3-for-4 and 3 RBI, delivering in the clutch when it mattered most. VanZandt was perfect at 3-for-3, Lanam went 3-for-4, and Samuelson added 2-for-3 with 2 runs scored. Linge contributed 2 hits and 2 runs from the bottom of the order, and LaGory drove in 2 on a 1-for-2 night with a sac fly. Every single Franklin batter recorded at least one hit &mdash; a 12-for-12 lineup contribution in the biggest game of the franchise's history.</p>
-
-<p>But BHS had Al DelRosso, and he was unstoppable: 3-for-3 with a staggering 6 RBI, single-handedly outproducing most of Franklin's lineup. Prentice Ng went a perfect 4-for-4, Suniel Koliwad was 3-for-3 with 3 runs, Ryan Aguilar added 3-for-4 with 2 RBI, and Eric Nuss drove in 3 on a 2-for-4 night. BHS scored 17 runs with depth that Franklin simply couldn't match &mdash; this was the team that ran the table at 10-0 all season, and they proved it when the title was on the line.</p>
-
-<p><strong>The takeaway:</strong> Yes, it was a loss. But zoom out: this is a Franklin team that went 0-10 just two seasons ago. A team that was the laughingstock of the league for four straight seasons. And here they were, playing in the championship game, putting up 21 hits with every batter contributing, and refusing to fold. Losing to a perfect BHS squad anchored by DelRosso's 6-RBI masterpiece is no embarrassment &mdash; it's a badge of honor that Franklin even got to that stage. The championship appearance was the ultimate proof that the rebuild had arrived ahead of schedule.</p>`,
-  };
+<p>Lincoln looks like the real deal. Roosevelt Blue needs a win in the worst way.</p>`,
+  };;
 
   const recapHtml = GAME_RECAPS[gameId] ? `<div class="card">
     <div class="card-header">Game Recap</div>
@@ -1989,12 +2192,12 @@ function viewBoxScore(gameId) {
   const homeRec = home ? fmtRec(cumRec[home.id]) : '';
 
   document.getElementById('app').innerHTML = `
-    <a class="back-link" href="#/schedule">&larr; Schedule</a>
+    <div style="display:flex;align-items:center"><a class="back-link" href="#/schedule">&larr; Schedule</a>${shareBtn()}</div>
     <div class="boxscore-header">
       <div class="matchup">
         <div class="game-meta">Week ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}</div>
-        <div class="matchup-row ${!hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away ? away.id : ''}">${away ? away.name : 'Unknown'}</a> <span class="record-inline">${awayRec}</span></span><span class="matchup-score">${game.awayScore}</span></div>
-        <div class="matchup-row ${hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home ? home.id : ''}">${home ? home.name : 'Unknown'}</a> <span class="record-inline">${homeRec}</span></span><span class="matchup-score">${game.homeScore}</span></div>
+        <div class="matchup-row ${!hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away ? away.id : ''}">${away ? teamLogoImg(away.id) + away.name : 'Unknown'}</a> <span class="record-inline">${awayRec}</span></span><span class="matchup-score">${game.awayScore}</span></div>
+        <div class="matchup-row ${hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home ? home.id : ''}">${home ? teamLogoImg(home.id) + home.name : 'Unknown'}</a> <span class="record-inline">${homeRec}</span></span><span class="matchup-score">${game.homeScore}</span></div>
         <div class="game-meta" style="margin-top:4px">Final</div>
       </div>
     </div>
@@ -2041,7 +2244,7 @@ function viewAllPlayers() {
 
   const allPlayersCols = [
     { key: 'name', label: 'Player', render: r => `<img class="mini-avatar" src="${avatarUrl(r.name, 26)}" alt=""><a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
-    { key: 'teamName', label: 'Team', render: r => `<a class="team-link" href="#/team/${r.teamId}">${r.teamName}</a>`, val: r => r.teamName },
+    { key: 'teamName', label: 'Team', render: r => `<a class="team-link" href="#/team/${r.teamId}">${teamLogoImg(r.teamId)}${r.teamName}</a>`, val: r => r.teamName },
     { key: 'G', label: 'G', num: true, val: r => r.G },
     { key: 'PA', label: 'PA', num: true, val: r => r.PA },
     { key: 'AB', label: 'AB', num: true, val: r => r.AB },
@@ -2115,6 +2318,18 @@ function viewSchedule(scrollToWeek) {
   });
 
   const html = Object.entries(weeks).sort((a, b) => a[0] - b[0]).map(([wk, w]) => {
+    // Compute game-of-the-week badges for this week
+    const playedGames = w.games.filter(g => g.homeScore !== undefined);
+    let barnburnerId = null, nailbiterId = null;
+    if (playedGames.length > 0) {
+      const byTotal = [...playedGames].sort((a, b) => (b.homeScore+b.awayScore) - (a.homeScore+a.awayScore));
+      const byDiff  = [...playedGames].sort((a, b) => Math.abs(a.homeScore-a.awayScore) - Math.abs(b.homeScore-b.awayScore));
+      barnburnerId = byTotal[0].id;
+      nailbiterId  = byDiff[0].id;
+      // If same game, just use nailbiter label
+      if (barnburnerId === nailbiterId) barnburnerId = null;
+    }
+
     const gamesHtml = w.games.map(g => {
       const home = getTeam(g.homeTeamId);
       const away = getTeam(g.awayTeamId);
@@ -2125,11 +2340,14 @@ function viewSchedule(scrollToWeek) {
       const awayRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][away.id] ? fmtRecord(recordBeforeGame[g.id][away.id]) : '';
       const homeRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][home.id] ? fmtRecord(recordBeforeGame[g.id][home.id]) : '';
       const clickable = (hasBox || !played) ? `onclick="if(event.target.closest('a')===null)location.hash='#/game/${g.id}'" style="cursor:pointer"` : '';
+      const badge = g.id === nailbiterId ? `<span class="game-badge nailbiter" title="Closest game of the week">&#9889; Nail-biter</span>`
+                  : g.id === barnburnerId ? `<span class="game-badge barnburner" title="Highest-scoring game of the week">&#128293; Barnburner</span>` : '';
       return `<div class="score-box${played ? '' : ' unplayed'}" ${clickable}>
         <div class="teams">
-          <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score">${g.awayScore}</span>` : ''}</div>
-          <div class="team-row ${played && hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${home.name}</a> <span class="record-inline">${homeRec}</span></span>${played ? `<span class="score">${g.homeScore}</span>` : ''}</div>
+          <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${teamLogoImg(away.id)}${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score">${g.awayScore}</span>` : ''}</div>
+          <div class="team-row ${played && hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${teamLogoImg(home.id)}${home.name}</a> <span class="record-inline">${homeRec}</span></span>${played ? `<span class="score">${g.homeScore}</span>` : ''}</div>
         </div>
+        ${badge}
       </div>`;
     }).join('');
 
@@ -2180,9 +2398,6 @@ function router() {
 }
 
 function init() {
-  // Restore dark mode preference
-  try { if (localStorage.getItem('darkMode') === '1') { document.body.classList.add('dark'); document.getElementById('dark-toggle').textContent = '\u2600 Light'; } } catch(e) {}
-
   const urlSeason = new URLSearchParams(location.search).get('season');
   if (urlSeason && SEASONS[urlSeason]) {
     currentSeason = urlSeason;
