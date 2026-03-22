@@ -1412,6 +1412,33 @@ function viewStandings() {
         }
         return { type: last, count };
       })(),
+      last10: (() => {
+        const SEASON_ORDER = ['spring-2023', 'spring-2024', 'fall-2024', 'spring-2025', 'fall-2025', 'spring-2026'];
+        const getPlayed = (seasonData) =>
+          seasonData.games.filter(g => g.homeScore !== undefined &&
+            (g.homeTeamId === t.id || g.awayTeamId === t.id));
+        const result = g => {
+          const ts = g.homeTeamId === t.id ? g.homeScore : g.awayScore;
+          const os = g.homeTeamId === t.id ? g.awayScore : g.homeScore;
+          return ts > os ? 'W' : ts < os ? 'L' : 'T';
+        };
+        let games = getPlayed(DATA);
+        if (games.length < 10) {
+          const curIdx = SEASON_ORDER.indexOf(currentSeason);
+          if (curIdx > 0) {
+            const prevData = SEASONS[SEASON_ORDER[curIdx - 1]];
+            if (prevData) {
+              const prevGames = getPlayed(prevData);
+              games = [...prevGames.slice(-(10 - games.length)), ...games];
+            }
+          }
+        }
+        const slice = games.slice(-10);
+        if (slice.length === 0) return null;
+        let w = 0, l = 0, ties = 0;
+        slice.forEach(g => { const r = result(g); if (r === 'W') w++; else if (r === 'L') l++; else ties++; });
+        return { w, l, ties };
+      })(),
     };
   }).sort((a, b) => b.pct - a.pct || b.wins - a.wins || a.losses - b.losses);
 
@@ -1425,6 +1452,7 @@ function viewStandings() {
     <td class="num">${t.ties}</td>
     <td class="num">${pctDisplay(t.wins, t.losses, t.ties)}</td>
     <td class="num">${t.streak ? `<span class="streak streak-${t.streak.type.toLowerCase()}">${t.streak.type}${t.streak.count}</span>` : '&mdash;'}</td>
+    <td class="num">${t.last10 ? `${t.last10.w}-${t.last10.l}${t.last10.ties > 0 ? `-${t.last10.ties}` : ''}` : '&mdash;'}</td>
     <td class="num">${t.rs}</td>
     <td class="num">${t.ra}</td>
     <td class="num">${t.rs - t.ra > 0 ? `<span class="rd-pos">+${t.rs - t.ra}</span>` : t.rs - t.ra < 0 ? `<span class="rd-neg">${t.rs - t.ra}</span>` : '0'}</td>
@@ -1485,7 +1513,7 @@ function viewStandings() {
       <div class="card-body"><div class="table-wrap">
         <table>
           <thead><tr>
-            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
+            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">L10</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
           </tr></thead>
           <tbody>${standingsRows}</tbody>
         </table>
@@ -1877,7 +1905,7 @@ function buildTeamSeasonStats(teamId) {
   return {
     name: team ? team.name : teamId,
     W: team ? team.wins : 0, L: team ? team.losses : 0, T: team ? team.ties : 0,
-    G: games, RS, RA, H, AB, BB, PA, D, T: T, HR,
+    G: games, RS, RA, H, AB, BB, PA, D, triples: T, HR,
     AVG: AB > 0 ? H / AB : 0,
     SLG: AB > 0 ? TB / AB : 0,
     OBP: PA > 0 ? (H + BB) / PA : 0,
@@ -1906,7 +1934,7 @@ function viewGamePreview(game) {
     { label: 'Runs Allowed / G', v1: as_.RAPG.toFixed(1), v2: hs.RAPG.toFixed(1), higher: 'worse' },
     { label: 'HR', v1: as_.HR, v2: hs.HR, higher: 'better' },
     { label: '2B', v1: as_.D, v2: hs.D, higher: 'better' },
-    { label: '3B', v1: as_.T, v2: hs.T, higher: 'better' },
+    { label: '3B', v1: as_.triples, v2: hs.triples, higher: 'better' },
     { label: 'BB', v1: as_.BB, v2: hs.BB, higher: 'neutral' },
   ].map(r => {
     const n1 = parseFloat(r.v1), n2 = parseFloat(r.v2);
@@ -2025,6 +2053,39 @@ function viewGamePreview(game) {
   // writePreview(ts1=away, ts2=home, t1=away, t2=home) — away listed first throughout
   const previewAnalysis = isNextGame ? writePreview(as_, hs, away, home) : null;
 
+  // Find last meeting between these two teams (current season then prior seasons)
+  const SEASON_ORDER_LM = ['spring-2023', 'spring-2024', 'fall-2024', 'spring-2025', 'fall-2025', 'spring-2026'];
+  const getTeamName = (sData, tid) => { const t = sData.teams.find(x => x.id === tid); return t ? t.name : tid; };
+  let lastMeeting = null;
+  for (let si = SEASON_ORDER_LM.indexOf(currentSeason); si >= 0 && !lastMeeting; si--) {
+    const sid = SEASON_ORDER_LM[si];
+    const sData = SEASONS[sid];
+    if (!sData) continue;
+    const candidates = sData.games.filter(g =>
+      g.id !== game.id &&
+      g.homeScore !== undefined &&
+      ((g.homeTeamId === game.homeTeamId && g.awayTeamId === game.awayTeamId) ||
+       (g.homeTeamId === game.awayTeamId && g.awayTeamId === game.homeTeamId))
+    );
+    if (candidates.length > 0) {
+      const g = candidates[candidates.length - 1];
+      const lmHomeName = getTeamName(sData, g.homeTeamId);
+      const lmAwayName = getTeamName(sData, g.awayTeamId);
+      const winner = g.homeScore > g.awayScore ? lmHomeName : g.awayScore > g.homeScore ? lmAwayName : null;
+      const scoreStr = `${lmAwayName} ${g.awayScore}, ${lmHomeName} ${g.homeScore}`;
+      const metaStr = sid === currentSeason
+        ? `Week ${g.week}${g.date ? ', ' + fmtDate(g.date) : ''}`
+        : `Week ${g.week}, ${SEASON_LABELS[sid]}${g.date ? ' (' + fmtDate(g.date) + ')' : ''}`;
+      lastMeeting = { scoreStr, winner, metaStr, gameId: g.id };
+    }
+  }
+  const lastMeetingHtml = lastMeeting ? `<div class="card">
+    <div class="card-header">Last Meeting</div>
+    <div class="card-body padded" style="font-size:14px;line-height:1.75">
+      <p><strong>${lastMeeting.scoreStr}</strong> &mdash; ${lastMeeting.metaStr}${lastMeeting.winner ? '. ' + lastMeeting.winner + ' won.' : ' (tie).'} <a href="#/game/${lastMeeting.gameId}" style="font-size:12px">View box score &rarr;</a></p>
+    </div>
+  </div>` : '';
+
   document.getElementById('app').innerHTML = `
     <a class="back-link" href="#/schedule">&larr; Schedule</a>
     <div class="preview-header">
@@ -2045,6 +2106,7 @@ function viewGamePreview(game) {
       <div class="card-header">Preview</div>
       <div class="card-body padded" style="line-height:1.75">${previewAnalysis}</div>
     </div>` : ''}
+    ${lastMeetingHtml}
     <div class="two-col">
       <div class="card">
         <div class="card-header">Team Comparison</div>
@@ -2652,6 +2714,15 @@ function viewSchedule(scrollToWeek) {
 }
 
 function router() {
+  // Sync season from URL search param so back/forward navigation works correctly
+  const urlSeason = new URLSearchParams(location.search).get('season') || 'spring-2026';
+  if (SEASONS[urlSeason] && urlSeason !== currentSeason) {
+    currentSeason = urlSeason;
+    DATA = SEASONS[currentSeason];
+    document.getElementById('season-picker').value = currentSeason;
+    const subtitleEl = document.getElementById('season-subtitle');
+    if (subtitleEl) subtitleEl.textContent = 'Burlingame · ' + SEASON_LABELS[currentSeason];
+  }
   window.scrollTo(0, 0);
   const hash = location.hash || '#/';
   renderNav();
@@ -2662,7 +2733,24 @@ function router() {
   } else if (hash.startsWith('#/player/')) {
     viewPlayer(hash.replace('#/player/', ''));
   } else if (hash.startsWith('#/game/')) {
-    viewBoxScore(hash.replace('#/game/', ''));
+    const gameId = hash.replace('#/game/', '');
+    if (!DATA.games.find(g => g.id === gameId)) {
+      const SEASON_ORDER_R = ['spring-2023', 'spring-2024', 'fall-2024', 'spring-2025', 'fall-2025', 'spring-2026'];
+      for (const sid of SEASON_ORDER_R) {
+        if (SEASONS[sid] && SEASONS[sid].games.find(g => g.id === gameId)) {
+          currentSeason = sid;
+          DATA = SEASONS[currentSeason];
+          document.getElementById('season-picker').value = currentSeason;
+          const subtitleEl = document.getElementById('season-subtitle');
+          if (subtitleEl) subtitleEl.textContent = 'Burlingame · ' + SEASON_LABELS[currentSeason];
+          const url = new URL(location.href);
+          url.searchParams.set('season', sid);
+          history.replaceState(null, '', url.toString());
+          break;
+        }
+      }
+    }
+    viewBoxScore(gameId);
   } else if (hash === '#/players') {
     viewAllPlayers();
   } else if (hash.startsWith('#/compare')) {
