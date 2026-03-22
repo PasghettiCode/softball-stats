@@ -244,7 +244,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 }
 
 .score-box:hover { background: var(--row-hover); }
-.score-box.unplayed:hover { background: none; cursor: default; }
+.score-box.unplayed:hover { background: var(--row-hover); cursor: pointer; }
 .score-box:last-child { border-bottom: none; }
 .score-box .teams { flex: 1; }
 
@@ -478,22 +478,275 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   font-style: italic;
   padding: 4px 0;
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+/* ── Dark mode ── */
+body.dark {
+  --bg: #0f1117;
+  --white: #1a1f2e;
+  --border: #2a3142;
+  --border-light: #232938;
+  --text: #e8eaf0;
+  --text-secondary: #a0a8be;
+  --text-muted: #6b7494;
+  --row-alt: #161b27;
+  --row-hover: #1e2436;
+  --link-blue: #6aabff;
+}
+body.dark header { background: #080b12; }
+body.dark nav { background: #0d1220; }
+body.dark .card { border-color: var(--border); }
+body.dark th { background: #1a2340; }
+body.dark tr.totals td { background: #1a2340; }
+body.dark .team-hero, body.dark .player-hero, body.dark .boxscore-header { background: linear-gradient(135deg, #080b12, #0d1a38); }
+
+.dark-toggle {
+  margin-left: auto;
+  background: none;
+  border: 1px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.7);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.12); color: white; }
+
+/* ── Player avatar ── */
+.player-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.player-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.3);
+  flex-shrink: 0;
+  background: rgba(255,255,255,.1);
+}
+
+/* ── Achievement badges ── */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,.85);
+}
+.badge.gold { background: rgba(255,210,0,.2); border-color: rgba(255,210,0,.5); color: #ffd700; }
+.badge.fire { background: rgba(255,80,40,.2); border-color: rgba(255,80,40,.5); color: #ff7755; }
+.badge.blue { background: rgba(60,160,255,.2); border-color: rgba(60,160,255,.5); color: #60b4ff; }
+
+.badge[data-tip] { position: relative; cursor: help; }
+.badge[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1f2e;
+  color: #e8eaf0;
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  z-index: 300;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+  letter-spacing: 0;
+}
+.badge[data-tip]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1f2e;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  z-index: 300;
+}
+.badge[data-tip]:hover::after,
+.badge[data-tip]:hover::before { opacity: 1; }
+
+/* ── Player search ── */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.search-input {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  width: 220px;
+  background: var(--white);
+  color: var(--text);
+  transition: border-color .15s;
+}
+.search-input:focus { outline: none; border-color: var(--mlb-blue); box-shadow: 0 0 0 2px rgba(0,45,114,.15); }
+.search-count { font-size: 13px; color: var(--text-muted); }
+
+/* ── Mini avatar in tables ── */
+.mini-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 7px;
+  border: 1px solid var(--border);
+  background: var(--border-light);
+}
+
+/* ── Hot/cold streak ── */
+.streak-hot { color: #ff5533; font-weight: 700; font-size: 12px; margin-left: 5px; }
+.streak-cold { color: #5599ff; font-weight: 700; font-size: 12px; margin-left: 5px; }
+
+/* ── Compare page ── */
+.compare-pickers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.compare-picker-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color .15s;
+}
+.compare-picker-card.selected { border-color: var(--mlb-blue); }
+.compare-picker-card:nth-child(2).selected { border-color: var(--mlb-red); }
+.compare-picker-header {
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  color: white;
+  background: var(--mlb-blue);
+}
+.compare-picker-card:nth-child(2) .compare-picker-header { background: var(--mlb-red); }
+.compare-picker-inner { padding: 12px; }
+.compare-filter {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 13px;
+  margin-bottom: 8px;
+  background: var(--white);
+  color: var(--text);
+}
+.compare-filter:focus { outline: none; border-color: var(--mlb-blue); }
+.compare-select {
+  width: 100%;
+  height: 160px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 13px;
+  background: var(--white);
+  color: var(--text);
+  padding: 4px;
+}
+.compare-select option { padding: 5px 8px; }
+.compare-select option:checked { background: var(--mlb-blue); color: white; }
+
+/* ── Compare results table ── */
+.compare-result { margin-top: 8px; }
+.compare-result-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  background: var(--mlb-dark);
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+.compare-result-header .p-col {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  color: white;
+}
+.compare-result-header .p-col:first-child { background: var(--mlb-blue); }
+.compare-result-header .p-col:last-child { background: var(--mlb-red); justify-content: flex-end; flex-direction: row-reverse; }
+.compare-result-header img { width: 42px; height: 42px; border-radius: 50%; border: 2px solid rgba(255,255,255,.4); flex-shrink: 0; }
+.compare-result-header .p-name { font-weight: 800; font-size: 14px; line-height: 1.3; }
+.compare-result-header .p-team { font-size: 11px; opacity: .7; font-weight: 400; }
+.compare-result-header .vs-col { background: var(--mlb-dark); display: flex; align-items: center; justify-content: center; padding: 0 14px; font-size: 13px; font-weight: 800; color: rgba(255,255,255,.5); }
+.compare-stats-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
+.compare-stats-table tr:last-child td { border-bottom: none; }
+.compare-stats-table td { border-bottom: 1px solid var(--border-light); padding: 9px 16px; font-size: 14px; }
+.compare-stats-table .c-label { text-align: center; font-size: 10px; font-weight: 700; letter-spacing: .6px; color: var(--text-muted); background: var(--row-alt); width: 70px; }
+.compare-stats-table .c-val { font-weight: 800; font-size: 16px; color: var(--text); }
+.compare-stats-table .c-val.c-win { color: var(--mlb-red); }
+.compare-stats-table .c-val.c-win-blue { color: var(--mlb-blue); }
+.compare-stats-table td:nth-child(1) { text-align: right; }
+.compare-stats-table td:nth-child(3) { text-align: left; }
+.compare-stats-table tr:nth-child(even) td { background: var(--row-alt); }
+.compare-stats-table tr:nth-child(even) .c-label { background: #e8eef5; }
+body.dark .compare-stats-table tr:nth-child(even) .c-label { background: #1a2030; }
+
+/* ── Game preview ── */
+.preview-header {
+  background: linear-gradient(135deg, #041e42, #1a3a6e);
+  border-radius: 8px;
+  padding: 22px 28px;
+  color: white;
+  margin-bottom: 24px;
+}
+.preview-label { font-size: 11px; font-weight: 800; letter-spacing: 1px; color: rgba(255,255,255,.55); margin-bottom: 8px; }
+.preview-matchup { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.preview-team { font-size: 22px; font-weight: 800; }
+.preview-team a { color: white; text-decoration: none; }
+.preview-team a:hover { text-decoration: underline; }
+.preview-vs { font-size: 13px; color: rgba(255,255,255,.4); font-weight: 700; }
+.preview-meta { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 8px; }
+.preview-record { font-size: 13px; color: rgba(255,255,255,.6); font-weight: 600; }
+.key-players-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.key-player-col { padding: 16px 20px; border-right: 1px solid var(--border-light); }
+.key-player-col:last-child { border-right: none; }
+.key-player-col h4 { font-size: 12px; font-weight: 800; color: var(--mlb-blue); margin-bottom: 10px; letter-spacing: .4px; }
+.key-player-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--border-light); font-size: 13px; }
+.key-player-item:last-child { border-bottom: none; }
+.key-player-item img { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border); flex-shrink: 0; }
+.key-player-item .kp-name { flex: 1; font-weight: 600; }
+.key-player-item .kp-stat { font-size: 12px; color: var(--text-muted); }
+.key-player-item .kp-val { font-weight: 800; color: var(--mlb-blue); font-size: 13px; }
+
+@media (max-width: 700px) {
+  .compare-pickers { grid-template-columns: 1fr; }
+  .compare-result-header { grid-template-columns: 1fr 1fr; }
+  .compare-result-header .vs-col { display: none; }
+  .player-avatar { width: 56px; height: 56px; }
+  .player-hero-inner { gap: 14px; }
+  .key-players-grid { grid-template-columns: 1fr; }
+  .key-player-col { border-right: none; border-bottom: 1px solid var(--border-light); }
+}
   </style>
 </head>
 <body>
@@ -507,6 +760,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
       <option value="spring-2024">Spring 2024</option>
       <option value="spring-2023">Spring 2023</option>
     </select>
+    <button class="dark-toggle" id="dark-toggle" onclick="toggleDark()">&#9790; Dark</button>
   </header>
   <nav id="nav"></nav>
   <div id="scores-ticker"></div>
@@ -531,6 +785,7 @@ const NAV_ITEMS = [
   { hash: '#/', label: 'Standings' },
   { hash: '#/schedule', label: 'Schedule' },
   { hash: '#/players', label: 'Players' },
+  { hash: '#/compare', label: 'Compare' },
 ];
 
 function switchSeason(seasonId) {
@@ -578,6 +833,197 @@ function displayName(name) {
 }
 
 function getTeam(id) { return DATA.teams.find(t => t.id === id); }
+
+// ── Dark mode ──
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  document.getElementById('dark-toggle').textContent = isDark ? '\u2600 Light' : '\u263E Dark';
+  try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch(e) {}
+}
+
+// ── Player avatars (DiceBear — free, no key needed) ──
+function avatarUrl(name, size) {
+  const seed = encodeURIComponent(displayName(name));
+  return `https://api.dicebear.com/9.x/lorelei/svg?seed=${seed}&backgroundColor=002D72&radius=50&size=${size || 80}`;
+}
+
+// ── Achievement badges ──
+function playerBadges(player) {
+  const all = DATA.players;
+  const s = player.seasonStats;
+  const badges = [];
+
+  // League leader checks
+  const leaderAVG = [...all].filter(p => p.seasonStats.AB > 0).sort((a,b) => (b.seasonStats.H/b.seasonStats.AB) - (a.seasonStats.H/a.seasonStats.AB))[0];
+  const leaderH   = [...all].sort((a,b) => b.seasonStats.H - a.seasonStats.H)[0];
+  const leaderHR  = [...all].sort((a,b) => b.seasonStats.HR - a.seasonStats.HR)[0];
+  const leaderRBI = [...all].sort((a,b) => b.seasonStats.BI - a.seasonStats.BI)[0];
+  const leaderR   = [...all].sort((a,b) => b.seasonStats.R - a.seasonStats.R)[0];
+  const leaderOPS = [...all].filter(p => p.seasonStats.PA >= 3).sort((a,b) => parseFloat(calcOPS(b.seasonStats)) - parseFloat(calcOPS(a.seasonStats)))[0];
+
+  if (leaderAVG && leaderAVG.id === player.id && s.AB >= 3) badges.push({ label: 'AVG Leader', cls: 'gold', icon: '\uD83C\uDFC6', tip: 'Highest batting average in the league (min. 3 AB)' });
+  if (leaderH   && leaderH.id   === player.id && s.H > 0)  badges.push({ label: 'Hit Leader', cls: 'gold', icon: '\uD83D\uDCA5', tip: 'Most hits in the league this season' });
+  if (leaderHR  && leaderHR.id  === player.id && s.HR > 0) badges.push({ label: 'HR Leader', cls: 'fire', icon: '\uD83D\uDCA3', tip: 'Most home runs in the league this season' });
+  if (leaderRBI && leaderRBI.id === player.id && s.BI > 0) badges.push({ label: 'RBI Leader', cls: 'fire', icon: '\uD83D\uDD25', tip: 'Most RBI in the league this season' });
+  if (leaderR   && leaderR.id   === player.id && s.R > 0)  badges.push({ label: 'Runs Leader', cls: 'blue', icon: '\u26A1', tip: 'Most runs scored in the league this season' });
+  if (leaderOPS && leaderOPS.id === player.id && s.PA >= 3) badges.push({ label: 'OPS Leader', cls: 'gold', icon: '\u2B50', tip: 'Highest OBP + SLG in the league (min. 3 PA)' });
+
+  // Stat-based badges
+  if (s.G >= 2 && s.D >= s.G / 2)        badges.push({ label: 'Gap Machine', cls: 'blue', icon: '\uD83C\uDFD3', tip: `${s.D} doubles in ${s.G} games — at least one every other game` });
+  if (s.G >= 2 && s.BI / s.G >= 2)       badges.push({ label: 'Run Producer', cls: 'fire', icon: '\uD83D\uDCA5', tip: `${s.BI} RBI in ${s.G} games (${(s.BI/s.G).toFixed(1)} per game) — elite run production` });
+  if (s.G >= 2 && s.R / s.G >= 1)        badges.push({ label: 'Runs Scored', cls: 'blue', icon: '\uD83C\uDFC3', tip: `${s.R} runs in ${s.G} games (${(s.R/s.G).toFixed(1)} per game) — scoring at an elite clip` });
+  if (s.G >= 2 && s.BB / s.G >= 0.25)    badges.push({ label: 'Eye at the Plate', cls: '', icon: '\uD83D\uDC40', tip: `${s.BB} walks in ${s.G} games — exceptional patience in a free-swinging league` });
+  if (s.HR >= 1)                         badges.push({ label: 'Went Yard', cls: 'fire', icon: '\uD83D\uDE80', tip: 'Hit at least one home run this season' });
+  if (s.T >= 1)                          badges.push({ label: 'Triple Threat', cls: 'blue', icon: '\u26A1', tip: 'Hit at least one triple this season — rare in slowpitch!' });
+  if (s.AB > 0 && s.H / s.AB >= 0.700 && s.AB < 5) badges.push({ label: '.700 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .700 or better this season' });
+  if (s.AB >= 5 && s.H / s.AB >= 0.600) badges.push({ label: '.600 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .600 or better with 5+ AB — elite even in slowpitch' });
+  if (s.AB > 0 && s.H / s.AB >= 1.0)    badges.push({ label: 'Perfect Avg', cls: 'gold', icon: '\uD83D\uDCAF', tip: 'Has not made an out yet this season (1.000 AVG)' });
+  if (s.G >= 2)                          badges.push({ label: 'Iron Man', cls: '', icon: '\uD83D\uDEE1\uFE0F', tip: 'Appeared in every game so far this season' });
+
+  if (badges.length === 0) return '';
+  return `<div class="badges">${badges.slice(0, 6).map(b => `<span class="badge ${b.cls}" data-tip="${b.tip}">${b.icon} ${b.label}</span>`).join('')}</div>`;
+}
+
+// ── Compare page ──
+function buildCompareStatsHtml(p1id, p2id) {
+  const p1 = getPlayer(p1id), p2 = getPlayer(p2id);
+  if (!p1 || !p2) return '';
+  const t1 = getTeam(p1.teamId), t2 = getTeam(p2.teamId);
+  const cs = (p) => ({
+    ...p.seasonStats,
+    AVG: parseFloat(calcAVG(p.seasonStats.H, p.seasonStats.AB)),
+    SLG: parseFloat(calcSLG(p.seasonStats)),
+    OPS: parseFloat(calcOPS(p.seasonStats)),
+  });
+  const s1 = cs(p1), s2 = cs(p2);
+  const statKeys = [
+    { key: 'G', label: 'G', title: 'Games' },
+    { key: 'PA', label: 'PA', title: 'Plate Appearances' },
+    { key: 'AB', label: 'AB', title: 'At Bats' },
+    { key: 'H', label: 'H', title: 'Hits' },
+    { key: 'R', label: 'R', title: 'Runs' },
+    { key: 'D', label: '2B', title: 'Doubles' },
+    { key: 'T', label: '3B', title: 'Triples' },
+    { key: 'HR', label: 'HR', title: 'Home Runs' },
+    { key: 'BB', label: 'BB', title: 'Walks' },
+    { key: 'BI', label: 'RBI', title: 'Runs Batted In' },
+    { key: 'E', label: 'E', title: 'Errors', lowerBetter: true },
+    { key: 'AVG', label: 'AVG', title: 'Batting Average', fmt: v => v.toFixed(3).replace(/^0/,'') },
+    { key: 'SLG', label: 'SLG', title: 'Slugging Pct', fmt: v => v.toFixed(3).replace(/^0/,'') },
+    { key: 'OPS', label: 'OPS', title: 'On-base + Slugging', fmt: v => v.toFixed(3).replace(/^0/,'') },
+  ];
+  const rows = statKeys.map(k => {
+    const v1 = s1[k.key] || 0, v2 = s2[k.key] || 0;
+    const fmt = k.fmt || (v => v);
+    const better1 = k.lowerBetter ? v1 < v2 : v1 > v2;
+    const better2 = k.lowerBetter ? v2 < v1 : v2 > v1;
+    const tie = v1 === v2;
+    return `<tr>
+      <td><span class="c-val ${!tie && better1 ? 'c-win-blue' : ''}">${fmt(v1)}</span></td>
+      <td class="c-label" title="${k.title}">${k.label}</td>
+      <td><span class="c-val ${!tie && better2 ? 'c-win' : ''}">${fmt(v2)}</span></td>
+    </tr>`;
+  }).join('');
+  return `<div class="compare-result">
+    <div class="compare-result-header">
+      <div class="p-col">
+        <img src="${avatarUrl(p1.name, 42)}" alt="">
+        <div>
+          <div class="p-name"><a href="#/player/${p1.id}" style="color:white;text-decoration:none">${displayName(p1.name)}</a></div>
+          <div class="p-team">${t1 ? t1.name : ''}</div>
+        </div>
+      </div>
+      <div class="vs-col">VS</div>
+      <div class="p-col">
+        <img src="${avatarUrl(p2.name, 42)}" alt="">
+        <div>
+          <div class="p-name"><a href="#/player/${p2.id}" style="color:white;text-decoration:none">${displayName(p2.name)}</a></div>
+          <div class="p-team">${t2 ? t2.name : ''}</div>
+        </div>
+      </div>
+    </div>
+    <table class="compare-stats-table"><tbody>${rows}</tbody></table>
+  </div>`;
+}
+
+function viewCompare(p1id, p2id) {
+  const allPlayers = [...DATA.players].sort((a, b) => displayName(a.name).localeCompare(displayName(b.name)));
+  const optionsHtml = allPlayers.map(p => {
+    const t = getTeam(p.teamId);
+    return `<option value="${p.id}">${displayName(p.name)} — ${t ? t.name : ''}</option>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">Player Comparison</div>
+    <div class="page-subtitle">Select two players to compare their stats head-to-head</div>
+    <div class="compare-pickers">
+      <div class="compare-picker-card${p1id ? ' selected' : ''}" id="picker-card-1">
+        <div class="compare-picker-header">PLAYER 1</div>
+        <div class="compare-picker-inner">
+          <input class="compare-filter" placeholder="Filter by name…" oninput="filterCompareSelect('sel-1', this.value)" autocomplete="off">
+          <select id="sel-1" class="compare-select" size="8" onchange="onComparePick(1, this.value)">
+            ${optionsHtml}
+          </select>
+        </div>
+      </div>
+      <div class="compare-picker-card${p2id ? ' selected' : ''}" id="picker-card-2">
+        <div class="compare-picker-header">PLAYER 2</div>
+        <div class="compare-picker-inner">
+          <input class="compare-filter" placeholder="Filter by name…" oninput="filterCompareSelect('sel-2', this.value)" autocomplete="off">
+          <select id="sel-2" class="compare-select" size="8" onchange="onComparePick(2, this.value)">
+            ${optionsHtml}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="compare-output"></div>
+  `;
+
+  window._compareAllOptions = allPlayers;
+  window.filterCompareSelect = function(selId, q) {
+    const sel = document.getElementById(selId);
+    const filtered = q.trim() === ''
+      ? allPlayers
+      : allPlayers.filter(p => displayName(p.name).toLowerCase().includes(q.toLowerCase()) || (getTeam(p.teamId) || {name:''}).name.toLowerCase().includes(q.toLowerCase()));
+    sel.innerHTML = filtered.map(p => {
+      const t = getTeam(p.teamId);
+      return `<option value="${p.id}">${displayName(p.name)} — ${t ? t.name : ''}</option>`;
+    }).join('');
+    // Re-apply selection if still visible
+    const curP1 = window._compareP1, curP2 = window._compareP2;
+    if (selId === 'sel-1' && curP1 && filtered.find(p => p.id === curP1)) sel.value = curP1;
+    if (selId === 'sel-2' && curP2 && filtered.find(p => p.id === curP2)) sel.value = curP2;
+  };
+  window.onComparePick = function(slot, pid) {
+    if (slot === 1) window._compareP1 = pid;
+    else window._compareP2 = pid;
+    document.getElementById(`picker-card-${slot}`).classList.add('selected');
+    const out = document.getElementById('compare-output');
+    const p1 = window._compareP1, p2 = window._compareP2;
+    if (p1 && p2 && p1 !== p2) {
+      out.innerHTML = buildCompareStatsHtml(p1, p2);
+      history.replaceState(null, '', `#/compare/${p1}/${p2}`);
+    } else {
+      out.innerHTML = '';
+    }
+  };
+
+  // Pre-select if IDs passed in URL
+  if (p1id) {
+    window._compareP1 = p1id;
+    const sel1 = document.getElementById('sel-1');
+    if (sel1) sel1.value = p1id;
+  }
+  if (p2id) {
+    window._compareP2 = p2id;
+    const sel2 = document.getElementById('sel-2');
+    if (sel2) sel2.value = p2id;
+  }
+  if (p1id && p2id && p1id !== p2id) {
+    document.getElementById('compare-output').innerHTML = buildCompareStatsHtml(p1id, p2id);
+  }
+}
 function getPlayer(id) { return DATA.players.find(p => p.id === id); }
 function getTeamPlayers(teamId) { return DATA.players.filter(p => p.teamId === teamId); }
 function getTeamGames(teamId) { return DATA.games.filter(g => g.homeTeamId === teamId || g.awayTeamId === teamId); }
@@ -826,7 +1272,7 @@ function viewTeam(teamId) {
   });
 
   const cols = [
-    { key: 'name', label: 'Player', render: r => `<a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
+    { key: 'name', label: 'Player', render: r => `<img class="mini-avatar" src="${avatarUrl(r.name, 26)}" alt=""><a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
     { key: 'G', label: 'G', num: true, val: r => r.G },
     { key: 'PA', label: 'PA', num: true, val: r => r.PA },
     { key: 'AB', label: 'AB', num: true, val: r => r.AB },
@@ -933,6 +1379,33 @@ function viewPlayer(playerId) {
     return { withStats: gamesWithStats, withoutStats: gamesWithoutStats, total: teamGames.length };
   }
 
+  // Compute hot/cold streak from raw game data
+  function computeStreak(seasonData, pid, teamId) {
+    const teamGames = seasonData.games
+      .filter(g => (g.homeTeamId === teamId || g.awayTeamId === teamId) && g.homeScore !== undefined)
+      .sort((a, b) => a.date.localeCompare(b.date));
+    const recentStats = [];
+    teamGames.forEach(g => {
+      const isHome = g.homeTeamId === teamId;
+      const stats = isHome ? g.homeStats : g.awayStats;
+      const ps = stats ? stats.find(x => x.playerId === pid) : null;
+      if (ps) recentStats.push(ps);
+    });
+    if (recentStats.length < 3) return null;
+    const last3 = recentStats.slice(-3);
+    // Slowpitch softball: hitting is easy, so thresholds are much stricter
+    // HOT: got hits in all 3 of the last 3 games AND went multi-hit (2+) in at least 2 of them
+    const allLast3HadHits = last3.every(ps => ps.H > 0);
+    const multiHitGamesInLast3 = last3.filter(ps => ps.H >= 2).length;
+    if (allLast3HadHits && multiHitGamesInLast3 >= 2) return 'hot';
+    // COLD: batting under .400 over the last 3 games (meaningfully below average in slowpitch)
+    const last3H = last3.reduce((s, ps) => s + ps.H, 0);
+    const last3AB = last3.reduce((s, ps) => s + ps.AB, 0);
+    if (last3AB >= 3 && last3H / last3AB < 0.400) return 'cold';
+    return null;
+  }
+  const streak = computeStreak(DATA, playerId, player.teamId);
+
   const currentLog = buildGameLog(currentSeason, DATA, playerId, player.teamId);
   const hasDetailedLog = currentLog.withStats.length > 0;
   const gameLogRows = hasDetailedLog
@@ -1016,8 +1489,17 @@ function viewPlayer(playerId) {
   document.getElementById('app').innerHTML = `
     <a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? team.name : ''}</a>
     <div class="player-hero">
-      <div class="page-title">${displayName(player.name)}</div>
-      <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? team.name : ''}</a></div>
+      <div class="player-hero-inner">
+        <img class="player-avatar" src="${avatarUrl(player.name, 80)}" alt="${displayName(player.name)}">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="page-title">${displayName(player.name)}</div>
+            <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a>
+          </div>
+          <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
+          ${playerBadges(player)}
+        </div>
+      </div>
     </div>
     ${statsHtml}
     <div class="card">
@@ -1045,9 +1527,241 @@ function viewPlayer(playerId) {
   `;
 }
 
+function buildTeamSeasonStats(teamId) {
+  const players = getTeamPlayers(teamId);
+  const sum = k => players.reduce((s, p) => s + (p.seasonStats[k] || 0), 0);
+  const H = sum('H'), AB = sum('AB'), BB = sum('BB'), PA = sum('PA');
+  const D = sum('D'), T = sum('T'), HR = sum('HR');
+  const singles = H - D - T - HR;
+  const TB = singles + 2*D + 3*T + 4*HR;
+  const games = getTeamGames(teamId).filter(g => g.homeScore !== undefined).length;
+  const team = getTeam(teamId);
+  const RS = DATA.games.reduce((s, g) => {
+    if (!g.homeScore) return s;
+    if (g.homeTeamId === teamId) return s + g.homeScore;
+    if (g.awayTeamId === teamId) return s + g.awayScore;
+    return s;
+  }, 0);
+  const RA = DATA.games.reduce((s, g) => {
+    if (!g.homeScore) return s;
+    if (g.homeTeamId === teamId) return s + g.awayScore;
+    if (g.awayTeamId === teamId) return s + g.homeScore;
+    return s;
+  }, 0);
+  return {
+    name: team ? team.name : teamId,
+    W: team ? team.wins : 0, L: team ? team.losses : 0, T: team ? team.ties : 0,
+    G: games, RS, RA, H, AB, BB, PA, D, T: T, HR,
+    AVG: AB > 0 ? H / AB : 0,
+    SLG: AB > 0 ? TB / AB : 0,
+    OBP: PA > 0 ? (H + BB) / PA : 0,
+    OPS: (PA > 0 ? (H + BB) / PA : 0) + (AB > 0 ? TB / AB : 0),
+    RPG: games > 0 ? RS / games : 0,
+    RAPG: games > 0 ? RA / games : 0,
+  };
+}
+
+function viewGamePreview(game) {
+  const home = getTeam(game.homeTeamId);
+  const away = getTeam(game.awayTeamId);
+  const hs = buildTeamSeasonStats(game.homeTeamId);
+  const as_ = buildTeamSeasonStats(game.awayTeamId);
+
+  const fmtAvg = v => v.toFixed(3).replace(/^0/, '');
+  const fmtRec = t => t.T > 0 ? `${t.W}-${t.L}-${t.T}` : `${t.W}-${t.L}`;
+
+  // Team comparison rows — v1 = away (left column), v2 = home (right column), matching the header
+  const cmpRows = [
+    { label: 'Record', v1: fmtRec(as_), v2: fmtRec(hs), num: false },
+    { label: 'Avg / Game', v1: as_.RPG.toFixed(1), v2: hs.RPG.toFixed(1), higher: 'better' },
+    { label: 'Team AVG', v1: fmtAvg(as_.AVG), v2: fmtAvg(hs.AVG), higher: 'better' },
+    { label: 'Team SLG', v1: fmtAvg(as_.SLG), v2: fmtAvg(hs.SLG), higher: 'better' },
+    { label: 'Team OPS', v1: fmtAvg(as_.OPS), v2: fmtAvg(hs.OPS), higher: 'better' },
+    { label: 'Runs Allowed / G', v1: as_.RAPG.toFixed(1), v2: hs.RAPG.toFixed(1), higher: 'worse' },
+    { label: 'HR', v1: as_.HR, v2: hs.HR, higher: 'better' },
+    { label: '2B', v1: as_.D, v2: hs.D, higher: 'better' },
+    { label: '3B', v1: as_.T, v2: hs.T, higher: 'better' },
+    { label: 'BB', v1: as_.BB, v2: hs.BB, higher: 'neutral' },
+  ].map(r => {
+    const n1 = parseFloat(r.v1), n2 = parseFloat(r.v2);
+    const tie = isNaN(n1) || isNaN(n2) || n1 === n2 || r.higher === 'neutral' || r.num === false;
+    const win1 = !tie && (r.higher === 'better' ? n1 > n2 : n1 < n2);
+    const win2 = !tie && (r.higher === 'better' ? n2 > n1 : n2 < n1);
+    return `<tr>
+      <td style="text-align:right;font-weight:${win1?'800':'400'};color:${win1?'var(--mlb-blue)':'var(--text)'}">${r.v1}</td>
+      <td style="text-align:center;font-size:10px;font-weight:700;letter-spacing:.5px;color:var(--text-muted);background:var(--row-alt);padding:8px 12px">${r.label}</td>
+      <td style="text-align:left;font-weight:${win2?'800':'400'};color:${win2?'var(--mlb-red)':'var(--text)'}">${r.v2}</td>
+    </tr>`;
+  }).join('');
+
+  // Key players per team
+  function keyPlayers(teamId) {
+    const players = getTeamPlayers(teamId).filter(p => p.seasonStats.AB > 0);
+    const byAVG = [...players].sort((a, b) => (b.seasonStats.AB > 0 ? b.seasonStats.H/b.seasonStats.AB : 0) - (a.seasonStats.AB > 0 ? a.seasonStats.H/a.seasonStats.AB : 0));
+    const byRBI = [...players].sort((a, b) => b.seasonStats.BI - a.seasonStats.BI);
+    const byHR  = [...players].filter(p => p.seasonStats.HR > 0).sort((a, b) => b.seasonStats.HR - a.seasonStats.HR);
+    // Pick top 3 unique players: best AVG + best RBI (if different) + best HR (if different)
+    const seen = new Set();
+    const picks = [];
+    for (const p of [...byAVG, ...byRBI, ...byHR]) {
+      if (!seen.has(p.id)) { seen.add(p.id); picks.push(p); }
+      if (picks.length >= 3) break;
+    }
+    return picks.map(p => {
+      const s = p.seasonStats;
+      const avg = s.AB > 0 ? fmtAvg(s.H / s.AB) : '.000';
+      return `<div class="key-player-item">
+        <img src="${avatarUrl(p.name, 28)}" alt="">
+        <span class="kp-name"><a class="player-link" href="#/player/${p.id}">${displayName(p.name)}</a></span>
+        <span class="kp-stat">${avg} AVG</span>
+        <span class="kp-val">${s.H}H ${s.BI}RBI</span>
+      </div>`;
+    }).join('');
+  }
+
+  // Written preview analysis
+  function writePreview(ts1, ts2, t1, t2) {
+    const name1 = t1 ? t1.name : 'Home';
+    const name2 = t2 ? t2.name : 'Away';
+    const avgEdge = ts1.AVG > ts2.AVG ? name1 : ts2.AVG > ts1.AVG ? name2 : null;
+    const offEdge = ts1.RPG > ts2.RPG ? name1 : ts2.RPG > ts1.RPG ? name2 : null;
+    const defEdge = ts1.RAPG < ts2.RAPG ? name1 : ts2.RAPG < ts1.RAPG ? name2 : null;
+
+    const t1Players = getTeamPlayers(t1 ? t1.id : game.homeTeamId).filter(p => p.seasonStats.AB > 0);
+    const t2Players = getTeamPlayers(t2 ? t2.id : game.awayTeamId).filter(p => p.seasonStats.AB > 0);
+    const topT1 = [...t1Players].sort((a,b) => b.seasonStats.H/b.seasonStats.AB - a.seasonStats.H/a.seasonStats.AB)[0];
+    const topT2 = [...t2Players].sort((a,b) => b.seasonStats.H/b.seasonStats.AB - a.seasonStats.H/a.seasonStats.AB)[0];
+    const rbiT1 = [...t1Players].sort((a,b) => b.seasonStats.BI - a.seasonStats.BI)[0];
+    const rbiT2 = [...t2Players].sort((a,b) => b.seasonStats.BI - a.seasonStats.BI)[0];
+
+    const fmt = v => v.toFixed(3).replace(/^0/,'');
+    let html = '';
+
+    // Paragraph 1: matchup overview
+    const recStr1 = fmtRec(ts1), recStr2 = fmtRec(ts2);
+    html += `<p><strong>${name1} (${recStr1}) vs. ${name2} (${recStr2})</strong> — `;
+    if (ts1.G === 0 && ts2.G === 0) {
+      html += `Both teams are yet to play this season, making this a true unknown. Everything is on the table.`;
+    } else if (ts1.G === 0) {
+      html += `${name1} hasn't played yet this season, while ${name2} enters at ${recStr2}. The ${name2} lineup has history to draw on; ${name1} is an open question.`;
+    } else if (ts2.G === 0) {
+      html += `${name2} hasn't played yet this season, while ${name1} enters at ${recStr1}. The ${name1} lineup has history to draw on; ${name2} is an open question.`;
+    } else {
+      const betterRec = ts1.W > ts2.W ? name1 : ts2.W > ts1.W ? name2 : null;
+      if (betterRec) html += `${betterRec} enters with the better record, but in a league where any team can put up 15+ runs, records alone don't tell the full story.`;
+      else html += `Both teams enter with identical records, setting up what should be a genuinely competitive matchup.`;
+    }
+    html += `</p>`;
+
+    // Paragraph 2: offensive matchup
+    if (ts1.G > 0 && ts2.G > 0) {
+      html += `<p><strong>Offensive Matchup:</strong> `;
+      if (avgEdge) {
+        const other = avgEdge === name1 ? name2 : name1;
+        const edgeAvg = avgEdge === name1 ? ts1.AVG : ts2.AVG;
+        const otherAvg = avgEdge === name1 ? ts2.AVG : ts1.AVG;
+        html += `${avgEdge} holds a clear edge at the plate, batting ${fmt(edgeAvg)} as a team compared to ${other}'s ${fmt(otherAvg)}. `;
+      } else {
+        html += `Both teams are hitting at a similar clip — this game could come down to who finds their timing early. `;
+      }
+      if (offEdge) {
+        const edgeRPG = offEdge === name1 ? ts1.RPG : ts2.RPG;
+        html += `${offEdge} has been the higher-scoring offense, averaging ${edgeRPG.toFixed(1)} runs per game. `;
+      }
+      if (topT1) html += `Watch ${displayName(topT1.name)} for ${name1} — batting ${fmt(topT1.seasonStats.H/topT1.seasonStats.AB)} this season, they've been the team's most consistent hitter. `;
+      if (topT2) html += `${displayName(topT2.name)} fills that same role for ${name2} at ${fmt(topT2.seasonStats.H/topT2.seasonStats.AB)}.`;
+      html += `</p>`;
+    }
+
+    // Paragraph 3: keys to winning
+    html += `<p><strong>Keys to the Game:</strong> `;
+    const keys = [];
+    if (ts1.G > 0 && ts2.G > 0) {
+      if (Math.abs(ts1.OPS - ts2.OPS) > 0.15) {
+        const strongTeam = ts1.OPS > ts2.OPS ? name1 : name2;
+        const weakTeam = strongTeam === name1 ? name2 : name1;
+        keys.push(`${weakTeam} needs to manufacture runs even without big innings — they can't trade runs straight up with ${strongTeam}`);
+      }
+      if (rbiT1 && rbiT1.seasonStats.BI >= 3) keys.push(`${displayName(rbiT1.name)} (${rbiT1.seasonStats.BI} RBI) is ${name1}'s biggest run-producer — keeping them from big spots will be key`);
+      if (rbiT2 && rbiT2.seasonStats.BI >= 3) keys.push(`${displayName(rbiT2.name)} (${rbiT2.seasonStats.BI} RBI) is ${name2}'s biggest run-producer — same deal on the other side`);
+    }
+    if (keys.length === 0) keys.push(`With limited game data available, first-inning momentum will be critical`, `Getting productive at-bats early sets the tone in slowpitch`);
+    html += keys.join('; ') + '.</p>';
+
+    return html;
+  }
+
+  // Only show written analysis for the very next upcoming game
+  const nextGame = DATA.games
+    .filter(g => g.homeScore === undefined)
+    .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))[0];
+  const isNextGame = nextGame && nextGame.id === game.id;
+
+  // writePreview(ts1=away, ts2=home, t1=away, t2=home) — away listed first throughout
+  const previewAnalysis = isNextGame ? writePreview(as_, hs, away, home) : null;
+
+  document.getElementById('app').innerHTML = `
+    <a class="back-link" href="#/schedule">&larr; Schedule</a>
+    <div class="preview-header">
+      <div class="preview-label">UPCOMING GAME &middot; WEEK ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}</div>
+      <div class="preview-matchup">
+        <div>
+          <div class="preview-record">${fmtRec(as_)}</div>
+          <div class="preview-team"><a href="#/team/${away ? away.id : ''}">${away ? away.name : 'Away'}</a></div>
+        </div>
+        <div class="preview-vs">@</div>
+        <div>
+          <div class="preview-record">${fmtRec(hs)}</div>
+          <div class="preview-team"><a href="#/team/${home ? home.id : ''}">${home ? home.name : 'Home'}</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-header">Team Comparison</div>
+          <div class="card-body"><div class="table-wrap">
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <thead><tr>
+                <th style="text-align:right;background:var(--mlb-blue)">${away ? away.name : 'Away'}</th>
+                <th style="text-align:center;background:#1a2a4a;width:110px">Stat</th>
+                <th style="text-align:left;background:var(--mlb-red)">${home ? home.name : 'Home'}</th>
+              </tr></thead>
+              <tbody>${cmpRows}</tbody>
+            </table>
+          </div></div>
+        </div>
+        ${previewAnalysis ? `<div class="card">
+          <div class="card-header">Preview</div>
+          <div class="card-body padded" style="line-height:1.75">${previewAnalysis}</div>
+        </div>` : ''}
+      </div>
+      <div class="card">
+        <div class="card-header">Key Players to Watch</div>
+        <div class="card-body">
+          <div class="key-players-grid">
+            <div class="key-player-col">
+              <h4>${away ? away.name.toUpperCase() : 'AWAY'}</h4>
+              ${keyPlayers(game.awayTeamId)}
+            </div>
+            <div class="key-player-col">
+              <h4>${home ? home.name.toUpperCase() : 'HOME'}</h4>
+              ${keyPlayers(game.homeTeamId)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function viewBoxScore(gameId) {
   const game = DATA.games.find(g => g.id === gameId);
   if (!game) { document.getElementById('app').innerHTML = '<p>Game not found.</p>'; return; }
+
+  // Route to preview if game hasn't been played yet
+  if (game.homeScore === undefined) { viewGamePreview(game); return; }
+
   const home = getTeam(game.homeTeamId);
   const away = getTeam(game.awayTeamId);
 
@@ -1305,14 +2019,28 @@ function viewAllPlayers() {
 
   document.getElementById('app').innerHTML = `
     <div class="page-title">Player Stats</div>
-    <div class="page-subtitle">Click any column header to sort</div>
+    <div class="page-subtitle">Click any column header to sort &middot; click + Compare to compare two players</div>
+    <div class="search-bar">
+      <input id="player-search" class="search-input" type="text" placeholder="Search players..." oninput="filterAllPlayers(this.value)" autocomplete="off">
+      <span class="search-count" id="player-search-count"></span>
+    </div>
     <div class="card">
       <div class="card-body" id="all-players-table"></div>
     </div>
   `;
 
-  const cols = [
-    { key: 'name', label: 'Player', render: r => `<a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
+  window._allPlayersRows = rows;
+  window.filterAllPlayers = function(q) {
+    const filtered = q.trim() === '' ? rows : rows.filter(r =>
+      displayName(r.name).toLowerCase().includes(q.toLowerCase()) ||
+      r.teamName.toLowerCase().includes(q.toLowerCase())
+    );
+    document.getElementById('player-search-count').textContent = q.trim() ? `${filtered.length} of ${rows.length} players` : '';
+    sortableTable('all-players-table', filtered, allPlayersCols, 'AVG', 'desc');
+  };
+
+  const allPlayersCols = [
+    { key: 'name', label: 'Player', render: r => `<img class="mini-avatar" src="${avatarUrl(r.name, 26)}" alt=""><a class="player-link" href="#/player/${r.id}">${displayName(r.name)}</a>`, val: r => r.name },
     { key: 'teamName', label: 'Team', render: r => `<a class="team-link" href="#/team/${r.teamId}">${r.teamName}</a>`, val: r => r.teamName },
     { key: 'G', label: 'G', num: true, val: r => r.G },
     { key: 'PA', label: 'PA', num: true, val: r => r.PA },
@@ -1331,7 +2059,7 @@ function viewAllPlayers() {
     { key: 'OPS', label: 'OPS', num: true, render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
   ];
 
-  sortableTable('all-players-table', rows, cols, 'AVG', 'desc');
+  sortableTable('all-players-table', rows, allPlayersCols, 'AVG', 'desc');
 }
 
 function viewSchedule(scrollToWeek) {
@@ -1396,7 +2124,7 @@ function viewSchedule(scrollToWeek) {
       const hasBox = played && (g.homeStats || g.awayStats);
       const awayRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][away.id] ? fmtRecord(recordBeforeGame[g.id][away.id]) : '';
       const homeRec = recordBeforeGame[g.id] && recordBeforeGame[g.id][home.id] ? fmtRecord(recordBeforeGame[g.id][home.id]) : '';
-      const clickable = hasBox ? `onclick="if(event.target.closest('a')===null)location.hash='#/game/${g.id}'" style="cursor:pointer"` : '';
+      const clickable = (hasBox || !played) ? `onclick="if(event.target.closest('a')===null)location.hash='#/game/${g.id}'" style="cursor:pointer"` : '';
       return `<div class="score-box${played ? '' : ' unplayed'}" ${clickable}>
         <div class="teams">
           <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score">${g.awayScore}</span>` : ''}</div>
@@ -1440,6 +2168,9 @@ function router() {
     viewBoxScore(hash.replace('#/game/', ''));
   } else if (hash === '#/players') {
     viewAllPlayers();
+  } else if (hash.startsWith('#/compare')) {
+    const parts = hash.replace('#/compare', '').replace(/^\//, '').split('/');
+    viewCompare(parts[0] || null, parts[1] || null);
   } else if (hash.startsWith('#/schedule')) {
     const weekMatch = hash.match(/#\/schedule\/week\/(\d+)/);
     viewSchedule(weekMatch ? parseInt(weekMatch[1]) : null);
@@ -1449,6 +2180,9 @@ function router() {
 }
 
 function init() {
+  // Restore dark mode preference
+  try { if (localStorage.getItem('darkMode') === '1') { document.body.classList.add('dark'); document.getElementById('dark-toggle').textContent = '\u2600 Light'; } } catch(e) {}
+
   const urlSeason = new URLSearchParams(location.search).get('season');
   if (urlSeason && SEASONS[urlSeason]) {
     currentSeason = urlSeason;
