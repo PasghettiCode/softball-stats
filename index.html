@@ -792,6 +792,12 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 /* ── Game of the week badge ── */
 
 .score-box { gap: 8px; }
+.rd-pos { color: #1a7a3a; font-weight: 600; }
+.rd-neg { color: #c0152a; font-weight: 600; }
+.streak { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 8px; white-space: nowrap; }
+.streak-w { background: rgba(26,122,58,.12); color: #1a7a3a; }
+.streak-l { background: rgba(192,21,42,.1); color: #c0152a; }
+.streak-t { background: rgba(0,0,0,.07); color: #555; }
 
   </style>
 </head>
@@ -1390,6 +1396,22 @@ function viewStandings() {
       tAVG: ab === 0 ? 0 : h / ab,
       tSLG: slg,
       tOPS: obp + slg,
+      streak: (() => {
+        const played = DATA.games.filter(g => g.homeScore !== undefined &&
+          (g.homeTeamId === t.id || g.awayTeamId === t.id));
+        if (played.length === 0) return null;
+        const result = g => {
+          const ts = g.homeTeamId === t.id ? g.homeScore : g.awayScore;
+          const os = g.homeTeamId === t.id ? g.awayScore : g.homeScore;
+          return ts > os ? 'W' : ts < os ? 'L' : 'T';
+        };
+        const last = result(played[played.length - 1]);
+        let count = 0;
+        for (let i = played.length - 1; i >= 0; i--) {
+          if (result(played[i]) === last) count++; else break;
+        }
+        return { type: last, count };
+      })(),
     };
   }).sort((a, b) => b.pct - a.pct || b.wins - a.wins || a.losses - b.losses);
 
@@ -1402,8 +1424,10 @@ function viewStandings() {
     <td class="num">${t.losses}</td>
     <td class="num">${t.ties}</td>
     <td class="num">${pctDisplay(t.wins, t.losses, t.ties)}</td>
+    <td class="num">${t.streak ? `<span class="streak streak-${t.streak.type.toLowerCase()}">${t.streak.type}${t.streak.count}</span>` : '&mdash;'}</td>
     <td class="num">${t.rs}</td>
     <td class="num">${t.ra}</td>
+    <td class="num">${t.rs - t.ra > 0 ? `<span class="rd-pos">+${t.rs - t.ra}</span>` : t.rs - t.ra < 0 ? `<span class="rd-neg">${t.rs - t.ra}</span>` : '0'}</td>
     <td class="num">${t.tAB}</td>
     <td class="num">${t.tH}</td>
     <td class="num">${t.tR}</td>
@@ -1461,7 +1485,7 @@ function viewStandings() {
       <div class="card-body"><div class="table-wrap">
         <table>
           <thead><tr>
-            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">RS</th><th class="num">RA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
+            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
           </tr></thead>
           <tbody>${standingsRows}</tbody>
         </table>
