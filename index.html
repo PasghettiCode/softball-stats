@@ -855,6 +855,209 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .bracket-game-score { font-weight: 700; min-width: 22px; text-align: right; }
 .bracket-champ .bracket-game-team.bw { background: linear-gradient(90deg, rgba(255,210,0,.1), transparent); }
 
+/* ── Optimal Lineup ── */
+.lineup-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  min-height: 200px;
+}
+@media (max-width: 700px) {
+  .lineup-layout { grid-template-columns: 1fr; }
+}
+.lineup-sidebar {
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  background: var(--row-alt);
+}
+.lineup-sidebar-header {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--mlb-blue);
+  margin-bottom: 2px;
+}
+.lineup-sidebar-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.lineup-pool-section { margin-bottom: 14px; }
+.lineup-pool-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.lineup-check-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+.lineup-check-item:hover { color: var(--mlb-blue); }
+.lineup-check-item input[type=checkbox] { flex-shrink: 0; accent-color: var(--mlb-blue); }
+.lineup-check-name { font-weight: 600; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lineup-result { padding: 16px; }
+.lineup-slots { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.lineup-slot {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: background .12s;
+}
+.lineup-slot:hover { background: var(--row-hover); }
+.lineup-pos-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--mlb-blue);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.lineup-player-info { flex: 1; min-width: 0; }
+.lineup-player-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.lineup-stats-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+.lineup-stats-row strong { color: var(--text); }
+.lineup-justification {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.lineup-no-data {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 6px;
+}
+.lineup-empty {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 20px 0;
+  text-align: center;
+}
+.strategy-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.strategy-picker-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--mlb-blue);
+  margin-bottom: 2px;
+}
+.strategy-option {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  transition: background .1s, border-color .1s;
+}
+.strategy-option:hover { background: var(--row-hover); }
+.strategy-option.active {
+  background: rgba(0,45,114,.07);
+  border-color: rgba(0,45,114,.25);
+  font-weight: 600;
+  color: var(--mlb-blue);
+}
+.strategy-option input[type=radio] { accent-color: var(--mlb-blue); flex-shrink: 0; }
+.strategy-help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 800;
+  flex-shrink: 0;
+  cursor: help;
+  position: relative;
+  vertical-align: middle;
+}
+.strategy-help::after {
+  content: attr(data-tip);
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1a1f2e;
+  color: #e8eaf0;
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+  max-width: 260px;
+  white-space: normal;
+  width: 220px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  z-index: 400;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+  line-height: 1.4;
+}
+.strategy-help::before {
+  content: '';
+  position: absolute;
+  right: calc(100% + 2px);
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #1a1f2e;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  z-index: 400;
+}
+.strategy-help:hover::after,
+.strategy-help:hover::before { opacity: 1; }
+
   </style>
 </head>
 <body>
@@ -2366,6 +2569,10 @@ function viewTeam(teamId) {
       <div class="card-header">Team Leaders</div>
       <div class="card-body" id="team-leaders"></div>
     </div>
+    <div class="card" id="optimal-lineup-card">
+      <div class="card-header">Optimal Lineup</div>
+      <div class="card-body padded" id="optimal-lineup-body"></div>
+    </div>
   `;
 
   const teamLeagueCtx = calcLeagueContext(DATA);
@@ -2484,6 +2691,420 @@ function viewTeam(teamId) {
 
   // Hide the card entirely if no stats yet
   if (!teamLeadersHtml.trim()) document.getElementById('team-leaders-card').style.display = 'none';
+
+  renderOptimalLineup(teamId);
+}
+
+function renderOptimalLineup(teamId) {
+  const SEASON_ORDER_LU = ['spring-2023', 'spring-2024', 'fall-2024', 'spring-2025', 'fall-2025', 'spring-2026'];
+  const curIdx = SEASON_ORDER_LU.indexOf(currentSeason);
+  const relevantSeasons = SEASON_ORDER_LU.slice(Math.max(0, curIdx - 2), curIdx + 1);
+
+  // Gather every player who appeared for this team in any of the relevant seasons
+  const playerPool = []; // { id, name }
+  const playerSeasonMap = {}; // playerId -> [{ seasonId, seasonLabel, player }]
+
+  relevantSeasons.forEach(seasonId => {
+    const sd = SEASONS[seasonId];
+    if (!sd) return;
+    sd.players.filter(p => p.teamId === teamId).forEach(p => {
+      if (!playerSeasonMap[p.id]) playerSeasonMap[p.id] = [];
+      playerSeasonMap[p.id].push({ seasonId, seasonLabel: SEASON_LABELS[seasonId], player: p });
+      if (!playerPool.some(pp => pp.id === p.id)) playerPool.push({ id: p.id, name: p.name });
+    });
+  });
+
+  // Pre-select: players who appeared in the most recent completed game this season
+  const curSD = SEASONS[currentSeason];
+  const completedTeamGames = curSD.games
+    .filter(g => (g.homeTeamId === teamId || g.awayTeamId === teamId) && g.homeScore !== undefined)
+    .sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+
+  const latestRoster = new Set();
+  if (completedTeamGames.length > 0) {
+    const lg = completedTeamGames[0];
+    const stats = lg.homeTeamId === teamId ? lg.homeStats : lg.awayStats;
+    if (stats) stats.forEach(s => latestRoster.add(s.playerId));
+  }
+  // Fall back to all current-season players if no games played yet
+  const defaultSelected = latestRoster.size > 0
+    ? latestRoster
+    : new Set(playerPool.filter(p => playerSeasonMap[p.id].some(x => x.seasonId === currentSeason)).map(p => p.id));
+
+  // Build the player-pool checklist, grouped by whether they played the current season
+  const sortAlpha = arr => arr.slice().sort((a, b) => displayName(a.name).localeCompare(displayName(b.name)));
+  const curSeasonPlayers = sortAlpha(playerPool.filter(p => playerSeasonMap[p.id].some(x => x.seasonId === currentSeason)));
+  const pastOnlyPlayers  = sortAlpha(playerPool.filter(p => !playerSeasonMap[p.id].some(x => x.seasonId === currentSeason)));
+
+  function checkItem(p) {
+    const checked = defaultSelected.has(p.id) ? 'checked' : '';
+    return `<label class="lineup-check-item">
+      <input type="checkbox" value="${p.id}" ${checked} onchange="window._recalcLineup&&window._recalcLineup()">
+      <span class="lineup-check-name">${displayName(p.name)}</span>
+    </label>`;
+  }
+
+  const container = document.getElementById('optimal-lineup-body');
+  container.innerHTML = `
+    <div class="lineup-layout">
+      <div class="lineup-sidebar">
+        <div class="lineup-sidebar-header">Player Pool</div>
+        <div class="lineup-sidebar-sub">Latest game roster pre-selected. Check/uncheck to adjust.</div>
+        <div class="lineup-pool-section">
+          <div class="lineup-pool-label">${SEASON_LABELS[currentSeason]}</div>
+          ${curSeasonPlayers.map(checkItem).join('')}
+        </div>
+        ${pastOnlyPlayers.length > 0 ? `
+        <div class="lineup-pool-section">
+          <div class="lineup-pool-label">Prior Seasons Only</div>
+          ${pastOnlyPlayers.map(checkItem).join('')}
+        </div>` : ''}
+      </div>
+      <div class="lineup-result">
+        <div class="strategy-picker" id="lineup-strategy-picker">
+          <div class="strategy-picker-label">Lineup Strategy</div>
+          <label class="strategy-option active" id="strat-opt-traditional">
+            <input type="radio" name="lineup-strategy" value="traditional" checked onchange="window._recalcLineup&&window._recalcLineup()">
+            Traditional (Speed at Top) <span class="strategy-help" data-tip="Positions 1 &amp; 2 are table-setters with the best OBP. #3 is the best all-around hitter. #4 is the top power hitter (cleanup).">?</span>
+          </label>
+          <label class="strategy-option" id="strat-opt-modern">
+            <input type="radio" name="lineup-strategy" value="modern" onchange="window._recalcLineup&&window._recalcLineup()">
+            Modern / Sabermetric (Best Hitter 2nd) <span class="strategy-help" data-tip="Puts the team&#39;s best all-around hitter at #2 and second-best at #4, ensuring top performers see the most at-bats throughout the season.">?</span>
+          </label>
+          <label class="strategy-option" id="strat-opt-tablesetter">
+            <input type="radio" name="lineup-strategy" value="tablesetter" onchange="window._recalcLineup&&window._recalcLineup()">
+            Table Setter Focus (1&#8211;2&#8211;3) <span class="strategy-help" data-tip="Loads slots 1, 2, and 3 with the three highest-OBP players to stack the bases and maximize scoring opportunities before the power hitters arrive.">?</span>
+          </label>
+          <label class="strategy-option" id="strat-opt-secondary">
+            <input type="radio" name="lineup-strategy" value="secondary" onchange="window._recalcLineup&&window._recalcLineup()">
+            Secondary Leadoff <span class="strategy-help" data-tip="Traditional order at the top, but the player with the best combination of high OBP, low SLG, and low RBI rate anchors the bottom — a pure table-setter who gets on base as the order turns over without wasting a power hitter at the 9-hole.">?</span>
+          </label>
+        </div>
+        <div id="lineup-result-area"></div>
+      </div>
+    </div>`;
+
+  // --- stat helpers ---
+
+  // Collect every game-stat line for this player across the relevant seasons, sorted oldest→newest
+  function collectGameStats(playerId) {
+    const all = [];
+    relevantSeasons.forEach(seasonId => {
+      const sd = SEASONS[seasonId];
+      if (!sd) return;
+      if (!sd.players.find(p => p.id === playerId && p.teamId === teamId)) return;
+      sd.games
+        .filter(g => (g.homeTeamId === teamId || g.awayTeamId === teamId) && g.homeScore !== undefined)
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .forEach(g => {
+          const stats = g.homeTeamId === teamId ? g.homeStats : g.awayStats;
+          const ps = stats ? stats.find(x => x.playerId === playerId) : null;
+          if (ps) all.push({ date: g.date, seasonId, ...ps });
+        });
+    });
+    all.sort((a, b) => a.date.localeCompare(b.date));
+    return all;
+  }
+
+  const DECAY = 0.75;
+
+  function computeWeightedStats(playerId) {
+    // Current season: per-game recency decay (most recent games matter most)
+    const curGames = collectGameStats(playerId).filter(g => g.seasonId === currentSeason);
+
+    let cur = null;
+    if (curGames.length > 0) {
+      const rev = [...curGames].reverse();
+      let wH=0, wAB=0, wBB=0, wPA=0, wD=0, wT=0, wHR=0, wBI=0;
+      rev.forEach((gs, i) => {
+        const w = Math.pow(DECAY, i);
+        wH  += w * gs.H;   wAB += w * gs.AB;
+        wBB += w * (gs.BB || 0); wPA += w * gs.PA;
+        wD  += w * (gs.D  || 0); wT  += w * (gs.T  || 0);
+        wHR += w * (gs.HR || 0); wBI += w * (gs.BI || 0);
+      });
+      const singles = wH - wD - wT - wHR;
+      const tb = singles + 2*wD + 3*wT + 4*wHR;
+      cur = {
+        woba:   wPA > 0 ? (0.69*wBB + 0.89*singles + 1.27*wD + 1.62*wT + 2.10*wHR) / wPA : 0,
+        obp:    wPA > 0 ? (wH + wBB) / wPA : 0,
+        slg:    wAB > 0 ? tb / wAB : 0,
+        biRate: wPA > 0 ? wBI / wPA : 0,
+      };
+    }
+
+    // Prior seasons: use full season-aggregate stats (not per-game decay) so the
+    // established level isn't distorted by a hot/cold end-of-season stretch.
+    // More recent prior seasons get more weight (0.65× decay per season back).
+    const SEASON_DECAY = 0.65;
+    const priorSeasons = relevantSeasons.filter(s => s !== currentSeason).reverse(); // most recent first
+    let pH=0, pAB=0, pBB=0, pPA=0, pD=0, pT=0, pHR=0, pBI=0, pTotalW=0;
+    priorSeasons.forEach((seasonId, i) => {
+      const sd = SEASONS[seasonId];
+      if (!sd) return;
+      const player = sd.players.find(p => p.id === playerId && p.teamId === teamId);
+      if (!player) return;
+      const s = player.seasonStats;
+      if (!s.PA) return;
+      const w = Math.pow(SEASON_DECAY, i);
+      pH  += w * s.H;   pAB += w * s.AB;
+      pBB += w * (s.BB || 0); pPA += w * s.PA;
+      pD  += w * (s.D  || 0); pT  += w * (s.T  || 0);
+      pHR += w * (s.HR || 0); pBI += w * (s.BI || 0);
+      pTotalW += w;
+    });
+
+    let prior = null;
+    if (pTotalW > 0) {
+      const singles = pH - pD - pT - pHR;
+      const tb = singles + 2*pD + 3*pT + 4*pHR;
+      prior = {
+        woba:   pPA > 0 ? (0.69*pBB + 0.89*singles + 1.27*pD + 1.62*pT + 2.10*pHR) / pPA : 0,
+        obp:    pPA > 0 ? (pH + pBB) / pPA : 0,
+        slg:    pAB > 0 ? tb / pAB : 0,
+        biRate: pPA > 0 ? pBI / pPA : 0,
+      };
+    }
+
+    if (!cur && !prior) return null;
+
+    // Blend: current season grows in weight as games accumulate (at K games = 50/50)
+    const K     = 5;
+    const alpha = curGames.length / (curGames.length + K);
+
+    function blend(curVal, priorVal) {
+      if (!cur)   return priorVal ?? 0;
+      if (!prior) return curVal  ?? 0;
+      return alpha * curVal + (1 - alpha) * priorVal;
+    }
+
+    const weightedWOBA   = blend(cur?.woba,   prior?.woba);
+    const weightedOBP    = blend(cur?.obp,    prior?.obp);
+    const weightedSLG    = blend(cur?.slg,    prior?.slg);
+    const weightedBIRate = blend(cur?.biRate, prior?.biRate);
+
+    // Hot/cold based on current season's last 3 games only
+    const last3 = curGames.slice(-3);
+    const l3H   = last3.reduce((s, g) => s + g.H, 0);
+    const l3AB  = last3.reduce((s, g) => s + g.AB, 0);
+    let recentForm = null;
+    if (last3.length >= 3) {
+      if (last3.every(g => g.H > 0) && last3.filter(g => g.H >= 2).length >= 2) recentForm = 'hot';
+      else if (l3AB >= 3 && l3H / l3AB < 0.400) recentForm = 'cold';
+    }
+
+    const totalGames = curGames.length + priorSeasons.reduce((s, seasonId) => {
+      const sd = SEASONS[seasonId];
+      if (!sd) return s;
+      const p = sd.players.find(pl => pl.id === playerId && pl.teamId === teamId);
+      return s + (p ? p.seasonStats.G || 0 : 0);
+    }, 0);
+
+    return { games: totalGames, curGames: curGames.length, alpha, weightedWOBA, weightedOBP, weightedSLG, weightedBIRate, recentForm };
+  }
+
+  // --- lineup builder ---
+
+  function buildLineup() {
+    const checked = Array.from(container.querySelectorAll('input[type=checkbox]:checked')).map(cb => cb.value);
+    const resultEl = document.getElementById('lineup-result-area');
+
+    if (checked.length < 2) {
+      resultEl.innerHTML = '<p class="lineup-empty">Select at least 2 players to generate a lineup.</p>';
+      return;
+    }
+
+    // Compute weighted and baseline stats for each selected player
+    const entries = checked.map(id => {
+      const ws = computeWeightedStats(id);
+      const name = playerPool.find(p => p.id === id)?.name || id;
+      return { id, name, ws };
+    });
+
+    const eligible  = entries.filter(e => e.ws && e.ws.games > 0);
+    const noDataIds = entries.filter(e => !e.ws || e.ws.games === 0);
+
+    if (!eligible.length) {
+      resultEl.innerHTML = '<p class="lineup-empty">No game data found for selected players.</p>';
+      return;
+    }
+
+    const strategy = (container.querySelector('input[name="lineup-strategy"]:checked') || {}).value || 'traditional';
+
+    // Update active highlight on strategy options
+    ['traditional','modern','tablesetter','secondary'].forEach(s => {
+      const el = document.getElementById('strat-opt-' + s);
+      if (el) el.classList.toggle('active', s === strategy);
+    });
+
+    // Hot/cold multiplier applied to sorting only (displayed stats are unchanged)
+    const formMult = e => e.ws.recentForm === 'hot' ? 1.15 : e.ws.recentForm === 'cold' ? 0.90 : 1.0;
+
+    // Sort helpers
+    const byWOBA = [...eligible].sort((a, b) => b.ws.weightedWOBA * formMult(b) - a.ws.weightedWOBA * formMult(a));
+    const byOBP  = [...eligible].sort((a, b) => b.ws.weightedOBP  * formMult(b) - a.ws.weightedOBP  * formMult(a));
+    const bySLG  = [...eligible].sort((a, b) => b.ws.weightedSLG  * formMult(b) - a.ws.weightedSLG  * formMult(a));
+    const n = eligible.length;
+    let lineup = [];
+
+    // Helper: pick secondary leadoff (2nd-best OBP) to bat last
+    function withSecondaryLeadoff(orderedMiddle) {
+      if (n < 4) return orderedMiddle;
+      const secondOBP = byOBP[1];
+      const middle = orderedMiddle.filter(e => e.id !== secondOBP.id);
+      return [...middle, secondOBP];
+    }
+
+    if (strategy === 'traditional') {
+      // #1 best OBP, #2 second-best OBP, #3 best wOBA, #4 best SLG, rest by wOBA
+      const leadoff = byOBP[0];
+      const second  = byOBP[1];
+      const pool    = byWOBA.filter(e => e.id !== leadoff?.id && e.id !== second?.id);
+      const third   = pool[0];
+      const fourth  = [...pool.slice(1)].sort((a, b) => b.ws.weightedSLG - a.ws.weightedSLG)[0];
+      const tail    = pool.slice(1).filter(e => e.id !== fourth?.id)
+                         .sort((a, b) => b.ws.weightedWOBA - a.ws.weightedWOBA);
+      lineup = [leadoff, second, third, fourth, ...tail].filter(Boolean);
+
+    } else if (strategy === 'modern') {
+      // #1 best OBP (outside top-2 wOBA), #2 best wOBA, #3 second-best wOBA, #4 best SLG, rest by wOBA
+      const top2wOBA = byWOBA.slice(0, 2);
+      const notTop2  = byWOBA.slice(2);
+      const leadoff  = [...notTop2].sort((a, b) => b.ws.weightedOBP - a.ws.weightedOBP)[0]
+                       || byWOBA[byWOBA.length - 1];
+      const second   = top2wOBA[0]; // best wOBA
+      const third    = top2wOBA[1]; // second-best wOBA
+      const restPool = byWOBA.filter(e => e.id !== leadoff?.id && e.id !== second?.id && e.id !== third?.id);
+      const fourth   = [...restPool].sort((a, b) => b.ws.weightedSLG - a.ws.weightedSLG)[0];
+      const tail     = restPool.filter(e => e.id !== fourth?.id)
+                               .sort((a, b) => b.ws.weightedWOBA - a.ws.weightedWOBA);
+      lineup = [leadoff, second, third, fourth, ...tail].filter(Boolean);
+
+    } else if (strategy === 'tablesetter') {
+      // #1 best OBP, #2 second-best OBP, #3 third-best OBP, #4 best SLG, rest by wOBA
+      const leadoff = byOBP[0];
+      const second  = byOBP[1];
+      const third   = byOBP[2];
+      const restPool = byWOBA.filter(e => e.id !== leadoff?.id && e.id !== second?.id && e.id !== third?.id);
+      const fourth  = [...restPool].sort((a, b) => b.ws.weightedSLG - a.ws.weightedSLG)[0];
+      const tail    = restPool.filter(e => e.id !== fourth?.id)
+                              .sort((a, b) => b.ws.weightedWOBA - a.ws.weightedWOBA);
+      lineup = [leadoff, second, third, fourth, ...tail].filter(Boolean);
+
+    } else { // 'secondary' — traditional order, secondary leadoff explicitly anchors the bottom
+      // #1 best OBP, #2 second-best OBP, #3 best wOBA, #4 best SLG,
+      // #5 second-best wOBA, rest by wOBA, last = best OBP-to-SLG ratio (high OBP, low SLG)
+      // Score = OBP - SLG: rewards pure on-base ability, penalizes wasted power at the bottom
+      // Secondary leadoff score: OBP is the primary driver (2×), SLG and BI_rate are penalties
+      // This ensures we still pick a genuinely high-OBP player, just not a power hitter
+      const secLeadoffScore = e => e.ws.weightedOBP * 2 - e.ws.weightedSLG - e.ws.weightedBIRate;
+      const secondaryLast = n >= 4
+        ? [...eligible].sort((a, b) => secLeadoffScore(b) - secLeadoffScore(a))[0]
+        : null;
+      const exclude = new Set([secondaryLast?.id].filter(Boolean));
+      const pool = byWOBA.filter(e => !exclude.has(e.id));
+      const poolByOBP = byOBP.filter(e => !exclude.has(e.id));
+      const leadoff = poolByOBP[0];
+      const poolRest = pool.filter(e => e.id !== leadoff?.id);
+      const third   = poolRest[0];
+      const fourth  = [...poolRest.slice(1)].sort((a, b) => b.ws.weightedSLG - a.ws.weightedSLG)[0];
+      const second  = poolByOBP.find(e => e.id !== leadoff?.id && e.id !== third?.id && e.id !== fourth?.id);
+      const tail    = poolRest.filter(e => e.id !== second?.id && e.id !== third?.id && e.id !== fourth?.id)
+                               .sort((a, b) => b.ws.weightedWOBA - a.ws.weightedWOBA);
+      lineup = [leadoff, second, third, fourth, ...tail, secondaryLast].filter(Boolean);
+    }
+
+    // Build HTML for each lineup slot
+    function justifySlot(e, slotNum, nTotal) {
+      const woba = e.ws.weightedWOBA.toFixed(3).replace(/^0/, '');
+      const obp  = e.ws.weightedOBP.toFixed(3).replace(/^0/, '');
+      const slg  = e.ws.weightedSLG.toFixed(3).replace(/^0/, '');
+      const parts = [];
+
+      const isLast = slotNum === nTotal;
+
+      if (isLast && strategy === 'secondary') {
+        const biRate = e.ws.weightedBIRate.toFixed(3).replace(/^0/, '');
+        parts.push(`#${slotNum} (last): secondary leadoff — selected for high OBP (${obp}), low SLG (${slg}), and low RBI rate (${biRate}/PA); a pure table-setter who gets on base without wasting power at the bottom of the order`);
+      } else if (strategy === 'traditional') {
+        if (slotNum === 1) parts.push(`Leadoff: best OBP (${obp}) — speed and on-base ability to set the table`);
+        else if (slotNum === 2) parts.push(`#2: second-best OBP (${obp}) — table-setter who moves runners`);
+        else if (slotNum === 3) parts.push(`#3: best all-around hitter (wOBA ${woba}) — sees the most at-bats in the lineup`);
+        else if (slotNum === 4) parts.push(`Cleanup: top power hitter (SLG ${slg}) — drives in runners left by the table-setters`);
+        else if (slotNum === 5) parts.push(`#5: wOBA ${woba} — protects the cleanup hitter and punishes intentional walks`);
+        else parts.push(`#${slotNum} of ${nTotal} by weighted wOBA (${woba})`);
+      } else if (strategy === 'modern') {
+        if (slotNum === 1) parts.push(`Leadoff: best OBP outside top-2 (${obp}) — gets on base for the best hitters behind them`);
+        else if (slotNum === 2) parts.push(`#2: best all-around hitter (wOBA ${woba}) — batting 2nd maximizes their at-bats all season`);
+        else if (slotNum === 3) parts.push(`#3: second-best hitter (wOBA ${woba}) — high-leverage spot with runners typically on base`);
+        else if (slotNum === 4) parts.push(`Cleanup: best power hitter (SLG ${slg}) — drives in runners accumulated by the top three`);
+        else if (slotNum === 5) parts.push(`#5: wOBA ${woba} — third-best hitter keeps pressure on the defense`);
+        else parts.push(`#${slotNum} of ${nTotal} by weighted wOBA (${woba})`);
+      } else if (strategy === 'tablesetter') {
+        if (slotNum === 1) parts.push(`#1: highest OBP (${obp}) — top table-setter`);
+        else if (slotNum === 2) parts.push(`#2: second-best OBP (${obp}) — extends rallies and moves runners`);
+        else if (slotNum === 3) parts.push(`#3: third-best OBP (${obp}) — three potential baserunners ahead of the cleanup`);
+        else if (slotNum === 4) parts.push(`Cleanup: best SLG (${slg}) — arrives with the bases loaded by three OBP hitters`);
+        else parts.push(`#${slotNum} of ${nTotal} by weighted wOBA (${woba})`);
+      } else { // secondary
+        if (slotNum === 1) parts.push(`Leadoff: best OBP (${obp}) — gets on base to start rallies`);
+        else if (slotNum === 2) parts.push(`#2: OBP ${obp} — moves runners and reaches base for the heart of the order`);
+        else if (slotNum === 3) parts.push(`#3: best all-around hitter (wOBA ${woba}) — sees the most at-bats`);
+        else if (slotNum === 4) parts.push(`Cleanup: best SLG (${slg}) — drives in runners from the top of the order`);
+        else if (slotNum === 5) parts.push(`#5: wOBA ${woba} — protects the cleanup spot`);
+        else parts.push(`#${slotNum} of ${nTotal} by weighted wOBA (${woba})`);
+      }
+
+      if (e.ws.recentForm === 'hot')
+        parts.push(`on a hot streak (hits in all last 3 games, multi-hit in 2+)`);
+      else if (e.ws.recentForm === 'cold')
+        parts.push(`cold stretch (batting under .400 over last 3 games)`);
+
+      return parts.join('; ');
+    }
+
+    const slotsHtml = lineup.map((e, idx) => {
+      const slotNum = idx + 1;
+
+      const streakHtml = e.ws.recentForm === 'hot'
+        ? `<span class="streak-hot" title="Hot: hits in all 3 of last 3 games, multi-hit in 2+">&#128293; Hot</span>`
+        : e.ws.recentForm === 'cold'
+          ? `<span class="streak-cold" title="Cold: batting under .400 over last 3 games">&#10052;&#65039; Cold</span>`
+          : '';
+
+      const woba = e.ws.weightedWOBA.toFixed(3).replace(/^0/, '');
+      const obp  = e.ws.weightedOBP.toFixed(3).replace(/^0/, '');
+      const slg  = e.ws.weightedSLG.toFixed(3).replace(/^0/, '');
+      const just = justifySlot(e, slotNum, n);
+
+      return `<div class="lineup-slot">
+        <div class="lineup-pos-badge">${slotNum}</div>
+        <img class="mini-avatar" src="${avatarUrl(e.name, 26, e.id)}" alt=""
+             onerror="this.onerror=null;this.src=avatarFallbackUrl(this.dataset.n,26)" data-n="${e.name}">
+        <div class="lineup-player-info">
+          <div class="lineup-player-name">
+            <a class="player-link" href="#/player/${e.id}">${displayName(e.name)}</a>
+            ${streakHtml}
+          </div>
+          <div class="lineup-stats-row">
+            <span title="Blended wOBA: current season weighted ${Math.round(e.ws.alpha*100)}%, prior ${Math.round((1-e.ws.alpha)*100)}%">wOBA <strong>${woba}</strong></span>
+            <span title="Blended OBP">OBP <strong>${obp}</strong></span>
+            <span title="Blended SLG">SLG <strong>${slg}</strong></span>
+          </div>
+          <div class="lineup-justification">${just}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    const noDataNote = noDataIds.length
+      ? `<div class="lineup-no-data">No game data found for: ${noDataIds.map(e => displayName(e.name)).join(', ')} — excluded from lineup.</div>`
+      : '';
+
+    resultEl.innerHTML = `<div class="lineup-slots">${slotsHtml}</div>${noDataNote}`;
+  }
+
+  window._recalcLineup = buildLineup;
+  buildLineup();
 }
 
 function showSpiderPopover(event, axisIdx) {
