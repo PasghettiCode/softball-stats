@@ -2299,21 +2299,21 @@ function viewStandings() {
   const leagueCtxLeaders = calcLeagueContext(DATA);
   const leaders = {
     'Batting Avg': qualified.map(p => ({ p, v: parseFloat(calcAVG(p.seasonStats.H, p.seasonStats.AB)) })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Hits':        leaderPool.map(p => ({ p, v: p.seasonStats.H })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Runs':        leaderPool.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'RBI':         leaderPool.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Hits':        DATA.players.map(p => ({ p, v: p.seasonStats.H })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Runs':        DATA.players.map(p => ({ p, v: p.seasonStats.R })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'RBI':         DATA.players.map(p => ({ p, v: p.seasonStats.BI })).sort((a, b) => b.v - a.v).slice(0, 5),
     'SLG':         qualified.map(p => ({ p, v: parseFloat(calcSLG(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Doubles':     leaderPool.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Triples':     leaderPool.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Home Runs':   leaderPool.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Walks':       leaderPool.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Doubles':     DATA.players.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Triples':     DATA.players.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Home Runs':   DATA.players.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Walks':       DATA.players.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
   };
   const advancedLeaders = {
     'OBP':          qualified.map(p => ({ p, v: parseFloat(calcOBP(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
     'OPS':          qualified.map(p => ({ p, v: parseFloat(calcOPS(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
     'wOBA':         qualified.map(p => ({ p, v: parseFloat(calcWOBA(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
     'ISO':          qualified.filter(p => p.seasonStats.AB > 0).map(p => ({ p, v: parseFloat(calcISO(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
-    'Runs Created': leaderPool.map(p => ({ p, v: parseFloat(calcRC(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
+    'Runs Created': DATA.players.map(p => ({ p, v: parseFloat(calcRC(p.seasonStats)) })).sort((a, b) => b.v - a.v).slice(0, 5),
     'oWAR':         qualified.map(p => ({ p, v: calcOWAR(p.seasonStats, leagueCtxLeaders) })).sort((a, b) => b.v - a.v).slice(0, 5),
   };
 
@@ -4112,9 +4112,10 @@ function viewBoxScore(gameId) {
       const p = getPlayer(ps.playerId);
       return `<tr>
         <td><a class="player-link" href="#/player/${ps.playerId}">${p ? displayName(p.name) : ps.playerId}</a></td>
-        <td class="num">${ps.PA}</td><td class="num">${ps.AB}</td><td class="num">${ps.H}</td><td class="num">${ps.R}</td>
+        <td class="num">${ps.PA}</td><td class="num">${ps.AB}</td><td class="num">${ps.R}</td><td class="num">${ps.H}</td>
+        <td class="num">${ps.BI}</td><td class="num">${ps.BB}</td>
         <td class="num">${ps.D}</td><td class="num">${ps.T}</td><td class="num">${ps.HR}</td>
-        <td class="num">${ps.BB}</td><td class="num">${ps.SF}</td><td class="num">${ps.BI}</td><td class="num">${ps.E}</td>
+        <td class="num">${ps.SF}</td><td class="num">${ps.E}</td>
         <td class="num">${calcAVG(ps.H, ps.AB)}</td>
       </tr>`;
     }).join('');
@@ -4123,16 +4124,18 @@ function viewBoxScore(gameId) {
       <div class="card-header">${teamName}</div>
       <div class="card-body"><div class="table-wrap">
         <table><thead><tr>
-          <th>Player</th><th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
-          <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
-          <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th>
+          <th>Player</th><th class="num">PA</th><th class="num">AB</th><th class="num">R</th><th class="num">H</th>
+          <th class="num">RBI</th><th class="num">BB</th>
+          <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">SF</th>
+          <th class="num">E</th><th class="num">AVG</th>
         </tr></thead>
         <tbody>${rows}
           <tr class="totals">
             <td>Totals</td>
-            <td class="num">${totals.PA}</td><td class="num">${totals.AB}</td><td class="num">${totals.H}</td><td class="num">${totals.R}</td>
+            <td class="num">${totals.PA}</td><td class="num">${totals.AB}</td><td class="num">${totals.R}</td><td class="num">${totals.H}</td>
+            <td class="num">${totals.BI}</td><td class="num">${totals.BB}</td>
             <td class="num">${totals.D}</td><td class="num">${totals.T}</td><td class="num">${totals.HR}</td>
-            <td class="num">${totals.BB}</td><td class="num">${totals.SF}</td><td class="num">${totals.BI}</td><td class="num">${totals.E}</td>
+            <td class="num">${totals.SF}</td><td class="num">${totals.E}</td>
             <td class="num">${calcAVG(totals.H, totals.AB)}</td>
           </tr>
         </tbody></table>
