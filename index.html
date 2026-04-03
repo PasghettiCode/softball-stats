@@ -2254,7 +2254,55 @@ function viewStandings() {
         return { w, l, ties };
       })(),
     };
-  }).sort((a, b) => b.pct - a.pct || b.wins - a.wins || a.losses - b.losses);
+  }).sort((a, b) => b.pct - a.pct);
+  // Tiebreaker sort within same-pct groups
+  const _h2h = ids => DATA.games.filter(g =>
+    g.homeScore !== undefined && ids.includes(g.homeTeamId) && ids.includes(g.awayTeamId));
+  const _h2hStat = (tid, games) => {
+    let w = 0, l = 0, t = 0, ra = 0;
+    games.forEach(g => {
+      if (g.homeTeamId !== tid && g.awayTeamId !== tid) return;
+      const ts = g.homeTeamId === tid ? g.homeScore : g.awayScore;
+      const os = g.homeTeamId === tid ? g.awayScore : g.homeScore;
+      ra += os; if (ts > os) w++; else if (ts < os) l++; else t++;
+    });
+    const gp = w + l + t; return { pct: gp ? (w + 0.5 * t) / gp : 0, ra };
+  };
+  const _vsHigher = (tid, groupPct) => {
+    let w = 0, l = 0, t = 0;
+    DATA.games.forEach(g => {
+      if (g.homeScore === undefined) return;
+      const mine = g.homeTeamId === tid, theirs = g.awayTeamId === tid;
+      if (!mine && !theirs) return;
+      const opp = mine ? g.awayTeamId : g.homeTeamId;
+      const ot = teams.find(x => x.id === opp);
+      if (!ot || ot.pct <= groupPct) return;
+      const ts = mine ? g.homeScore : g.awayScore, os = mine ? g.awayScore : g.homeScore;
+      if (ts > os) w++; else if (ts < os) l++; else t++;
+    });
+    const gp = w + l + t; return gp ? (w + 0.5 * t) / gp : 0;
+  };
+  (() => {
+    let i = 0;
+    while (i < teams.length) {
+      let j = i + 1;
+      while (j < teams.length && teams[j].pct === teams[i].pct) j++;
+      if (j - i > 1) {
+        const grp = teams.slice(i, j), grpPct = grp[0].pct;
+        const games = _h2h(grp.map(t => t.id));
+        grp.sort((a, b) => {
+          const sa = _h2hStat(a.id, games), sb = _h2hStat(b.id, games);
+          if (Math.abs(sb.pct - sa.pct) > 1e-9) return sb.pct - sa.pct;  // TB1: H2H record
+          if (sa.ra !== sb.ra) return sa.ra - sb.ra;                       // TB2: H2H RA
+          const va = _vsHigher(a.id, grpPct), vb = _vsHigher(b.id, grpPct);
+          if (Math.abs(vb - va) > 1e-9) return vb - va;                   // TB3: vs higher teams
+          return a.ra - b.ra;                                              // TB4: full season RA
+        });
+        for (let k = 0; k < grp.length; k++) teams[i + k] = grp[k];
+      }
+      i = j;
+    }
+  })();
 
   const fmtR = (v) => v.toFixed(3).replace(/^0/, '');
 
