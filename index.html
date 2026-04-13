@@ -1089,9 +1089,22 @@ let _oldSeasonsPromise = null;
 function _loadOldSeasons() {
   if (_oldSeasonsPromise) return _oldSeasonsPromise;
   if (window.location.protocol === 'file:') {
-    const d = JSON.parse(document.getElementById('seasons-data').textContent);
-    Object.keys(d).forEach(k => { normalizeSeason(d[k]); SEASONS[k] = d[k]; });
-    return (_oldSeasonsPromise = Promise.resolve());
+    _oldSeasonsPromise = new Promise(resolve => {
+      const doLoad = () => {
+        const el = document.getElementById('seasons-data');
+        if (el) {
+          const d = JSON.parse(el.textContent);
+          Object.keys(d).forEach(k => { normalizeSeason(d[k]); SEASONS[k] = d[k]; });
+        }
+        resolve();
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doLoad);
+      } else {
+        doLoad();
+      }
+    });
+    return _oldSeasonsPromise;
   }
   _oldSeasonsPromise = fetch('seasons.json').then(r => r.json()).then(d => {
     Object.keys(d).forEach(k => { normalizeSeason(d[k]); SEASONS[k] = d[k]; });
@@ -4310,9 +4323,12 @@ function router() {
   renderTicker();
 
   if (hash.startsWith('#/team/')) {
-    viewTeam(hash.replace('#/team/', ''));
+    const _tid = hash.replace('#/team/', '');
+    loadAvatars().then(() => viewTeam(_tid));
   } else if (hash.startsWith('#/player/')) {
-    viewPlayer(hash.replace('#/player/', ''));
+    const _pid = hash.replace('#/player/', '');
+    document.getElementById('app').innerHTML = '<p style="padding:24px">Loading…</p>';
+    Promise.all([_loadOldSeasons(), loadAvatars()]).then(() => viewPlayer(_pid));
   } else if (hash.startsWith('#/game/')) {
     const gameId = hash.replace('#/game/', '');
     if (!DATA.games.find(g => g.id === gameId)) {
@@ -4333,10 +4349,10 @@ function router() {
     }
     viewBoxScore(gameId);
   } else if (hash === '#/players') {
-    viewAllPlayers();
+    loadAvatars().then(() => viewAllPlayers());
   } else if (hash.startsWith('#/compare')) {
     const parts = hash.replace('#/compare', '').replace(/^\//, '').split('/');
-    viewCompare(parts[0] || null, parts[1] || null);
+    Promise.all([_loadOldSeasons(), loadAvatars()]).then(() => viewCompare(parts[0] || null, parts[1] || null));
   } else if (hash.startsWith('#/schedule')) {
     const weekMatch = hash.match(/#\/schedule\/week\/(\d+)/);
     viewSchedule(weekMatch ? parseInt(weekMatch[1]) : null);
@@ -4354,6 +4370,7 @@ function _finishInit() {
 }
 function init() {
   loadAvatars();
+  _loadOldSeasons(); // prefetch in background
   const urlSeason = new URLSearchParams(location.search).get('season');
   if (urlSeason && !SEASONS[urlSeason]) {
     _loadOldSeasons().then(() => { if (SEASONS[urlSeason]) currentSeason = urlSeason; _finishInit(); });
