@@ -2026,7 +2026,7 @@ function playerBadges(player) {
   const badges = [];
 
   // League leader checks
-  const leaderAVG = [...all].filter(p => p.seasonStats.AB > 0).sort((a,b) => (b.seasonStats.H/b.seasonStats.AB) - (a.seasonStats.H/a.seasonStats.AB))[0];
+  const leaderAVG = [...all].filter(p => p.seasonStats.AB >= 3).sort((a,b) => (b.seasonStats.H/b.seasonStats.AB) - (a.seasonStats.H/a.seasonStats.AB))[0];
   const leaderH   = [...all].sort((a,b) => b.seasonStats.H - a.seasonStats.H)[0];
   const leaderHR  = [...all].sort((a,b) => b.seasonStats.HR - a.seasonStats.HR)[0];
   const leaderRBI = [...all].sort((a,b) => b.seasonStats.BI - a.seasonStats.BI)[0];
@@ -2044,10 +2044,10 @@ function playerBadges(player) {
   if (s.G >= 2 && s.D >= s.G / 2)        badges.push({ label: 'Gap Machine', cls: 'blue', icon: '\uD83C\uDFD3', tip: `${s.D} doubles in ${s.G} games — at least one every other game` });
   if (s.G >= 2 && s.BI / s.G >= 2)       badges.push({ label: 'Run Producer', cls: 'fire', icon: '\uD83D\uDCA5', tip: `${s.BI} RBI in ${s.G} games (${(s.BI/s.G).toFixed(1)} per game) — elite run production` });
   if (s.G >= 2 && s.R / s.G >= 1)        badges.push({ label: 'Runs Scored', cls: 'blue', icon: '\uD83C\uDFC3', tip: `${s.R} runs in ${s.G} games (${(s.R/s.G).toFixed(1)} per game) — scoring at an elite clip` });
-  if (s.G >= 2 && s.BB / s.G >= 0.25)    badges.push({ label: 'Eye at the Plate', cls: '', icon: '\uD83D\uDC40', tip: `${s.BB} walks in ${s.G} games — exceptional patience in a free-swinging league` });
+  if (s.G >= 2 && s.BB >= 2 && s.BB / s.G >= 0.25)    badges.push({ label: 'Eye at the Plate', cls: '', icon: '\uD83D\uDC40', tip: `${s.BB} walks in ${s.G} games — exceptional patience in a free-swinging league` });
   if (s.HR >= 1)                         badges.push({ label: 'Went Yard', cls: 'fire', icon: '\uD83D\uDE80', tip: 'Hit at least one home run this season' });
   if (s.T >= 1)                          badges.push({ label: 'Triple Threat', cls: 'blue', icon: '\u26A1', tip: 'Hit at least one triple this season — rare in slowpitch!' });
-  if (s.AB > 0 && s.H / s.AB >= 0.700 && s.AB < 5) badges.push({ label: '.700 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .700 or better this season' });
+  if (s.AB > 0 && s.H / s.AB >= 0.700 && s.H / s.AB < 1.0 && s.AB < 5) badges.push({ label: '.700 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .700 or better this season' });
   if (s.AB >= 5 && s.H / s.AB >= 0.600) badges.push({ label: '.600 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .600 or better with 5+ AB — elite even in slowpitch' });
   if (s.AB > 0 && s.H / s.AB >= 1.0)    badges.push({ label: 'Perfect Avg', cls: 'gold', icon: '\uD83D\uDCAF', tip: 'Has not made an out yet this season (1.000 AVG)' });
   const teamGP = DATA.games.filter(g => (g.homeTeamId === player.teamId || g.awayTeamId === player.teamId) && g.homeScore !== undefined).length;
