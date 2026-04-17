@@ -71,7 +71,7 @@ header h1 {
 
 /* ── Nav ── */
 nav {
-  background: var(--mlb-blue);
+  background: var(--mlb-dark);
   padding: 0 24px;
   display: flex;
   gap: 0;
@@ -79,7 +79,8 @@ nav {
   position: sticky;
   top: 56px;
   z-index: 199;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.4);
 }
 
 nav a {
@@ -1319,7 +1320,7 @@ td.result-col { text-align: left; white-space: nowrap; }
 </head>
 <body>
   <header>
-    <h1><a href="#/" style="color:inherit;text-decoration:none;" onclick="switchSeason('spring-2026')">Burlingame Dad's Softball</a></h1>
+    <h1><a href="#/" style="color:inherit;text-decoration:none;" onclick="switchSeason('spring-2026')">⚾&nbsp; Burlingame Dad's Softball</a></h1>
     <select id="season-picker" class="season-select" onchange="switchSeason(this.value)">
       <option value="spring-2026">Spring 2026</option>
       <option value="fall-2025">Fall 2025</option>
