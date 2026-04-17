@@ -220,6 +220,22 @@ th[data-tip] { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); t
 th[data-tip].sortable { cursor: pointer; }
 h4[data-tip] { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); text-underline-offset: 3px; }
 #col-tip { display:none; position:fixed; z-index:10002; background:#222; color:#fff; padding:5px 10px; border-radius:5px; font-size:11px; font-weight:400; white-space:nowrap; pointer-events:none; letter-spacing:0; }
+.l10-cell { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); text-underline-offset: 2px; }
+#l10-pop { display:none; position:fixed; z-index:10003; background:#fff; border:1px solid var(--border); border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,.15); padding:10px 12px; pointer-events:none; }
+#l10-pop .l10-seq { display:flex; gap:4px; align-items:center; }
+#l10-pop .l10-dot { width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; color:#fff; flex-shrink:0; }
+#l10-pop .l10-dot.W { background:#22c55e; }
+#l10-pop .l10-dot.L { background:#ef4444; }
+#l10-pop .l10-dot.T { background:#94a3b8; }
+#l10-pop .l10-divider { width:2px; height:22px; background:var(--border); border-radius:1px; flex-shrink:0; }
+#l10-pop .l10-label { font-size:10px; color:var(--text-muted); margin-top:6px; letter-spacing:.4px; display:flex; align-items:center; justify-content:center; gap:8px; }
+#l10-pop .l10-legend-item { display:inline-flex; align-items:center; gap:4px; }
+#l10-pop .l10-legend-bar { display:inline-block; width:2px; height:12px; background:var(--border); border-radius:1px; }
+#ties-pop { display:none; position:fixed; z-index:10003; background:#fff; border:1px solid var(--border); border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,.15); padding:12px 14px; min-width:180px; max-width:260px; font-size:12px; pointer-events:none; }
+#ties-pop .ties-pop-row { padding:4px 0; border-bottom:1px solid var(--border-light); }
+#ties-pop .ties-pop-row:last-child { border-bottom:none; }
+#ties-pop .ties-pop-name { font-weight:700; color:var(--mlb-dark); }
+#ties-pop .ties-pop-ctx { color:var(--text-muted); font-size:11px; margin-top:1px; }
 #mvp-modal { display:none; position:fixed; inset:0; z-index:10000; }
 .mvp-overlay { position:absolute; inset:0; background:rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; padding:16px; }
 .mvp-card { background:#fff; border-radius:12px; max-width:740px; width:100%; max-height:85vh; overflow-y:auto; box-shadow:0 8px 40px rgba(0,0,0,.3); }
@@ -243,6 +259,9 @@ td {
 }
 
 tbody tr:nth-child(even) td { background: var(--row-alt); }
+.hide-adv .adv-col { display: none; }
+.adv-toggle-btn { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--white); color: var(--text-secondary); cursor: pointer; white-space: nowrap; }
+.adv-toggle-btn:hover { background: var(--border-light); }
 #standings-table tbody tr td { background: transparent; padding: 12px 12px; }
 #standings-table tbody tr { background: var(--tc-row, transparent); }
 #standings-table tbody tr:hover { filter: brightness(1.06); }
@@ -291,7 +310,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   color: var(--text-secondary);
 }
 
-.score-box .team-row.winner { font-weight: 700; color: var(--text); }
+.score-box .team-row.winner { font-weight: 700; color: var(--text); background: rgba(34,197,94,.06); margin: 0 -20px; padding: 3px 20px; }
 .score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; color: var(--text-muted); }
 .score-box .team-row.winner .score { color: var(--text); }
 .score-right { display: flex; align-items: center; gap: 3px; }
@@ -737,8 +756,8 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   gap: 20px;
   justify-content: space-between;
 }
-.player-hero-stats { flex-shrink: 0; }
-
+.player-hero-stats-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.player-hero-season-lbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.5); }
 .player-hero-stats {
   display: flex;
   align-items: center;
@@ -1005,12 +1024,47 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   .compare-result-header .vs-col { display: none; }
   .player-avatar { width: 56px; height: 56px; }
   .player-hero-inner { gap: 14px; flex-wrap: wrap; }
+  .player-hero-stats-wrap { width: 100%; }
   .player-hero-stats { width: 100%; justify-content: flex-start; margin-top: 4px; }
   .player-hero-stat { padding: 0 14px 0 0; align-items: flex-start; }
   .key-players-grid { grid-template-columns: 1fr; }
   .key-player-col { border-right: none; border-bottom: 1px solid var(--border-light); }
 }
 
+
+/* ── Records page ── */
+.records-section { margin-bottom: 32px; }
+.records-section-header {
+  font-size: 12px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text-secondary);
+  padding: 0 0 10px; margin-bottom: 16px;
+}
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+.record-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+}
+.record-card-label {
+  font-size: 10px; font-weight: 800; letter-spacing: .7px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;
+}
+.record-card-value {
+  font-size: 40px; font-weight: 900; color: var(--mlb-dark);
+  line-height: 1; margin-bottom: 8px; font-variant-numeric: tabular-nums;
+}
+.record-card-holder { font-size: 13px; font-weight: 700; }
+.record-card-team { font-size: 11px; color: var(--text-secondary); margin-top: 1px; display: flex; align-items: center; gap: 4px; }
+.record-card-team .team-inline-logo, .record-card-holder.team-holder .team-inline-logo { margin-right: 0; }
+.record-card-holder.team-holder { display: flex; align-items: center; gap: 4px; }
+.record-card-context { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+.record-card-ties { font-size: 11px; color: var(--mlb-blue); margin-top: 6px; cursor: help; text-decoration: underline dotted; text-underline-offset: 2px; }
 
 /* ── Share button ── */
 .share-btn {
@@ -1384,6 +1438,7 @@ const NAV_ITEMS = [
   { hash: '#/schedule', label: 'Schedule' },
   { hash: '#/players', label: 'Players' },
   { hash: '#/compare', label: 'Compare' },
+  { hash: '#/records', label: 'Records' },
 ];
 
 function _applySwitchSeason(seasonId) {
@@ -2056,6 +2111,192 @@ function playerBadges(player) {
 }
 
 // ── Compare page ──
+function viewRecords() {
+  document.getElementById('app').innerHTML = '<p style="padding:24px;color:var(--text-muted)">Loading records…</p>';
+  _loadOldSeasons().then(() => {
+    // ── Helpers ──
+    function makeTracker() {
+      let best = null; const entries = [];
+      return {
+        consider(val, entry) {
+          if (!val) return;
+          if (best === null || val > best) { best = val; entries.length = 0; entries.push(entry); }
+          else if (val === best) { entries.push(entry); }
+        },
+        get() { return { val: best, entries }; }
+      };
+    }
+    function sLabel(id) { return SEASON_LABELS[id] || id; }
+    function pLink(name, id) { return `<a href="#/player/${id}" class="player-link">${displayName(name)}</a>`; }
+    function gLink(gameId, label) { return `<a href="#/game/${gameId}" class="game-link">${label}</a>`; }
+    function fmtStat(v) { return v.toFixed(3).replace(/^0/, ''); }
+    function gameCtx(e) { return `vs. ${e.oppName} &middot; ${gLink(e.gameId, 'Wk ' + e.week + ', ' + sLabel(e.seasonId))}`; }
+    function seasonCtx(e) { return e.seasonLabel; }
+
+    // ── Player game records ──
+    const pg = { H: makeTracker(), R: makeTracker(), BI: makeTracker(), HR: makeTracker(), XBH: makeTracker(), BB: makeTracker(), TB: makeTracker() };
+    for (const [sid, season] of Object.entries(SEASONS)) {
+      const pm = {}, tm = {};
+      season.players.forEach(p => pm[p.id] = p);
+      season.teams.forEach(t => tm[t.id] = t);
+      for (const game of season.games) {
+        if (game.homeScore === undefined) continue;
+        [[game.homeStats, game.homeTeamId, game.awayTeamId], [game.awayStats, game.awayTeamId, game.homeTeamId]].forEach(([stats, tid, oppTid]) => {
+          const opp = tm[oppTid];
+          for (const stat of (stats || [])) {
+            const p = pm[stat.playerId]; if (!p) continue;
+            const H = stat.H||0, R = stat.R||0, BI = stat.BI||0, HR = stat.HR||0, D = stat.D||0, T = stat.T||0, BB = stat.BB||0;
+            const XBH = D+T+HR, TB = (H-D-T-HR)+2*D+3*T+4*HR;
+            const base = { playerId: p.id, playerName: p.name, teamId: p.teamId, teamName: (tm[p.teamId]||{}).name||'', oppName: opp ? opp.name : '?', gameId: game.id, seasonId: sid, week: game.week };
+            pg.H.consider(H, {...base, val: H}); pg.R.consider(R, {...base, val: R});
+            pg.BI.consider(BI, {...base, val: BI}); pg.HR.consider(HR, {...base, val: HR});
+            pg.XBH.consider(XBH, {...base, val: XBH}); pg.BB.consider(BB, {...base, val: BB});
+            pg.TB.consider(TB, {...base, val: TB});
+          }
+        });
+      }
+    }
+
+    // ── Player season records ──
+    const ps = { H: makeTracker(), R: makeTracker(), BI: makeTracker(), HR: makeTracker(), XBH: makeTracker(), BB: makeTracker(), AVG: makeTracker(), OPS: makeTracker() };
+    for (const [sid, season] of Object.entries(SEASONS)) {
+      const tm = {}; season.teams.forEach(t => tm[t.id] = t);
+      for (const p of season.players) {
+        const s = p.seasonStats; if (!s || !s.G) continue;
+        const XBH = (s.D||0)+(s.T||0)+(s.HR||0);
+        const base = { playerId: p.id, playerName: p.name, teamId: p.teamId, teamName: (tm[p.teamId]||{}).name||'', seasonId: sid, seasonLabel: sLabel(sid) };
+        ps.H.consider(s.H||0, {...base, val: s.H||0}); ps.R.consider(s.R||0, {...base, val: s.R||0});
+        ps.BI.consider(s.BI||0, {...base, val: s.BI||0}); ps.HR.consider(s.HR||0, {...base, val: s.HR||0});
+        ps.XBH.consider(XBH, {...base, val: XBH}); ps.BB.consider(s.BB||0, {...base, val: s.BB||0});
+        if (sid !== Object.keys(window.INLINE_SEASONS)[0] && (s.AB||0) >= 20) {
+          const avg = (s.H||0)/s.AB;
+          const obp = s.PA ? ((s.H||0)+(s.BB||0))/s.PA : 0;
+          const singles = (s.H||0)-(s.D||0)-(s.T||0)-(s.HR||0);
+          const ops = obp + ((singles+2*(s.D||0)+3*(s.T||0)+4*(s.HR||0))/s.AB);
+          ps.AVG.consider(avg, {...base, val: avg}); ps.OPS.consider(ops, {...base, val: ops});
+        }
+      }
+    }
+
+    // ── Career records ──
+    const careers = {};
+    const SEASON_ORDER_C = ['spring-2023','spring-2024','fall-2024','spring-2025','fall-2025','spring-2026'];
+    for (const sid of SEASON_ORDER_C) {
+      const season = SEASONS[sid]; if (!season) continue;
+      const tm = {}; season.teams.forEach(t => tm[t.id] = t);
+      for (const p of season.players) {
+        const s = p.seasonStats; if (!s || !s.G) continue;
+        if (!careers[p.id]) careers[p.id] = { id: p.id, name: p.name, teamId: '', teamName: '', G: 0, H: 0, R: 0, BI: 0, HR: 0, D: 0, T: 0, BB: 0, AB: 0, PA: 0 };
+        const c = careers[p.id];
+        c.name = p.name; c.teamId = p.teamId; c.teamName = (tm[p.teamId]||{}).name||'';
+        c.G += s.G||0; c.H += s.H||0; c.R += s.R||0; c.BI += s.BI||0;
+        c.HR += s.HR||0; c.D += s.D||0; c.T += s.T||0; c.BB += s.BB||0; c.AB += s.AB||0; c.PA += s.PA||0;
+      }
+    }
+    const pc = { H: makeTracker(), R: makeTracker(), BI: makeTracker(), HR: makeTracker(), XBH: makeTracker(), BB: makeTracker(), G: makeTracker(), AVG: makeTracker() };
+    for (const c of Object.values(careers)) {
+      const XBH = c.D+c.T+c.HR;
+      const base = { playerId: c.id, playerName: c.name, teamId: c.teamId, teamName: c.teamName };
+      pc.H.consider(c.H, {...base, val: c.H}); pc.R.consider(c.R, {...base, val: c.R});
+      pc.BI.consider(c.BI, {...base, val: c.BI}); pc.HR.consider(c.HR, {...base, val: c.HR});
+      pc.XBH.consider(XBH, {...base, val: XBH}); pc.BB.consider(c.BB, {...base, val: c.BB});
+      pc.G.consider(c.G, {...base, val: c.G});
+      if (c.AB >= 50) { const avg = c.H/c.AB; pc.AVG.consider(avg, {...base, val: avg}); }
+    }
+
+    // ── Team game records ──
+    const tg = { RS: makeTracker(), H: makeTracker(), BB: makeTracker(), DIFF: makeTracker(), COMB: makeTracker() };
+    for (const [sid, season] of Object.entries(SEASONS)) {
+      const tm = {}; season.teams.forEach(t => tm[t.id] = t);
+      for (const game of season.games) {
+        if (game.homeScore === undefined) continue;
+        const ht = tm[game.homeTeamId], at = tm[game.awayTeamId];
+        const comb = game.homeScore + game.awayScore;
+        const diff = Math.abs(game.homeScore - game.awayScore);
+        const winTeam = game.homeScore > game.awayScore ? ht : at;
+        const loseTeam = game.homeScore > game.awayScore ? at : ht;
+        const wScore = Math.max(game.homeScore, game.awayScore), lScore = Math.min(game.homeScore, game.awayScore);
+        const gbase = { gameId: game.id, seasonId: sid, week: game.week };
+        tg.COMB.consider(comb, {...gbase, val: comb, teamId: at ? at.id : '', teamId2: ht ? ht.id : '', teamName: at ? at.name : '?', teamName2: ht ? ht.name : '?', oppName: '', score: `${game.awayScore}–${game.homeScore}` });
+        tg.DIFF.consider(diff, {...gbase, val: diff, teamId: winTeam ? winTeam.id : '', teamName: winTeam ? winTeam.name : '?', oppName: loseTeam ? loseTeam.name : '?', score: `${wScore}–${lScore}` });
+        [[game.homeStats, game.homeTeamId, game.awayTeamId, game.homeScore], [game.awayStats, game.awayTeamId, game.homeTeamId, game.awayScore]].forEach(([stats, tid, oppTid, score]) => {
+          const team = tm[tid], opp = tm[oppTid]; if (!team) return;
+          let H = 0, BB = 0;
+          for (const s of (stats || [])) { H += s.H||0; BB += s.BB||0; }
+          const entry = {...gbase, teamId: tid, teamName: team.name, oppName: opp ? opp.name : '?', score };
+          tg.RS.consider(score, {...entry, val: score}); tg.H.consider(H, {...entry, val: H}); tg.BB.consider(BB, {...entry, val: BB});
+        });
+      }
+    }
+
+    // ── Render helpers ──
+    function card(label, tracker, fmtVal, ctxFn, isTeam) {
+      const { val, entries } = tracker.get();
+      if (val === null || !entries.length) return '';
+      const e = entries[0];
+      const fv = fmtVal ? fmtVal(val) : val;
+      const holderHtml = isTeam
+        ? e.teamId2
+          ? `<div class="record-card-holder team-holder">${e.teamId ? teamLogoImg(e.teamId) : ''}${e.teamName} ${e.teamId2 ? teamLogoImg(e.teamId2) : ''}${e.teamName2}</div>`
+          : `<div class="record-card-holder team-holder">${e.teamId ? teamLogoImg(e.teamId) : ''}${e.teamName}</div>`
+        : `<div class="record-card-holder">${pLink(e.playerName, e.playerId)}</div>${e.teamName ? `<div class="record-card-team">${e.teamId ? teamLogoImg(e.teamId) : ''}${e.teamName}</div>` : ''}`;
+      let tiesHtml = '';
+      if (entries.length > 1) {
+        const tieData = entries.slice(1).map(t => ({
+          name: isTeam ? t.teamName : displayName(t.playerName),
+          team: isTeam ? '' : (t.teamName || ''),
+          teamId: t.teamId || '',
+          ctx: ctxFn ? ctxFn(t).replace(/<[^>]+>/g, '') : '' // strip links for tooltip
+        }));
+        const encoded = JSON.stringify(tieData).replace(/"/g, '&quot;');
+        tiesHtml = `<div class="record-card-ties" data-ties="${encoded}">+${entries.length - 1} others tied</div>`;
+      }
+      const ctx = ctxFn ? ctxFn(e) : '';
+      return `<div class="record-card"><div class="record-card-label">${label}</div><div class="record-card-value">${fv}</div>${holderHtml}${ctx ? `<div class="record-card-context">${ctx}</div>` : ''}${tiesHtml}</div>`;
+    }
+
+    const pgCards = [
+      card('Most Hits', pg.H, null, gameCtx), card('Most Runs', pg.R, null, gameCtx),
+      card('Most RBI', pg.BI, null, gameCtx), card('Most HR', pg.HR, null, gameCtx),
+      card('Most XBH', pg.XBH, null, gameCtx), card('Most Walks', pg.BB, null, gameCtx),
+      card('Most Total Bases', pg.TB, null, gameCtx),
+    ].filter(Boolean).join('');
+
+    const psCards = [
+      card('Most Hits', ps.H, null, seasonCtx), card('Most Runs', ps.R, null, seasonCtx),
+      card('Most RBI', ps.BI, null, seasonCtx), card('Most HR', ps.HR, null, seasonCtx),
+      card('Most XBH', ps.XBH, null, seasonCtx), card('Most Walks', ps.BB, null, seasonCtx),
+      card('Best AVG', ps.AVG, fmtStat, e => seasonCtx(e) + ' (min. 20 AB)'),
+      card('Best OPS', ps.OPS, fmtStat, e => seasonCtx(e) + ' (min. 20 AB)'),
+    ].filter(Boolean).join('');
+
+    const pcCards = [
+      card('Most Hits', pc.H, null, null), card('Most Runs', pc.R, null, null),
+      card('Most RBI', pc.BI, null, null), card('Most HR', pc.HR, null, null),
+      card('Most XBH', pc.XBH, null, null), card('Most Walks', pc.BB, null, null),
+      card('Most Games', pc.G, null, null),
+      card('Best Career AVG', pc.AVG, fmtStat, () => 'min. 50 AB'),
+    ].filter(Boolean).join('');
+
+    const tgCards = [
+      card('Most Runs Scored', tg.RS, null, e => `vs. ${e.oppName} &middot; ${gLink(e.gameId, 'Wk ' + e.week + ', ' + sLabel(e.seasonId))}`, true),
+      card('Most Hits', tg.H, null, e => `vs. ${e.oppName} &middot; ${gLink(e.gameId, 'Wk ' + e.week + ', ' + sLabel(e.seasonId))}`, true),
+      card('Most Walks', tg.BB, null, e => `vs. ${e.oppName} &middot; ${gLink(e.gameId, 'Wk ' + e.week + ', ' + sLabel(e.seasonId))}`, true),
+      card('Largest Margin', tg.DIFF, v => '+' + v, e => `${e.score} vs. ${e.oppName} &middot; ${gLink(e.gameId, 'Wk ' + e.week + ', ' + sLabel(e.seasonId))}`, true),
+      card('Highest Combined Score', tg.COMB, null, e => `${e.score} &middot; ${gLink(e.gameId, 'Wk ' + e.week + ', ' + sLabel(e.seasonId))}`, true),
+    ].filter(Boolean).join('');
+
+    document.getElementById('app').innerHTML = `
+      <div class="page-title">Records</div>
+      <div class="page-subtitle">All-time records across every season in league history</div>
+      <div class="records-section"><div class="records-section-header">Player Records &mdash; Best Game</div><div class="records-grid">${pgCards}</div></div>
+      <div class="records-section"><div class="records-section-header">Player Records &mdash; Best Season</div><div class="records-grid">${psCards}</div></div>
+      <div class="records-section"><div class="records-section-header">Player Records &mdash; Career</div><div class="records-grid">${pcCards}</div></div>
+      <div class="records-section"><div class="records-section-header">Team Records &mdash; Best Game (All-Time)</div><div class="records-grid">${tgCards}</div></div>
+    `;
+  });
+}
+
 function buildCompareStatsHtml(p1id, p2id) {
   const p1 = getPlayer(p1id), p2 = getPlayer(p2id);
   if (!p1 || !p2) return '';
@@ -2254,7 +2495,7 @@ function sortableTable(id, data, columns, defaultSort, defaultDir) {
 
     const thead = columns.map(c => {
       if (c.rank) return `<th class="num" style="color:var(--text-muted)">#</th>`;
-      const cls = [c.num ? 'num' : '', 'sortable', sortCol === c.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : ''].filter(Boolean).join(' ');
+      const cls = [c.num ? 'num' : '', 'sortable', c.adv ? 'adv-col' : '', sortCol === c.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : ''].filter(Boolean).join(' ');
       const tipAttr = c.tip ? ` data-tip="${c.tip}"` : '';
       return `<th class="${cls}"${tipAttr} data-col="${c.key}">${c.label}</th>`;
     }).join('');
@@ -2263,11 +2504,14 @@ function sortableTable(id, data, columns, defaultSort, defaultDir) {
       return '<tr>' + columns.map(c => {
         if (c.rank) return `<td class="num" style="color:var(--text-muted);font-size:11px">${idx + 1}</td>`;
         const val = typeof c.render === 'function' ? c.render(row) : (typeof c.val === 'function' ? c.val(row) : row[c.key]);
-        return `<td class="${c.num ? 'num' : ''}">${val}</td>`;
+        return `<td class="${[c.num ? 'num' : '', c.adv ? 'adv-col' : ''].filter(Boolean).join(' ')}">${val}</td>`;
       }).join('') + '</tr>';
     }).join('');
 
-    document.getElementById(id).innerHTML = `<div class="table-wrap"><table><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+    const container = document.getElementById(id);
+    const advKey = (container && container.dataset.advKey) || 'adv';
+    container.innerHTML = `<div class="table-wrap"><table class="adv-table" data-adv-key="${advKey}"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+    applyAdvToggle();
 
     document.querySelectorAll(`#${id} th.sortable`).forEach(th => {
       th.addEventListener('click', () => {
@@ -2279,6 +2523,24 @@ function sortableTable(id, data, columns, defaultSort, defaultDir) {
     });
   }
   render();
+}
+
+const _advShown = {};
+function _advHidden(key) { return !_advShown[key || 'adv']; }
+function applyAdvToggle() {
+  document.querySelectorAll('table.adv-table').forEach(t => {
+    const key = t.dataset.advKey || 'adv';
+    t.classList.toggle('hide-adv', _advHidden(key));
+  });
+  document.querySelectorAll('.adv-toggle-btn').forEach(btn => {
+    const key = btn.dataset.advKey || 'adv';
+    btn.textContent = _advHidden(key) ? 'Show advanced' : 'Hide advanced';
+  });
+}
+function toggleAdvStats(btn) {
+  const key = (btn && btn.dataset.advKey) || 'adv';
+  _advShown[key] = !_advShown[key];
+  applyAdvToggle();
 }
 
 function pctDisplay(w, l, t) {
@@ -2500,22 +2762,21 @@ function viewStandings() {
           const os = g.homeTeamId === t.id ? g.awayScore : g.homeScore;
           return ts > os ? 'W' : ts < os ? 'L' : 'T';
         };
-        let games = getPlayed(DATA);
-        if (games.length < 10) {
-          const curIdx = SEASON_ORDER.indexOf(currentSeason);
-          if (curIdx > 0) {
-            const prevData = SEASONS[SEASON_ORDER[curIdx - 1]];
-            if (prevData) {
-              const prevGames = getPlayed(prevData);
-              games = [...prevGames.slice(-(10 - games.length)), ...games];
-            }
+        let games = getPlayed(DATA).map(g => ({ g, sid: currentSeason }));
+        const curIdx = SEASON_ORDER.indexOf(currentSeason);
+        for (let i = curIdx - 1; i >= 0 && games.length < 10; i--) {
+          const prevData = SEASONS[SEASON_ORDER[i]];
+          if (prevData) {
+            const prevGames = getPlayed(prevData).map(g => ({ g, sid: SEASON_ORDER[i] }));
+            games = [...prevGames.slice(-(10 - games.length)), ...games];
           }
         }
         const slice = games.slice(-10);
         if (slice.length === 0) return null;
         let w = 0, l = 0, ties = 0;
-        slice.forEach(g => { const r = result(g); if (r === 'W') w++; else if (r === 'L') l++; else ties++; });
-        return { w, l, ties };
+        const seq = slice.map(({ g, sid }) => ({ r: result(g), sid }));
+        seq.forEach(({ r }) => { if (r === 'W') w++; else if (r === 'L') l++; else ties++; });
+        return { w, l, ties, seq };
       })(),
     };
   }).sort((a, b) => b.pct - a.pct);
@@ -2581,7 +2842,7 @@ function viewStandings() {
     <td class="num">${t.ties}</td>
     <td class="num">${pctDisplay(t.wins, t.losses, t.ties)}</td>
     <td class="num">${t.streak ? `<span class="streak streak-${t.streak.type.toLowerCase()}">${t.streak.type}${t.streak.count}</span>` : '&mdash;'}</td>
-    <td class="num">${t.last10 ? `${t.last10.w}-${t.last10.l}${t.last10.ties > 0 ? `-${t.last10.ties}` : ''}` : '&mdash;'}</td>
+    <td class="num">${t.last10 ? `<span class="l10-cell" data-seq="${JSON.stringify(t.last10.seq).replace(/"/g, '&quot;')}">${t.last10.w}-${t.last10.l}${t.last10.ties > 0 ? `-${t.last10.ties}` : ''}</span>` : '&mdash;'}</td>
     <td class="num">${t.rs}</td>
     <td class="num">${t.ra}</td>
     <td class="num">${t.rs - t.ra > 0 ? `<span class="rd-pos">+${t.rs - t.ra}</span>` : t.rs - t.ra < 0 ? `<span class="rd-neg">${t.rs - t.ra}</span>` : '0'}</td>
@@ -3051,8 +3312,8 @@ function viewTeam(teamId) {
       </div></div>
     </div>
     <div class="card">
-      <div class="card-header">Roster & Season Stats</div>
-      <div class="card-body" id="team-stats"></div>
+      <div class="card-header" style="display:flex;align-items:center;justify-content:space-between"><span>Roster & Season Stats</span><button class="adv-toggle-btn" data-adv-key="advStatsTeam" onclick="toggleAdvStats(this)"></button></div>
+      <div class="card-body" id="team-stats" data-adv-key="advStatsTeam"></div>
     </div>
     ${teamAwardsPanelHtml(teamId)}
     <div class="card" id="team-leaders-card">
@@ -3098,13 +3359,13 @@ function viewTeam(teamId) {
     { key: 'BI', label: 'RBI', num: true, val: r => r.BI },
     { key: 'E', label: 'E', num: true, val: r => r.E },
     { key: 'AVG', label: 'AVG', num: true, render: r => calcAVG(r.H, r.AB), val: r => r.AVG },
-    { key: 'OBP', label: 'OBP', num: true, tip: 'On-Base Percentage: (H+BB) ÷ PA|How often a player reaches base by any means — the most important rate stat in baseball', render: r => r.OBP.toFixed(3).replace(/^0/, ''), val: r => r.OBP },
-    { key: 'SLG', label: 'SLG', num: true, tip: 'Slugging Pct: Total Bases ÷ AB|Extra base hits count more — measures raw power, not just contact', render: r => r.SLG.toFixed(3).replace(/^0/, ''), val: r => r.SLG },
-    { key: 'ISO', label: 'ISO', num: true, tip: 'Isolated Power: SLG − AVG|Strips out singles to measure pure extra-base power', render: r => r.ISO.toFixed(3).replace(/^0/, ''), val: r => r.ISO },
-    { key: 'OPS', label: 'OPS', num: true, tip: 'On-base Plus Slugging: OBP + SLG|The standard all-around hitting stat — getting on base plus hitting for power', render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
-    { key: 'wOBA', label: 'wOBA', num: true, tip: 'Weighted On-Base Avg: each outcome weighted by its actual run value|More accurate than OPS — a homer counts ~3× more valuable than a walk', render: r => r.wOBA.toFixed(3).replace(/^0/, ''), val: r => r.wOBA },
-    { key: 'RC', label: 'RC', num: true, tip: 'Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team', render: r => r.RC.toFixed(1), val: r => r.RC },
-    { key: 'oWAR', label: 'oWAR', num: true, tip: 'Offensive Wins Above Replacement|Estimates how many wins this player\'s bat contributed vs. a replacement-level player', render: r => r.oWAR.toFixed(2), val: r => r.oWAR },
+    { key: 'OBP', label: 'OBP', num: true, adv: true, tip: 'On-Base Percentage: (H+BB) ÷ PA|How often a player reaches base by any means — the most important rate stat in baseball', render: r => r.OBP.toFixed(3).replace(/^0/, ''), val: r => r.OBP },
+    { key: 'SLG', label: 'SLG', num: true, adv: true, tip: 'Slugging Pct: Total Bases ÷ AB|Extra base hits count more — measures raw power, not just contact', render: r => r.SLG.toFixed(3).replace(/^0/, ''), val: r => r.SLG },
+    { key: 'ISO', label: 'ISO', num: true, adv: true, tip: 'Isolated Power: SLG − AVG|Strips out singles to measure pure extra-base power', render: r => r.ISO.toFixed(3).replace(/^0/, ''), val: r => r.ISO },
+    { key: 'OPS', label: 'OPS', num: true, adv: true, tip: 'On-base Plus Slugging: OBP + SLG|The standard all-around hitting stat — getting on base plus hitting for power', render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
+    { key: 'wOBA', label: 'wOBA', num: true, adv: true, tip: 'Weighted On-Base Avg: each outcome weighted by its actual run value|More accurate than OPS — a homer counts ~3× more valuable than a walk', render: r => r.wOBA.toFixed(3).replace(/^0/, ''), val: r => r.wOBA },
+    { key: 'RC', label: 'RC', num: true, adv: true, tip: 'Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team', render: r => r.RC.toFixed(1), val: r => r.RC },
+    { key: 'oWAR', label: 'oWAR', num: true, adv: true, tip: 'Offensive Wins Above Replacement|Estimates how many wins this player\'s bat contributed vs. a replacement-level player', render: r => r.oWAR.toFixed(2), val: r => r.oWAR },
   ];
 
   sortableTable('team-stats', rows, cols, 'AVG', 'desc');
@@ -3813,6 +4074,70 @@ document.addEventListener('keydown', e => {
   });
 })();
 
+(function() {
+  const pop = document.createElement('div');
+  pop.id = 'l10-pop';
+  document.body.appendChild(pop);
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('[data-seq]');
+    if (!el) { pop.style.display = 'none'; return; }
+    let seq;
+    try { seq = JSON.parse(el.getAttribute('data-seq').replace(/&quot;/g, '"')); } catch(e) { return; }
+    let dots = '', prevSid = null;
+    seq.forEach(({ r, sid }) => {
+      if (prevSid && sid !== prevSid)
+        dots += `<div class="l10-divider" title="${SEASON_LABELS[sid] || sid} | ${SEASON_LABELS[prevSid] || prevSid}"></div>`;
+      dots += `<div class="l10-dot ${r}">${r}</div>`;
+      prevSid = sid;
+    });
+    const hasDivider = seq.some(({ sid }, i) => i > 0 && sid !== seq[i-1].sid);
+    pop.innerHTML = `<div class="l10-seq">${dots}</div><div class="l10-label">oldest &rarr; most recent${hasDivider ? `<span class="l10-legend-item"><span class="l10-legend-bar"></span> season change</span>` : ''}</div>`;
+    pop.style.display = 'block';
+    const r = el.getBoundingClientRect();
+    const pw = pop.offsetWidth, ph = pop.offsetHeight;
+    let left = r.left + r.width / 2 - pw / 2;
+    if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
+    if (left < 8) left = 8;
+    let top = r.top - ph - 6;
+    if (top < 8) top = r.bottom + 6;
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
+  });
+  document.addEventListener('mouseout', e => {
+    if (!e.target.closest('[data-seq]')) return;
+    if (!e.relatedTarget || !e.relatedTarget.closest('[data-seq]')) pop.style.display = 'none';
+  });
+})();
+
+(function() {
+  const pop = document.createElement('div');
+  pop.id = 'ties-pop';
+  document.body.appendChild(pop);
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('[data-ties]');
+    if (!el) { pop.style.display = 'none'; return; }
+    let tieData;
+    try { tieData = JSON.parse(el.getAttribute('data-ties').replace(/&quot;/g, '"')); } catch(err) { return; }
+    pop.innerHTML = tieData.map(t =>
+      `<div class="ties-pop-row"><div class="ties-pop-name">${t.name}</div>${t.team ? `<div class="ties-pop-ctx">${t.teamId ? teamLogoImg(t.teamId) : ''}${t.team}</div>` : ''}<div class="ties-pop-ctx">${t.ctx}</div></div>`
+    ).join('');
+    pop.style.display = 'block';
+    const r = el.getBoundingClientRect();
+    const pw = pop.offsetWidth, ph = pop.offsetHeight;
+    let left = r.left;
+    if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
+    if (left < 8) left = 8;
+    let top = r.top - ph - 6;
+    if (top < 8) top = r.bottom + 6;
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
+  });
+  document.addEventListener('mouseout', e => {
+    if (!e.target.closest('[data-ties]')) return;
+    if (!e.relatedTarget || !e.relatedTarget.closest('[data-ties]')) pop.style.display = 'none';
+  });
+})();
+
 function ordinal(n) {
   if (typeof n === 'string') return n;
   const s = ['th','st','nd','rd'];
@@ -3967,8 +4292,25 @@ function playerSpiderChartHtml(player, allSeasons) {
 }
 
 function viewPlayer(playerId) {
-  const player = getPlayer(playerId);
-  if (!player) { document.getElementById('app').innerHTML = '<p>Player not found.</p>'; return; }
+  let player = getPlayer(playerId);
+  if (!player) {
+    const SEASON_ORDER_VP = ['spring-2026','fall-2025','spring-2025','fall-2024','spring-2024','spring-2023'];
+    for (const sid of SEASON_ORDER_VP) {
+      if (SEASONS[sid] && SEASONS[sid].players.find(p => p.id === playerId)) {
+        currentSeason = sid;
+        DATA = SEASONS[currentSeason];
+        document.getElementById('season-picker').value = sid;
+        const subtitleEl = document.getElementById('season-subtitle');
+        if (subtitleEl) subtitleEl.textContent = 'Burlingame · ' + SEASON_LABELS[sid];
+        const url = new URL(location.href);
+        url.searchParams.set('season', sid);
+        history.replaceState(null, '', url.toString());
+        player = getPlayer(playerId);
+        break;
+      }
+    }
+    if (!player) { document.getElementById('app').innerHTML = '<p>Player not found.</p>'; return; }
+  }
   const team = getTeam(player.teamId);
   const s = player.seasonStats;
 
@@ -4085,9 +4427,9 @@ function viewPlayer(playerId) {
       <td class="num">${b(ps.D,'D')}</td><td class="num">${b(ps.T,'T')}</td><td class="num">${b(ps.HR,'HR')}</td>
       <td class="num">${b(ps.BB,'BB')}</td><td class="num">${b(ps.SF,'SF')}</td><td class="num">${b(ps.BI,'BI')}</td>
       <td class="num">${ps.E}</td>
-      <td class="num">${b(calcAVG(ps.H,ps.AB),'AVG')}</td><td class="num">${b(calcOBP(ps),'OBP')}</td><td class="num">${b(calcSLG(ps),'SLG')}</td><td class="num">${b(calcISO(ps),'ISO')}</td><td class="num">${b(calcOPS(ps),'OPS')}</td>
-      <td class="num">${b(calcWOBA(ps),'wOBA')}</td><td class="num">${calcRC(ps)}</td>
-      <td class="num">${calcOWAR(ps, seasonContexts[os.seasonId]).toFixed(2)}</td>
+      <td class="num">${b(calcAVG(ps.H,ps.AB),'AVG')}</td><td class="num adv-col">${b(calcOBP(ps),'OBP')}</td><td class="num adv-col">${b(calcSLG(ps),'SLG')}</td><td class="num adv-col">${b(calcISO(ps),'ISO')}</td><td class="num adv-col">${b(calcOPS(ps),'OPS')}</td>
+      <td class="num adv-col">${b(calcWOBA(ps),'wOBA')}</td><td class="num adv-col">${calcRC(ps)}</td>
+      <td class="num adv-col">${calcOWAR(ps, seasonContexts[os.seasonId]).toFixed(2)}</td>
     </tr>`;
   }).join('');
 
@@ -4105,29 +4447,29 @@ function viewPlayer(playerId) {
       <td class="num">${tot.D}</td><td class="num">${tot.T}</td><td class="num">${tot.HR}</td>
       <td class="num">${tot.BB}</td><td class="num">${tot.SF}</td><td class="num">${tot.BI}</td>
       <td class="num">${tot.E}</td>
-      <td class="num">${calcAVG(tot.H, tot.AB)}</td><td class="num">${calcOBP(tot)}</td><td class="num">${calcSLG(tot)}</td><td class="num">${calcISO(tot)}</td><td class="num">${calcOPS(tot)}</td>
-      <td class="num">${calcWOBA(tot)}</td><td class="num">${calcRC(tot)}</td>
-      <td class="num">${allSeasons.reduce((sum, os) => sum + calcOWAR(os.player.seasonStats, seasonContexts[os.seasonId]), 0).toFixed(2)}</td>
+      <td class="num">${calcAVG(tot.H, tot.AB)}</td><td class="num adv-col">${calcOBP(tot)}</td><td class="num adv-col">${calcSLG(tot)}</td><td class="num adv-col">${calcISO(tot)}</td><td class="num adv-col">${calcOPS(tot)}</td>
+      <td class="num adv-col">${calcWOBA(tot)}</td><td class="num adv-col">${calcRC(tot)}</td>
+      <td class="num adv-col">${allSeasons.reduce((sum, os) => sum + calcOWAR(os.player.seasonStats, seasonContexts[os.seasonId]), 0).toFixed(2)}</td>
     </tr>`;
   }
 
   const statsHeader = allSeasons.length > 1 ? 'Career Stats' : 'Season Stats';
   const statsHtml = `
   <div class="card">
-    <div class="card-header">${statsHeader}</div>
+    <div class="card-header" style="display:flex;align-items:center;justify-content:space-between"><span>${statsHeader}</span><button class="adv-toggle-btn" data-adv-key="advStatsPlayer" onclick="toggleAdvStats(this)"></button></div>
     <div class="card-body"><div class="table-wrap">
-      <table><thead><tr>
+      <table class="adv-table" data-adv-key="advStatsPlayer"><thead><tr>
         <th>Season</th><th>Team</th>
         <th class="num">G</th><th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
         <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
         <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th>
-        <th class="num" data-tip="On-Base Percentage: (H+BB) ÷ PA|How often a player reaches base by any means — the most important rate stat in baseball">OBP</th>
-        <th class="num" data-tip="Slugging Pct: Total Bases ÷ AB|Extra base hits count more — measures raw power, not just contact">SLG</th>
-        <th class="num" data-tip="Isolated Power: SLG − AVG|Strips out singles to measure pure extra-base power">ISO</th>
-        <th class="num" data-tip="On-base Plus Slugging: OBP + SLG|The standard all-around hitting stat — getting on base plus hitting for power">OPS</th>
-        <th class="num" data-tip="Weighted On-Base Avg: each outcome weighted by its actual run value|More accurate than OPS — a homer counts ~3× more valuable than a walk">wOBA</th>
-        <th class="num" data-tip="Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team">RC</th>
-        <th class="num" data-tip="Offensive Wins Above Replacement|Estimates how many wins this player's bat contributed vs. a replacement-level player">oWAR</th>
+        <th class="num adv-col" data-tip="On-Base Percentage: (H+BB) ÷ PA|How often a player reaches base by any means — the most important rate stat in baseball">OBP</th>
+        <th class="num adv-col" data-tip="Slugging Pct: Total Bases ÷ AB|Extra base hits count more — measures raw power, not just contact">SLG</th>
+        <th class="num adv-col" data-tip="Isolated Power: SLG − AVG|Strips out singles to measure pure extra-base power">ISO</th>
+        <th class="num adv-col" data-tip="On-base Plus Slugging: OBP + SLG|The standard all-around hitting stat — getting on base plus hitting for power">OPS</th>
+        <th class="num adv-col" data-tip="Weighted On-Base Avg: each outcome weighted by its actual run value|More accurate than OPS — a homer counts ~3× more valuable than a walk">wOBA</th>
+        <th class="num adv-col" data-tip="Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team">RC</th>
+        <th class="num adv-col" data-tip="Offensive Wins Above Replacement|Estimates how many wins this player's bat contributed vs. a replacement-level player">oWAR</th>
       </tr></thead>
       <tbody>${seasonRows}${totalsRow}</tbody></table>
     </div></div>
@@ -4181,13 +4523,16 @@ function viewPlayer(playerId) {
           <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? teamLogoImg(team.id) + team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
           ${playerBadges(player)}
         </div>
-        <div class="player-hero-stats">
-          <div class="player-hero-stat"><span class="player-hero-stat-val">${calcAVG(player.seasonStats.H, player.seasonStats.AB)}</span><span class="player-hero-stat-lbl">AVG</span>${avgRank ? `<span class="player-hero-stat-rank">${rankLabel(avgRank)}</span>` : ''}</div>
-          <div class="player-hero-stat-divider"></div>
-          <div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.R}</span><span class="player-hero-stat-lbl">Runs</span><span class="player-hero-stat-rank">${rankLabel(rRank)}</span></div>
-          <div class="player-hero-stat-divider"></div>
-          <div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.BI}</span><span class="player-hero-stat-lbl">RBI</span><span class="player-hero-stat-rank">${rankLabel(biRank)}</span></div>
-          ${player.seasonStats.HR > 0 ? `<div class="player-hero-stat-divider"></div><div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.HR}</span><span class="player-hero-stat-lbl">HR</span><span class="player-hero-stat-rank">${rankLabel(hrRank)}</span></div>` : ''}
+        <div class="player-hero-stats-wrap">
+          <div class="player-hero-season-lbl">${SEASON_LABELS[currentSeason] || currentSeason}</div>
+          <div class="player-hero-stats">
+            <div class="player-hero-stat"><span class="player-hero-stat-val">${calcAVG(player.seasonStats.H, player.seasonStats.AB)}</span><span class="player-hero-stat-lbl">AVG</span>${avgRank ? `<span class="player-hero-stat-rank">${rankLabel(avgRank)}</span>` : ''}</div>
+            <div class="player-hero-stat-divider"></div>
+            <div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.R}</span><span class="player-hero-stat-lbl">Runs</span><span class="player-hero-stat-rank">${rankLabel(rRank)}</span></div>
+            <div class="player-hero-stat-divider"></div>
+            <div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.BI}</span><span class="player-hero-stat-lbl">RBI</span><span class="player-hero-stat-rank">${rankLabel(biRank)}</span></div>
+            ${player.seasonStats.HR > 0 ? `<div class="player-hero-stat-divider"></div><div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.HR}</span><span class="player-hero-stat-lbl">HR</span><span class="player-hero-stat-rank">${rankLabel(hrRank)}</span></div>` : ''}
+          </div>
         </div>
       </div>
     </div>
@@ -4196,7 +4541,7 @@ function viewPlayer(playerId) {
       <div class="card-header">Game Log</div>
       <div class="card-body"><div class="table-wrap">
         <table><thead><tr>
-          <th>Week</th><th>Opp</th><th class="num">Result</th>${hasDetailedLog ? `<th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
+          <th>Week</th><th>Opp</th><th>Result</th>${hasDetailedLog ? `<th class="num">PA</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th>
           <th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
           <th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th>` : ''}
         </tr></thead>
@@ -4218,6 +4563,7 @@ function viewPlayer(playerId) {
     ${vizRowHtml}
     ${careerHtml}
   `;
+  applyAdvToggle();
 }
 
 function buildTeamSeasonStats(teamId) {
@@ -4694,6 +5040,7 @@ function viewAllPlayers() {
       <span class="search-count" id="player-search-count"></span>
     </div>
     <div class="card">
+      <div class="card-header" style="display:flex;align-items:center;justify-content:space-between"><span>All Players</span><button class="adv-toggle-btn" onclick="toggleAdvStats(this)"></button></div>
       <div class="card-body" id="all-players-table"></div>
     </div>
   `;
@@ -4725,13 +5072,13 @@ function viewAllPlayers() {
     { key: 'BI', label: 'RBI', num: true, val: r => r.BI },
     { key: 'E', label: 'E', num: true, val: r => r.E },
     { key: 'AVG', label: 'AVG', num: true, render: r => calcAVG(r.H, r.AB), val: r => r.AVG },
-    { key: 'OBP', label: 'OBP', num: true, tip: 'On-Base Percentage: (H+BB) ÷ PA|How often a player reaches base by any means — the most important rate stat in baseball', render: r => r.OBP.toFixed(3).replace(/^0/, ''), val: r => r.OBP },
-    { key: 'SLG', label: 'SLG', num: true, tip: 'Slugging Pct: Total Bases ÷ AB|Extra base hits count more — measures raw power, not just contact', render: r => r.SLG.toFixed(3).replace(/^0/, ''), val: r => r.SLG },
-    { key: 'ISO', label: 'ISO', num: true, tip: 'Isolated Power: SLG − AVG|Strips out singles to measure pure extra-base power', render: r => r.ISO.toFixed(3).replace(/^0/, ''), val: r => r.ISO },
-    { key: 'OPS', label: 'OPS', num: true, tip: 'On-base Plus Slugging: OBP + SLG|The standard all-around hitting stat — getting on base plus hitting for power', render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
-    { key: 'wOBA', label: 'wOBA', num: true, tip: 'Weighted On-Base Avg: each outcome weighted by its actual run value|More accurate than OPS — a homer counts ~3× more valuable than a walk', render: r => r.wOBA.toFixed(3).replace(/^0/, ''), val: r => r.wOBA },
-    { key: 'RC', label: 'RC', num: true, tip: 'Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team', render: r => r.RC.toFixed(1), val: r => r.RC },
-    { key: 'oWAR', label: 'oWAR', num: true, tip: 'Offensive Wins Above Replacement|Estimates how many wins this player\'s bat contributed vs. a replacement-level player', render: r => r.oWAR.toFixed(2), val: r => r.oWAR },
+    { key: 'OBP', label: 'OBP', num: true, adv: true, tip: 'On-Base Percentage: (H+BB) ÷ PA|How often a player reaches base by any means — the most important rate stat in baseball', render: r => r.OBP.toFixed(3).replace(/^0/, ''), val: r => r.OBP },
+    { key: 'SLG', label: 'SLG', num: true, adv: true, tip: 'Slugging Pct: Total Bases ÷ AB|Extra base hits count more — measures raw power, not just contact', render: r => r.SLG.toFixed(3).replace(/^0/, ''), val: r => r.SLG },
+    { key: 'ISO', label: 'ISO', num: true, adv: true, tip: 'Isolated Power: SLG − AVG|Strips out singles to measure pure extra-base power', render: r => r.ISO.toFixed(3).replace(/^0/, ''), val: r => r.ISO },
+    { key: 'OPS', label: 'OPS', num: true, adv: true, tip: 'On-base Plus Slugging: OBP + SLG|The standard all-around hitting stat — getting on base plus hitting for power', render: r => r.OPS.toFixed(3).replace(/^0/, ''), val: r => r.OPS },
+    { key: 'wOBA', label: 'wOBA', num: true, adv: true, tip: 'Weighted On-Base Avg: each outcome weighted by its actual run value|More accurate than OPS — a homer counts ~3× more valuable than a walk', render: r => r.wOBA.toFixed(3).replace(/^0/, ''), val: r => r.wOBA },
+    { key: 'RC', label: 'RC', num: true, adv: true, tip: 'Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team', render: r => r.RC.toFixed(1), val: r => r.RC },
+    { key: 'oWAR', label: 'oWAR', num: true, adv: true, tip: 'Offensive Wins Above Replacement|Estimates how many wins this player\'s bat contributed vs. a replacement-level player', render: r => r.oWAR.toFixed(2), val: r => r.oWAR },
   ];
 
   sortableTable('all-players-table', rows, allPlayersCols, 'AVG', 'desc');
@@ -4898,8 +5245,10 @@ function router() {
   } else if (hash.startsWith('#/schedule')) {
     const weekMatch = hash.match(/#\/schedule\/week\/(\d+)/);
     viewSchedule(weekMatch ? parseInt(weekMatch[1]) : null);
+  } else if (hash === '#/records') {
+    _loadOldSeasons().then(() => viewRecords());
   } else {
-    viewStandings();
+    _loadOldSeasons().then(() => viewStandings());
   }
 }
 
@@ -4916,6 +5265,7 @@ function _finishInit() {
     }
   }).observe(appEl, { childList: true });
   window.addEventListener('hashchange', router);
+  window.addEventListener('popstate', router);
   router();
 }
 
