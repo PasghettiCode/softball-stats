@@ -4480,6 +4480,24 @@ function viewGamePreview(game) {
   `;
 }
 
+function linkifyRecap(html, players) {
+  const pairs = players
+    .map(p => ({ name: displayName(p.name), id: p.id }))
+    .sort((a, b) => b.name.length - a.name.length);
+  if (!pairs.length) return html;
+  const nameToId = {};
+  const patterns = pairs.map(({ name, id }) => {
+    nameToId[name] = id;
+    return name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  });
+  const combined = new RegExp(`\\b(${patterns.join('|')})\\b`, 'g');
+  return html.replace(/(<[^>]+>)|([^<]+)/g, (match, tag, text) => {
+    if (tag) return tag;
+    return text.replace(combined, name =>
+      `<a href="#/player/${nameToId[name]}" class="player-link">${name}</a>`);
+  });
+}
+
 let _recaps = null;
 let _recapsPromise = null;
 function getRecap(id, cb) {
@@ -4611,7 +4629,7 @@ function viewBoxScore(gameId) {
     const el = document.getElementById('recap-placeholder');
     if (el && html) el.outerHTML = `<div class="card">
     <div class="card-header">Game Recap</div>
-    <div class="card-body padded" style="line-height:1.7">${html}</div>
+    <div class="card-body padded" style="line-height:1.7">${linkifyRecap(html, DATA.players)}</div>
   </div>`;
   });
 
