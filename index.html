@@ -2050,7 +2050,8 @@ function playerBadges(player) {
   if (s.AB > 0 && s.H / s.AB >= 0.700 && s.AB < 5) badges.push({ label: '.700 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .700 or better this season' });
   if (s.AB >= 5 && s.H / s.AB >= 0.600) badges.push({ label: '.600 Club', cls: 'gold', icon: '\uD83D\uDCC8', tip: 'Batting .600 or better with 5+ AB — elite even in slowpitch' });
   if (s.AB > 0 && s.H / s.AB >= 1.0)    badges.push({ label: 'Perfect Avg', cls: 'gold', icon: '\uD83D\uDCAF', tip: 'Has not made an out yet this season (1.000 AVG)' });
-  if (s.G >= 2)                          badges.push({ label: 'Iron Man', cls: '', icon: '\uD83D\uDEE1\uFE0F', tip: 'Appeared in every game so far this season' });
+  const teamGP = DATA.games.filter(g => (g.homeTeamId === player.teamId || g.awayTeamId === player.teamId) && g.homeScore !== undefined).length;
+  if (teamGP >= 2 && s.G >= teamGP)     badges.push({ label: 'Iron Man', cls: '', icon: '\uD83D\uDEE1\uFE0F', tip: `Appeared in all ${teamGP} games so far this season` });
 
   if (badges.length === 0) return '';
   return `<div class="badges">${badges.slice(0, 6).map(b => `<span class="badge ${b.cls}" data-tip="${b.tip}">${b.icon} ${b.label}</span>`).join('')}</div>`;
