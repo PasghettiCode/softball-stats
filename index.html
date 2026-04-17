@@ -931,6 +931,22 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .score-box { gap: 8px; }
 .rd-pos { color: #1a7a3a; font-weight: 600; }
 .rd-neg { color: #c0152a; font-weight: 600; }
+
+/* ── W/L result chips ── */
+td.result-col { text-align: left; white-space: nowrap; }
+.result-chip { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--text-primary); font-size: 13px; font-weight: 600; white-space: nowrap; }
+.result-chip:hover { text-decoration: none; color: var(--text-primary); }
+.result-chip:hover .result-score { text-decoration: underline; color: var(--mlb-red); }
+.result-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 4px;
+  font-size: 10px; font-weight: 900; flex-shrink: 0; letter-spacing: .5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.2);
+}
+.result-chip.win  .result-letter { background: linear-gradient(180deg, #22c55e 0%, #15803d 100%); color: #fff; }
+.result-chip.loss .result-letter { background: linear-gradient(180deg, #f87171 0%, #b91c1c 100%); color: #fff; }
+.result-chip.tie  .result-letter { background: linear-gradient(180deg, #fbbf24 0%, #b45309 100%); color: #fff; }
+.result-score { font-variant-numeric: tabular-nums; }
 .streak { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 8px; white-space: nowrap; }
 .streak-w { background: rgba(26,122,58,.12); color: #1a7a3a; }
 .streak-l { background: rgba(192,21,42,.1); color: #c0152a; }
@@ -2319,7 +2335,7 @@ function viewStandings() {
   const fmtR = (v) => v.toFixed(3).replace(/^0/, '');
 
   const standingsRows = teams.map((t, i) => `<tr>
-    <td class="num">${i + 1}</td>
+    <td class="num" style="${TEAM_COLORS[t.id] ? `border-left: 3px solid ${TEAM_COLORS[t.id]}` : ''}">${i + 1}</td>
     <td><a class="team-link" href="#/team/${t.id}">${teamLogoImg(t.id)}${t.name}</a></td>
     <td class="num">${t.wins}</td>
     <td class="num">${t.losses}</td>
@@ -2429,7 +2445,7 @@ function viewStandings() {
       <div class="card-body"><div class="table-wrap">
         <table>
           <thead><tr>
-            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">L10</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
+            <th class="num" style="border-left:3px solid var(--mlb-blue)">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">L10</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
           </tr></thead>
           <tbody>${standingsRows}</tbody>
         </table>
@@ -2722,13 +2738,13 @@ function viewTeam(teamId) {
     const oppScore = played ? (isHome ? g.awayScore : g.homeScore) : null;
     const result = played ? (teamScore > oppScore ? 'W' : teamScore < oppScore ? 'L' : 'T') : null;
     const resultCell = played
-      ? `<a href="#/game/${g.id}"><strong>${result}</strong> ${teamScore}-${oppScore}</a>`
+      ? `<a class="result-chip ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'tie'}" href="#/game/${g.id}"><span class="result-letter">${result}</span><span class="result-score">${teamScore}&ndash;${oppScore}</span></a>`
       : `<a href="#/game/${g.id}" style="font-size:12px;font-weight:600;color:var(--link-blue)">Preview</a>`;
     return `<tr>
       <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
       <td>${fmtDate(g.date)}</td>
       <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
-      <td>${resultCell}</td>
+      <td class="result-col">${resultCell}</td>
     </tr>`;
   }).join('');
 
@@ -3700,7 +3716,7 @@ function viewPlayer(playerId) {
         gamesWithStats.push(`<tr>
           <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
           <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
-          <td class="num"><a href="#/game/${g.id}">${result} ${teamScore}-${oppScore}</a></td>
+          <td class="result-col"><a class="result-chip ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'tie'}" href="#/game/${g.id}"><span class="result-letter">${result}</span><span class="result-score">${teamScore}&ndash;${oppScore}</span></a></td>
           <td class="num">${ps.PA}</td>
           <td class="num">${ps.AB}</td>
           <td class="num">${ps.H}</td>
@@ -3718,7 +3734,7 @@ function viewPlayer(playerId) {
         gamesWithoutStats.push(`<tr>
           <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
           <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
-          <td class="num"><a href="#/game/${g.id}">${result} ${teamScore}-${oppScore}</a></td>
+          <td class="result-col"><a class="result-chip ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'tie'}" href="#/game/${g.id}"><span class="result-letter">${result}</span><span class="result-score">${teamScore}&ndash;${oppScore}</span></a></td>
         </tr>`);
       }
     });
