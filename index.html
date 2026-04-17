@@ -56,7 +56,7 @@ header {
   padding: 0 24px;
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 44px;
   position: sticky;
   top: 0;
   z-index: 200;
@@ -77,7 +77,7 @@ nav {
   gap: 0;
   overflow-x: auto;
   position: sticky;
-  top: 56px;
+  top: 44px;
   z-index: 199;
   border-bottom: none;
   box-shadow: 0 2px 8px rgba(0,0,0,.4);
@@ -86,7 +86,7 @@ nav {
 nav a {
   color: rgba(255,255,255,.75);
   text-decoration: none;
-  padding: 11px 20px;
+  padding: 8px 16px;
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
@@ -139,7 +139,17 @@ nav a.active {
 .ticker-row.winner { color: var(--text); font-weight: 700; }
 .ticker-row .team-inline-logo { width: 16px; height: 16px; }
 .ticker-score { font-weight: 700; font-size: 14px; min-width: 20px; text-align: right; }
+.ticker-right { display: flex; align-items: center; gap: 3px; }
+.ticker-ind { font-size: 7px; width: 10px; flex-shrink: 0; color: transparent; line-height: 1; }
+.ticker-ind.winner { color: var(--text-secondary); }
 .ticker-label { font-size: 10px; color: var(--text-muted); letter-spacing: .5px; text-align: center; padding-top: 2px; }
+
+/* ── Page fade-in ── */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+#app.page-fade { animation: page-fade-in 150ms ease-out; }
 
 /* ── Main container ── */
 #app {
@@ -155,17 +165,18 @@ nav a.active {
   border-radius: 8px;
   margin-bottom: 24px;
   overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
 }
 
 .card-header {
-  background: var(--white);
-  color: var(--mlb-blue);
-  padding: 14px 20px;
-  font-size: 16px;
-  font-weight: 800;
+  background: #f7f8fa;
+  color: var(--mlb-dark);
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
   text-transform: none;
-  letter-spacing: .3px;
-  border-bottom: 2px solid var(--mlb-blue);
+  letter-spacing: .2px;
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -187,25 +198,25 @@ table {
 }
 
 th {
-  background: var(--mlb-blue);
-  color: var(--white);
-  font-weight: 600;
+  background: #f0f2f5;
+  color: var(--text-secondary);
+  font-weight: 700;
   font-size: 11px;
   text-align: left;
-  text-transform: none;
-  letter-spacing: .5px;
-  padding: 10px 12px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  padding: 9px 12px;
   white-space: nowrap;
   cursor: default;
   user-select: none;
-  border-bottom: none;
+  border-bottom: 1px solid var(--border);
 }
 
 th.sortable { cursor: pointer; }
-th.sortable:hover { background: #003a8c; }
+th.sortable:hover { background: #e4e7ec; color: var(--text); }
 th.sort-asc::after { content: ' \25B2'; font-size: 9px; }
 th.sort-desc::after { content: ' \25BC'; font-size: 9px; }
-th[data-tip] { cursor: help; text-decoration: underline dotted rgba(255,255,255,.5); text-underline-offset: 3px; }
+th[data-tip] { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); text-underline-offset: 3px; }
 th[data-tip].sortable { cursor: pointer; }
 h4[data-tip] { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); text-underline-offset: 3px; }
 #col-tip { display:none; position:fixed; z-index:10002; background:#222; color:#fff; padding:5px 10px; border-radius:5px; font-size:11px; font-weight:400; white-space:nowrap; pointer-events:none; letter-spacing:0; }
@@ -218,7 +229,7 @@ h4[data-tip] { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); t
 .mvp-formula { background:#f5f7fa; border-radius:8px; margin:16px 20px 4px; padding:12px 16px; font-size:13px; line-height:1.7; border-left:3px solid #0057b8; }
 .mvp-formula strong { color:#0057b8; }
 .mvp-card .table-wrap { padding:12px 20px 20px; }
-.mvp-card table thead th { font-size:11px; }
+.mvp-card table thead th { font-size:11px; background:#f0f2f5; color:var(--text-secondary); }
 .mvp-card tr.mvp-winner td { background:#fffbea; font-weight:700; }
 .award-item.clickable { cursor:pointer; transition:transform .1s, box-shadow .1s; }
 .award-item.clickable:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.12); }
@@ -232,9 +243,11 @@ td {
 }
 
 tbody tr:nth-child(even) td { background: var(--row-alt); }
-#standings-table tbody tr td { background: transparent; }
+#standings-table tbody tr td { background: transparent; padding: 12px 12px; }
 #standings-table tbody tr { background: var(--tc-row, transparent); }
 #standings-table tbody tr:hover { filter: brightness(1.06); }
+#standings-table tbody tr td:first-child { padding-left: 16px; }
+#standings-table tbody tr td:last-child { padding-right: 16px; }
 tbody tr:hover td { background: var(--row-hover); }
 
 tr.totals td {
@@ -281,6 +294,9 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .score-box .team-row.winner { font-weight: 700; color: var(--text); }
 .score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; color: var(--text-muted); }
 .score-box .team-row.winner .score { color: var(--text); }
+.score-right { display: flex; align-items: center; gap: 3px; }
+.score-box-ind { font-size: 8px; color: transparent; width: 10px; flex-shrink: 0; line-height: 1; }
+.score-box-ind.winner { color: var(--text-secondary); }
 .score-box-preview {
   font-size: 14px; font-weight: 700; color: var(--link-blue);
   text-decoration: none; white-space: nowrap; flex-shrink: 0; align-self: center;
@@ -296,21 +312,6 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   margin-right: 12px;
   min-width: 50px;
 }
-
-.box-link {
-  font-size: 12px;
-  color: var(--white);
-  background: var(--mlb-blue);
-  text-decoration: none;
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 4px;
-  text-transform: none;
-  letter-spacing: .5px;
-  transition: background .15s;
-}
-
-.box-link:hover { background: var(--mlb-red); text-decoration: none; }
 
 /* ── Leaders ── */
 .leaders-grid {
@@ -382,16 +383,20 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .back-link {
   display: inline-flex;
   align-items: center;
+  gap: 4px;
   margin-bottom: 16px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--link-blue);
+  color: var(--text-secondary);
   text-decoration: none;
-  text-transform: none;
   letter-spacing: .3px;
+  padding: 4px 10px 4px 6px;
+  border-radius: 20px;
+  transition: background .15s, color .15s;
+  margin-left: -6px;
 }
 
-.back-link:hover { color: var(--mlb-red); }
+.back-link:hover { background: var(--border-light); color: var(--text); }
 
 /* ── Page titles ── */
 .page-title {
@@ -441,9 +446,19 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   font-size: 9px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase;
   padding: 2px 8px; border-radius: 10px;
 }
-.week-status-pill.final      { background: rgba(255,255,255,.15); color: rgba(255,255,255,.8); }
-.week-status-pill.upcoming   { background: rgba(99,179,237,.25);  color: #90cdf4; }
-.week-status-pill.inprogress { background: rgba(251,191,36,.2);   color: #fcd34d; }
+.week-status-pill.final      { background: #e2e8f0; color: #4a5568; }
+.week-status-pill.upcoming   { background: #2b7bb9; color: #fff; }
+.week-status-pill.inprogress { background: #d97706; color: #fff; }
+
+.week-link {
+  font-size: 11px; font-weight: 700; color: var(--text-secondary);
+  text-decoration: none; white-space: nowrap;
+  background: var(--border-light); border-radius: 10px;
+  padding: 2px 8px; transition: background .15s, color .15s;
+}
+.week-link:hover { background: var(--mlb-blue); color: #fff; }
+
+[id^="week-"] { scroll-margin-top: 100px; }
 
 /* ── Gradient section dividers ── */
   height: 2px;
@@ -2215,8 +2230,8 @@ function renderTicker() {
     const hw = g.homeScore > g.awayScore;
     return `<a class="ticker-game" href="#/game/${g.id}" style="text-decoration:none;color:inherit">
       <div class="ticker-label">Wk ${g.week} &middot; Final</div>
-      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${teamLogoImg(away.id)}${away.name}</span><span class="ticker-score">${g.awayScore}</span></div>
-      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${teamLogoImg(home.id)}${home.name}</span><span class="ticker-score">${g.homeScore}</span></div>
+      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${teamLogoImg(away.id)}${away.name}</span><span class="ticker-right"><span class="ticker-score">${g.awayScore}</span><span class="ticker-ind ${!hw ? 'winner' : ''}">&#9664;</span></span></div>
+      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${teamLogoImg(home.id)}${home.name}</span><span class="ticker-right"><span class="ticker-score">${g.homeScore}</span><span class="ticker-ind ${hw ? 'winner' : ''}">&#9664;</span></span></div>
     </a>`;
   }).join('');
 }
@@ -2967,7 +2982,7 @@ function viewTeam(teamId) {
       ? `<a class="result-chip ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'tie'}" href="#/game/${g.id}"><span class="result-letter">${result}</span><span class="result-score">${teamScore}&ndash;${oppScore}</span></a>`
       : `<a href="#/game/${g.id}" style="font-size:12px;font-weight:600;color:var(--link-blue)">Preview</a>`;
     return `<tr>
-      <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
+      <td><a class="week-link" href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
       <td>${fmtDate(g.date)}</td>
       <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
       <td class="result-col">${resultCell}</td>
@@ -3979,7 +3994,7 @@ function viewPlayer(playerId) {
 
       if (ps) {
         gamesWithStats.push(`<tr>
-          <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
+          <td><a class="week-link" href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
           <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
           <td class="result-col"><a class="result-chip ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'tie'}" href="#/game/${g.id}"><span class="result-letter">${result}</span><span class="result-score">${teamScore}&ndash;${oppScore}</span></a></td>
           <td class="num">${ps.PA}</td>
@@ -3997,7 +4012,7 @@ function viewPlayer(playerId) {
         </tr>`);
       } else {
         gamesWithoutStats.push(`<tr>
-          <td><a href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
+          <td><a class="week-link" href="#/schedule/week/${g.week}">Wk ${g.week}</a></td>
           <td>${isHome ? 'vs' : '@'} <a class="team-link" href="#/team/${opp ? opp.id : ''}">${opp ? teamLogoImg(opp.id) + opp.name : 'Unknown'}</a></td>
           <td class="result-col"><a class="result-chip ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'tie'}" href="#/game/${g.id}"><span class="result-letter">${result}</span><span class="result-score">${teamScore}&ndash;${oppScore}</span></a></td>
         </tr>`);
@@ -4628,7 +4643,7 @@ function viewBoxScore(gameId) {
     if (mainSb) {
       const obs = new IntersectionObserver(([entry]) => {
         stickySb.classList.toggle('visible', !entry.isIntersecting);
-      }, { threshold: 0, rootMargin: '-56px 0px 0px 0px' });
+      }, { threshold: 0, rootMargin: '-44px 0px 0px 0px' });
       obs.observe(mainSb);
       stickySb._obs = obs;
     }
@@ -4772,8 +4787,8 @@ function viewSchedule(scrollToWeek) {
       const previewLink = !played ? `<a class="score-box-preview" href="#/game/${g.id}">Preview</a>` : '';
       return `<div class="score-box${played ? '' : ' unplayed'}" ${clickable}>
         <div class="teams">
-          <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${teamLogoImg(away.id)}${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score">${g.awayScore}</span>` : ''}</div>
-          <div class="team-row ${played && hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${teamLogoImg(home.id)}${home.name}</a> <span class="record-inline">${homeRec}</span></span>${played ? `<span class="score">${g.homeScore}</span>` : ''}</div>
+          <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${teamLogoImg(away.id)}${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score-right"><span class="score">${g.awayScore}</span><span class="score-box-ind ${!hw ? 'winner' : ''}">&#9664;</span></span>` : ''}</div>
+          <div class="team-row ${played && hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${teamLogoImg(home.id)}${home.name}</a> <span class="record-inline">${homeRec}</span></span>${played ? `<span class="score-right"><span class="score">${g.homeScore}</span><span class="score-box-ind ${hw ? 'winner' : ''}">&#9664;</span></span>` : ''}</div>
         </div>
         ${previewLink}
       </div>`;
@@ -4875,6 +4890,14 @@ function _finishInit() {
   DATA = SEASONS[currentSeason];
   document.getElementById('season-picker').value = currentSeason;
   const subtitleEl = document.getElementById('season-subtitle'); if (subtitleEl) subtitleEl.textContent = 'Burlingame · ' + SEASON_LABELS[currentSeason];
+  const appEl = document.getElementById('app');
+  new MutationObserver(mutations => {
+    if (mutations.some(m => m.addedNodes.length > 0)) {
+      appEl.classList.remove('page-fade');
+      void appEl.offsetWidth;
+      appEl.classList.add('page-fade');
+    }
+  }).observe(appEl, { childList: true });
   window.addEventListener('hashchange', router);
   router();
 }
