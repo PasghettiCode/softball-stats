@@ -231,6 +231,9 @@ td {
 }
 
 tbody tr:nth-child(even) td { background: var(--row-alt); }
+#standings-table tbody tr td { background: transparent; }
+#standings-table tbody tr { background: var(--tc-row, transparent); }
+#standings-table tbody tr:hover { filter: brightness(1.06); }
 tbody tr:hover td { background: var(--row-hover); }
 
 tr.totals td {
@@ -275,7 +278,8 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 }
 
 .score-box .team-row.winner { font-weight: 700; color: var(--text); }
-.score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; }
+.score-box .score { font-weight: 800; min-width: 28px; text-align: right; font-size: 16px; color: var(--text-muted); }
+.score-box .team-row.winner .score { color: var(--text); }
 .record-inline { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
 .score-box .week-label {
   font-size: 10px;
@@ -419,6 +423,48 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   margin-top: 4px;
   color: rgba(255,255,255,.9);
 }
+
+/* ── Schedule week headers ── */
+.week-card-header { display: flex; align-items: center; justify-content: space-between; }
+.week-header-left { display: flex; align-items: baseline; gap: 10px; }
+.week-number { font-size: 13px; font-weight: 800; }
+.week-date { font-size: 11px; font-weight: 400; opacity: .7; }
+.week-header-right { display: flex; align-items: center; gap: 8px; }
+.week-game-count { font-size: 11px; font-weight: 400; opacity: .6; }
+.week-status-pill {
+  font-size: 9px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 10px;
+}
+.week-status-pill.final      { background: rgba(255,255,255,.15); color: rgba(255,255,255,.8); }
+.week-status-pill.upcoming   { background: rgba(99,179,237,.25);  color: #90cdf4; }
+.week-status-pill.inprogress { background: rgba(251,191,36,.2);   color: #fcd34d; }
+
+/* ── Gradient section dividers ── */
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 15%, var(--border) 85%, transparent 100%);
+  margin: 4px 0 12px;
+  border-radius: 1px;
+}
+
+.team-hero-last-game {
+  display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  flex-shrink: 0; text-decoration: none; color: inherit;
+  padding-left: 24px;
+  border-left: 1px solid rgba(255,255,255,.2);
+  margin-left: 8px;
+}
+.team-hero-last-game, .team-hero-last-game * { text-decoration: none; }
+.team-hero-last-game.no-border { border-left: none; padding-left: 0; margin-left: 0; }
+.team-hero-last-game:hover .thlg-opp { color: #fff; }
+.thlg-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.8); }
+.thlg-body { display: flex; align-items: center; gap: 8px; }
+.thlg-score { font-size: 26px; font-weight: 900; color: #fff; font-variant-numeric: tabular-nums; line-height: 1; }
+.thlg-vs { font-size: 11px; color: rgba(255,255,255,.4); }
+.thlg-opp-block { display: flex; align-items: center; gap: 6px; }
+.thlg-opp { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); transition: color .15s; }
+.thlg-date { font-size: 10px; color: rgba(255,255,255,.4); }
+@media (max-width: 600px) { .team-hero-last-game { display: none; } }
+
 .team-hero-accent-bar {
   height: 3px;
   background: linear-gradient(90deg, var(--tc, var(--mlb-blue)), transparent);
@@ -437,8 +483,8 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 
 .player-hero .page-title { color: var(--white); font-size: 28px; }
 .player-hero .page-subtitle { color: rgba(255,255,255,.7); margin-bottom: 0; }
-.player-hero .page-subtitle a { color: rgba(255,255,255,.85); }
-.player-hero .page-subtitle a:hover { color: var(--white); }
+.player-hero .page-subtitle a { color: rgba(255,255,255,.85); text-decoration: none; }
+.player-hero .page-subtitle a:hover { color: var(--white); text-decoration: underline; }
 
 /* ── Box score header ── */
 .scoreboard {
@@ -494,14 +540,14 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .scoreboard-team-name a:hover { text-decoration: underline; }
 .scoreboard-team-record {
   font-size: 11px;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.75);
 }
 .scoreboard-team.winner .scoreboard-team-record { color: rgba(255,255,255,.9); }
 .scoreboard-team-label {
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 2px;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.6);
   text-transform: uppercase;
 }
 .scoreboard-team.winner .scoreboard-team-label { color: rgba(255,255,255,.85); }
@@ -624,6 +670,44 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: space-between;
+}
+.player-hero-stats { flex-shrink: 0; }
+
+.player-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 10px;
+}
+.player-hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 0 0;
+}
+.player-hero-stat:first-child { padding-left: 0; }
+.player-hero-stat-val {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.player-hero-stat-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,.55);
+  margin-top: 3px;
+}
+.player-hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,.2);
+  margin-right: 16px;
+  flex-shrink: 0;
 }
 .player-avatar {
   width: 76px;
@@ -848,7 +932,9 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   .compare-result-header { grid-template-columns: 1fr 1fr; }
   .compare-result-header .vs-col { display: none; }
   .player-avatar { width: 56px; height: 56px; }
-  .player-hero-inner { gap: 14px; }
+  .player-hero-inner { gap: 14px; flex-wrap: wrap; }
+  .player-hero-stats { width: 100%; justify-content: flex-start; margin-top: 4px; }
+  .player-hero-stat { padding: 0 14px 0 0; align-items: flex-start; }
   .key-players-grid { grid-template-columns: 1fr; }
   .key-player-col { border-right: none; border-bottom: 1px solid var(--border-light); }
 }
@@ -932,6 +1018,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .rd-pos { color: #1a7a3a; font-weight: 600; }
 .rd-neg { color: #c0152a; font-weight: 600; }
 
+
 /* ── W/L result chips ── */
 td.result-col { text-align: left; white-space: nowrap; }
 .result-chip { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--text-primary); font-size: 13px; font-weight: 600; white-space: nowrap; }
@@ -943,9 +1030,9 @@ td.result-col { text-align: left; white-space: nowrap; }
   font-size: 10px; font-weight: 900; flex-shrink: 0; letter-spacing: .5px;
   box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.2);
 }
-.result-chip.win  .result-letter { background: linear-gradient(180deg, #22c55e 0%, #15803d 100%); color: #fff; }
-.result-chip.loss .result-letter { background: linear-gradient(180deg, #f87171 0%, #b91c1c 100%); color: #fff; }
-.result-chip.tie  .result-letter { background: linear-gradient(180deg, #fbbf24 0%, #b45309 100%); color: #fff; }
+.result-chip.win  .result-letter, .result-letter.win  { background: linear-gradient(180deg, #22c55e 0%, #15803d 100%); color: #fff; }
+.result-chip.loss .result-letter, .result-letter.loss { background: linear-gradient(180deg, #f87171 0%, #b91c1c 100%); color: #fff; }
+.result-chip.tie  .result-letter, .result-letter.tie  { background: linear-gradient(180deg, #fbbf24 0%, #b45309 100%); color: #fff; }
 .result-score { font-variant-numeric: tabular-nums; }
 .streak { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 8px; white-space: nowrap; }
 .streak-w { background: rgba(26,122,58,.12); color: #1a7a3a; }
@@ -1389,6 +1476,75 @@ function sparklineSVG(gameStats) {
       ${pts.filter((_, i) => i > 0 && i < pts.length - 1).map(p =>
         `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.5" fill="${color}" opacity=".5"/>`).join('')}
     </svg>
+  </div>`;
+}
+
+// ── Career AVG trendline (season-over-season) ──
+function careerTrendlineSVG(allSeasons, currentSeason) {
+  if (allSeasons.length < 2) return '';
+  const SEASON_ORDER = ['spring-2023','spring-2024','fall-2024','spring-2025','fall-2025','spring-2026'];
+  const sorted = [...allSeasons].sort((a, b) => SEASON_ORDER.indexOf(a.seasonId) - SEASON_ORDER.indexOf(b.seasonId));
+  const pts_data = sorted.map(os => {
+    const s = os.player.seasonStats;
+    return { label: os.seasonLabel.replace('Spring ','Sp ').replace('Fall ','Fa '), avg: s.AB > 0 ? s.H / s.AB : null, isCur: os.seasonId === currentSeason };
+  }).filter(p => p.avg !== null);
+  if (pts_data.length < 2) return '';
+
+  const W = 280, H = 60, PAD = 12, BOTTOM = 28;
+  const avgs = pts_data.map(p => p.avg);
+  const minA = Math.max(0, Math.min(...avgs) - 0.05);
+  const maxA = Math.min(1, Math.max(...avgs) + 0.05);
+  const range = maxA - minA || 0.1;
+
+  const pts = pts_data.map((p, i) => ({
+    ...p,
+    x: PAD + (pts_data.length === 1 ? W / 2 : (i / (pts_data.length - 1)) * W),
+    y: PAD + (1 - (p.avg - minA) / range) * H,
+  }));
+
+  const polyline = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+  const first = pts[0], last = pts[pts.length - 1];
+  const up = last.avg >= first.avg;
+  const color = '#5b8dee';
+  const fmtA = v => v.toFixed(3).replace(/^0/, '');
+
+  const area = [`${first.x.toFixed(1)},${(PAD + H + 4).toFixed(1)}`,
+    ...pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`),
+    `${last.x.toFixed(1)},${(PAD + H + 4).toFixed(1)}`].join(' ');
+
+  const dots = pts.map((p, i) => {
+    const r = p.isCur ? 5 : 3.5;
+    const stroke = p.isCur ? 2 : 1.5;
+    const fill = p.isCur ? '#e4002b' : color;
+    return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="${fill}" stroke="var(--card-bg)" stroke-width="${stroke}"/>`;
+  }).join('');
+
+  const labels = pts.map(p =>
+    `<text x="${p.x.toFixed(1)}" y="${(PAD + H + 16).toFixed(1)}" text-anchor="middle" font-size="8.5" fill="${p.isCur ? '#e4002b' : 'var(--text-muted)'}" font-weight="${p.isCur ? '800' : '400'}">${p.label}</text>`
+  ).join('');
+
+  const valLabels = pts.map((p, i) => {
+    const anchor = i === 0 ? 'start' : i === pts.length - 1 ? 'end' : 'middle';
+    const show = i === 0 || i === pts.length - 1 || p.isCur;
+    if (!show) return '';
+    return `<text x="${p.x.toFixed(1)}" y="${(p.y - 7).toFixed(1)}" text-anchor="${anchor}" font-size="9" fill="${p.isCur ? '#e4002b' : color}" font-weight="700">${fmtA(p.avg)}</text>`;
+  }).join('');
+
+  const trendLabel = (up ? '▲' : '▼') + ' ' + fmtA(last.avg);
+  return `<div class="sparkline-wrap">
+    <div class="sparkline-label">CAREER AVG TREND &nbsp;<span class="sparkline-trend ${up ? 'up' : 'down'}">${trendLabel}</span></div>
+    <svg viewBox="0 0 ${W + PAD * 2} ${H + PAD + BOTTOM + 8}" style="width:100%;max-width:380px;display:block;overflow:visible">
+      <defs><linearGradient id="ctg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${color}" stop-opacity=".18"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </linearGradient></defs>
+      <polygon points="${area}" fill="url(#ctg)"/>
+      <polyline points="${polyline}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="none"/>
+      ${valLabels}
+      ${dots}
+      ${labels}
+    </svg>
+    <div style="font-size:9px;color:var(--text-muted);margin-top:2px"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#e4002b;margin-right:4px;vertical-align:middle"></span>Current season &nbsp;&nbsp;<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${color};margin-right:4px;vertical-align:middle"></span>Prior seasons</div>
   </div>`;
 }
 
@@ -2334,8 +2490,11 @@ function viewStandings() {
 
   const fmtR = (v) => v.toFixed(3).replace(/^0/, '');
 
-  const standingsRows = teams.map((t, i) => `<tr>
-    <td class="num" style="${TEAM_COLORS[t.id] ? `border-left: 3px solid ${TEAM_COLORS[t.id]}` : ''}">${i + 1}</td>
+  const standingsRows = teams.map((t, i) => {
+    const tc = TEAM_COLORS[t.id];
+    const rowStyle = tc ? `style="--tc-row: linear-gradient(90deg, ${tc}12 0%, ${tc}05 50%, transparent 100%)"` : '';
+    return `<tr ${rowStyle}>
+    <td class="num">${i + 1}</td>
     <td><a class="team-link" href="#/team/${t.id}">${teamLogoImg(t.id)}${t.name}</a></td>
     <td class="num">${t.wins}</td>
     <td class="num">${t.losses}</td>
@@ -2358,7 +2517,8 @@ function viewStandings() {
     <td class="num">${fmtR(t.tAVG)}</td>
     <td class="num">${fmtR(t.tSLG)}</td>
     <td class="num">${fmtR(t.tOPS)}</td>
-  </tr>`).join('');
+  </tr>`;
+  }).join('');
 
   // League leaders — player must have played at least half their team's games
   const leaderTeamGP = {};
@@ -2443,9 +2603,9 @@ function viewStandings() {
     <div class="card">
       <div class="card-header">Standings</div>
       <div class="card-body"><div class="table-wrap">
-        <table>
+        <table id="standings-table">
           <thead><tr>
-            <th class="num" style="border-left:3px solid var(--mlb-blue)">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">L10</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
+            <th class="num">#</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">T</th><th class="num">PCT</th><th class="num">STRK</th><th class="num">L10</th><th class="num">RS</th><th class="num">RA</th><th class="num">DIFF</th><th class="num">AB</th><th class="num">H</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">RBI</th><th class="num">E</th><th class="num">AVG</th><th class="num">SLG</th><th class="num">OPS</th>
           </tr></thead>
           <tbody>${standingsRows}</tbody>
         </table>
@@ -2752,18 +2912,56 @@ function viewTeam(teamId) {
   const teamLogoHtml = teamLogoUrl
     ? `<img class="team-hero-logo" src="${teamLogoUrl}" alt="${team.name} logo" onerror="this.style.display='none'">`
     : '';
+
+  // Last game + next game mini-scoreboards
+  const playedGames = games.filter(g => g.homeScore !== undefined).sort((a, b) => b.date.localeCompare(a.date));
+  const upcomingGames = games.filter(g => g.homeScore === undefined).sort((a, b) => a.date.localeCompare(b.date));
+  const lastGame = playedGames[0];
+  const nextGame = upcomingGames[0];
+
+  function heroGameBlock(g, label, noBorder) {
+    const isHome = g.homeTeamId === teamId;
+    const opp = getTeam(isHome ? g.awayTeamId : g.homeTeamId);
+    const oppLogoUrl = opp ? TEAM_LOGOS[opp.id] : null;
+    const oppLogoHtml = oppLogoUrl ? `<img src="${oppLogoUrl}" style="width:28px;height:28px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))">` : '';
+    const played = g.homeScore !== undefined;
+    let body = '';
+    if (played) {
+      const myScore = isHome ? g.homeScore : g.awayScore;
+      const oppScore = isHome ? g.awayScore : g.homeScore;
+      const won = myScore > oppScore;
+      const result = won ? 'W' : myScore < oppScore ? 'L' : 'T';
+      body = `<span class="result-letter ${won ? 'win' : result === 'L' ? 'loss' : 'tie'}" style="width:20px;height:20px;font-size:10px">${result}</span>
+        <span class="thlg-score">${myScore} – ${oppScore}</span>
+        <span class="thlg-vs">vs</span>
+        <div class="thlg-opp-block">${oppLogoHtml}<span class="thlg-opp">${opp ? opp.name : ''}</span></div>`;
+    } else {
+      body = `<span class="thlg-vs">${isHome ? 'vs' : '@'}</span>
+        <div class="thlg-opp-block">${oppLogoHtml}<span class="thlg-opp">${opp ? opp.name : ''}</span></div>`;
+    }
+    return `<a class="team-hero-last-game${noBorder ? ' no-border' : ''}" href="#/game/${g.id}">
+      <div class="thlg-label">${label} &middot; ${fmtDate(g.date)}</div>
+      <div class="thlg-body">${body}</div>
+    </a>`;
+  }
+
+  const lastGameHtml = lastGame ? heroGameBlock(lastGame, 'Last Game', false) : '';
+  const nextGameHtml = nextGame ? heroGameBlock(nextGame, 'Next Game', true) : '';
+
   document.getElementById('app').innerHTML = `
     <a class="back-link" href="#/">&larr; Standings</a>
     <div class="team-hero" style="${teamColorVars(teamId)}">
       <div class="team-hero-content">
         ${teamLogoHtml}
-        <div>
+        <div style="flex:1;min-width:0">
           <div class="page-title">${team.name}</div>
           <div class="record-big">${team.wins}-${team.losses}-${team.ties}</div>
           <div class="page-subtitle">${pctDisplay(team.wins, team.losses, team.ties)} PCT</div>
         </div>
+        ${lastGameHtml}
+        ${lastGameHtml && nextGameHtml ? '<div style="width:1px;height:48px;background:rgba(255,255,255,.2);flex-shrink:0;align-self:center"></div>' : ''}
+        ${nextGameHtml}
       </div>
-      ${TEAM_COLORS[teamId] ? '<div class="team-hero-accent-bar"></div>' : ''}
     </div>
     <div class="card">
       <div class="card-header">Schedule & Results</div>
@@ -3855,28 +4053,42 @@ function viewPlayer(playerId) {
   </div>`;
 
   const playerGameStats = getPlayerGameStats(DATA, playerId, player.teamId);
-  const sparkHtml = playerGameStats.length >= 2 ? `<div class="card"><div class="card-body">${sparklineSVG(playerGameStats)}</div></div>` : '';
+  const sparkHtml = playerGameStats.length >= 2 ? `<div class="card"><div class="card-header">This Season — AVG Trajectory</div><div class="card-body">${sparklineSVG(playerGameStats)}</div></div>` : '';
+  const trendHtml = careerTrendlineSVG(allSeasons, currentSeason);
+  const trendCard = trendHtml ? `<div class="card"><div class="card-header">Career — AVG by Season</div><div class="card-body">${trendHtml}</div></div>` : '';
   const careerHtml = careerChartHtml(allSeasons, currentSeason);
   const spiderHtml = playerSpiderChartHtml(player, allSeasons);
-  const vizRowHtml = (sparkHtml && spiderHtml)
+
+  const trendRowHtml = (sparkHtml || trendCard)
     ? `<div style="display:flex;gap:16px;align-items:stretch;flex-wrap:wrap">` +
-      `<div style="flex:0 0 calc(50% - 8px);min-width:0">${sparkHtml}</div>` +
-      `<div style="flex:0 0 calc(50% - 8px);min-width:0">${spiderHtml}</div>` +
+      (sparkHtml ? `<div style="flex:1 1 calc(50% - 8px);min-width:220px">${sparkHtml}</div>` : '') +
+      (trendCard ? `<div style="flex:1 1 calc(50% - 8px);min-width:220px">${trendCard}</div>` : '') +
+      `</div>` : '';
+  const vizRowHtml = spiderHtml
+    ? `<div style="display:flex;gap:16px;align-items:stretch;flex-wrap:wrap">` +
+      `<div style="flex:1 1 calc(50% - 8px);min-width:220px">${spiderHtml}</div>` +
       `</div>`
-    : sparkHtml || spiderHtml;
+    : '';
 
   document.getElementById('app').innerHTML = `
     <div style="display:flex;align-items:center"><a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? teamLogoImg(team.id) + team.name : ''}</a>${shareBtn()}</div>
     <div class="player-hero" style="${teamColorVars(player.teamId)}">
       <div class="player-hero-inner">
         <img class="player-avatar" src="${avatarUrl(player.name, 80, player.id)}" alt="${displayName(player.name)}" onerror="this.onerror=null;this.src=avatarFallbackUrl(this.dataset.n,80)" data-n="${player.name}">
-        <div>
+        <div style="flex:1;min-width:0">
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <div class="page-title">${displayName(player.name)}</div>
             <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a>
           </div>
           <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? teamLogoImg(team.id) + team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
           ${playerBadges(player)}
+        </div>
+        <div class="player-hero-stats">
+          <div class="player-hero-stat"><span class="player-hero-stat-val">${calcAVG(player.seasonStats.H, player.seasonStats.AB)}</span><span class="player-hero-stat-lbl">AVG</span></div>
+          <div class="player-hero-stat-divider"></div>
+          <div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.R}</span><span class="player-hero-stat-lbl">Runs</span></div>
+          <div class="player-hero-stat-divider"></div>
+          <div class="player-hero-stat"><span class="player-hero-stat-val">${player.seasonStats.BI}</span><span class="player-hero-stat-lbl">RBI</span></div>
         </div>
       </div>
     </div>
@@ -3903,6 +4115,7 @@ function viewPlayer(playerId) {
         </tr></tbody></table>
       </div></div>
     </div>
+    ${trendRowHtml}
     ${vizRowHtml}
     ${careerHtml}
   `;
@@ -4237,7 +4450,7 @@ function viewBoxScore(gameId) {
   const cumRec = {};
   DATA.teams.forEach(t => { cumRec[t.id] = { w: 0, l: 0, t: 0 }; });
   DATA.games.forEach(g => {
-    if (g.week <= game.week) {
+    if (g.week < game.week) {
       if (!cumRec[g.homeTeamId]) cumRec[g.homeTeamId] = { w: 0, l: 0, t: 0 };
       if (!cumRec[g.awayTeamId]) cumRec[g.awayTeamId] = { w: 0, l: 0, t: 0 };
       if (g.homeScore > g.awayScore) { cumRec[g.homeTeamId].w++; cumRec[g.awayTeamId].l++; }
@@ -4455,8 +4668,18 @@ function viewSchedule(scrollToWeek) {
 
     const byeHtml = byes[wk] ? `<div class="bye-label">BYE: ${byes[wk].map(t => t.name).join(', ')}</div>` : '';
 
+    const allPlayed = w.games.every(g => g.homeScore !== undefined);
+    const nonePlayed = w.games.every(g => g.homeScore === undefined);
+    const statusPill = allPlayed
+      ? `<span class="week-status-pill final">Final</span>`
+      : nonePlayed
+        ? `<span class="week-status-pill upcoming">Upcoming</span>`
+        : `<span class="week-status-pill inprogress">In Progress</span>`;
     return `<div class="card" id="week-${wk}">
-      <div class="card-header">Week ${wk} &mdash; ${fmtDate(w.date)}</div>
+      <div class="card-header week-card-header">
+        <div class="week-header-left"><span class="week-number">Week ${wk}</span><span class="week-date">${fmtDate(w.date)}</span></div>
+        <div class="week-header-right">${statusPill}</div>
+      </div>
       <div class="card-body">${gamesHtml}${byeHtml}</div>
     </div>`;
   }).join('');
