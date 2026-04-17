@@ -4976,6 +4976,7 @@ function viewBoxScore(gameId) {
     if (el && html) el.outerHTML = `<div class="card">
     <div class="card-header">Game Recap</div>
     <div class="card-body padded" style="line-height:1.7">${linkifyRecap(html, DATA.players)}</div>
+    <div style="padding:8px 20px 12px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border-light)">All recaps are AI generated. If you don&rsquo;t like it, blame Claude&nbsp;;)</div>
   </div>`;
   });
 
