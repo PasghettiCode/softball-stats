@@ -2862,18 +2862,17 @@ function viewStandings() {
   </tr>`;
   }).join('');
 
-  // League leaders — player must have played at least half their team's games
+  // League leaders — player must have accumulated 1.5 PA per team game played (scales mid-season)
   const leaderTeamGP = {};
   DATA.teams.forEach(t => {
     leaderTeamGP[t.id] = DATA.games.filter(g =>
       (g.homeTeamId === t.id || g.awayTeamId === t.id) && g.homeScore !== undefined
     ).length;
   });
-  const leaderPool = DATA.players.filter(p => {
+  const qualified = DATA.players.filter(p => {
     const tgp = leaderTeamGP[p.teamId] || 0;
-    return tgp > 0 && p.seasonStats.G >= tgp / 2;
+    return tgp > 0 && p.seasonStats.PA >= 1.5 * tgp;
   });
-  const qualified = leaderPool.filter(p => p.seasonStats.PA >= 3);
   const leagueCtxLeaders = calcLeagueContext(DATA);
   const leaders = {
     'Batting Avg': qualified.map(p => ({ p, v: parseFloat(calcAVG(p.seasonStats.H, p.seasonStats.AB)) })).sort((a, b) => b.v - a.v).slice(0, 5),
@@ -2955,7 +2954,7 @@ function viewStandings() {
     </div>
     ${awardsPanelHtml()}
     <div class="card">
-      <div class="card-header"><span>League Leaders <span style="font-size:11px;font-weight:400;opacity:.6;margin-left:4px">min. half of team's games played</span></span></div>
+      <div class="card-header"><span>League Leaders <span style="font-size:11px;font-weight:400;opacity:.6;margin-left:4px">min. 1.5 PA per team game played</span></span></div>
       <div class="card-body">
         <div class="leaders-grid">${leadersHtml}</div>
         <div class="leaders-section-label">Advanced Stats</div>
