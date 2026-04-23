@@ -1080,6 +1080,8 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   margin-left: auto;
 }
 .share-btn:hover { border-color: var(--mlb-blue); color: var(--mlb-blue); }
+.baseball-card-btn { background: var(--mlb-blue); border: none; border-radius: 6px; padding: 7px 16px; font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; transition: background .15s; margin-left: auto; }
+.baseball-card-btn:hover { background: #0a2e6e; }
 .page-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
 .page-title-row .page-title { margin-bottom: 0; }
 
@@ -1937,10 +1939,10 @@ function showCardModal(frontCanvas, playerName, player, allSeasons) {
             <img id="sc-card-img" src="${frontDataUrl}" width="${fW}" height="${fH}" alt="${playerName}" />
           </div>
         </div>
-        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <button id="sc-flip-btn" class="share-btn" style="font-size:13px;padding:7px 16px">&#8635; Flip</button>
-          <button id="baseball-card-dl-btn" class="share-btn" style="font-size:13px;padding:7px 16px">&#11015; Download</button>
-          <button id="baseball-card-copy-btn" class="share-btn" style="font-size:13px;padding:7px 16px">&#128203; Copy</button>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto;width:100%">
+          <button id="sc-flip-btn" class="share-btn" style="font-size:13px;padding:7px 16px;margin:0">&#8635; Flip</button>
+          <button id="baseball-card-dl-btn" class="share-btn" style="font-size:13px;padding:7px 16px;margin:0">&#11015; Download</button>
+          <button id="baseball-card-copy-btn" class="share-btn" style="font-size:13px;padding:7px 16px;margin:0">&#128203; Copy</button>
         </div>
         <div style="text-align:center;font-size:11px;color:#888">Click card to flip · Right-click to save on mobile</div>
       </div>
@@ -4971,14 +4973,14 @@ function viewPlayer(playerId) {
   const rankLabel = r => r ? `#${r}` : '';
 
   document.getElementById('app').innerHTML = `
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? teamLogoImg(team.id) + team.name : ''}</a>${statCardBtn(player.id)}</div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? teamLogoImg(team.id) + team.name : ''}</a></div>
     <div class="player-hero" style="${teamColorVars(player.teamId)}">
       <div class="player-hero-inner">
         <img class="player-avatar" src="${avatarUrl(player.name, 80, player.id)}" alt="${displayName(player.name)}" onerror="this.onerror=null;this.src=avatarFallbackUrl(this.dataset.n,80)" data-n="${player.name}">
         <div style="flex:1;min-width:0">
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <div class="page-title">${displayName(player.name)}</div>
-            <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a>
+            <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a><button onclick="showStatCard('${player.id}')" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">&#127183; Baseball Card</button>
           </div>
           <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? teamLogoImg(team.id) + team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
           ${playerBadges(player)}
@@ -6850,6 +6852,8 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   margin-left: auto;
 }
 .share-btn:hover { border-color: var(--mlb-blue); color: var(--mlb-blue); }
+.baseball-card-btn { background: var(--mlb-blue); border: none; border-radius: 6px; padding: 7px 16px; font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; transition: background .15s; margin-left: auto; }
+.baseball-card-btn:hover { background: #0a2e6e; }
 .page-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
 .page-title-row .page-title { margin-bottom: 0; }
 
@@ -10315,14 +10319,14 @@ function viewPlayer(playerId) {
   const rankLabel = r => r ? `#${r}` : '';
 
   document.getElementById('app').innerHTML = `
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? teamLogoImg(team.id) + team.name : ''}</a>${statCardBtn(player.id)}</div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><a class="back-link" href="#/team/${player.teamId}">&larr; ${team ? teamLogoImg(team.id) + team.name : ''}</a></div>
     <div class="player-hero" style="${teamColorVars(player.teamId)}">
       <div class="player-hero-inner">
         <img class="player-avatar" src="${avatarUrl(player.name, 80, player.id)}" alt="${displayName(player.name)}" onerror="this.onerror=null;this.src=avatarFallbackUrl(this.dataset.n,80)" data-n="${player.name}">
         <div style="flex:1;min-width:0">
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <div class="page-title">${displayName(player.name)}</div>
-            <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a>
+            <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a><button onclick="showStatCard('${player.id}')" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">&#127183; Baseball Card</button>
           </div>
           <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? teamLogoImg(team.id) + team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
           ${playerBadges(player)}
