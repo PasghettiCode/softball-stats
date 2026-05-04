@@ -529,8 +529,8 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   margin-bottom: 24px;
 }
 
-.player-hero .page-title { color: var(--white); font-size: 28px; }
-.player-hero .page-subtitle { color: rgba(255,255,255,.7); margin-bottom: 0; }
+.player-hero .page-title { color: var(--white); font-size: 28px; margin-bottom: 0; }
+.player-hero .page-subtitle { color: rgba(255,255,255,.7); margin-top: 8px; margin-bottom: 0; }
 .player-hero .page-subtitle a { color: rgba(255,255,255,.85); text-decoration: none; }
 .player-hero .page-subtitle a:hover { color: var(--white); text-decoration: underline; }
 
@@ -716,7 +716,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   nav a { padding: 10px 14px; font-size: 11px; }
   #app { padding: 16px; }
   header { padding: 0 16px; }
-  .team-hero, .player-hero, .boxscore-header { padding: 20px; border-radius: 0; }
+  .team-hero, .player-hero, .boxscore-header { padding: 20px; }
 }
 
 @media (max-width: 600px) {
@@ -1032,9 +1032,10 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   .compare-result-header .vs-col { display: none; }
   .player-avatar { width: 56px; height: 56px; }
   .player-hero-inner { gap: 14px; flex-wrap: wrap; }
-  .player-hero-stats-wrap { width: 100%; }
-  .player-hero-stats { width: 100%; justify-content: flex-start; margin-top: 4px; }
-  .player-hero-stat { padding: 0 14px 0 0; align-items: flex-start; }
+  .player-hero-stats-wrap { width: 100%; display: grid; grid-template-columns: 1fr auto; }
+  .player-hero-season-lbl { grid-column: 2; grid-row: 1; }
+  .player-hero-stats { grid-column: 2; grid-row: 2; margin-top: 4px; }
+  .player-hero-stat { padding: 0 14px 0 0; align-items: center; }
   .key-players-grid { grid-template-columns: 1fr; }
   .key-player-col { border-right: none; border-bottom: 1px solid var(--border-light); }
 }
@@ -4985,9 +4986,9 @@ function viewPlayer(playerId) {
       <div class="player-hero-inner">
         <img class="player-avatar" src="${avatarUrl(player.name, 80, player.id)}" alt="${displayName(player.name)}" onerror="this.onerror=null;this.src=avatarFallbackUrl(this.dataset.n,80)" data-n="${player.name}">
         <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;column-gap:12px;row-gap:8px;flex-wrap:wrap">
             <div class="page-title">${displayName(player.name)}</div>
-            <a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a><button onclick="showStatCard('${player.id}')" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">&#127183; Baseball Card</button>
+            <div style="display:flex;gap:12px"><a href="#/compare/${player.id}" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">Compare &rarr;</a><button onclick="showStatCard('${player.id}')" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:4px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">&#127183; Baseball Card</button></div>
           </div>
           <div class="page-subtitle"><a href="#/team/${team ? team.id : ''}">${team ? teamLogoImg(team.id) + team.name : ''}</a>${streak === 'hot' ? ' <span class="streak-hot" title="Hits in all 3 of last 3 games, with 2+ hits in at least 2 of them">&#128293; Hot Streak</span>' : streak === 'cold' ? ' <span class="streak-cold" title="Batting under .400 over last 3 games — a cold stretch in this high-average league">&#10052; Cold Streak</span>' : ''}</div>
           ${playerBadges(player)}
