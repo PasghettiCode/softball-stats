@@ -6100,16 +6100,16 @@ init();
   }
 
   document.addEventListener('touchstart', function(e) {
-    // Only arm pull-to-refresh when the page is scrolled exactly to the top.
-    // Snapshot here rather than during move — by the time touchmove fires the
-    // browser may have scrolled a pixel, making a live check unreliable.
+    // Only arm pull-to-refresh when the page is at the very top AND the touch
+    // itself started near the top edge of the screen (within 80px). Without the
+    // y-position check, any touch anywhere on the page while scrollY===0 would
+    // attach the non-passive touchmove listener, blocking scroll for that gesture.
     if (window.scrollY !== 0) return;
+    if (e.touches[0].clientY > 80) return;
     startY = e.touches[0].clientY;
     pulling = false;
     triggered = false;
     // Attach the non-passive blocking listener only for this specific gesture.
-    // This is the key: a global non-passive touchmove listener would block
-    // scrolling on every touch, even when preventDefault() is never called.
     document.addEventListener('touchmove', onMove, { passive: false });
     document.addEventListener('touchend', onEnd, { once: true });
     document.addEventListener('touchcancel', onEnd, { once: true });
