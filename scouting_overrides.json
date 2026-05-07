@@ -1,0 +1,242 @@
+{
+  "_comment": "AI-generated scouting reports keyed by teamId. Structured data — rendered to HTML by the app. Photos come from player_photos.json (players without a photo get the silhouette). Empty object = use rules-based fallback.",
+  "hoover": {
+    "summaryStats": {
+      "rpg": "14.2",
+      "avg": ".652",
+      "slg": ".873",
+      "hr": 3,
+      "doubles": 14,
+      "record": "5-1"
+    },
+    "summaryNote": "Hoover is the second-ranked team in the league and the deepest lineup top-to-bottom. Every spot in the order is a threat — there are no easy outs. They score in bunches: expect multi-run innings and pressure on every pitch. Their lone loss was to undefeated St. Catherines.",
+    "lineup": [
+      {
+        "playerId": "seacrest-cayman",
+        "chips": [{"text": ".895 AVG", "cls": "power"}, {"text": "1 HR", "cls": "power"}],
+        "tip": "Elite table-setter. 17-for-19 on the season — the best pure hitter in the league. Gets on base at will and scores in nearly every game.",
+        "pitchTip": "Keep it low — his power numbers demand you avoid belt-high pitches. No meatballs."
+      },
+      {
+        "playerId": "fabor-fred",
+        "chips": [{"text": ".652 AVG", "cls": "power"}, {"text": "1 HR", "cls": ""}],
+        "tip": "Consistent run-producer with 12 runs scored. Has gap power and hit a solo HR vs St. Catherines. Drives in runs at a high clip.",
+        "pitchTip": "Has home run power — keep it low and off the fat part of the plate."
+      },
+      {
+        "playerId": "koblis-phillip",
+        "chips": [{"text": ".857 AVG", "cls": "power"}, {"text": "5 2B", "cls": ""}],
+        "tip": "Cleanup-caliber bat hitting 3rd. 18-for-21 with 5 doubles and 10 RBI — the best gap hitter on the team. Sprays the ball to all fields. Went 5-for-5 vs St. Catherines.",
+        "pitchTip": "5 doubles this season — don't give him anything easy to drive. Keep pitches low to limit extra-base damage."
+      },
+      {
+        "playerId": "dow-bryan",
+        "chips": [{"text": "1 HR", "cls": "power"}, {"text": ".750 AVG", "cls": "power"}, {"text": "14 RBI", "cls": ""}],
+        "tip": "The most dangerous bat in the lower order. Team-high 14 RBI with a homer, triple, and two doubles. His 7-RBI game vs Burlingame included a 3-run shot.",
+        "pitchTip": "Highest ISO on the team (.438) — keep it low and don't give him anything to drive. With runners on, there are no free pitches."
+      },
+      {
+        "playerId": "snyder-marc",
+        "chips": [{"text": ".667 AVG", "cls": ""}, {"text": "1 3B", "cls": ""}],
+        "tip": "Has extra-base pop and a high-contact approach. His 4-for-4, 3-RBI game vs Washington showed he can take over an inning.",
+        "pitchTip": "Has a triple and a .917 SLG — keep pitches low to reduce extra-base contact."
+      },
+      {
+        "playerId": "bryant-colin",
+        "chips": [{"text": ".556 AVG", "cls": ""}, {"text": "3 RBI", "cls": ""}],
+        "tip": "Solid contact hitter in the middle of the order. Limited games but contributes consistently when in the lineup.",
+        "pitchTip": "Limited sample but solid contact rate — don't groove pitches. Make him earn it."
+      },
+      {
+        "playerId": "lowenthal-sean",
+        "chips": [{"text": ".458 AVG", "cls": ""}, {"text": "11 RBI", "cls": ""}],
+        "tip": "The most-played player on the roster (6 games) with 11 RBI. His average has dropped off recently but RBI production remains high — consistently drives in runs when it matters.",
+        "pitchTip": "Average has dipped recently but still has 11 RBI — don't get careless with runners on base."
+      },
+      {
+        "playerId": "jenkins-brett",
+        "chips": [{"text": ".364 AVG", "cls": ""}],
+        "tip": "One of the more neutral bats in the lineup. Limited power — mainly a contact hitter who can put the ball in play.",
+        "pitchTip": "Lowest AVG in the lineup (.364) — one of the more manageable outs. Don't walk him."
+      },
+      {
+        "playerId": "stepanian-levon",
+        "chips": [{"text": ".579 AVG", "cls": ""}, {"text": "10 R", "cls": ""}],
+        "tip": "A speedy, high-contact 9-hole hitter with 10 runs scored — acts as a second leadoff spot. Gets on base frequently and is difficult to get out.",
+        "pitchTip": "High contact rate, no extra-base hits — pitch carefully to avoid putting him on base as a table-setter."
+      },
+      {
+        "playerId": "koshie-sunil",
+        "chips": [{"text": ".588 AVG", "cls": ""}, {"text": "4 G", "cls": ""}],
+        "tip": "Reliable contact hitter who fills the 10-spot. Consistent average over 4 games with no extra-base power — a solid bottom-of-the-order bat.",
+        "pitchTip": "No extra-base hits this season — pitch to contact and let the defense work."
+      }
+    ],
+    "lineupNote": "Batting order based on average lineup position across all games this season. Hoover regularly dresses 10+ players — Bryan Dow, Paul Dilaura, Brad Null, and Adam Ramirez are all capable of slotting in anywhere from 4-8 depending on game-day availability.",
+    "sections": [
+      {
+        "title": "Power Threats",
+        "full": true,
+        "players": [
+          {
+            "playerId": "seacrest-cayman",
+            "chips": [{"text": "1 HR", "cls": "power"}, {"text": "ISO .421", "cls": "power"}],
+            "tip": "The best bat in the league. ISO .421, 1 HR — keep pitches low, no meatballs. Play OF deep."
+          },
+          {
+            "playerId": "dow-bryan",
+            "chips": [{"text": "1 HR", "cls": "power"}, {"text": "ISO .438", "cls": "power"}],
+            "tip": "Team leader in RBI (14), ISO .438 — his power numbers are real. Keep it low, no easy pitches, especially with runners on."
+          }
+        ]
+      },
+      {
+        "title": "Gap Hitters",
+        "full": false,
+        "players": [
+          {
+            "playerId": "koblis-phillip",
+            "chips": [{"text": "5 2B", "cls": ""}],
+            "tip": "Best gap hitter on the team. Pitch up & in — don't let him extend on the outer half."
+          },
+          {
+            "playerId": "dow-bryan",
+            "chips": [{"text": "2 2B", "cls": ""}, {"text": "1 3B", "cls": ""}],
+            "tip": "Also a triples threat — shade gaps, play deep."
+          }
+        ]
+      },
+      {
+        "title": "Triples Threats",
+        "full": false,
+        "players": [
+          {
+            "playerId": "snyder-marc",
+            "chips": [{"text": "1 3B", "cls": ""}],
+            "tip": "Avoid high & outside — he'll slap it to right field. Pitch low & in."
+          },
+          {
+            "playerId": "dow-bryan",
+            "chips": [{"text": "1 3B", "cls": ""}],
+            "tip": "Electric from gap to gap. Keep him off the outer half of the plate."
+          },
+          {
+            "playerId": "dilaura-paul",
+            "chips": [{"text": "1 3B", "cls": ""}, {"text": ".667 AVG", "cls": ""}],
+            "tip": "Hits for a high average with a triple. Avoid high & outside. Slots in anywhere from 4-7."
+          }
+        ]
+      },
+      {
+        "title": "Hot Right Now",
+        "full": false,
+        "players": [
+          {
+            "playerId": "seacrest-cayman",
+            "chips": [{"text": "last 3: .955", "cls": "hot"}, {"text": "season .895", "cls": ""}],
+            "tip": null
+          },
+          {
+            "playerId": "dow-bryan",
+            "chips": [{"text": "last 2: .867", "cls": "hot"}, {"text": "season .750", "cls": ""}],
+            "tip": null
+          },
+          {
+            "playerId": "fabor-fred",
+            "chips": [{"text": "last 3: .733", "cls": "hot"}, {"text": "season .652", "cls": ""}],
+            "tip": null
+          }
+        ]
+      },
+      {
+        "title": "Watch List — Surprise Bats",
+        "full": false,
+        "players": [
+          {
+            "playerId": "null-brad",
+            "chips": [{"text": ".889 AVG", "cls": ""}, {"text": "5 RBI", "cls": ""}],
+            "tip": "Incredible 8-for-9 in limited games. Pure contact hitter — pitch down & keep it on the corners."
+          },
+          {
+            "playerId": "szafranski-jim",
+            "chips": [{"text": ".667 AVG", "cls": ""}, {"text": "6 R", "cls": ""}],
+            "tip": "Small sample but consistent contact. Gets on base and contributes runs."
+          }
+        ]
+      },
+      {
+        "title": "Run Producers (RBI/Hit > 0.7)",
+        "full": false,
+        "players": [
+          {
+            "playerId": "dow-bryan",
+            "chips": [{"text": "1.17 RBI/H", "cls": "power"}, {"text": "14 RBI", "cls": ""}],
+            "tip": "Drives in more than one run per hit. Consistently comes through with runners on base — his extra-base hits are likely reaching the gaps or going deep."
+          },
+          {
+            "playerId": "cohendet-chris",
+            "chips": [{"text": "1.17 RBI/H", "cls": "power"}, {"text": "7 RBI", "cls": ""}],
+            "tip": "Matches Dow's RBI rate despite being a contact-only hitter (.500 AVG, no XBH). Excels at driving in runs with singles — don't let him bat with runners on."
+          },
+          {
+            "playerId": "lowenthal-sean",
+            "chips": [{"text": "1.00 RBI/H", "cls": ""}, {"text": "11 RBI", "cls": ""}],
+            "tip": "Converts hits to RBI at a 1:1 rate over 6 games. Most experienced player on the roster — reliable in run-scoring situations."
+          },
+          {
+            "playerId": "seacrest-cayman",
+            "chips": [{"text": "0.76 RBI/H", "cls": ""}, {"text": "13 RBI", "cls": ""}],
+            "tip": "High RBI total is driven by pure volume — he's on base so often that his own RBI numbers accumulate even as others score him."
+          }
+        ]
+      },
+      {
+        "title": "Table Setters (score more than they drive in)",
+        "full": false,
+        "players": [
+          {
+            "playerId": "stepanian-levon",
+            "chips": [{"text": "10 R", "cls": ""}, {"text": "3 RBI", "cls": ""}, {"text": "+7 R vs RBI", "cls": "hot"}],
+            "tip": "Scores runs at a dramatically higher rate than he produces them — he gets on base and the big bats bring him in. Getting him out early disrupts the rally cycle."
+          },
+          {
+            "playerId": "szafranski-jim",
+            "chips": [{"text": "6 R", "cls": ""}, {"text": "1 RBI", "cls": ""}, {"text": "+5 R vs RBI", "cls": "hot"}],
+            "tip": "Scores frequently but rarely drives in runs himself. A pure table-setter — focus on keeping him off base rather than pitching around him."
+          },
+          {
+            "playerId": "fabor-fred",
+            "chips": [{"text": "12 R", "cls": ""}, {"text": "11 RBI", "cls": ""}, {"text": "+1 R vs RBI", "cls": ""}],
+            "tip": "Nearly balanced, but scores slightly more than he drives in — plays both roles depending on lineup context."
+          }
+        ]
+      },
+      {
+        "title": "Defensive Game Plan",
+        "full": true,
+        "gamePlan": [
+          {
+            "heading": "Play the OF deep across the board.",
+            "tip": "14 doubles and 3 HRs this season — extra-base hits suggest balls are regularly getting over or past outfielders. A shallow OF will give up runs."
+          },
+          {
+            "heading": "No free passes in the middle of the order.",
+            "tip": "Seacrest, Koblis, and Dow all hit .750+ on the season. Every walk in the 1-4 spots essentially puts a run on base. Pitch to contact and trust your defense."
+          },
+          {
+            "heading": "Dow and Cohendet are your most dangerous RBI situations.",
+            "tip": "Both have an RBI-per-hit ratio above 1.0, meaning they consistently drive in multiple runners per hit. Extra vigilance when they come up with runners on."
+          },
+          {
+            "heading": "Stepanian leads off the order a second time.",
+            "tip": "He scores 3x more runs than he drives in (+7 R vs RBI), meaning he's consistently on base when the big bats come up. Getting him out quickly is key to breaking their rally cycle."
+          },
+          {
+            "heading": "Their only loss: Dow went quiet.",
+            "tip": "In the 22-21 loss to St. Catherines, Dow went 2-for-3 with 0 RBI — well below his usual production. When Dow is neutralized, Hoover is beatable even in a high-scoring game."
+          }
+        ]
+      }
+    ]
+  }
+}
