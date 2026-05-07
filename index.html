@@ -1076,6 +1076,49 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .record-card-context { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
 .record-card-ties { font-size: 11px; color: var(--mlb-blue); margin-top: 6px; cursor: help; text-decoration: underline dotted; text-underline-offset: 2px; }
 
+/* ── Flippable all-time record cards ── */
+.atrc-flip {
+  perspective: 800px;
+  height: 140px;
+  transition: height .45s ease;
+}
+.atrc-flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .45s ease;
+  cursor: pointer;
+}
+.atrc-flip.flipped .atrc-flip-inner { transform: rotateY(180deg); }
+.atrc-front, .atrc-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+  overflow: hidden;
+}
+.atrc-back { transform: rotateY(180deg); padding: 10px 12px; overflow-y: auto; }
+.atrc-back-label {
+  font-size: 10px; font-weight: 800; letter-spacing: .7px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
+}
+.atrc-back-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; padding: 3px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.atrc-back-row:last-child { border-bottom: none; }
+.atrc-back-rank { font-size: 10px; font-weight: 800; color: var(--text-muted); width: 14px; flex-shrink: 0; }
+.atrc-back-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.atrc-back-val { font-weight: 800; color: var(--mlb-dark); flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.atrc-hint {
+  position: absolute; bottom: 6px; right: 8px;
+  font-size: 9px; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; color: var(--text-muted); opacity: .6;
+}
+
 /* ── Share button ── */
 .share-btn {
   background: none;
@@ -3827,9 +3870,9 @@ function viewTeam(teamId) {
       <div class="card-header">Team Leaders</div>
       <div class="card-body" id="team-leaders"></div>
     </div>
-    <div class="card" id="team-alltime-card">
-      <div class="card-header">All-Time Records</div>
-      <div class="card-body" id="team-alltime-records"></div>
+    <div class="records-section" id="team-alltime-card">
+      <div class="records-section-header">All-Time Records</div>
+      <div id="team-alltime-records"></div>
     </div>
     <div class="card" id="optimal-lineup-card">
       <div class="card-header">Optimal Lineup</div>
@@ -4397,42 +4440,74 @@ function renderTeamAllTimeRecords(teamId) {
     const all = Object.values(careers);
     if (!all.length) { card.style.display = 'none'; return; }
 
-    function top5(arr, key) {
-      return arr.slice().sort((a, b) => b[key] - a[key]).slice(0, 5).filter(c => c[key] > 0);
-    }
-    function top5Derived(arr, fn, minCheck) {
-      return arr.filter(c => !minCheck || minCheck(c))
-        .map(c => ({ ...c, _v: fn(c) }))
-        .sort((a, b) => b._v - a._v).slice(0, 5).filter(c => c._v > 0);
+    function ranked(arr, valFn, minFn) {
+      return arr
+        .filter(c => !minFn || minFn(c))
+        .map(c => ({ c, v: valFn(c) }))
+        .filter(r => r.v > 0)
+        .sort((a, b) => b.v - a.v);
     }
 
-    function leaderCat(label, items, fmtFn) {
-      if (!items.length) return '';
-      return `<div class="leader-cat">
-        <h4>${label}</h4>
-        ${items.map(c => `<div class="leader-item">
-          <span class="leader-name"><a class="player-link" href="#/player/${c.id}">${displayName(c.name)}</a></span>
-          <span class="val">${fmtFn(c)}</span>
-        </div>`).join('')}
+    function fmtVal(v, isAvg) {
+      return isAvg ? v.toFixed(3).replace(/^0/, '') : v;
+    }
+
+    function flipCard(label, rows, isAvg) {
+      if (!rows.length) return '';
+      const top = rows[0];
+      const frontVal = fmtVal(top.v, isAvg);
+      const backRows = rows.map((r, i) =>
+        `<div class="atrc-back-row">
+          <span class="atrc-back-rank">${i + 1}</span>
+          <span class="atrc-back-name"><a class="player-link" href="#/player/${r.c.id}" onclick="event.stopPropagation()">${displayName(r.c.name)}</a></span>
+          <span class="atrc-back-val">${fmtVal(r.v, isAvg)}</span>
+        </div>`
+      ).join('');
+      const ctx = isAvg ? '<div class="record-card-context">min. 50 AB</div>' : '';
+      return `<div class="atrc-flip" onclick="atrcFlip(this)">
+        <div class="atrc-flip-inner">
+          <div class="atrc-front record-card">
+            <div class="record-card-label">${label}</div>
+            <div class="record-card-value">${frontVal}</div>
+            <div class="record-card-holder"><a class="player-link" href="#/player/${top.c.id}" onclick="event.stopPropagation()">${displayName(top.c.name)}</a></div>
+            ${ctx}
+            <div class="atrc-hint">tap to rank</div>
+          </div>
+          <div class="atrc-back">
+            <div class="atrc-back-label">${label} &mdash; All Time</div>
+            ${backRows}
+          </div>
+        </div>
       </div>`;
     }
 
-    const fmtAVG = c => (c._v).toFixed(3).replace(/^0/, '');
-
-    const cats = [
-      leaderCat('Hits',        top5(all, 'H'),  c => c.H),
-      leaderCat('Runs',        top5(all, 'R'),  c => c.R),
-      leaderCat('RBI',         top5(all, 'BI'), c => c.BI),
-      leaderCat('Home Runs',   top5(all, 'HR'), c => c.HR),
-      leaderCat('XBH',         top5Derived(all, c => c.D+c.T+c.HR), c => c.D+c.T+c.HR),
-      leaderCat('Walks',       top5(all, 'BB'), c => c.BB),
-      leaderCat('Games',       top5(all, 'G'),  c => c.G),
-      leaderCat('Career AVG',  top5Derived(all, c => c.AB > 0 ? c.H/c.AB : 0, c => c.AB >= 50), fmtAVG),
+    const cards = [
+      flipCard('Most Hits',     ranked(all, c => c.H)),
+      flipCard('Most Runs',     ranked(all, c => c.R)),
+      flipCard('Most RBI',      ranked(all, c => c.BI)),
+      flipCard('Most HR',       ranked(all, c => c.HR)),
+      flipCard('Most XBH',      ranked(all, c => c.D + c.T + c.HR)),
+      flipCard('Most Walks',    ranked(all, c => c.BB)),
+      flipCard('Most Games',    ranked(all, c => c.G)),
+      flipCard('Career AVG',    ranked(all, c => c.AB > 0 ? c.H / c.AB : 0, c => c.AB >= 50), true),
     ].filter(Boolean).join('');
 
-    if (!cats.trim()) { card.style.display = 'none'; return; }
-    el.innerHTML = `<div class="leaders-grid">${cats}</div>`;
+    if (!cards) { card.style.display = 'none'; return; }
+    el.innerHTML = `<div class="records-grid">${cards}</div>`;
   });
+}
+
+function atrcFlip(el) {
+  const flipping = !el.classList.contains('flipped');
+  if (flipping) {
+    const back = el.querySelector('.atrc-back');
+    const contentH = back.scrollHeight;
+    const maxH = Math.round(window.innerHeight * 0.5);
+    el.style.height = Math.min(contentH + 2, maxH) + 'px';
+  } else {
+    el.style.height = '140px';
+  }
+  el.classList.toggle('flipped', flipping);
 }
 
 function showSpiderPopover(event, axisIdx) {
