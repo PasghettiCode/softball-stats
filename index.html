@@ -1092,6 +1092,7 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   transform-style: preserve-3d;
   transition: transform .45s ease;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .atrc-flip.flipped .atrc-flip-inner { transform: rotateY(180deg); }
 .atrc-front, .atrc-back {
@@ -4564,24 +4565,27 @@ function atrcFlip(el) {
 
 function atrcBindFlip(container) {
   container.querySelectorAll('.atrc-flip').forEach(el => {
-    var p0x = 0, p0y = 0;
+    var t0x = 0, t0y = 0, lastTouchFlip = 0;
 
-    // Use pointer events instead of touch + click so we handle both mouse and touch
-    // in one path without a `click` listener. A `click` listener on a scrollable
-    // area causes iOS/Android to add a ~300ms delay before starting scroll momentum,
-    // even when touch events are passive. Pointer events don't have that penalty.
-    el.addEventListener('pointerdown', function(e) {
-      p0x = e.clientX;
-      p0y = e.clientY;
-    });
+    // Both listeners are passive — they NEVER block scroll, no matter what.
+    el.addEventListener('touchstart', function(e) {
+      t0x = e.touches[0].clientX;
+      t0y = e.touches[0].clientY;
+    }, { passive: true });
 
-    el.addEventListener('pointerup', function(e) {
-      var dx = e.clientX - p0x;
-      var dy = e.clientY - p0y;
-      // Only flip on a tap (< 8px movement) — not a scroll or drag.
-      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) {
+    el.addEventListener('touchend', function(e) {
+      var t = e.changedTouches[0];
+      if (Math.abs(t.clientX - t0x) < 8 && Math.abs(t.clientY - t0y) < 8) {
+        lastTouchFlip = Date.now();
         atrcFlip(el);
       }
+    }, { passive: true });
+
+    // Desktop mouse clicks. The guard skips the synthetic click that iOS/Android
+    // fire ~300ms after touchend — by then 300ms will have elapsed since lastTouchFlip.
+    el.addEventListener('click', function() {
+      if (Date.now() - lastTouchFlip < 600) return;
+      atrcFlip(el);
     });
   });
 }
