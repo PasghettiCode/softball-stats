@@ -5044,6 +5044,7 @@ function showScoutingReport(teamId) {
             <div class="scout-card-header-title">${logoHtml} Scouting Report &mdash; ${teamName}</div>
             <div class="scout-card-header-actions">
               <button class="scout-card-expand" id="scout-expand-btn" onclick="toggleScoutingFullscreen()" title="Expand"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9,1 13,1 13,5"/><polyline points="1,9 1,13 5,13"/><line x1="13" y1="1" x2="8" y2="6"/><line x1="1" y1="13" x2="6" y2="8"/></svg></button>
+              <button class="scout-card-expand" id="scout-print-btn" onclick="printScoutingReport()" title="Print"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M5 1h6v3H5zM3 5h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-1v2H4v-2H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 6v3h8v-3H4zm8-3a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/></svg></button>
               <button class="scout-card-close" onclick="closeScoutingModal()">&#215;</button>
             </div>
           </div>
@@ -5057,9 +5058,10 @@ function showScoutingReport(teamId) {
   Promise.all([loadScoutingOverrides(), loadPlayerPhotos()]).then(() => {
     const override = SCOUTING_OVERRIDES[teamId];
     // Structured data object = AI override; missing/empty = rules-based fallback.
-    render(override && typeof override === 'object' && !Array.isArray(override)
-      ? renderScoutingOverride(override)
-      : buildScoutingReport(teamId));
+    const isOverride = override && typeof override === 'object' && !Array.isArray(override);
+    modal._scoutTeamId = teamId;
+    modal._scoutOverride = isOverride ? override : null;
+    render(isOverride ? renderScoutingOverride(override) : buildScoutingReport(teamId));
   });
 }
 
@@ -5073,6 +5075,144 @@ function closeScoutingModal() {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeScoutingModal();
 });
+
+function printScoutingReport() {
+  const modal = document.getElementById('scouting-modal');
+  if (!modal) return;
+  const teamId = modal._scoutTeamId;
+  const override = modal._scoutOverride;
+  const team = getTeam(teamId);
+  const teamName = team ? team.name : teamId;
+
+  // Build lineup cards HTML for page 1
+  let lineupHtml = '';
+  let insightsHtml = '';
+  let summaryHeaderHtml = '';
+
+  if (override) {
+    const SILHOUETTE = 'https://image-cdn.essentiallysports.com/wp-content/uploads/WhatsApp-Image-2021-12-03-at-3.00.29-PM-740x589.jpeg';
+    function pObj(id) { const s = SEASONS[currentSeason]; return s ? (s.players||[]).find(p=>p.id===id) : null; }
+    function nameFor(id) { const p=pObj(id); return p ? displayName(p.name) : id; }
+    function photoFor(id) { return PLAYER_PHOTOS[id] || SILHOUETTE; }
+
+    // Summary stats for page 1 header
+    const ss = override.summaryStats || {};
+    const pillKeys = [['rpg','R/G'],['avg','AVG'],['slg','SLG'],['hr','HR'],['doubles','2B'],['record','Record']];
+    const summaryPills = pillKeys.filter(([k])=>ss[k]!==undefined)
+      .map(([k,lbl])=>`<span class="pill"><span class="pval">${ss[k]}</span><span class="plbl">${lbl}</span></span>`).join('');
+
+    // Page 1: batting order cards
+    const cards = (override.lineup||[]).map((entry,i) => {
+      const id = entry.playerId;
+      const name = nameFor(id);
+      const chipHtml = (entry.chips||[]).map(c=>`<span class="chip ${c.cls||''}">${c.text}</span>`).join(' ');
+      return `<div class="card">
+        <img src="${photoFor(id)}" alt="${name}">
+        <div class="card-meta">
+          <span class="num">${i+1}</span>
+          <div class="cname">${name}</div>
+          <div class="chips">${chipHtml}</div>
+          ${entry.tip ? `<div class="tip">${entry.tip}</div>` : ''}
+          ${entry.pitchTip ? `<div class="ptip">${entry.pitchTip}</div>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+    lineupHtml = `<div class="grid">${cards}</div>
+      ${override.lineupNote ? `<div class="lineup-note">${override.lineupNote}</div>` : ''}`;
+    const summaryHeaderHtml = `<div class="summary-pills">${summaryPills}</div>
+      ${override.summaryNote ? `<div class="summary-note">${override.summaryNote}</div>` : ''}`;
+
+    // Page 2: insight sections
+    insightsHtml = (override.sections||[]).map(sec => {
+      let body = '';
+      if (sec.gamePlan) {
+        const items = sec.gamePlan.map(item=>`<div class="gp-heading">${item.heading}</div><div class="gp-tip">${item.tip || ''}</div>`).join('');
+        body = `<div class="gameplan-items">${items}</div>`;
+      } else {
+        body = (sec.players||[]).map(entry => {
+          const id = entry.playerId;
+          const name = nameFor(id);
+          const chipsHtml = (entry.chips||[]).map(c=>`<span class="chip ${c.cls||''}">${c.text}</span>`).join(' ');
+          return `<div class="insight-item">
+            <img src="${photoFor(id)}" class="pthumb" alt="${name}">
+            <div class="insight-body"><strong>${name}</strong> ${chipsHtml}${entry.tip ? `<div class="itip">${entry.tip}</div>` : ''}</div>
+          </div>`;
+        }).join('');
+      }
+      const fullWidth = sec.full || !!sec.gamePlan;
+      return `<div class="section${fullWidth ? ' section-full' : ''}"><div class="section-title">${sec.title}</div>${body}</div>`;
+    }).join('');
+  }
+
+  const numRows = Math.ceil((override ? override.lineup.length : 0) / 4);
+  // Usable height on letter landscape with 0.5in margins = 7.5in.
+  // Subtract a small header bar (team name strip ~0.3in) and gaps.
+  // Divide remaining height equally across rows.
+  const headerH = 0.28; // inches for the title strip
+  const gapIn = 0.08;   // gap between rows in inches
+  const usableH = 7.5 - headerH - (gapIn * (numRows - 1));
+  const rowH = (usableH / numRows).toFixed(3);
+
+  const w = window.open('', '_blank');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Scouting Report — ${teamName}</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, Arial, sans-serif; font-size: 10pt; color: #111; }
+h1 { font-size: 11pt; font-weight: 900; color: #fff; background: #1a2b5e; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 5px; }
+@page { size: letter landscape; margin: 0.5in; }
+/* Page 1: batting order grid, fills entire page height */
+.page1 { width: 100%; height: 7.5in; display: flex; flex-direction: column; overflow: hidden; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(${numRows}, ${rowH}in); gap: ${gapIn}in; flex: 1; }
+.card { display: flex; border: 1px solid #dde3f0; border-radius: 6px; overflow: hidden; background: #fff; min-height: 0; }
+.card img { width: 42%; object-fit: cover; object-position: top center; display: block; flex-shrink: 0; }
+.card-meta { padding: 5px 6px; display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; overflow: hidden; }
+.num { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; background: #1a2b5e; color: #fff; border-radius: 50%; font-size: 8pt; font-weight: 900; flex-shrink: 0; }
+.cname { font-size: 8pt; font-weight: 800; color: #1a2b5e; line-height: 1.2; }
+.chips { display: flex; flex-wrap: wrap; gap: 2px; }
+.chip { font-size: 6.5pt; font-weight: 700; border-radius: 3px; padding: 1px 4px; background: #e8edf8; color: #333; }
+.chip.scout-chip-danger { background: #fde8e8; color: #a00; }
+.chip.scout-chip-warn { background: #fff3cd; color: #7a5700; }
+.chip.scout-chip-ok { background: #e6f4ea; color: #1e6b30; }
+.chip.scout-chip-info { background: #e8f0fe; color: #1a2b5e; }
+.tip { font-size: 7pt; color: #555; font-style: italic; line-height: 1.3; }
+.ptip { font-size: 7pt; font-weight: 700; color: #5a3e8a; background: #f3eeff; border-radius: 3px; padding: 1px 4px; line-height: 1.3; }
+.lineup-note { font-size: 7.5pt; color: #666; margin-top: 4px; font-style: italic; }
+/* Page 2: summary + insights */
+.page2 { width: 100%; }
+h2 { font-size: 11pt; font-weight: 900; color: #1a2b5e; margin-bottom: 4px; }
+.summary-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 3px; }
+.pill { display: flex; flex-direction: column; align-items: center; background: #f0f4ff; border: 1px solid #cdd8f0; border-radius: 5px; padding: 2px 8px; min-width: 42px; }
+.pval { font-size: 10pt; font-weight: 900; color: #1a2b5e; line-height: 1.1; }
+.plbl { font-size: 6.5pt; color: #666; text-transform: uppercase; letter-spacing: .3px; }
+.summary-note { font-size: 8pt; color: #444; margin-bottom: 5px; font-style: italic; line-height: 1.3; }
+.insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px 10px; margin-top: 5px; }
+.section { break-inside: avoid; margin-bottom: 2px; }
+.section-full { grid-column: 1 / -1; }
+.section-full .gameplan-items { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; align-items: baseline; }
+.section-full .gp-heading { font-size: 8pt; font-weight: 900; color: #1a2b5e; white-space: nowrap; padding: 2px 0; }
+.section-full .gp-tip { font-size: 8pt; color: #444; font-style: italic; line-height: 1.3; padding: 2px 0; }
+.section-title { font-size: 8.5pt; font-weight: 900; color: #1a2b5e; border-bottom: 1.5px solid #1a2b5e; padding-bottom: 2px; margin-bottom: 3px; }
+.insight-item { display: flex; align-items: flex-start; gap: 4px; padding: 2px 0; border-bottom: 1px solid #eee; }
+.insight-item:last-child { border-bottom: none; }
+.pthumb { width: 21px; height: 21px; border-radius: 50%; object-fit: cover; object-position: top center; flex-shrink: 0; margin-top: 1px; }
+.insight-body { font-size: 8pt; line-height: 1.25; flex: 1; }
+.itip { font-size: 7.5pt; color: #444; font-style: italic; margin-top: 1px; }
+@media print {
+  .page1 { page-break-after: always; break-after: page; }
+  .page2 { page-break-before: always; break-before: page; }
+  a { color: inherit; text-decoration: none; }
+}
+</style></head><body>
+<div class="page1">
+  <h1>&#128269; ${teamName} — Batting Order</h1>
+  ${lineupHtml || '<p>No lineup data available.</p>'}
+</div>
+${insightsHtml ? `<div class="page2"><h2>&#128269; ${teamName} — Scouting Report</h2>${summaryHeaderHtml || ''}<div class="insights-grid">${insightsHtml}</div></div>` : ''}
+<script>window.onload = function() { window.print(); }<\/script>
+</body></html>`);
+  w.document.close();
+}
 
 function toggleScoutingFullscreen() {
   const card = document.querySelector('#scouting-modal .scout-card');
