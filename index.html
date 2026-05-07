@@ -3829,7 +3829,7 @@ function viewTeam(teamId) {
     </div>
     <div class="card" id="team-alltime-card">
       <div class="card-header">All-Time Records</div>
-      <div class="card-body padded" id="team-alltime-records"></div>
+      <div class="card-body" id="team-alltime-records"></div>
     </div>
     <div class="card" id="optimal-lineup-card">
       <div class="card-header">Optimal Lineup</div>
@@ -4379,20 +4379,6 @@ function renderTeamAllTimeRecords(teamId) {
   _loadOldSeasons().then(() => {
     const SEASON_ORDER = ['spring-2023','spring-2024','fall-2024','spring-2025','fall-2025','spring-2026'];
 
-    function makeTracker() {
-      let best = null; const entries = [];
-      return {
-        consider(val, entry) {
-          if (!val) return;
-          if (best === null || val > best) { best = val; entries.length = 0; entries.push(entry); }
-          else if (val === best) { entries.push(entry); }
-        },
-        get() { return { val: best, entries }; }
-      };
-    }
-    function fmtStat(v) { return v.toFixed(3).replace(/^0/, ''); }
-    function pLink(name, id) { return `<a href="#/player/${id}" class="player-link">${displayName(name)}</a>`; }
-
     const careers = {};
     for (const sid of SEASON_ORDER) {
       const season = SEASONS[sid]; if (!season) continue;
@@ -4408,48 +4394,44 @@ function renderTeamAllTimeRecords(teamId) {
       }
     }
 
-    const pc = { H: makeTracker(), R: makeTracker(), BI: makeTracker(), HR: makeTracker(), XBH: makeTracker(), BB: makeTracker(), G: makeTracker(), AVG: makeTracker() };
-    for (const c of Object.values(careers)) {
-      const XBH = c.D + c.T + c.HR;
-      const base = { playerId: c.id, playerName: c.name };
-      pc.H.consider(c.H, {...base, val: c.H});
-      pc.R.consider(c.R, {...base, val: c.R});
-      pc.BI.consider(c.BI, {...base, val: c.BI});
-      pc.HR.consider(c.HR, {...base, val: c.HR});
-      pc.XBH.consider(XBH, {...base, val: XBH});
-      pc.BB.consider(c.BB, {...base, val: c.BB});
-      pc.G.consider(c.G, {...base, val: c.G});
-      if (c.AB >= 50) { const avg = c.H / c.AB; pc.AVG.consider(avg, {...base, val: avg}); }
+    const all = Object.values(careers);
+    if (!all.length) { card.style.display = 'none'; return; }
+
+    function top5(arr, key) {
+      return arr.slice().sort((a, b) => b[key] - a[key]).slice(0, 5).filter(c => c[key] > 0);
+    }
+    function top5Derived(arr, fn, minCheck) {
+      return arr.filter(c => !minCheck || minCheck(c))
+        .map(c => ({ ...c, _v: fn(c) }))
+        .sort((a, b) => b._v - a._v).slice(0, 5).filter(c => c._v > 0);
     }
 
-    function recordCard(label, tracker, fmtVal, ctx) {
-      const { val, entries } = tracker.get();
-      if (val === null || !entries.length) return '';
-      const e = entries[0];
-      const fv = fmtVal ? fmtVal(val) : val;
-      let tiesHtml = '';
-      if (entries.length > 1) {
-        const tieData = entries.slice(1).map(t => ({ name: displayName(t.playerName), team: '', teamId: '', ctx: '' }));
-        const encoded = JSON.stringify(tieData).replace(/"/g, '&quot;');
-        tiesHtml = `<div class="record-card-ties" data-ties="${encoded}">+${entries.length - 1} others tied</div>`;
-      }
-      const ctxHtml = ctx ? `<div class="record-card-context">${ctx}</div>` : '';
-      return `<div class="record-card"><div class="record-card-label">${label}</div><div class="record-card-value">${fv}</div><div class="record-card-holder">${pLink(e.playerName, e.playerId)}</div>${ctxHtml}${tiesHtml}</div>`;
+    function leaderCat(label, items, fmtFn) {
+      if (!items.length) return '';
+      return `<div class="leader-cat">
+        <h4>${label}</h4>
+        ${items.map(c => `<div class="leader-item">
+          <span class="leader-name"><a class="player-link" href="#/player/${c.id}">${displayName(c.name)}</a></span>
+          <span class="val">${fmtFn(c)}</span>
+        </div>`).join('')}
+      </div>`;
     }
 
-    const cards = [
-      recordCard('Most Hits', pc.H),
-      recordCard('Most Runs', pc.R),
-      recordCard('Most RBI', pc.BI),
-      recordCard('Most HR', pc.HR),
-      recordCard('Most XBH', pc.XBH),
-      recordCard('Most Walks', pc.BB),
-      recordCard('Most Games', pc.G),
-      recordCard('Best Career AVG', pc.AVG, fmtStat, 'min. 50 AB'),
+    const fmtAVG = c => (c._v).toFixed(3).replace(/^0/, '');
+
+    const cats = [
+      leaderCat('Hits',        top5(all, 'H'),  c => c.H),
+      leaderCat('Runs',        top5(all, 'R'),  c => c.R),
+      leaderCat('RBI',         top5(all, 'BI'), c => c.BI),
+      leaderCat('Home Runs',   top5(all, 'HR'), c => c.HR),
+      leaderCat('XBH',         top5Derived(all, c => c.D+c.T+c.HR), c => c.D+c.T+c.HR),
+      leaderCat('Walks',       top5(all, 'BB'), c => c.BB),
+      leaderCat('Games',       top5(all, 'G'),  c => c.G),
+      leaderCat('Career AVG',  top5Derived(all, c => c.AB > 0 ? c.H/c.AB : 0, c => c.AB >= 50), fmtAVG),
     ].filter(Boolean).join('');
 
-    if (!cards) { card.style.display = 'none'; return; }
-    el.innerHTML = `<div class="records-grid">${cards}</div>`;
+    if (!cats.trim()) { card.style.display = 'none'; return; }
+    el.innerHTML = `<div class="leaders-grid">${cats}</div>`;
   });
 }
 
