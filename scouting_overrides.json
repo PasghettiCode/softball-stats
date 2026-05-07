@@ -570,8 +570,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Lanam is the most dangerous bat on this roster and arguably in the league this spring. His 8 doubles in 4 games (.588 ISO) means he is hitting the ball into the gaps at a rate no outfield can consistently handle. He went 10-for-13 over the last three games and was a key contributor in the 22-21 win over Washington. His RBI/H ratio is a modest .57 — he gets on base more than he drives runners in — so he functions as both a table-setter and a gap threat depending on lineup position.",
-        "pitchTip": "Do not let him extend his arms — jam him early with inside pitches and force weak contact up the middle. Avoid leaving anything belt-high on the outer half; that is where his doubles live. If he is ahead in the count, throw off the plate away and hope for a pop-up."
+        "tip": "League-best 8 doubles in 4 games (.588 ISO) — hits gaps at will. 10-for-13 last 3. Gets on base and deals damage every AB.",
+        "pitchTip": "Jam him inside early; his doubles live on the outer half belt-high. Don't let him extend."
       },
       {
         "playerId": "pierce-ryan",
@@ -593,8 +593,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Pierce has the second-highest ISO on the team (.529) and leads all Franklin players in triples with 3, meaning he is hitting balls deep enough that outfielders cannot run them down. He also leads in RBI with 10 on just 11 hits (0.91 RBI/H), which says he is delivering with runners on base. He scored 9 runs himself, but his R-diff is -1, so he produces more for others than he generates for himself — a classic RBI bat. He was a factor in both the Carey blowout and the Washington thriller.",
-        "pitchTip": "Pierce has gap power to all fields — shade your outfield corners deep and toward the lines. Attack him with high pitches to minimize his loft; triples come from low, hard contact. A well-placed rise ball at the letters is your best weapon to generate a pop to the infield."
+        "tip": "3 triples, .529 ISO, 10 RBI (0.91 RBI/H) — gap power to all fields, drives in runs at elite rate.",
+        "pitchTip": "Attack high to minimize loft; triples come from low hard contact. Shade OF corners deep and toward the lines."
       },
       {
         "playerId": "vanzandt-jonah",
@@ -620,8 +620,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "VanZandt is the premier run producer on the team — 11 RBI on 11 hits is a perfect 1.00 RBI/H ratio, meaning every single he gets tends to have someone coming home. He has been on a tear recently at 9-for-12 over the last three games, and his R-diff of -4 tells you he is the guy who drives others in rather than scoring himself. Do not let him come to the plate with the bases loaded.",
-        "pitchTip": "VanZandt is a situational killer — he hits his best when runners are on. Consider pitching around him with first base open if a scoring position situation develops. Otherwise, work him up in the zone; his two triples suggest he punishes anything low and in the wheelhouse."
+        "tip": "1.00 RBI/H, 11 RBI — every hit tends to score someone. 9-for-12 last 3. Do not let him up with bases loaded.",
+        "pitchTip": "Situational killer with runners on — work him up in the zone. Consider pitching around him with first base open."
       },
       {
         "playerId": "rokovich-mike",
@@ -643,8 +643,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Rokovich is the lone home run hitter on this roster, and with a 1.12 RBI/H ratio he is the most prolific run-producer per hit in the lineup. His .400 AVG is the lowest among the top tier, but his .450 ISO means nearly half his value comes from extra bases — he swings for damage every time. His R-diff is -4 (same as VanZandt), confirming he hits in the middle of the order with runners on. He was held to 5-for-12 in the last three games, so he may be cooling slightly.",
-        "pitchTip": "Rokovich is a pull hitter with home-run power — shift your outfield left and play the left-field corner deep. Pitch him away and low to negate his pull stroke; a clean changeup on the outer third can generate a routine fly ball. Never throw him a hanging pitch over the middle."
+        "tip": "Only HR on the roster, 1.12 RBI/H, .450 ISO — swings for damage every AB. 2 triples alongside the HR.",
+        "pitchTip": "Pull hitter with HR power — shift OF left, pitch him away and low. Never hang one over the middle."
       },
       {
         "playerId": "wong-uland",
@@ -666,8 +666,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Wong is a leadoff-style threat who scores far more than he drives in (+4 R_diff) — he gets on base and creates chaos on the bases. His .750 AVG and .312 ISO show he is not just a slap hitter; he can gap the ball. He went 8-for-12 over the last three games and played a role in Franklin's two wins, including the 22-21 nail-biter against Washington. His 3 doubles and 1 triple show consistent hard contact to the outfield.",
-        "pitchTip": "Wong is a table-setter — your priority is getting him out before he reaches base. If he gets on, he will score. Avoid walks at all costs. Attack him early in the count with first-pitch strikes; he tends to make contact rather than take pitches, so get ahead and put him away with off-speed."
+        "tip": ".750 AVG, .312 ISO, +4 R-diff — table-setter who gaps the ball. 8-for-12 last 3. Gets on and scores.",
+        "pitchTip": "Priority: get him out before he reaches base. Attack early with first-pitch strikes — no walks."
       },
       {
         "playerId": "sosnick-jason",
@@ -689,8 +689,8 @@
             "cls": ""
           }
         ],
-        "tip": "Sosnick is quiet on paper (.050 ISO, almost no extra-base power) but his 1.00 RBI/H ratio places him among the best run-producers on the team. He had 10 RBI on 10 hits in 5 games — he simply delivers when it counts. He has been steady at 6-for-12 over the last three games but has not been hitting for extra bases recently. He contributed to the Carey win and held his own in the Washington thriller.",
-        "pitchTip": "Sosnick makes consistent contact but rarely leaves the yard. Force him to swing at pitches out of the strike zone; he is a contact hitter who will chase if you establish a pattern. Use soft stuff away to get weak grounders — he does not have the power to punish a good pitch in that location."
+        "tip": "1.00 RBI/H, 10 RBI on 10 hits — delivers when it counts despite .050 ISO and no extra-base pop.",
+        "pitchTip": "Force him outside the zone; contact hitter who will chase. Soft stuff away generates weak grounders."
       },
       {
         "playerId": "lagory-ed",
@@ -712,8 +712,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "LaGory has been quietly building momentum — 7-for-10 over the last three games (.700) and a +3 R-diff signals he is getting on base and contributing to Franklin's run-scoring without generating a ton of RBI himself. He is a singles and gap threat who keeps innings alive. He was active in both the Washington and Burlingame games this spring.",
-        "pitchTip": "LaGory is a contact hitter on a hot streak — do not let him work a favorable count. Come at him with first-pitch strikes and keep the ball elevated to generate fly balls. He rarely pulls for extra bases, so a standard outfield alignment will work; just keep him off the bases."
+        "tip": "7-for-10 last 3, +3 R-diff — singles/gap threat on a hot streak who keeps innings alive.",
+        "pitchTip": "Hot streak contact hitter — attack with first-pitch strikes, elevate to generate fly balls. Standard OF alignment."
       },
       {
         "playerId": "samuelson-robby",
@@ -735,8 +735,8 @@
             "cls": ""
           }
         ],
-        "tip": "Samuelson is one of the highest-average hitters on the team (.700) and has been consistent all season, going 9-for-12 over the last three games. His low ISO (.100) means most of his hits are singles, but with a .700 AVG he is essentially a guaranteed on-base machine. He appeared in all 5 games and had a hand in the big offensive outbursts against Carey and Washington.",
-        "pitchTip": "Samuelson makes contact constantly — your best chance to retire him is inducing a double play. Keep the ball down in the zone to generate ground balls and work quickly before he can get comfortable. Never walk him; even first-base singles set up Franklin's RBI hitters perfectly."
+        "tip": ".700 AVG, 9-for-12 last 3 — low ISO (.100) but essentially a guaranteed on-base machine all season.",
+        "pitchTip": "Keep ball down to induce ground balls and double plays. Never walk him — first-base singles feed the RBI bats."
       },
       {
         "playerId": "linge-mario",
@@ -754,8 +754,8 @@
             "cls": ""
           }
         ],
-        "tip": "Linge is a lower-tier threat on this roster — .412 AVG with minimal extra-base production (.059 ISO) — but his +3 R-diff means he is getting on base and scoring more than he drives in, contributing to Franklin's run totals in a quiet way. He was part of the lineup in all 5 games and contributed during the Carey blowout. He is not a pitch-around candidate, but a base hit from him can extend innings.",
-        "pitchTip": "Linge is the most attackable bat in this lineup — throw strikes and let your defense work. He does not have the power to hurt you on any single pitch, so avoid nibbling at the corners and just challenge him with fastballs. Getting him out quickly preserves your pitch count for the top of the order."
+        "tip": ".412 AVG, .059 ISO, +3 R-diff — quiet contributor; gets on and scores but won't hurt you with power.",
+        "pitchTip": "Most attackable bat in the lineup — throw strikes, challenge with fastballs, let the defense work."
       },
       {
         "playerId": "jing-mu",
@@ -773,8 +773,8 @@
             "cls": ""
           }
         ],
-        "tip": "Jing has the lowest ISO on the roster (.000) — no extra-base hits in 5 games — and has gone cold recently at just 3-for-10 over the last three games after a solid start to the season. His 4 RBI are modest, and his R-diff is exactly neutral. He is not a power concern, but at .444 season average he can still put the ball in play and keep an inning alive if pitchers lose focus.",
-        "pitchTip": "Jing is currently in a slump and has zero extra-base power — be aggressive in the zone and attack him early. He makes contact but never for extra bases, so any pitch over the plate simply produces a harmless single at worst. Do not walk him; getting him out on two or three pitches is entirely achievable."
+        "tip": ".000 ISO all season, 3-for-10 last 3 — no power threat; can keep an inning alive but nothing more.",
+        "pitchTip": "In a slump with zero extra-base power — be aggressive in the zone. Two or three pitches and move on."
       },
       {
         "playerId": "jefferson-steven",
@@ -792,8 +792,8 @@
             "cls": ""
           }
         ],
-        "tip": "Jefferson has only appeared in 3 games but has gone 6-for-12 in that stretch — he could be emerging as a reliable bat if he gets more opportunities. His .000 ISO means all 6 hits have been singles, but a .500 contact rate is not something to ignore. He may see more playing time in upcoming weeks if Franklin stays in contention.",
-        "pitchTip": "Jefferson is a pure contact hitter with no power threat. Stay in the zone, work him with changeups to disrupt his timing, and trust your defense to convert the grounders and line drives he will produce. Do not let him dictate the count — get ahead early."
+        "tip": "6-for-12 in just 3 games, .000 ISO — emerging contact bat to monitor; all singles but .500 contact is real.",
+        "pitchTip": "Pure contact hitter, no power. Stay in the zone, use changeups to disrupt timing, trust the defense."
       }
     ],
     "sections": [
@@ -817,7 +817,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Lanam's .588 ISO is driven entirely by his 8 doubles — the most in the league this spring. He went 10-for-13 in his last three games and was a catalyst in the 22-21 comeback win over Washington. His ISO is so high that any count where he gets extended is dangerous; he punishes outside pitches by driving them into the gaps."
+            "tip": "League-best 8 doubles (.588 ISO) in 4 games — punishes outside pitches into the gaps. 10-for-13 last 3."
           },
           {
             "playerId": "pierce-ryan",
@@ -835,7 +835,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Pierce's 3 triples are the clearest evidence of raw power on this team — he is hitting the ball so hard and so deep that outfielders simply cannot cut it off. His .529 ISO is second only to Lanam, and his 10 RBI rank first on the team. He was a decisive factor in the Washington thriller and the Carey blowout."
+            "tip": "3 triples, .529 ISO, 10 RBI — raw power to all fields; OF simply can't run his hits down."
           },
           {
             "playerId": "rokovich-mike",
@@ -853,7 +853,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Rokovich is the only player on this roster who has gone yard, and his .450 ISO confirms he is a legitimate power threat even when he is not clearing the fence. With 2 triples and 2 doubles alongside his home run, he can do damage to all fields. His 1.12 RBI/H ratio means he is coming through with runners on base."
+            "tip": "Only HR on the roster. .450 ISO with 2 triples and 2 doubles — can clear bases in one swing. 1.12 RBI/H."
           }
         ]
       },
@@ -873,7 +873,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Lanam's 8 doubles in 4 games is an extraordinary pace — he is hitting the gaps so consistently that OF positioning against him must be extreme. Play him deep and toward the alleys; no other adjustment will work."
+            "tip": "8 doubles in 4 games — play him deep and toward the alleys; no other OF adjustment will work."
           },
           {
             "playerId": "pierce-ryan",
@@ -887,7 +887,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Pierce doubles and triples at equal rates — he hits the ball hard to the gaps and has the speed to turn doubles into triples. Any OF misplay on a Pierce hit will cost you two bases."
+            "tip": "Doubles and triples at equal rates — hits hard to the gaps and has speed to turn doubles into triples."
           },
           {
             "playerId": "wong-uland",
@@ -905,7 +905,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Wong's .312 ISO shows he is not merely a slapper — he gaps the ball regularly. His combination of high average and gap power makes him a true multi-faceted threat at the top of the lineup."
+            "tip": ".312 ISO shows he's not a slapper — gaps the ball regularly. Multi-faceted threat at top of the lineup."
           },
           {
             "playerId": "vanzandt-jonah",
@@ -919,7 +919,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "VanZandt's 2 triples and .312 ISO put him in the gap-hitter tier despite his modest doubles total. He hits the ball hard enough to leg out extra bases and kills pitchers when he does."
+            "tip": "2 triples and .312 ISO — hits it hard enough to leg out extra bases. Kills pitchers when he does."
           }
         ]
       },
@@ -939,7 +939,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Three triples in 5 games is elite production. Pierce is hitting the ball to the deepest parts of the field and running them out — your outfield must play at maximum depth when he steps in."
+            "tip": "3 triples in 5 games — hitting to the deepest parts of the field. Play OF at maximum depth."
           },
           {
             "playerId": "vanzandt-jonah",
@@ -953,7 +953,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "VanZandt's 2 triples combined with his 1.00 RBI/H ratio means each triple is typically scoring a run. He is both a gap threat and a run producer — a dangerous combination."
+            "tip": "2 triples at 1.00 RBI/H — each triple typically scores a run. Gap threat and run producer."
           },
           {
             "playerId": "rokovich-mike",
@@ -967,7 +967,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Rokovich's 2 triples alongside his home run confirm he hits the ball exceptionally hard. When he does not go deep, he goes long in the gap — there is no safe pitch location for him."
+            "tip": "2 triples alongside his HR — when he doesn't go deep, he goes long in the gap."
           },
           {
             "playerId": "lagory-ed",
@@ -981,7 +981,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "LaGory's triple is a reminder that even the bottom of this lineup can pull off extra-base hits. Do not shade your OF shallow when he's up just because his ISO is modest — he hit .700 over his last three games."
+            "tip": "His triple is a reminder that even the bottom of this lineup can extra-base. Don't shade shallow; he hit .700 last 3."
           }
         ]
       },
@@ -1081,7 +1081,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Jefferson has only appeared in 3 games but has gone 6-for-12 in that limited sample. If he earns a regular spot in the lineup — which seems likely given that form — he becomes another .500 bat your pitchers have to navigate. Monitor his plate appearances as the season progresses; he could climb the threat tier quickly."
+            "tip": "6-for-12 in 3 games — if he earns a regular spot, he becomes another .500 bat pitchers must navigate."
           },
           {
             "playerId": "jing-mu",
@@ -1099,7 +1099,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Jing is currently in a 3-for-10 cold stretch but carries a .444 season average, which means he is capable of multi-hit games. He has zero extra-base hits all season, but the Watch List flag is for the scenario where he snaps out of it and starts making consistent contact again at the top of his season form."
+            "tip": "3-for-10 cold stretch but .444 season average — can snap out of it; zero extra-base hits all season."
           }
         ]
       },
@@ -1119,7 +1119,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Rokovich's 1.12 RBI/H is the highest on the team — he is driving in more runs than he has hits, which means he is consistently coming up with runners on and delivering. His HR and 2 triples give him the ability to clear the bases in a single swing. Do not let him beat you with runners in scoring position."
+            "tip": "1.12 RBI/H tops the team — consistently delivers with runners on. HR and 2 triples can clear the bases in one swing."
           },
           {
             "playerId": "vanzandt-jonah",
@@ -1133,7 +1133,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "VanZandt's 11 RBI are the most on the team and come at a perfect 1.00 RBI/H clip. He is the definition of a run producer — every hit he gets tends to score someone. He was the driving force in Franklin's 22-21 win over Washington."
+            "tip": "11 RBI at 1.00 RBI/H — every hit scores someone. The definition of a run producer."
           },
           {
             "playerId": "sosnick-jason",
@@ -1147,7 +1147,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Sosnick's 1.00 RBI/H on 10 hits and 10 RBI is quietly elite. He has no extra-base power, but he places the ball with enough precision to drive runs in at a top-tier rate. In the 20-8 blowout over Carey, Sosnick was a key contributor."
+            "tip": "1.00 RBI/H on 10 hits — quietly elite despite no extra-base power. Places the ball with precision."
           },
           {
             "playerId": "pierce-ryan",
@@ -1161,7 +1161,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Pierce rounds out the elite RBI tier at 0.91 RBI/H. Combined with his 3 triples and .529 ISO, he is arguably the most complete offensive threat on this team — he gets on base, drives in runs, and hits for power."
+            "tip": "0.91 RBI/H, 3 triples, .529 ISO — most complete offensive threat on the roster."
           }
         ]
       },
@@ -1185,7 +1185,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Wong leads all Franklin players in R-differential at +4 — he scores 4 more runs than he drives in, which makes him the quintessential table-setter. His .750 average and gap power mean he is constantly reaching base for the RBI bats behind him to cash in. In the Washington 22-21 thriller, Wong's ability to get on and score was critical to keeping pace."
+            "tip": "+4 R-diff leads Franklin — reaches base at .750 for the RBI bats behind him to cash in."
           },
           {
             "playerId": "lagory-ed",
@@ -1203,7 +1203,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "LaGory's +3 R-diff and recent hot streak (7-for-10 last 3) mean he is both getting on base and scoring at a rate that fuels the lineup. He is the kind of player who can quietly extend a rally and then score from first on a gap hit by Lanam or Pierce."
+            "tip": "+3 R-diff on 7-for-10 last 3 — gets on and scores, quietly extends rallies for Lanam and Pierce."
           },
           {
             "playerId": "linge-mario",
@@ -1221,7 +1221,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Linge's +3 R-diff on modest counting stats shows he is an efficient scorer — he gets on base and scores without racking up RBI. In Franklin's two blowout wins, Linge was part of the bottom-of-order production that kept the scoring going inning after inning."
+            "tip": "+3 R-diff on modest counting stats — efficient scorer who kept runs flowing in the two blowout wins."
           }
         ]
       },
@@ -1231,23 +1231,23 @@
         "gamePlan": [
           {
             "heading": "Play the outfield at maximum depth — every at-bat.",
-            "tip": "Lanam's 8 doubles in 4 games is the most in the league this spring, and Pierce has 3 triples in 5 games. Standard OF depth will not contain this lineup. Every outfielder should be at the track from the first batter to the last; any ball hit over an OF head in this park is a gift."
+            "tip": "Lanam leads the league with 8 doubles; Pierce has 3 triples in 5 games. Standard OF depth won't contain this lineup — stay at the track from first batter to last."
           },
           {
             "heading": "Suppress the big inning — this team scores in waves.",
-            "tip": "Franklin put up 22 runs against Washington and 20 against Carey; they are not a grind-it-out offense but a feast-or-famine one. They allowed 26 and 20 in their two blowout losses. The pattern is clear: once they get going, they are hard to stop. Priority one is retiring the top of the order cleanly — do not give Lanam, Wong, or Pierce a chance to start a rally."
+            "tip": "They hung 22 on Washington and 20 on Carey — feast-or-famine offense. Retire the top of the order cleanly; don't give Lanam, Wong, or Pierce a chance to start a rally."
           },
           {
             "heading": "Shade the pull side against Rokovich and Pierce.",
-            "tip": "Rokovich's HR and pull-heavy power profile calls for a left-field shift; Pierce's triples go to all fields but he shows right-center production. Adjust corners accordingly for each batter rather than holding a static alignment — this lineup rewards lazy OF positioning."
+            "tip": "Rokovich's HR calls for a left-field shift; Pierce shows right-center production. Adjust per batter — lazy OF positioning gets punished."
           },
           {
             "heading": "Do not let RBI situations develop for VanZandt or Sosnick.",
-            "tip": "VanZandt (1.00 RBI/H, 11 RBI) and Sosnick (1.00 RBI/H, 10 RBI) are automatic run-drivers with runners on base. If you can strand the table-setters — Wong, LaGory, and Linge — before VanZandt and Sosnick come up, you cut off Franklin's primary run-scoring mechanism. Getting those first two outs clean in an inning is worth more than anything else your pitcher can do."
+            "tip": "VanZandt (1.00 RBI/H, 11 RBI) and Sosnick (1.00 RBI/H, 10 RBI) are automatic with runners on. Strand the table-setters before they come up."
           },
           {
             "heading": "Exploit Franklin's inconsistency — they are beatable.",
-            "tip": "Franklin is 2-3 and has been outscored by 10 in their three losses, including a 26-10 blowout at the hands of Burlingame. Their offense either clicks or it does not — there is no in-between. Keep the score tight through four innings and their high-variance offense becomes a liability rather than an asset. They have not shown the ability to grind out runs when their big bats are cold."
+            "tip": "Franklin is 2-3 and got blown out 26-10 by Burlingame. Keep it tight through four — their high-variance offense becomes a liability when their big bats go cold."
           }
         ]
       }
@@ -1281,8 +1281,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Malaspina is the hottest bat on a scorching roster — 13-for-14 on the season with a perfect 11-for-11 over his last three games, including a home run. He leads the team in runs (+5 R vs. RBI differential) and scored 12 times in just 4 games, suggesting he reaches base and creates chaos every trip. ISO of .286 signals real extra-base pop beyond the gaudy contact rate.",
-        "pitchTip": "Attack early in the count with low-and-away off-speed to avoid putting him on base; avoid anything elevated — he turns on heat consistently. Do not fall behind 1-0."
+        "tip": "Hottest bat on the roster — 13-for-14 on the season, 11-for-11 over last 3 games, 12 R in 4 games. ISO .286 signals real extra-base pop.",
+        "pitchTip": "Low-and-away early; avoid elevated — he turns on heat. Do not fall behind."
       },
       {
         "playerId": "besse-paul",
@@ -1304,8 +1304,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Besse is the most dangerous extra-base threat on the team by a wide margin — an ISO of .818 is extraordinary, driven by 1 HR, 2 triples, and 2 doubles in only 11 at-bats across 3 games. He drives in 1.33 runs per hit (12 RBI on 9 hits) and went 9-for-11 in his last three outings. Every hit he squares up has the potential to clear the bases.",
-        "pitchTip": "Pitch him outside and down; he punishes middle-in deliveries to the gaps and over the fence. If runners are on with fewer than two outs, consider pitching around him — his RBI rate is unmatched on this roster."
+        "tip": "Most dangerous extra-base threat — ISO .818 with 1 HR, 2 3B, 2 2B in 11 ABs. Drives in 1.33 runs per hit (12 RBI in 3 G).",
+        "pitchTip": "Pitch outside and down — punishes middle-in. Pitch around him with runners on."
       },
       {
         "playerId": "zlatunich-trevor",
@@ -1327,8 +1327,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Zlatunich mirrors Besse in destruction: ISO .857, a HR, a triple, and 8 RBI on 6 hits in just 2 games — tied for the highest RBI/H ratio on the team at 1.33. He went 6-for-7 in his last three games, and his -3 R differential confirms he is a true run-driver rather than a table-setter. With only 7 ABs, his numbers are small-sample but alarming.",
-        "pitchTip": "Limited track record makes him somewhat unpredictable, but the extra-base power is real. Keep the ball down and off the plate; do not leave anything belt-high — he will turn it into extra bases."
+        "tip": "ISO .857 in 2 games — HR, triple, 8 RBI on 6 hits. Tied for highest RBI/H at 1.33. Small sample, but the power is real.",
+        "pitchTip": "Keep ball down and off the plate — extra-base power is real. No belt-high."
       },
       {
         "playerId": "tancilau-mo",
@@ -1350,8 +1350,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Tancilau leads the team in doubles (3) and pairs a .875 average with a .375 ISO — elite gap-hitting credentials. He scored 5 runs in 3 games and drove in 4, going 7-for-8 in his last three appearances. His R_diff of +1 suggests he contributes both as a scorer and as a producer depending on situation.",
-        "pitchTip": "He drives the ball to the gaps with authority; keep him honest with inside pitches and try to get weak contact up the middle. Avoid leaving pitches over the outer third at the knees."
+        "tip": "Team leader in doubles (3), .875 AVG, ISO .375. Gap-hitter who also maintains elite contact — 7-for-8 in last 3 games.",
+        "pitchTip": "Keep inside pitches in; avoid anything outer-third at the knees."
       },
       {
         "playerId": "bandel-joe",
@@ -1373,8 +1373,8 @@
             "cls": ""
           }
         ],
-        "tip": "Bandel is a clutch run-producer with a 1.25 RBI/H ratio — 10 RBI on 8 hits — and extra-base pop in the form of 2 doubles and a triple. His -4 R differential confirms he produces for others more than he scores himself, making him dangerous with runners on base. He was 6-for-9 over his last three games.",
-        "pitchTip": "Work him up and in to reduce his gap power; he is most dangerous on middle-away pitches that he can drive to right-center. Do not pitch around him carelessly — the runner situation will typically make him worth attacking carefully."
+        "tip": "1.25 RBI/H ratio (10 RBI on 8 hits) — 2 doubles and a triple signal real gap power. Most dangerous with runners on.",
+        "pitchTip": "Up and in to reduce gap power; most dangerous middle-away. Attack with care."
       },
       {
         "playerId": "gomez-ricky",
@@ -1392,8 +1392,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Gomez leads the team in RBI among players with 5+ games played (10 RBI) and has been the most consistent producer across the full season with appearances in all 5 games. His 0.83 RBI/H ratio and -3 R differential paint the picture of a true middle-of-the-order producer who drives in runs rather than scoring them. He went 8-for-12 over his last three games.",
-        "pitchTip": "Avoid leaving pitches up in the zone; he is a reliable RBI hitter who thrives with runners on. Work soft away, and do not let him see a fastball middle-in with men on base."
+        "tip": "Team leader in RBI (10) over 5 games, 0.83 RBI/H. Most consistent season-long producer — a true middle-of-the-order run-driver.",
+        "pitchTip": "Work soft away; no fastball middle-in with men on base."
       },
       {
         "playerId": "lin-james",
@@ -1411,8 +1411,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Lin hits .857 across 3 games with 5 RBI on 6 hits (0.83 RBI/H), going 6-for-7 in his last three appearances. He is a part-time contributor who brings elite average and above-average run production every time he plays. Small sample, but there are no soft outs in this lineup.",
-        "pitchTip": "Treat him as a full threat — his average ranks among the team's best. Change speeds and keep the ball away; do not challenge him with heaters early in the count."
+        "tip": ".857 AVG, 5 RBI on 6 hits (0.83 RBI/H) in 3 games — elite average and above-average run production every appearance.",
+        "pitchTip": "Change speeds, keep ball away — do not challenge him early with heaters."
       },
       {
         "playerId": "bachwich-ethan",
@@ -1430,8 +1430,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Bachwich is the team's premier table-setter — he scored 8 runs in 4 games while driving in only 1, a +7 R differential that leads the roster. He gets on base and creates scoring opportunities consistently, going 7-for-10 in his last three games. His .538 season average is not flashy, but he functions as the ignition for the offense.",
-        "pitchTip": "He is not a power threat (ISO .000), but getting him out early is critical — every time he reaches base, the heart of this order gets runners to drive in. Throw strikes and attack him; do not walk him."
+        "tip": "Premier table-setter — 8 R, only 1 RBI in 4 games (+7 R differential, best on roster). Gets on base at .538 and creates scoring traffic.",
+        "pitchTip": "No power (ISO .000) — attack the zone, get him out. Do not walk him."
       },
       {
         "playerId": "ng-jerry",
@@ -1449,8 +1449,8 @@
             "cls": ""
           }
         ],
-        "tip": "Ng hits .727 across 4 games with 8 hits and 2 doubles, contributing a +1 R differential that marks him as a balanced contributor. He went 5-for-8 over his last three appearances and has shown steady contact ability throughout the season without being a primary power threat.",
-        "pitchTip": "Solid contact hitter but limited power; work the corners and induce weak grounders. Getting ahead 0-1 is key — he is tougher when allowed to work deep counts."
+        "tip": ".727 AVG, 8 hits, 2 doubles in 4 games. Steady contact hitter — balanced contributor with limited power.",
+        "pitchTip": "Limited power — work the corners, get ahead 0-1, induce weak grounders."
       },
       {
         "playerId": "barr-matt",
@@ -1472,8 +1472,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Barr appeared in only 2 games but hit .833 with 2 doubles and a .333 ISO — consistent with the team's pattern of dangerous part-time contributors. He scored 5 runs with a +2 R differential and went 5-for-6 in his last three games. Do not assume he is unfamiliar territory; he has been sharp every time out.",
-        "pitchTip": "Limited appearances mean limited film, but the doubles power is real. Keep the ball down and change speeds; do not give him anything to drive on a line to the gaps."
+        "tip": ".833 AVG, 2 doubles, ISO .333 in just 2 games — fits the team's pattern of dangerous part-time contributors. Sharp every time out.",
+        "pitchTip": "Doubles power is real — keep ball down and change speeds. No gap shots."
       },
       {
         "playerId": "nunez-cj",
@@ -1491,8 +1491,8 @@
             "cls": ""
           }
         ],
-        "tip": "Nunez is the team's third home run threat with a .429 ISO across 3 games and 7 ABs — one of the highest ISO rates on the roster. His 0.75 RBI/H ratio (3 RBI on 4 hits) and -2 R differential suggest he is a run-driver who can put the ball over the fence. Small sample, but an ISO that high does not come from luck.",
-        "pitchTip": "His ISO screams for pitches out of the strike zone — he has legitimate home run power. Do not challenge him with anything middle-up; work down and away and try to get a weak pop fly."
+        "tip": "Third HR threat — ISO .429 in 7 ABs, 0.75 RBI/H. Legitimate home run power; a small sample that does not come from luck.",
+        "pitchTip": "Do not challenge middle-up — real HR power. Work down and away."
       },
       {
         "playerId": "germino-matt",
@@ -1510,8 +1510,8 @@
             "cls": ""
           }
         ],
-        "tip": "Germino is a steady table-setter who scored 5 runs in 4 games with a +3 R differential. His .500 average is the lowest in the lineup but still respectable, and his 4-for-9 last-three-games stretch shows some recent cooling. He functions primarily as a lead-off type who creates scoring chances for the heavy hitters behind him.",
-        "pitchTip": "No power (ISO .000) — attack the zone aggressively and challenge him with fastballs. Getting him out quickly preserves pitch count and prevents the table-setting role he serves in this lineup."
+        "tip": "Steady table-setter, +3 R differential in 4 games. .500 AVG, some recent cooling (4-for-9 last 3). Creates scoring chances for the heavy hitters.",
+        "pitchTip": "No power (ISO .000) — attack zone with fastballs. Get him out quickly."
       }
     ],
     "sections": [
@@ -1535,7 +1535,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "The most destructive bat on the team — his ISO of .818 in 11 ABs reflects a HR, two triples, and two doubles. He drove in 12 runs in just 3 games, a rate that no other Tiger approaches. Pitched around him in their 22-21 win over Hoover, he still managed 9 hits in his last three outings."
+            "tip": "ISO .818, 1 HR, 2 3B, 2 2B — 12 RBI in 3 games. Most automatic run-producer on this roster."
           },
           {
             "playerId": "zlatunich-trevor",
@@ -1553,7 +1553,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Zlatunich plays sparingly but explodes every time — ISO .857 across only 2 games, with a home run, a triple, and 8 RBI. He is a pinch-appearance nightmare who punishes any mistake pitch."
+            "tip": "ISO .857, HR, triple, 8 RBI in 2 appearances — a pinch-appearance nightmare who punishes any mistake pitch."
           },
           {
             "playerId": "malaspina-ray",
@@ -1571,7 +1571,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Malaspina's power comes with an elite average — .929 on 13-for-14 with a home run. His ISO of .286 is more modest than Besse or Zlatunich, but there is virtually no chance of retiring him via weak contact."
+            "tip": ".929 AVG (13-for-14) with 1 HR and ISO .286 — virtually no chance of retiring him via weak contact."
           },
           {
             "playerId": "nunez-cj",
@@ -1585,7 +1585,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "One of three home run hitters on the roster, Nunez pairs his HR with a .429 ISO — the third-highest on the team. He is a limited-game contributor who can change a game with one swing."
+            "tip": "One of three HR threats, ISO .429 — can change a game with one swing in limited appearances."
           }
         ]
       },
@@ -1609,7 +1609,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Team leader in doubles (3) with a .875 average — consistently drives the ball to the gaps with authority. A gap-hitter who also maintains an elite contact rate."
+            "tip": "Team leader in doubles (3), .875 AVG, ISO .375 — consistently drives the ball to the gaps with authority."
           },
           {
             "playerId": "bandel-joe",
@@ -1623,7 +1623,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "2 doubles and a triple signal genuine gap power; he also drives in 1.25 runs per hit, turning his extra-base hits into RBI situations regularly."
+            "tip": "2 doubles + 1 triple with a 1.25 RBI/H ratio — gap power that regularly turns into runs."
           },
           {
             "playerId": "gomez-ricky",
@@ -1637,7 +1637,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Gomez adds 2 doubles to his impressive RBI total; his gap production complements his role as the team's most reliable season-long run producer."
+            "tip": "2 doubles complement his team-leading 10 RBI — gap production rounds out a strong all-season run-producing profile."
           },
           {
             "playerId": "barr-matt",
@@ -1651,7 +1651,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Two doubles in 6 ABs across 2 games is a high gap-hit rate; Barr's ISO of .333 confirms he is a legitimate extra-base threat even in limited appearances."
+            "tip": "2 doubles in 6 ABs across 2 games — ISO .333 confirms legitimate extra-base threat even in limited appearances."
           }
         ]
       },
@@ -1671,7 +1671,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Besse leads the team with 2 triples in 11 ABs — his combination of speed and power makes him the most dangerous hitter when the ball gets into the gaps or alley."
+            "tip": "2 triples in 11 ABs — speed and power make him the most dangerous hitter when the ball reaches the gaps."
           },
           {
             "playerId": "zlatunich-trevor",
@@ -1685,7 +1685,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Zlatunich added a triple alongside his HR in just 2 games — he has the ability to leg out extra bases and stretch singles into doubles or doubles into triples."
+            "tip": "Triple alongside his HR in just 2 games — has the legs to stretch extra bases at will."
           },
           {
             "playerId": "bandel-joe",
@@ -1699,7 +1699,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Bandel's triple adds depth to a team that can hurt you from anywhere on the bases — his 2D+1T combo makes him a full-gap threat in any at-bat."
+            "tip": "2D + 1T combo makes him a full-gap threat every at-bat."
           }
         ]
       },
@@ -1809,7 +1809,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "DeLosSantos is a one-game wonder who went 3-for-3 with 3 runs scored and a double — a perfect debut that makes him a credible pinch threat. The 7-for-10 3G line is inflated by other contexts but reflects his hot streak entering this game."
+            "tip": "3-for-3 with 3 R and a double in his only game — a credible pinch threat who debuted perfectly."
           },
           {
             "playerId": "mccallum-denzel",
@@ -1827,7 +1827,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "McCallum appeared in only 2 games but hit .667 with 3 RBI and a double, going 4-for-6 in his last three appearances. He is a competent run-producer who does not get enough attention in a lineup this deep."
+            "tip": ".667 AVG, 3 RBI, a double in 2 games — competent run-producer flying under the radar in a deep lineup."
           },
           {
             "playerId": "bahamondes-danny",
@@ -1841,7 +1841,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Bahamondes contributes quietly in 2 games — .667 average, 3 RBI on 4 hits (0.75 RBI/H), and a double. A typical St. Catherines role player who punishes inattention."
+            "tip": ".667 AVG, 3 RBI, double in 2 games — typical St. Catherines role player who punishes inattention."
           }
         ]
       },
@@ -1861,7 +1861,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Highest RBI total on the team in only 3 games — he is the most automatic run-producer in the lineup when runners are on."
+            "tip": "1.33 RBI/H, 12 RBI in 3 games — the most automatic run-producer on the roster with runners on."
           },
           {
             "playerId": "zlatunich-trevor",
@@ -1875,7 +1875,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Tied for the highest RBI/H ratio on the team at 1.33 in just 2 appearances — every hit he gets tends to score at least one runner."
+            "tip": "1.33 RBI/H, 8 RBI in 2 games — every hit tends to score at least one runner."
           },
           {
             "playerId": "bandel-joe",
@@ -1889,7 +1889,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "10 RBI in 4 games with a 1.25 RBI/H ratio — the most reliable mid-lineup run-driver among regular starters, with consistent production across the full season."
+            "tip": "1.25 RBI/H, 10 RBI in 4 games — most reliable mid-lineup run-driver among full-season starters."
           },
           {
             "playerId": "gomez-ricky",
@@ -1903,7 +1903,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Season-long workhorse with 10 RBI across 5 games — a 0.83 RBI/H ratio that has remained consistent throughout. He does not have headline power numbers but drives in runs in volume."
+            "tip": "0.83 RBI/H, 10 RBI across all 5 games — no headline power, but drives in runs consistently in volume."
           },
           {
             "playerId": "lin-james",
@@ -1917,7 +1917,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 RBI in 3 games at 0.83 per hit — elite ratio for a part-time contributor. Every appearance he makes in the lineup is a run-production threat."
+            "tip": "0.83 RBI/H, 5 RBI in 3 games — every appearance in the lineup is a run-production threat."
           },
           {
             "playerId": "wong-art",
@@ -1931,7 +1931,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Wong drives in exactly one run per hit across 5 games — a 1.00 RBI/H ratio that is among the team's best, despite a .462 average that suggests he saves his hits for high-leverage moments."
+            "tip": "1.00 RBI/H, 6 RBI in 5 games — saves his hits for high-leverage moments despite a .462 average."
           },
           {
             "playerId": "nunez-cj",
@@ -1945,7 +1945,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "One of three HR hitters on the team — his 0.75 RBI/H ratio is backed by genuine power rather than singles-based production."
+            "tip": "0.75 RBI/H backed by genuine HR power — extra bases, not singles, drive his production."
           }
         ]
       },
@@ -1969,7 +1969,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "The top table-setter in the league by R differential — scored 8 runs and drove in only 1 across 4 games. His job is to get on base and let the heavy hitters behind him do the damage, a role he executes with a .538 average."
+            "tip": "+7 R vs RBI differential (8 R, 1 RBI in 4 G) — top table-setter on the team, reaches base at .538 and creates traffic."
           },
           {
             "playerId": "malaspina-ray",
@@ -1987,7 +1987,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Despite having a home run and impressive RBI total, Malaspina scores more than he drives in — a testament to his ability to reach base consistently and run the bases aggressively. His +5 R differential in 4 games is elite."
+            "tip": "+5 R differential despite a HR — reaches base at .929 and runs aggressively, setting the table for Besse and Bande."
           },
           {
             "playerId": "germino-matt",
@@ -2005,7 +2005,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "A steady on-base presence who scores more than he drives in (+3 R differential). His .500 average keeps him reaching base, and the tigers use him to set the table for their run-producers."
+            "tip": "+3 R differential, .500 AVG — steady on-base presence the Tigers use to set the table for their run producers."
           },
           {
             "playerId": "driscoll-tim",
@@ -2023,7 +2023,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Driscoll scored 4 runs and drove in just 1 across 3 games — a classic leadoff-type role player who contributes by reaching base and creating scoring opportunities for the lineup's heavy hitters."
+            "tip": "+3 R differential (4 R, 1 RBI in 3 G) — classic leadoff-type who reaches base and creates scoring opportunities."
           }
         ]
       },
@@ -2033,23 +2033,23 @@
         "gamePlan": [
           {
             "heading": "Pitch around Besse and Zlatunich with runners on base.",
-            "tip": "These two players share the team's highest RBI/H ratio at 1.33 and carry ISO values of .818 and .857 respectively — combined they have 20 RBI in just 5 combined games. If a base is open in a run-scoring situation, take it rather than challenge either bat."
+            "tip": "ISO .818 and .857, 1.33 RBI/H each — combined 20 RBI in 5 games. With a base open in a run-scoring situation, take it."
           },
           {
             "heading": "Neutralize Bachwich at the top of the order.",
-            "tip": "Bachwich's +7 R vs. RBI differential is the highest on the team — he scored 8 runs in 4 games primarily by reaching base and creating traffic. He has no power (ISO .000), so attack the zone and get him out efficiently before he turns the lineup over to Malaspina and Besse."
+            "tip": "ISO .000, but +7 R differential — get him out quickly so he never hands the heart of this order free runners. Throw strikes."
           },
           {
             "heading": "Play deep outfield and shift toward the gaps.",
-            "tip": "St. Catherines hit 14 doubles and 3 triples on the season — their primary damage comes from gap power rather than fly balls. An outfield playing shallow will give up multiple-base hits that convert to the 19 RPG they average. Prioritize gap coverage over the warning track."
+            "tip": "14 doubles and 3 triples this season — gap power drives their 19 RPG. Play deep and prioritize gap coverage over the warning track."
           },
           {
             "heading": "Keep the ball low to neutralize the team's .899 slugging percentage.",
-            "tip": "The Tigers slug .899 as a team — elite by any measure. Elevated pitches (waist-high and above) are routinely turned into extra-base hits. Ground balls and low contact limit the SLG; an infield that stays sharp on hard grounders is the best path to keeping this offense under 19 runs."
+            "tip": "Team SLG .899 — elevated pitches turn into extra bases. Keep the ball low; sharp infield play on hard grounders is the key."
           },
           {
             "heading": "Recognize the deep rotation and treat every batter as a threat.",
-            "tip": "Even bit-part contributors carry dangerous numbers: DeLosSantos hit 1.000 in his only game, McCallum .667, Bahamondes .667. The 22-21 win over Hoover showed this team can survive bad innings and manufacture runs from anywhere in a 17-player rotation. Maintain focus and pitch intensity through the bottom of the order — there is no rest here."
+            "tip": "DeLosSantos 1.000, McCallum .667, Bahamondes .667 — no true bottom of the order. Maintain focus and pitch intensity all the way through."
           }
         ]
       }
@@ -2087,8 +2087,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Benveniste is the Lions' most dangerous bat: 12 hits in 15 AB (.800), 9 RBI, and a torrid last-three-game stretch of 8-for-9 (.889). He drove in runs in the Franklin blowout and has kept producing even in their two losses. His ISO of .200 is modest but his sheer contact rate and RBI/H of 0.75 make him a constant threat with runners on.",
-        "pitchTip": "Work him away and keep the ball out of the heart of the zone — he makes contact on everything middle-in. Vary speeds if possible and try to induce a weak grounder by busting him inside early in the count."
+        "tip": ".800 AVG, 9 RBI, 8-for-9 last 3 — the Lions' most dangerous bat. Contact rate and 0.75 RBI/H make him a constant threat with runners on.",
+        "pitchTip": "Work him away — he kills everything middle-in. No meatballs with runners on."
       },
       {
         "playerId": "martinez-francisco",
@@ -2110,8 +2110,8 @@
             "cls": ""
           }
         ],
-        "tip": "Martinez is the Lions' only true power threat, posting a team-high .389 ISO with 1 HR and 4 doubles in 18 AB. He also leads the team with a +4 R differential (10 R, 6 RBI), suggesting he gets on base and scores frequently. His 5-for-8 recent form shows no cooling off, and he did his damage across all six games including the Franklin blowout.",
-        "pitchTip": "He has HR power — do not leave anything elevated or middle-out. Jam him inside early and avoid the outer third. If he falls behind in the count, pitch him up and off the plate to chase."
+        "tip": "Only Lion with a HR (.389 ISO, 4 2B) and a +4 R differential — both a table-setter and power threat. 5-for-8 recent form shows no cooling.",
+        "pitchTip": "HR power — do not elevate or leave anything outer third. Jam him inside early."
       },
       {
         "playerId": "lau-chris",
@@ -2133,8 +2133,8 @@
             "cls": ""
           }
         ],
-        "tip": "Lau is arguably the Lions' most complete bat outside of Benveniste: .615 AVG, a 0.88 RBI/H ratio (best among regulars), .385 ISO, 3 doubles, and a triple in 13 AB. He drives in nearly one run per hit and has extra-base power to all fields. His 4-for-8 recent form is slightly below his peak but he remains dangerous with runners on.",
-        "pitchTip": "Respect his extra-base power — keep the ball down and do not elevate. With his high RBI/H ratio he is at his most dangerous with runners on; consider pitching around him in those spots if first base is open."
+        "tip": ".615 AVG, .385 ISO, 0.88 RBI/H — rare contact-plus-power combo. Triple and 3 doubles show he hits hard to all fields.",
+        "pitchTip": "Extra-base power to all fields — keep it down. Pitch around him with runners on."
       },
       {
         "playerId": "moorthy-arjun",
@@ -2156,8 +2156,8 @@
             "cls": ""
           }
         ],
-        "tip": "Moorthy leads the team with 5 doubles, pairing a .588 AVG with a .294 ISO and 7 RBI. His -4 R differential hints that he bats lower in the order or hits into outs with runners ahead, but his gap-to-gap doubles production is real. He went 5-for-7 over his last three games, showing consistent contact with power to the gaps.",
-        "pitchTip": "He is a gap hitter who drives the ball to the alleys — shade your outfield toward the gaps. Keep pitches off the outside corner to limit his ability to extend through the zone."
+        "tip": "Team-leading 5 doubles (.294 ISO, .588 AVG, 7 RBI) — a true gap hitter. Went 5-for-7 last 3 games.",
+        "pitchTip": "Gap hitter — shade outfield to the alleys. Keep pitches off the outer corner."
       },
       {
         "playerId": "katz-elliot",
@@ -2179,8 +2179,8 @@
             "cls": ""
           }
         ],
-        "tip": "Katz is the Lions' best table-setter: 9 hits in 20 AB, 2 triples, a +4 R differential (6 R, 2 RBI), and consistent presence at the top of the lineup. His speed on the basepaths makes those triples legitimate scoring threats. Despite a 5-for-10 recent stretch he remains reliable.",
-        "pitchTip": "He has speed — if he reaches base, be aware of the running game immediately. His low ISO (.200) means he is not a power threat; challenge him with inside fastballs and limit soft stuff away that he can poke into the gap."
+        "tip": "Best table-setter: .450 AVG, 2 triples, +4 R differential — fast and aggressive on the bases.",
+        "pitchTip": "Speed threat — attack inside. Watch the running game immediately if he reaches."
       },
       {
         "playerId": "french-nick",
@@ -2198,8 +2198,8 @@
             "cls": ""
           }
         ],
-        "tip": "French is the hottest Lion right now, going 6-for-7 (.857) over his last three games after a slow start that held his season line to .500. He has very little power (ISO .071, 1 double) but has become a reliable contact hitter who gets on base. His recent form suggests he has figured something out at the plate.",
-        "pitchTip": "He is on a hot streak — do not give him anything easy. Pitch him at the knees with off-speed early to disrupt his timing; he is a contact hitter so work the corners and avoid the middle of the plate."
+        "tip": "6-for-7 (.857) last 3 games — on fire despite low ISO (.071). Pure contact, gets on base reliably right now.",
+        "pitchTip": "Hot streak — knee-high off-speed early. Work corners, nothing in the zone."
       },
       {
         "playerId": "gilmore-barlow",
@@ -2221,8 +2221,8 @@
             "cls": ""
           }
         ],
-        "tip": "Gilmore has quietly been one of the Lions' best RBI bats: 6 hits in 16 AB with 5 RBI (0.83 RBI/H), 2 doubles, and a triple. His -2 R differential suggests he hits in the middle of the order and drives in others rather than scoring himself. He went 3-for-8 recently, which is solid production.",
-        "pitchTip": "He is dangerous with runners on given his RBI/H rate — consider intentional or careful pitching with runners in scoring position. Elevate pitches to induce pop-ups rather than gap shots."
+        "tip": "Quiet 0.83 RBI/H, 5 RBI — bats middle-order and delivers with runners on. 2 doubles and a triple add extra-base pop.",
+        "pitchTip": "Dangerous with runners on — elevate to induce pop-ups rather than gap shots."
       },
       {
         "playerId": "reynolds-brett",
@@ -2240,8 +2240,8 @@
             "cls": ""
           }
         ],
-        "tip": "Reynolds has the highest RBI/H ratio on the team at 1.25 — he drives in more runners than he collects hits, which means he consistently hits with runners on base. Only 4 hits in 11 AB but 5 RBI, pointing to timely clutch hitting. His 3-for-8 recent form and -3 R differential confirm he is an RBI-first, middle-order bat.",
-        "pitchTip": "He is a clutch situational hitter — with runners on, do not miss your spot. Pitch him up and away to limit hard contact; he likely sits on middle pitches to drive in runs, so work the periphery of the zone."
+        "tip": "1.25 RBI/H — best on the team. 5 RBI on just 4 hits; consistently hits with runners on. Classic clutch middle-order bat.",
+        "pitchTip": "Clutch with runners on — do not miss your spot. Work up and away."
       },
       {
         "playerId": "kloster-jeff",
@@ -2259,8 +2259,8 @@
             "cls": ""
           }
         ],
-        "tip": "Kloster is a steady presence across all six games with a .412 average and low strikeout profile implied by his .059 ISO — he puts the ball in play almost every at-bat. His +2 R differential and 4 runs scored show he gets on base and creates chances for the lineup behind him.",
-        "pitchTip": "Low power, high contact — challenge him in the zone and trust your defense. He is likely to put the first good pitch in play, so set up your fielders before the pitch rather than trying to overpower him."
+        "tip": ".412 AVG, near-zero power (.059 ISO) — pure contact, gets on base every AB. +2 R differential confirms he scores when he reaches.",
+        "pitchTip": "Low power, high contact — attack the zone, trust your defense."
       },
       {
         "playerId": "csongradi-eric",
@@ -2278,8 +2278,8 @@
             "cls": ""
           }
         ],
-        "tip": "Csongradi has appeared in only 4 games but has been productive: .417 AVG, 4 runs scored, and a 4-for-9 recent stretch suggesting he has hit the ground running when available. His +2 R differential means he scores when he gets on base, making him a useful table-setter when he is in the lineup.",
-        "pitchTip": "Limited sample size but steady contact — treat him as a solid mid-lineup bat and do not groove pitches. Work him with off-speed to create weak contact given his lack of ISO power."
+        "tip": ".417 AVG, +2 R differential in just 4 games — table-setter who scores when he gets on base.",
+        "pitchTip": "Solid contact, no power — work off-speed to create weak contact. No free pitches."
       },
       {
         "playerId": "ou-peter",
@@ -2297,8 +2297,8 @@
             "cls": ""
           }
         ],
-        "tip": "Ou has a reasonable .462 season average but cooled significantly over his last three games (2-for-8, .250). His -2 R differential and only 1 run scored all season suggest he bats deep in the order and does not reach base as often as his AVG implies — possibly poor plate appearances in key spots.",
-        "pitchTip": "He is in a slump — attack him early in the count with fastballs in the zone. His recent cold stretch (2-for-8) suggests he may be chasing; exploit that with a breaking ball off the plate after an early strike."
+        "tip": ".462 season AVG but 2-for-8 last 3 and only 1 run scored — cooling off and bats deep in the order.",
+        "pitchTip": "In a slump — attack early with fastballs, then break off the plate."
       },
       {
         "playerId": "kim-kenny",
@@ -2316,8 +2316,8 @@
             "cls": ""
           }
         ],
-        "tip": "Kim is a solid contact bat with .385 AVG, 2 doubles, and 5 hits in 13 AB across 5 games. His 3-for-8 recent form is about average for his season pace, and his even R differential (+0) places him in a neutral lineup spot. He does not profile as a power or table-setting threat but is not an easy out.",
-        "pitchTip": "No significant power or speed threat — pitch him in the zone and make him earn it. Mix in off-speed on the outer edge; his 2 doubles suggest he can use the whole field, so do not pitch exclusively one way."
+        "tip": ".385 AVG, 2 doubles, even R differential — solid contact, no power threat, uses the whole field.",
+        "pitchTip": "No power threat — pitch in the zone, mix off-speed away."
       }
     ],
     "sections": [
@@ -2345,7 +2345,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Martinez is the only Lion with a HR and the only one with an ISO above .300. His .389 ISO across 18 AB is genuinely elite for this league and he has shown power in multiple games. In the Franklin 20-11 blowout he was part of a barrage; he has also contributed in tight wins over Burlingame and Roosevelt Blue."
+            "tip": "Only Lion with a HR (.389 ISO, 4 2B) — the lone true power threat. 5-for-8 recently."
           },
           {
             "playerId": "lau-chris",
@@ -2367,7 +2367,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Lau pairs a .385 ISO with a .615 average — a rare combination of contact and extra-base power. His triple and three doubles show he hits the ball hard to all fields, not just pull power. With 7 RBI in 13 AB he is the team's most dangerous run-driver in terms of efficiency."
+            "tip": ".385 ISO + .615 AVG — rare combo. Triple and 3 2B show power to all fields. 7 RBI in 13 AB."
           },
           {
             "playerId": "moorthy-arjun",
@@ -2385,7 +2385,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Moorthy's ISO of .294 is borderline elite for this lineup, driven by a team-leading 5 doubles. He is a gap hitter rather than a pull power threat but the doubles volume is a real concern — one extra runner on base turns many of those into RBI opportunities."
+            "tip": "Team-leading 5 2B (.294 ISO) — gap power, not pull; doubles volume is a real threat."
           }
         ]
       },
@@ -2409,7 +2409,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Moorthy is the prototypical gap hitter — five doubles in six games tells you exactly where to position your outfield. Play your corners in, shade toward the alleys, and accept that he will get the occasional single rather than giving up the gap double."
+            "tip": "5 doubles in 6 games — shade toward alleys and cut off balls early to prevent extra bases."
           },
           {
             "playerId": "lau-chris",
@@ -2427,7 +2427,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Lau complements his RBI production with gap power — three doubles and a triple means he hits the ball to the outfield with authority. His triple in particular suggests he can leg out extra-base hits on balls in the gap that slower runners would hold to doubles."
+            "tip": "3 2B and a triple — hits hard to all fields. Speed turns gap shots into triples."
           },
           {
             "playerId": "benveniste-mike",
@@ -2445,7 +2445,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Benveniste's 3 doubles in 12 hits (.800 AVG) indicate gap contact even if his ISO is modest. At his contact rate he will find the gap regardless — the sheer volume of balls in play from him creates extra-base opportunities."
+            "tip": "3 2B in 12 hits at .800 AVG — sheer contact volume creates extra-base opportunities."
           }
         ]
       },
@@ -2469,7 +2469,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Katz leads the team with 2 triples — the most of any Lion — which combined with his +4 R differential paints a picture of a fast, aggressive baserunner who turns gap shots into three-baggers. Outfielders should charge balls hit into his typical zones and not allow the extra base."
+            "tip": "2 triples (team-high) + +4 R diff — fast, aggressive. Charge gap shots; cut off the extra base."
           },
           {
             "playerId": "lau-chris",
@@ -2487,7 +2487,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Lau has one triple alongside his power numbers, showing he can leg it out when he gets to the gaps. His combination of contact and speed makes him dangerous on any ball that falls in the outfield."
+            "tip": "1 triple alongside .385 ISO — contact and speed make him dangerous on any outfield ball."
           },
           {
             "playerId": "gilmore-barlow",
@@ -2505,7 +2505,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Gilmore has one triple to go with two doubles, adding a speed dimension to his already dangerous RBI bat. He is primarily an RBI producer but the triples show he can create damage himself when given room in the outfield."
+            "tip": "1 3B and 2 2B add speed to his 0.83 RBI/H bat — can create damage when given room."
           }
         ]
       },
@@ -2591,7 +2591,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Zeman has only 4 games played but posted a .400 average with a 4-for-7 recent stretch. With limited AB he is somewhat unknown and could be finding his footing — do not give him a free pass. He has zero doubles, so he is purely a contact hitter to watch."
+            "tip": ".400 AVG, 4-for-7 last 3 in limited AB — unknown, finding his footing. Pure contact."
           },
           {
             "playerId": "csongradi-eric",
@@ -2609,7 +2609,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Csongradi has played only 4 games and already has a .417 average and positive run differential. As a newer addition to the regular lineup, he is a surprise factor — the opposition has less data on him and he has been productive when available."
+            "tip": ".417 AVG, +2 R diff in 4 games — less scouting data; productive when available."
           },
           {
             "playerId": "reynolds-brett",
@@ -2627,7 +2627,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Reynolds is easy to overlook with a .364 average, but his 1.25 RBI/H ratio is the best on the team by a wide margin — he hits with runners on and delivers. Only 4 games played means he may not get flagged in routine scouting, making him a true surprise threat in big moments."
+            "tip": "1.25 RBI/H in just 4 games — easy to overlook, but delivers with runners on."
           }
         ]
       },
@@ -2651,7 +2651,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Reynolds leads the team in RBI efficiency — 5 RBI on just 4 hits means he consistently hits with runners on base and delivers them home. His -3 R differential confirms he is a middle-of-the-order clutch bat, not a table-setter."
+            "tip": "5 RBI on 4 hits (1.25 RBI/H) — consistently hits with runners on. Classic clutch middle-order bat."
           },
           {
             "playerId": "lau-chris",
@@ -2669,7 +2669,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Lau pairs volume hits (.615 AVG, 8 hits) with a 0.88 RBI/H — he drives in nearly one run per hit, which is elite. He led RBI production in the Franklin blowout and has contributed across all five of his games."
+            "tip": "0.88 RBI/H, 7 RBI at .615 AVG — drives in nearly one run per hit across all five games."
           },
           {
             "playerId": "gilmore-barlow",
@@ -2687,7 +2687,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Gilmore quietly posted a 0.83 RBI/H ratio with 5 RBI in 16 AB. His -2 R differential and 3 RBI more than his runs scored show he is batting in the middle of the order and delivering when it counts."
+            "tip": "0.83 RBI/H, 5 RBI in 16 AB — bats middle-order and delivers, more RBI than runs scored."
           },
           {
             "playerId": "benveniste-mike",
@@ -2705,7 +2705,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Benveniste combines the team's highest average (.800) with a 0.75 RBI/H ratio and team-leading 9 RBI total. He is the only Lion hitting at an elite average while also producing runs — the combination makes him the single most dangerous bat on the roster."
+            "tip": ".800 AVG + 0.75 RBI/H + team-leading 9 RBI — only Lion combining elite average and run production."
           },
           {
             "playerId": "moorthy-arjun",
@@ -2723,7 +2723,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Moorthy sits right at the 0.70 RBI/H threshold with 7 RBI on 10 hits, driven largely by his 5 doubles — each gap shot with runners on often scores at least one. His -4 R differential shows he is in the heart of the batting order, bringing runners home rather than scoring himself."
+            "tip": "0.70 RBI/H, 7 RBI driven by 5 doubles — gap shots with runners on regularly score."
           }
         ]
       },
@@ -2747,7 +2747,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Martinez is both a table-setter and a run-producer — his +4 R differential (10 R, 6 RBI) shows he gets on base and scores frequently, while his 1 HR and .389 ISO mean he is also a real power threat. He is likely batting near the top of the order due to his combination of getting on base and driving runners in."
+            "tip": "10 R, 6 RBI (+4 diff) plus 1 HR, .389 ISO — table-setter with real power threat."
           },
           {
             "playerId": "katz-elliot",
@@ -2765,7 +2765,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Katz is a pure table-setter: 6 runs scored versus only 2 RBI (+4 differential), with 2 triples and consistent contact at .450 AVG. He reaches base, uses his speed, and scores — the Lions likely bat him at or near the top. Against us, shutting down Katz before he gets to scoring position is critical."
+            "tip": "6 R vs 2 RBI (+4 diff), .450 AVG, 2 3B — pure table-setter who runs and scores. Shut him down."
           },
           {
             "playerId": "kloster-jeff",
@@ -2783,7 +2783,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Kloster is a contact-first table-setter who scores twice as often as he drives in runs. His .412 average and near-zero strikeout profile (implied by .059 ISO) mean he gets on base and relies on the lineup behind him to bring him home. Prevent him from reaching in the first place."
+            "tip": ".412 AVG, 4 R vs 2 RBI — gets on base every AB and scores. Prevent him from reaching."
           },
           {
             "playerId": "csongradi-eric",
@@ -2801,7 +2801,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Csongradi has a +2 R differential in only 4 games, suggesting he gets on base and scores at a solid clip relative to his limited appearances. His .417 average means he is not a free out even though he lacks ISO pop."
+            "tip": ".417 AVG, +2 R diff in 4 games — gets on base and scores even in limited appearances."
           }
         ]
       },
@@ -2811,23 +2811,23 @@
         "gamePlan": [
           {
             "heading": "Shade outfield toward the alleys for Moorthy and Lau.",
-            "tip": "Moorthy leads the team with 5 doubles and Lau has added 3 more — the Lions drive the ball into the gaps repeatedly. Position your left and right fielders toward the alleys and be prepared to cut off balls early rather than allowing them to roll to the wall for extra-base hits."
+            "tip": "Moorthy (5 2B) and Lau (3 2B) drive the ball into the alleys repeatedly — shade corners toward the gaps and cut off balls early."
           },
           {
             "heading": "Neutralize Benveniste early and protect against his RBI production.",
-            "tip": "Benveniste is batting .800 with 9 RBI and has been 8-for-9 over his last three games — he is locked in and dangerous. He should not see a hittable pitch with runners in scoring position. With first base open and runners on, consider pitching around him; his RBI/H of 0.75 means stranding him is better than giving him a chance to drive in two."
+            "tip": "Benveniste is .800 with 9 RBI and locked in (8-for-9 last 3). Do not give him a hittable pitch with runners on — pitch around with first base open."
           },
           {
             "heading": "Attack French and Kloster early — do not let streaks extend.",
-            "tip": "French is on a 6-for-7 tear and Kloster is a steady .412 contact bat; both have minimal power (ISO .071 and .059) but reach base reliably. Challenge them in the zone with first-pitch strikes, keep the ball down, and trust your defense. Allowing them to reach creates pressure on the next three or four batters who are genuine run producers."
+            "tip": "French (6-for-7 last 3) and Kloster (.412) have no power but reach base constantly. First-pitch strikes — they feed the run producers behind them."
           },
           {
             "heading": "Be strategic pitching to Reynolds and Gilmore with runners on base.",
-            "tip": "Reynolds has a 1.25 RBI/H ratio and Gilmore 0.83 — these two are the Lions' most clutch situational hitters. Both show significant negative R differentials (-3 and -2 respectively), confirming they bat with runners already on and deliver. With any runner on second or third, elevate pitches to induce pop-ups rather than giving them anything to drive into the outfield."
+            "tip": "Reynolds (1.25 RBI/H) and Gilmore (0.83) are the Lions' clutch hitters. With a runner on 2nd or 3rd, elevate to induce pop-ups — nothing to drive."
           },
           {
             "heading": "Exploit the Lions' lack of elite power — do not be afraid to attack the zone.",
-            "tip": "Lincoln has only 1 HR and a .596 team SLG (compare to Hoover's .873). Martinez is the lone power threat; the rest of the lineup is contact-and-gap. You can attack the zone against most of the lineup without fear of a home run rally. The Lions scored only 3 runs against us in week 5 (3-14 loss) — their offense collapses when you force them into contact situations on good pitches rather than walking them into counts."
+            "tip": "Lincoln has only 1 HR and .596 team SLG. Attack the zone — they scored 3 runs on us in week 5 and collapse when forced into contact on good pitches."
           }
         ]
       }
@@ -2865,8 +2865,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Geheran is the team's offensive engine — 17 hits and 15 RBI in 6 games, an 0.88 RBI/H ratio that makes him the most dangerous contact RBI producer on the roster. His ISO of .217 (3 doubles, 1 triple) means he extends at-bats for extra bases. He was a factor in the close week4 win over McKinley-2 (15-14) and the week5 near-miss vs Franklin. Recent form is 9-for-12 over last 3 games — he is not cooling down.",
-        "pitchTip": "Work him away and low; he drives inside pitches with authority to produce RBI. Change speeds, avoid the heart of the zone, and do not leave anything elevated middle-in — that is his extra-base territory."
+        "tip": "Team's offensive engine — 17 hits, 15 RBI in 6 games (.739 AVG, 0.88 RBI/H). ISO .217 with 3D/1T. 9-for-12 last 3 games and not cooling off.",
+        "pitchTip": "Work him away and low; avoid elevated middle-in — that's his extra-base territory."
       },
       {
         "playerId": "adams-gareth",
@@ -2888,8 +2888,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Adams has the highest RBI/H on the team at a perfect 1.00 — every hit he gets scores a run. In only 3 games (10 AB) he has produced 7 RBI to go alongside 4 runs scored, with a triple on top. His .700 AVG and .200 ISO are elite for a part-time role, and his 7-for-10 recent stretch means he may be earning more starts. A legitimate middle-of-order threat whenever he is in.",
-        "pitchTip": "He hits with runners on base — do not let him see fastballs in the strike zone with men on. Pitch to generate weak contact; avoid leaving anything in his pull zone with runners aboard."
+        "tip": "Perfect 1.00 RBI/H in 3 games — .700 AVG, 7 RBI, 1 triple. Could immediately be the most dangerous bat if he earns more starts.",
+        "pitchTip": "Do not let him see fastballs in the zone with men on — he converts every hit to a run."
       },
       {
         "playerId": "roth-brian",
@@ -2911,8 +2911,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Roth has the highest ISO on the team at .375 despite zero home runs — he generates that extra-base value entirely through 2 doubles and a team-high 2 triples in just 4 games. His plus-5 R_diff makes him a genuine run-scorer, and his 6-for-12 recent form shows he is active. He is the premier triples threat on this roster — a ball hit in the gap has a real chance of going to third.",
-        "pitchTip": "Keep the ball out of the gaps at all costs. Pitch him inside to jam contact; an outfield playing at normal depth gives him room to stretch singles into triples. OF should shade in slightly and favor the alleys when Roth bats."
+        "tip": "Team-high ISO .375 with 2 triples in 4 games — the premier triples threat. Any ball in the gap has a real chance of going to third.",
+        "pitchTip": "Pitch him inside to jam; OF must shade the alleys or a single stretches to a triple."
       },
       {
         "playerId": "poucher-bill",
@@ -2930,8 +2930,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Poucher has reached base 15 times in 23 at-bats (.652) and is as consistent a table-setter as the Wildkittens have. His R_diff of +3 confirms he scores more than he drives in, and his 9-for-11 over the last 3 games is the best recent form on the team by at-bat efficiency. Low ISO (.087) means he is a singles machine — he will clog the bases and force your defense to play clean.",
-        "pitchTip": "He makes contact at an elite rate; do not walk him, as that puts runners on cheaply. Pitch aggressively in the zone early, use the corners to generate ground balls, and get him out quickly before he can put a hit together with runners on."
+        "tip": "Elite table-setter — .652 AVG, 15 H in 23 AB, 9-for-11 last 3 games. Singles machine (ISO .087) who clogs bases and forces clean defense.",
+        "pitchTip": "Pitch aggressively in the zone early — do not walk him; use corners to generate ground balls."
       },
       {
         "playerId": "saifher-darryl",
@@ -2953,8 +2953,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Saifher leads the team in at-bats (26) and has 11 RBI across 6 games — his 0.73 RBI/H marks him as a consistent run producer in the middle of the order. He contributes both a double and a triple for extra-base range and his 8-for-13 recent stretch shows sustained production. He was part of the close game vs McKinley-2 and the Franklin battle — he produces when it counts.",
-        "pitchTip": "He sees a lot of at-bats, which means he is patient and selective. Do not give him anything fat in run-scoring situations. Work the outer half and break away from him to generate pop-outs rather than line drives."
+        "tip": "Most at-bats on the team (26), 11 RBI, 0.73 RBI/H — consistent run producer in the middle. ISO .154 with 2D/1T; 8-for-13 over last 3.",
+        "pitchTip": "Work the outer half away from him; avoid anything fat in run-scoring situations."
       },
       {
         "playerId": "miles-darren",
@@ -2976,8 +2976,8 @@
             "cls": ""
           }
         ],
-        "tip": "Miles is a well-rounded threat in 4 games — .571 AVG, 3 doubles, ISO of .214, and a nearly neutral R_diff (+1) that shows he both scores and drives in. His 6-for-10 recent form keeps him in the meat of the order. Three doubles in 14 at-bats is a rate that demands gap coverage from the outfield whenever he is up.",
-        "pitchTip": "He pulls the ball for extra bases — shade the corners and pitch him away to deny the pull-side gap. Soft contact away and down is the target; avoid anything left middle-away at thigh height."
+        "tip": "3 doubles in 14 AB (ISO .214) — a true gap hitter. Nearly neutral R_diff; scores and drives in equally.",
+        "pitchTip": "Pitch away to deny the pull-side gap; keep it down to limit extra bases."
       },
       {
         "playerId": "matsurra-kentaro",
@@ -2999,8 +2999,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Matsurra is a pure table-setter — .562 AVG, +4 R_diff (8 R vs 4 RBI), and an 8-for-10 stretch over the last 3 games that is the hottest recent window on the team. Zero ISO (.000) means he lives and dies by singles, but his ability to reach base and score puts constant pressure on the defense. He scores in bulk when the lineup behind him is clicking.",
-        "pitchTip": "Challenge him early in the count — he is a contact hitter who does not pull for extra bases. Get him out quickly to prevent him from becoming a baserunner for the power bats behind him."
+        "tip": "Pure table-setter — .562 AVG, +4 R_diff, and 8-for-10 over last 3 games (hottest recent window on the team). Zero ISO, all singles.",
+        "pitchTip": "Challenge him early — pure contact hitter with no extra-base threat; get him out before he becomes a baserunner."
       },
       {
         "playerId": "sando-dave",
@@ -3018,8 +3018,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Sando has a quiet profile — no extra-base hits, zero ISO — but his 0.78 RBI/H is above the key 0.7 threshold, making him an efficient run driver via singles with runners on base. His 6-for-10 recent form shows consistency over 5 games. He will not beat you in the gap, but he will hurt you with runners in scoring position.",
-        "pitchTip": "He is a situational singles hitter — pitch him in ways that strand runners rather than letting him hit soft singles up the middle. Infield corners should expect routine grounders; stay home on the bases to avoid getting burned by his contact ability."
+        "tip": "Zero ISO but 0.78 RBI/H — efficient situational singles hitter who drives runs with men on. Do not let the flat profile fool you.",
+        "pitchTip": "Get weak contact to strand runners; do not leave pitches up the middle with men on."
       },
       {
         "playerId": "mello-josh",
@@ -3041,8 +3041,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Mello matches Adams for the best RBI/H ratio on the team at exactly 1.00 — 7 hits for 7 RBI. His lower AVG (.467) means he can be retired, but any contact tends to drive runs. Two doubles add extra-base value in 15 at-bats. He has been active over 4 games and contributed to several high-scoring innings in the Franklin and McKinley-2 games.",
-        "pitchTip": "Treat him like Adams — do not let him see hittable pitches with runners on base. His RBI rate is elite; pitch around him in run-scoring situations if the lineup situation allows it."
+        "tip": "1.00 RBI/H (7 H, 7 RBI) with 2 doubles — quiet danger who converts every hit to a run. Manageable AVG (.467) but not with runners on.",
+        "pitchTip": "Treat him like Adams — pitch around him in run-scoring situations; his RBI rate is elite."
       },
       {
         "playerId": "simmons-drew",
@@ -3060,8 +3060,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Simmons is a table-setter archetype in 3 games — .545 AVG, +2 R_diff (4 R, 2 RBI), and 6-for-11 over his last 3 games. Zero ISO suggests pure contact hitting with no extra-base ceiling, but his on-base ability makes him a scoring threat. He is a recent addition to the lineup and should be taken seriously given his .545 clip.",
-        "pitchTip": "Get him out early — his value is entirely contact-based. Soft toss to the corners limits his ability to drive the ball; do not let him work deep counts where his contact skills favor him."
+        "tip": "Table-setter archetype — .545 AVG, +2 R_diff, 6-for-11 last 3 games in 3 appearances. Zero ISO; value is entirely in reaching base.",
+        "pitchTip": "Get him out early — value is contact-based. Soft to the corners; don't let him work deep counts."
       },
       {
         "playerId": "sandell-chris",
@@ -3083,8 +3083,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Sandell provides solid depth production in 3 games — .462 AVG, 2 doubles, and a +1 R_diff showing balanced contribution. His ISO of .154 is decent and he has been consistent at 6-for-13 over his last 3 games. He fills in ably and adds to the team's depth threat in the bottom third of the order.",
-        "pitchTip": "He is an extra-base type via doubles — keep the ball down and in to prevent line drives to the gaps. He is manageable but not an easy out; avoid complacency late in the lineup."
+        "tip": "Solid depth bat — .462 AVG, 2 doubles, ISO .154, consistent at 6-for-13 recent. Not an easy out at the bottom of the order.",
+        "pitchTip": "Keep it down and in to prevent gap doubles — manageable but don't be complacent."
       },
       {
         "playerId": "sison-francis",
@@ -3106,8 +3106,8 @@
             "cls": ""
           }
         ],
-        "tip": "Sison is the team's premier table-setter by R_diff — a +6 differential (7 R vs 1 RBI) in 6 games shows he reaches base and scores without driving runs himself. His .316 AVG is the lowest in the lineup but his run-scoring impact is outsized. However, his 2-for-9 recent stretch suggests a cold stretch; he may be slotted lower or sitting soon.",
-        "pitchTip": "He is currently the weakest bat in recent form — attack him aggressively in the zone. His value is reaching base, not hitting for power; get him out quickly and do not walk him into a scoring position for the bats behind him."
+        "tip": "+6 R_diff (7 R / 1 RBI) makes him the team's top table-setter by run scoring. Currently cold (2-for-9 last 3) but his scoring ability is real.",
+        "pitchTip": "Attack him aggressively — weakest recent form on the roster; do not walk him on base."
       }
     ],
     "sections": [
@@ -3131,7 +3131,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Roth leads the team in ISO at .375 — the highest extra-base impact on a squad with zero home runs. He generates that value entirely through 2 triples and 2 doubles in 4 games. He is the closest thing Washington has to a pure power threat and his gap-to-triple speed makes him the most dangerous hitter when the outfield plays deep."
+            "tip": "Team-high ISO .375 via 2 triples and 2 doubles in 4 games — premier extra-base threat on a team with zero HRs."
           },
           {
             "playerId": "geheran-chris",
@@ -3149,7 +3149,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Geheran combines the highest hit total (17) with a strong ISO of .217 — 3 doubles and a triple give him extra-base production alongside his elite RBI total. He is the team's all-around best player and would be the anchor of any power section despite the team carrying no home runs."
+            "tip": "Best all-around player — 17 H, ISO .217 (3D/1T), 15 RBI. Elite contact and extra-base production without a single HR."
           },
           {
             "playerId": "miles-darren",
@@ -3163,7 +3163,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Miles has ISO .214 driven by three doubles in 14 at-bats — a doubles rate that is among the best on the team. He is a gap hitter in the truest sense and should be defended accordingly."
+            "tip": "ISO .214 on 3 doubles in 14 AB — a doubles rate that demands gap coverage every time he steps up."
           }
         ]
       },
@@ -3183,7 +3183,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Three doubles in 14 at-bats — Miles is the most reliable gap hitter in the lineup. Outfield must stay honest in the alleys when he bats."
+            "tip": "Three doubles in 14 at-bats — Miles is the most reliable gap hitter in the lineup. OF must stay honest in the alleys."
           },
           {
             "playerId": "geheran-chris",
@@ -3197,7 +3197,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Geheran and Miles share the team double lead (3 each). His extra-base rate across 23 at-bats is consistent and repeatable."
+            "tip": "Ties Miles for team lead with 3 doubles (plus a triple) across 23 AB — extra-base rate is consistent and repeatable."
           },
           {
             "playerId": "saifher-darryl",
@@ -3211,7 +3211,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Saifher adds doubles and a triple from high in the order. Outfield must play honest depth against him in the alleys."
+            "tip": "Doubles and a triple from high in the order — OF must play honest depth in the alleys against him."
           },
           {
             "playerId": "sandell-chris",
@@ -3225,7 +3225,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Sandell adds two doubles in only 13 at-bats — a strong rate for a depth player. Do not play him shallow."
+            "tip": "Two doubles in only 13 at-bats — a strong rate for a depth player. Do not play him shallow."
           }
         ]
       },
@@ -3245,7 +3245,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Roth is the #1 triples threat on the team with 2 triples in just 16 at-bats. His speed in the gaps is genuine. OF must play conservative depth and cut off balls in the alleys before they roll to the wall."
+            "tip": "2 triples in 16 AB — the #1 triples threat. OF must cut off gap balls early before they roll to the wall."
           },
           {
             "playerId": "geheran-chris",
@@ -3259,7 +3259,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Geheran added a triple among his 17 hits. At .739 AVG he reaches base so often that any miscue in the outfield extends into an extra base."
+            "tip": "1 triple among 17 hits — at .739 AVG any OF miscue gives him an extra base."
           },
           {
             "playerId": "saifher-darryl",
@@ -3273,7 +3273,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Saifher's triple adds to the triples threat pool. At .577 AVG over 26 AB he is a reliable contact hitter who can stretch a hit."
+            "tip": "1 triple in 26 AB at .577 — reliable contact hitter who will stretch a hit."
           },
           {
             "playerId": "adams-gareth",
@@ -3287,7 +3287,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Adams has a triple in only 10 at-bats. His high AVG means he reaches base frequently enough to make the triple a real outcome."
+            "tip": "1 triple in only 10 AB — his .700 AVG means he reaches base often enough to make it a real outcome."
           },
           {
             "playerId": "ciccarelli-nick",
@@ -3301,7 +3301,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Ciccarelli has a triple despite a lower AVG — watch for him to run on contact. He adds a secondary triples threat from deeper in the lineup."
+            "tip": "1 triple despite a lower AVG — watch for him to run on contact from deeper in the lineup."
           }
         ]
       },
@@ -3397,7 +3397,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Adams has only 10 AB but is hitting .700 with a 1.00 RBI/H ratio — if he gets more starts he could immediately be the most dangerous bat in the lineup. Do not underestimate him because of the limited sample."
+            "tip": ".700 AVG, 1.00 RBI/H in 10 AB — more starts means he could be the most dangerous bat in the lineup."
           },
           {
             "playerId": "simmons-drew",
@@ -3411,7 +3411,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Simmons has limited games but is hitting .545 with a strong recent stretch. He could be a surprise factor especially early in games before the book is out on him."
+            "tip": ".545 AVG with a strong recent stretch — a surprise factor early in games before the book is out on him."
           },
           {
             "playerId": "ciccarelli-nick",
@@ -3425,7 +3425,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Ciccarelli hits only .312 but every hit he produces drives a run — 5 RBI on 5 hits with a triple included. A low-AVG player with a perfect RBI/H ratio is a genuine sleeper RBI threat."
+            "tip": ".312 AVG but 1.00 RBI/H (5 RBI on 5 H, including a triple) — a genuine sleeper RBI threat."
           }
         ]
       },
@@ -3445,7 +3445,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "The team's top RBI producer by volume and rate. In the week4 15-14 win over McKinley-2 and the week5 21-22 loss to Franklin he was the engine of the offense. 15 RBI in 6 games is exceptional without a home run."
+            "tip": "Top RBI producer by volume and rate — 15 RBI in 6 games without a single HR. The engine of the offense."
           },
           {
             "playerId": "adams-gareth",
@@ -3459,7 +3459,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Perfect RBI/H in 3 games — Adams converts contact to runs at the highest rate on the team. Small sample but completely clean ratio."
+            "tip": "Perfect 1.00 RBI/H in 3 games — small sample but completely clean ratio."
           },
           {
             "playerId": "mello-josh",
@@ -3473,7 +3473,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Mello also has a perfect 1.00 RBI/H — 7 hits, 7 RBI. He is a quiet danger in the middle of the order who converts contact into runs efficiently."
+            "tip": "Also 1.00 RBI/H (7 H, 7 RBI) — quiet middle-order danger who converts contact to runs."
           },
           {
             "playerId": "ciccarelli-nick",
@@ -3487,7 +3487,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Ciccarelli rounds out the perfect RBI/H club. Three players at exactly 1.00 RBI/H is a sign of a team that punishes mistakes with runners on base."
+            "tip": "5 RBI on 5 H — rounds out the perfect RBI/H club. Three players at 1.00 means mistakes with runners on get punished."
           },
           {
             "playerId": "sando-dave",
@@ -3501,7 +3501,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Sando has no extra-base hits but his 0.78 RBI/H shows he is a productive contact hitter with runners on. Do not let the zero ISO fool you — he drives runs."
+            "tip": "0.78 RBI/H with zero ISO — do not let the flat profile fool you; he drives runs via singles."
           },
           {
             "playerId": "saifher-darryl",
@@ -3515,7 +3515,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Saifher is the volume RBI leader behind Geheran — 11 RBI in 26 AB. His 0.73 RBI/H over a full season sample is the most reliable of the group."
+            "tip": "Volume RBI leader behind Geheran — 11 RBI in 26 AB. Most reliable rate over a full season sample."
           }
         ]
       },
@@ -3539,7 +3539,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "The most extreme table-setter on the team — +6 R_diff means he scores in bulk but rarely drives runs himself. His .316 AVG and zero ISO confirm he is purely a get-on-base, score-from-first type. Despite a cold recent stretch (2-for-9), his 7 runs in 6 games show consistent scoring ability when healthy."
+            "tip": "+6 R_diff (7 R / 1 RBI) — extreme table-setter; scores without driving runs. Cold lately (2-for-9)."
           },
           {
             "playerId": "matsurra-kentaro",
@@ -3557,7 +3557,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Matsurra is a reliable top-of-order scorer — 8 runs on .562 AVG with zero ISO. His +4 R_diff and 8-for-10 recent form make him one of the more active base-runners on the team right now."
+            "tip": "8 R on .562 AVG, +4 R_diff, 8-for-10 recent — one of the most active baserunners on the team right now."
           },
           {
             "playerId": "roth-brian",
@@ -3575,7 +3575,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Roth combines table-setter run production (+5 R_diff) with his triples threat. He scores at a high rate relative to RBI, suggesting he is a leadoff/top-order bat who also happens to have the team's highest ISO."
+            "tip": "+5 R_diff combined with team-high ISO .375 — top-order bat who scores at a high rate and still has gap-to-triple speed."
           },
           {
             "playerId": "poucher-bill",
@@ -3593,7 +3593,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Poucher is a consistent table-setter — 15 hits in 23 AB (.652) with a +3 R_diff. His 9-for-11 recent form makes him extremely difficult to retire as a leadoff-type bat."
+            "tip": "15 H in 23 AB (.652), +3 R_diff, 9-for-11 recent — extremely difficult to retire as a leadoff-type bat."
           },
           {
             "playerId": "simmons-drew",
@@ -3611,7 +3611,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Simmons scores more than he drives in across his 3 games. As a potential starter going forward, his table-setter profile (zero ISO, .545 AVG) makes him a reliable run-scorer."
+            "tip": "Scores more than he drives in across 3 games — zero ISO, .545 AVG; reliable run-scorer if he earns more starts."
           }
         ]
       },
@@ -3621,23 +3621,23 @@
         "gamePlan": [
           {
             "heading": "Play the outfield at moderate depth — no HR risk, but triples are real.",
-            "tip": "Washington has zero home runs on the season, so deep fly balls are not a concern. However, Roth (2 triples, ISO .375), Geheran (1 triple), Saifher (1 triple), and Adams (1 triple) all have gap-to-triple speed. Outfielders should position at slightly shallower-than-normal depth to cut off gap balls early, while still respecting the alleys. Do not play in shallow enough to give up the gap; the sweet spot is moderate depth favoring the alleys."
+            "tip": "No HR risk, but Roth (2 triples), Geheran, Saifher, and Adams all have gap-to-triple speed. OF should position at moderate depth favoring the alleys."
           },
           {
             "heading": "Shade the outfield gaps, not the pull-line walls.",
-            "tip": "With 14 doubles and 5 triples but no HRs, Washington lives in the gaps. CF and corner OFs should favor alleys over foul lines. The most common extra-base outcome is a ball hit between outfielders — positioning the center fielder slightly toward either gap depending on the batter handedness will cut off the most dangerous hits."
+            "tip": "14 doubles and 5 triples but zero HRs — Washington lives in the gaps. CF should shade toward alleys based on batter handedness; prioritize gap coverage over foul lines."
           },
           {
             "heading": "Priority: strand runners from the top of the order before Geheran and Adams bat.",
-            "tip": "Washington's lineup is structured so that Sison (7 R, +6 R_diff), Matsurra (8 R, +4 R_diff), Poucher (6 R, +3 R_diff), and Roth (+5 R_diff) all function as lead-off types who get on base and score. Retiring those table-setters before Geheran (.739, 15 RBI, 0.88 RBI/H) and Adams (.700, 1.00 RBI/H) bat is the single highest-leverage defensive priority. Hold baserunners aggressively and prioritize limiting their on-base opportunities."
+            "tip": "Retire Sison, Matsurra, Poucher, and Roth before Geheran (.739, 15 RBI) and Adams (1.00 RBI/H) bat — highest-leverage priority."
           },
           {
             "heading": "Play the infield honest — no power shifts needed, but stay ready for hard contact up the middle.",
-            "tip": "With zero HRs, no dramatic pull-side shifts are warranted. The team hits for contact at a .546 team AVG, meaning hard grounders and line drives up the middle are common. Infield should play standard depth with slight shading toward the middle to handle the contact-heavy lineup. Expect fewer slow rollers and more sharp ground balls."
+            "tip": "Zero HRs — no pull-side shifts needed. Team hits .546 with hard contact up the middle; infield plays standard depth with slight shade toward the middle."
           },
           {
             "heading": "Attack the bottom of the lineup early and conserve pitching energy for the middle.",
-            "tip": "Sison (.316 AVG, 2-for-9 recent), Ciccarelli (.312 AVG), and Sandell (.462 AVG) are the most manageable outs in the lineup. However, Ciccarelli has a 1.00 RBI/H ratio — do not leave pitches in the zone with runners on even against lower-average hitters. The goal is to get quick outs from the 9-11 spots to face a smaller lineup and reduce Geheran's, Adams's, and Mello's at-bats with runners on base."
+            "tip": "Sison (.316, cold 2-for-9) and Ciccarelli (.312) are the most manageable outs — but Ciccarelli has 1.00 RBI/H, so don't pitch to him with men on. Get quick outs in the 9-11 spots."
           }
         ]
       }
@@ -3653,7 +3653,7 @@
       "record": "1-4"
     },
     "summaryNote": "Burlingame Expansion stumbled to a 1-4 start but capped the first half of the season with a statement 26-10 blowout of Franklin in week 7 — a performance that signals this team is capable of erupting offensively when everything clicks. The Gallant brothers anchor a dangerous top of the order: Nolan is an elite extra-base threat with a staggering .786 ISO driven by 3 triples and a home run, while Vic makes consistent contact at .818 AVG. Do not let their record lull you into complacency — they can put up a crooked number in a hurry.",
-    "lineupNote": "The team rotates a roster of roughly 11-12, with the Gallant brothers, Camacho, and Lasky logging the most appearances; Armanini has been dangerous in limited games, and Jack Maguire (3-for-3, 3 RBI in week 7) is an emerging wildcard off the bench.",
+    "lineupNote": "The team rotates roughly 11-12 players; the Gallant brothers, Camacho, and Lasky log the most appearances, with Armanini dangerous in limited games and Maguire an emerging wildcard.",
     "lineup": [
       {
         "playerId": "gallant-nolan",
@@ -3679,8 +3679,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "The most dangerous bat on this roster. Nolan's .786 ISO is historically elite for this league — his 3 triples and 1 HR out of 9 hits means almost half his hits go for extra bases. He went 8-for-11 over the last 3 games and racked up 8 runs scored. In the week 7 Franklin blowout he was clearly one of the engines of the 26-run outburst. He has gap-to-gap power AND the speed to turn doubles into triples; the outfield must play extremely deep whenever he steps in.",
-        "pitchTip": "Pitch low and inside to limit extension; avoid anything belt-high in the middle third of the plate. Change speeds aggressively — he has elite bat speed and will pull anything predictable. Do not give him a first-pitch fastball over the plate."
+        "tip": "Most dangerous bat on the roster. .786 ISO with 3 triples and 1 HR in 9 hits — nearly half his hits are extra-base. 8-for-11 last 3 games, 8 R scored. Play OF at maximum depth.",
+        "pitchTip": "Pitch low and inside, change speeds aggressively — no first-pitch fastballs over the plate."
       },
       {
         "playerId": "gallant-vic",
@@ -3698,8 +3698,8 @@
             "cls": ""
           }
         ],
-        "tip": "Vic leads all Expansion players in batting average at .818 and is arguably the hardest to retire on a pure contact basis. His 7-for-8 performance over the last 3 games shows he is absolutely locked in. With a .273 ISO he also has extra-base pop — 1 double and 1 triple in 9 hits. Batting alongside his brother Nolan, the two create a lethal 1-2 punch at the top of the order that can open innings wide open.",
-        "pitchTip": "Keep him off-balance with off-speed pitches; he appears to be a gap hitter who likes to go the other way. Jamming him inside may be your best option — do not pitch him away where he can extend. Do not let him see a pattern."
+        "tip": "Team leader in AVG at .818 and locked in — 7-for-8 last 3 games. .273 ISO adds gap pop (1 2B, 1 3B). With Nolan, the two form a lethal 1-2 punch.",
+        "pitchTip": "Jam him inside — do not pitch away where he can extend and gap the ball."
       },
       {
         "playerId": "camacho-martin",
@@ -3721,8 +3721,8 @@
             "cls": ""
           }
         ],
-        "tip": "Camacho is one of the team's two home run hitters and pairs elite average (.615) with genuine power (.308 ISO). He has driven in 5 runs while scoring 5 — a balanced threat who cleans up runners effectively. His RBI/H ratio of 0.62 means runners in scoring position will come home against him. He went 5-for-10 in his last 3 games, suggesting a slight dip from his season mark that has not cost him productivity.",
-        "pitchTip": "He has HR power — keep everything down in the zone. Do not leave anything elevated. His 1 HR and high ISO suggest he can drive the ball to any field; do not give him anything to pull on the inner half."
+        "tip": "Second HR threat on the team. .615 AVG with .308 ISO and 5 RBI in 4 games — a balanced cleanup bat who drives in runners at a high rate.",
+        "pitchTip": "Keep everything down — 1 HR and high ISO mean nothing elevated, nothing to pull."
       },
       {
         "playerId": "armanini-mike",
@@ -3740,8 +3740,8 @@
             "cls": ""
           }
         ],
-        "tip": "Armanini has only appeared in 3 games but has been virtually automatic at the plate, hitting .833 with a 5-for-6 showing in recent games. His sample is small but the contact rate is impossible to dismiss — he has not shown power (ISO .000) but with a hit rate this high, he is a guaranteed on-base threat every at-bat. Teams will likely increase his role given his output.",
-        "pitchTip": "Work him with movement — he appears to be a pure contact hitter with no power, so keep pitches just off the corners to induce weak contact. Do not walk him; put the ball in play and trust your defense."
+        "tip": "Only 3 games but virtually automatic — .833 AVG, 5-for-6 recently. No power (ISO .000) but an on-base threat every at-bat.",
+        "pitchTip": "Work off the corners with movement — pure contact hitter, no power. Do not walk him."
       },
       {
         "playerId": "murphy-steve",
@@ -3759,8 +3759,8 @@
             "cls": ""
           }
         ],
-        "tip": "Murphy has quietly hit .600 over 4 games and is 5-for-8 in his last 3, showing consistent contact throughout the season. He has 1 double and 3 RBI, making him a reliable run producer in the middle of the order. His +1 R_diff indicates he scores slightly more than he drives in, suggesting he gets on base and lets the lineup behind him do work.",
-        "pitchTip": "He is a contact hitter with moderate RBI production — pitch him away and down to induce ground balls. Do not work him inside where a pull hitter can drive runs in; keep him honest with off-speed pitches."
+        "tip": ".600 AVG over 4 games, 5-for-8 last 3 with 1 2B and 3 RBI. Consistent contact producer who scores more than he drives in — bats in front of the power.",
+        "pitchTip": "Pitch away and down to induce ground balls — do not work him inside where he can pull runs in."
       },
       {
         "playerId": "lasky-jason",
@@ -3778,8 +3778,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Lasky is the team's most consistent RBI machine — his 0.86 RBI/H ratio is second-best on the team among multi-game players. In 5 games he has driven in 6 runs and hit .500 with no extra-base hits, meaning almost every hit he gets is productive. His -1 R_diff tells you he drives others in more than he scores himself — he is batting in a run-producing slot. He went 4-for-9 in his last 3 games, a slight recent dip, but he remains clutch with runners on.",
-        "pitchTip": "He produces runs purely through contact, not power — work him with offspeed pitches in the dirt to induce chases. Try to keep runners off base ahead of him; if bases are loaded, treat him like a power threat despite his zero ISO."
+        "tip": "Team RBI leader with 6 in 5 games and a 0.86 RBI/H ratio — almost every hit scores a run. No extra-base pop but ruthlessly productive with runners on.",
+        "pitchTip": "Keep runners off base ahead of him — offspeed in the dirt to induce chases."
       },
       {
         "playerId": "jauregui-rudy",
@@ -3797,8 +3797,8 @@
             "cls": ""
           }
         ],
-        "tip": "Jauregui is the team's best table setter — he scores 6 runs against only 2 RBI, a +4 R_diff that leads all Expansion players. He gets on base and creates chaos, particularly over the last few weeks where he went 4-for-8. With the Gallant brothers and Camacho hitting behind him, his on-base ability translates directly into runs. He is not a power threat (ISO .067) but he is difficult to keep off base.",
-        "pitchTip": "Get him out early in the count — he is a table setter who thrives on working counts. Attack him with first-pitch strikes and do not give him free bases; every time he reaches base he creates scoring opportunities for the dangerous hitters behind him."
+        "tip": "Best table setter on the team — 6 R vs 2 RBI, +4 R_diff. Gets on base and feeds the Gallants and Camacho. Not a power threat but hard to keep off base.",
+        "pitchTip": "Attack with first-pitch strikes — do not walk him, every free base creates scoring opportunities."
       },
       {
         "playerId": "marguilies-elliott",
@@ -3816,8 +3816,8 @@
             "cls": ""
           }
         ],
-        "tip": "Marguilies hits for a lower average but punches above his weight in run production — 0.75 RBI/H means three out of every four hits drives a run home. His 4-for-9 showing over the last 3 games suggests recent consistency despite a modest season line. With 1 double in 4 hits, he can gap the ball when needed.",
-        "pitchTip": "He is a situational RBI bat — keep runners off base ahead of him and pitch to his weak average rather than fearing his power. Low pitches away should generate weak contact from a hitter who thrives with runners on."
+        "tip": "Modest average but 0.75 RBI/H — 3 of his 4 hits drove in runs. Has gap pop (1 2B) and is consistent in his last 3 games (4-for-9).",
+        "pitchTip": "Keep runners off base and pitch to his weak average — low and away to generate weak contact."
       },
       {
         "playerId": "kraska-bob",
@@ -3835,8 +3835,8 @@
             "cls": ""
           }
         ],
-        "tip": "Kraska's 1.00 RBI/H ratio is the best on the team among players with significant at-bats — every single one of his 4 hits this season has driven in a run. He has 2 doubles and has gone 4-for-8 recently, showing consistent extra-base pop. His -4 R_diff (0 runs scored, 4 RBI) tells you he is a pure cleanup-type bat who drives others in and rarely scores himself, suggesting he bats deep in the order.",
-        "pitchTip": "With a 1.00 RBI/H ratio, treat him as a guaranteed RBI machine when runners are on. Do not let him see a pitch he can drive in the air — work him down in the zone. His .182 ISO suggests he is a gap hitter; keep the ball inside to prevent him from extending."
+        "tip": "1.00 RBI/H — every hit this season has driven in a run. 2 doubles in 4 hits, 4-for-8 recently. Pure run-production bat who bats deep and cleans up.",
+        "pitchTip": "Treat him as a guaranteed RBI machine with runners on — keep it down, work inside to limit extension."
       },
       {
         "playerId": "soto-kurt",
@@ -3854,8 +3854,8 @@
             "cls": ""
           }
         ],
-        "tip": "Soto has 4 hits and 2 runs scored in 4 games but has driven in zero runs, suggesting he bats at the top of the order or in a lead-off role. His 3-for-7 last 3 games is serviceable. He poses no power threat (ISO .000) and his value is entirely in getting on base and creating opportunities for the bigger bats behind him.",
-        "pitchTip": "He has zero extra-base power — work him with offspeed and keep pitches out of the fat part of the zone. Attack early in the count; he is not a patient hitter who will punish a pitcher's mistake with extra bases."
+        "tip": ".444 AVG with 2 R and 0 RBI — pure table setter. No power (ISO .000); his value is entirely in getting on base for the bigger bats behind him.",
+        "pitchTip": "Attack early — no extra-base power, offspeed away. Do not give him free bases."
       },
       {
         "playerId": "maguire-jack",
@@ -3873,8 +3873,8 @@
             "cls": ""
           }
         ],
-        "tip": "Maguire appeared only in week 7 against Franklin and was perfect: 3-for-3 with 3 RBI. Small sample, but his debut coincided with the team's only win — a 26-10 blowout — and he made an immediate impact. His role going forward is unclear, but if he appears he is fully capable of producing immediately without a warm-up period.",
-        "pitchTip": "Unknown quantities are dangerous — treat him with respect. His 3 RBI in one game suggest he drives the ball with runners on. Mix your pitches and do not groove anything over the plate until you have a read on his swing tendencies."
+        "tip": "Week-7 debut: 3-for-3, 3 RBI in the 26-10 blowout of Franklin. Unknown tendencies — treat him with respect if he appears.",
+        "pitchTip": "No prior history — mix pitches, nothing over the plate until you have a read on his swing."
       }
     ],
     "sections": [
@@ -3902,7 +3902,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "The most dangerous hitter on this roster by a wide margin. Nolan's .786 ISO is extraordinary — he has 3 triples and 1 HR in just 9 hits across 14 at-bats. His 8-for-11 stretch over the last 3 games shows he is peaking at exactly the right moment. Any pitcher who challenges him in the zone risks a ball leaving the field or rattling the outfield wall. Play the outfield at maximum depth."
+            "tip": "Most dangerous bat on the roster. .786 ISO, 3 3B and 1 HR in 14 AB — play OF at maximum depth, any pitch in the zone risks an extra-base hit."
           },
           {
             "playerId": "camacho-martin",
@@ -3920,7 +3920,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Camacho is the second home run threat on Expansion and combines elite average with real power. His .308 ISO is the second highest on the team; he has driven in 5 runs in 4 games and scores at the same rate. Expect him to be batted in the heart of the order — do not pitch around him carelessly when the lineup is clicking."
+            "tip": "Second HR threat with .308 ISO and .615 AVG — 5 RBI in 4 games. Bats in the heart of the order; do not pitch around him carelessly."
           }
         ]
       },
@@ -3944,7 +3944,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Vic hits for elite average and has enough ISO to gap the ball for doubles and triples. He does not rely on home run power but drives the ball into the alleys consistently, making deep outfield alignment important even for him."
+            "tip": "Elite average (.818) with .273 ISO — gaps the ball for doubles and triples consistently. Play deep even without HR power."
           },
           {
             "playerId": "kraska-bob",
@@ -3962,7 +3962,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Both of Kraska's extra-base hits are doubles and his 1.00 RBI/H makes every extra-base opportunity a run-scoring event. He bats deep in the order and turns his gap shots into RBIs. Keep him from seeing pitches he can loft to the alleys."
+            "tip": "Both extra-base hits are doubles and his 1.00 RBI/H turns every gap shot into a run. Keep him from lofting pitches to the alleys."
           }
         ]
       },
@@ -3982,7 +3982,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Nolan's 3 triples are the most on the team by a large margin and are the primary driver of his elite ISO. He has the combination of bat speed and running speed to turn deep fly balls into triples. The outfield must play at maximum depth to have any chance of cutting him off."
+            "tip": "3 triples are the primary driver of his elite ISO — has both the bat speed and foot speed to turn deep fly balls into triples. OF must play maximum depth."
           },
           {
             "playerId": "gallant-vic",
@@ -3996,7 +3996,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Vic also has a triple on his season line. Less of a triples threat than Nolan but should be respected in the outfield — do not play shallow on either Gallant."
+            "tip": "Has a triple on his season line — do not play shallow on either Gallant."
           }
         ]
       },
@@ -4078,7 +4078,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Appeared only in week 7 against Franklin (the team's first win) and went 3-for-3 with 3 RBI. Unknown quantities with this kind of debut are dangerous — if he appears in your game, do not underestimate him."
+            "tip": "3-for-3 with 3 RBI in his only appearance (week 7 blowout). Unknown tendencies — do not underestimate him if he appears."
           },
           {
             "playerId": "armanini-mike",
@@ -4092,7 +4092,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Armanini has played only 3 games but is hitting .833 across them. If he increases his appearances, he immediately becomes one of the most dangerous contact bats on the team."
+            "tip": ".833 AVG in 3 games — if his appearances increase, he immediately becomes one of the most dangerous contact bats on the team."
           }
         ]
       },
@@ -4112,7 +4112,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in a run every time he gets a hit. With 4 RBI on 4 hits and 2 doubles, he is a prototypical run-production bat — effective when runners are on base."
+            "tip": "4 hits, 4 RBI, 2 doubles — a run every single time he gets a hit. Prototypical cleanup bat with runners on."
           },
           {
             "playerId": "lasky-jason",
@@ -4126,7 +4126,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Team leader in RBI with 6 in 5 games; his 0.86 RBI/H ratio is elite for a no-power hitter. He converts contact into runs scored with remarkable efficiency — keep runners off base ahead of him."
+            "tip": "Team RBI leader, 6 in 5 games. 0.86 RBI/H is elite for a zero-power hitter — keep runners off base ahead of him."
           },
           {
             "playerId": "marguilies-elliott",
@@ -4140,7 +4140,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Three of his four hits drove in runs. He is a reliable situational producer despite a modest overall line."
+            "tip": "Three of his four hits drove in runs. Reliable situational producer despite a modest overall line."
           }
         ]
       },
@@ -4164,7 +4164,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "The best table setter on Expansion — he scores 3x as many runs as he drives in. He gets on base, stays out of double plays, and creates opportunities for the Gallants and Camacho. Keeping him off base is a priority."
+            "tip": "Best table setter on Expansion — scores 3x more than he drives in. Keeping him off base is a priority."
           },
           {
             "playerId": "gallant-nolan",
@@ -4182,7 +4182,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Nolan scores at a remarkable rate (8 runs in 4 games) while also driving in 5. His +3 R_diff reflects how often he reaches base and turns extra-base hits into runs. He is both a table setter and a run producer simultaneously."
+            "tip": "8 R and 5 RBI in 4 games — he is both a table setter and run producer simultaneously."
           },
           {
             "playerId": "soto-kurt",
@@ -4200,7 +4200,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Soto has zero RBI but has scored twice — a pure table setter who gets on base and relies on others to drive him home. His presence at the top of the order means the lineup is built to produce."
+            "tip": "Zero RBI, 2 R — pure table setter who gets on base and relies on others to drive him home."
           }
         ]
       },
@@ -4210,23 +4210,23 @@
         "gamePlan": [
           {
             "heading": "Play the outfield at maximum depth for Nolan Gallant.",
-            "tip": "Nolan has 3 triples and a HR in just 14 at-bats — .786 ISO. Any ball he hits to the outfield gaps has extra-base potential. Corner outfielders should shade toward the alleys and start at maximum depth. A single to shallow right is preferable to a triple to the right-center gap."
+            "tip": "3 triples and 1 HR in 14 AB — .786 ISO. Corner OFs shade toward the alleys at maximum depth. A shallow single beats a right-center triple."
           },
           {
             "heading": "Neutralize the Gallant brothers by limiting back-to-back damage.",
-            "tip": "Nolan and Vic together have 18 hits, 13 runs, and 8 RBI across 4 games. When they hit consecutively in the order, a single hit from each translates into a run. Prioritize retiring the first Gallant before the other comes up with runners on — do not let them feed each other in the same inning."
+            "tip": "Nolan and Vic combined: 18 hits, 13 R, 8 RBI across 4 games. A hit from each in the same inning is a run. Retire the first Gallant before the other steps up with runners on."
           },
           {
             "heading": "Treat the week-7 momentum as real — this team is dangerous at full strength.",
-            "tip": "The 26-10 win over Franklin is not a fluke of the schedule. All their key bats came alive at once and the run total shows a team that can explode. Do not look only at the 1-4 record; their week-7 form is the more predictive sample of what this lineup is capable of."
+            "tip": "The 26-10 win over Franklin is not a scheduling fluke — all key bats clicked at once. Do not anchor on the 1-4 record; their week-7 form is the better predictor."
           },
           {
             "heading": "Keep runners off base ahead of Lasky and Kraska.",
-            "tip": "Lasky (0.86 RBI/H, 6 RBI) and Kraska (1.00 RBI/H, 4 RBI) are automatic run converters. If the Gallants and Camacho load the bases, these two will cash them in. Prevent their big bats from doing work by retiring the top of the order efficiently."
+            "tip": "Lasky (0.86 RBI/H, 6 RBI) and Kraska (1.00 RBI/H, 4 RBI) are automatic run converters. Retire the top of the order efficiently or these two will cash them in."
           },
           {
             "heading": "Scout Maguire before the game — he is an unknown wildcard.",
-            "tip": "Jack Maguire went 3-for-3 with 3 RBI in his only appearance (week 7, the 26-10 win). Zero prior history means no tendencies to exploit. If he starts, pitch him early-count fastballs away and look for any swing pattern before adjusting; do not groove a ball over the plate on the first at-bat."
+            "tip": "3-for-3 with 3 RBI in one appearance — zero prior history. If he starts, lead with first-pitch fastballs away and look for a swing pattern before adjusting."
           }
         ]
       }
@@ -4260,8 +4260,8 @@
             "cls": ""
           }
         ],
-        "tip": "Adler is the most complete bat in this lineup -- .615 average over 13 AB with a triple, a double, and an ISO of .231 that ranks second on the team. He is 6-for-10 over the last three games, contributing in both the Carey blowout win and the Washington victory. Watch for him to work gaps; his triple is evidence he runs well and will challenge the outfield corners.",
-        "pitchTip": "Keep the ball down and away; his extra-base hits suggest he covers the outer third well on flat pitches. Elevate to change his eye level and try to induce weak contact up in the zone."
+        "tip": ".615 AVG, .846 SLG, triple and double — ISO .231 ranks second on the team. 6-for-10 last three games; will challenge outfield gaps.",
+        "pitchTip": "Keep it low — extra-base hits say he handles flat pitches. Elevate to disrupt."
       },
       {
         "playerId": "vinca-david",
@@ -4279,8 +4279,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Vinca leads the team in hits (10) and runs (7) and is almost exclusively a table-setter -- a +4 R-to-RBI differential signals he scores far more than he drives in. He is 6-for-10 over his last three games and has been the most consistent at-bat through a tough stretch. His ISO of .118 means he is hitting singles and doubles, not barrels.",
-        "pitchTip": "He is a contact hitter who punishes mistakes over the plate. Work him with off-speed and keep fastballs on the corners; do not groove anything middle-in. Getting him out early in the count limits his ability to put the ball in play repeatedly."
+        "tip": "Team leader in hits (10) and runs (7); +4 R_diff — pure table-setter. ISO .118 means singles and doubles only.",
+        "pitchTip": "Work corners, change speeds. Don't groove anything middle-in."
       },
       {
         "playerId": "cockle-will",
@@ -4298,8 +4298,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Cockle has been remarkably consistent -- 9 hits in 16 AB over five games, currently 6-for-9 over his last three outings. His ISO of .062 and zero extra-base power beyond a single double make him purely a contact guy, but his even R/RBI split (+0 R_diff) means he both scores and contributes. He is unlikely to beat you alone but will strand runners if not retired.",
-        "pitchTip": "He offers no real gap threat, so play your outfield shallower and concede nothing in the infield. Soft contact and ground balls are fine -- his ISO tells you he will not drive the ball far. Change speeds early to disrupt his timing."
+        "tip": "9 hits in 16 AB, 6-for-9 last three games — consistent contact guy with zero power (ISO .062). Won't beat you alone but will strand runners.",
+        "pitchTip": "Play OF shallow; change speeds early. His ISO says he won't barrel you."
       },
       {
         "playerId": "ortega-carlos",
@@ -4321,8 +4321,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Ortega is the most dangerous RBI bat on the team relative to his hit count -- an .83 RBI/H ratio means nearly every hit produces a run scored by someone else. He has a .308 ISO (the team's best among multi-game players), a home run, and a double in 13 AB. His 6 runs and 5 RBI in just four games are quiet-dangerous numbers; he was likely a key contributor during the Carey 18-6 win.",
-        "pitchTip": "Do not let him see anything elevated or middle-up with runners on base. His ISO and HR suggest he can get to a hanging pitch. Bust him inside early to jam him, then finish low and away to limit hard contact."
+        "tip": ".308 ISO leads regular players; 1 HR and double in 13 AB. .83 RBI/H — nearly every hit scores someone.",
+        "pitchTip": "Nothing elevated with runners on. Bust him inside early, finish low and away."
       },
       {
         "playerId": "shapiro-benjamin",
@@ -4340,8 +4340,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Shapiro has the only traditional power profile in the top half of the order -- .500 average paired with a home run and a .688 slugging mark across five full games. He was 4-for-9 over his last three games, a minor dip from his season pace, but his ISO of .188 and solo homer keep him dangerous. His +2 R_diff suggests he hits in high-leverage moments.",
-        "pitchTip": "His home run was likely on a pitch that stayed up or out over the plate. Work him low in the zone and change speeds; avoid anything belt-high on the outer half. He has seen five full games so his timing will be sharp -- do not challenge him early in an at-bat."
+        "tip": ".500 AVG, 1 HR, .688 SLG across five games — ISO .188 and a +2 R_diff in high-leverage spots.",
+        "pitchTip": "Work low, change speeds; avoid belt-high outer half. His timing is sharp."
       },
       {
         "playerId": "ding-david",
@@ -4359,8 +4359,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Ding has played only three games but has been scorching -- 5-for-8 with a home run, a .625 average, and a .375 ISO that leads the entire roster. His 3 RBI in just 8 AB project to an elite pace. He is entirely hot right now and his limited sample means pitchers have no established book on him.",
-        "pitchTip": "He has been seeing the ball exceptionally well (5-for-8, HR) with no recent cold stretch to exploit. Mix locations aggressively and avoid any predictable patterns -- he is a new name with no visible weakness yet. Test him inside early and see if he can adjust; do not give him anything to extend his arms on."
+        "tip": "5-for-8, 1 HR, .375 ISO in just 3 games — hottest bat on the roster with no established book on him.",
+        "pitchTip": "Mix locations — no cold stretch to exploit. Test inside; don't let him extend."
       },
       {
         "playerId": "frank-chris",
@@ -4382,8 +4382,8 @@
             "cls": ""
           }
         ],
-        "tip": "Frank leads the team in RBI with 6 despite just 8 hits -- a .75 RBI/H ratio indicating he comes up in high-run-producing situations and delivers. His -4 R_diff tells you he rarely scores himself, likely batting in the middle-to-lower part of the order when runners are already on. He has a triple, showing he can gap the ball when he connects solidly.",
-        "pitchTip": "Strand runners before he comes to the plate whenever possible -- his value is almost entirely context-dependent. With the bases clear he is much less dangerous (.471 AVG but no HR, low ISO). Attack early in the count and get him to make contact on your terms rather than his."
+        "tip": "Team-high 6 RBI on 8 hits (.75 RBI/H); -4 R_diff means he drives people in but rarely scores himself. Has a triple.",
+        "pitchTip": "Strand runners before he bats — value is context-dependent. Attack early."
       },
       {
         "playerId": "carvillo-joe",
@@ -4401,8 +4401,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Carvillo has a .545 average in 11 AB across four games, pairs two doubles with an ISO of .182, and scores at a high clip (+3 R_diff). He is 5-for-9 over his last three games and appears to set up damage for the middle of the lineup. His 6 runs in just four games puts him second on the team in that category.",
-        "pitchTip": "He is a contact-oriented gap hitter who gets on base and lets others drive him in. Prioritize limiting his reach base rate -- anything on the outer half will be driven to the gaps. Work inner half to keep him off the plate and induce soft pull-side grounders."
+        "tip": ".545 AVG, 2 doubles, ISO .182 in 4 games; 6 R puts him second on the team. High-contact gap hitter.",
+        "pitchTip": "Work inner half; anything outer half gets driven to the gaps."
       },
       {
         "playerId": "oleary-joe",
@@ -4420,8 +4420,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "O'Leary is 6-for-10 over his last three games -- the hottest recent stretch on the team in raw terms -- yet his .000 ISO and -2 R_diff tell you all six of those hits are singles and he is consistently left on base. He has been extraordinarily contact-consistent but carries no power threat whatsoever.",
-        "pitchTip": "He punishes the ball in play but cannot hit it over anyone's head. Shift the outfield in to take away soft singles and play the infield at normal depth. Strikeouts are ideal but hard contact that stays in the infield works just as well -- he will not barrel you."
+        "tip": "6-for-10 last three games but .000 ISO — all singles, -2 R_diff. Consistent contact, zero power threat.",
+        "pitchTip": "Shade OF in — he can't barrel the ball. Soft contact in the infield works."
       },
       {
         "playerId": "bhargava-ankush",
@@ -4439,8 +4439,8 @@
             "cls": ""
           }
         ],
-        "tip": "Bhargava hits for the lowest average on the roster (.286) but leads the entire team in RBI rate -- 1.25 RBI per hit, meaning almost every hit he gets produces multiple runs. His -4 R_diff mirrors Frank's profile: he drives people in but rarely scores himself. With runners on base he is more dangerous than his AVG suggests; his 5 RBI in 14 AB are likely clustered in big-inning situations.",
-        "pitchTip": "Get him out with the bases empty and do not let runners reach before his at-bat if you can help it. His average is low enough (.286) that he will make outs -- just do not serve him a mistake with runners on. High and tight to disrupt his timing, then finish on the black away."
+        "tip": "1.25 RBI/H leads the team — nearly every hit drives in multiple runners. .286 AVG means outs come; don't give him a pitch to hit with runners on.",
+        "pitchTip": "Get him out with bases empty. High-tight to disrupt timing, finish away."
       },
       {
         "playerId": "ganguly-bishu",
@@ -4454,8 +4454,8 @@
             "cls": ""
           }
         ],
-        "tip": "Ganguly is the lightest bat in the rotation -- .333 average over 12 AB, one double, and an ISO of .083. His 3-for-8 last three games and even R_diff mark him as a reliable but unpunishing contact hitter. He is unlikely to change the complexion of a game on his own.",
-        "pitchTip": "Standard approach -- work the corners and change speeds. He has shown no power, so a flyball out is as good as a strikeout. Do not overthink this at-bat; get ahead in the count and make him chase."
+        "tip": ".333 AVG, ISO .083 — lightest bat in the rotation. Reliable contact, no power, won't change a game on his own.",
+        "pitchTip": "Work corners and change speeds. No power — get ahead and make him chase."
       }
     ],
     "sections": [
@@ -4479,7 +4479,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "In only 8 AB Ding has an ISO of .375 -- the highest on the roster. His home run in three games combined with a .625 average makes him an unresolved scouting mystery. He is the lone bat with both elite contact and true power in the same profile."
+            "tip": "ISO .375, 1 HR in 8 AB — best power-contact combo on the roster, barely scouted."
           },
           {
             "playerId": "ortega-carlos",
@@ -4497,7 +4497,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Leads the team in ISO (.308) among regular players, with a home run and double in 13 AB. Ortega is the most dangerous extra-base threat when on base; his .83 RBI/H means a hit nearly always scores someone."
+            "tip": "ISO .308, 1 HR, .83 RBI/H — most complete extra-base threat in the lineup."
           },
           {
             "playerId": "shapiro-benjamin",
@@ -4515,7 +4515,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Shapiro provides the most experienced power profile -- HR, five games of seasoning, .500 average. His ISO (.188) lags behind Ding and Ortega but he is the most battle-tested power bat and most likely to see meaningful at-bats in close games."
+            "tip": "1 HR, .688 SLG, .500 AVG across five games — most battle-tested power bat."
           },
           {
             "playerId": "adler-nick",
@@ -4533,7 +4533,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "No home run but a triple and double give Adler a .231 ISO and the second-highest slugging on the team. He is the most consistent of the near-power bats and his triple signals genuine outfield-challenging speed."
+            "tip": "Triple + double, ISO .231, .846 SLG — no HR but will challenge outfield gaps."
           }
         ]
       },
@@ -4557,7 +4557,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Two doubles in 11 AB; Carvillo uses the whole field and punishes outfield mistakes. His .545 average keeps gaps honest and makes him one of the more well-rounded threats in the middle of the order."
+            "tip": "2 doubles in 11 AB; .545 AVG — punishes the outer half and uses the whole field."
           },
           {
             "playerId": "adler-nick",
@@ -4571,7 +4571,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Adler's gap production (double plus triple) alongside his high average makes him capable of turning singles situations into extra bases. Play outfield corners honest against him."
+            "tip": "Double + triple, .615 AVG — can turn singles into extra bases. Play OF corners honest."
           },
           {
             "playerId": "vinca-david",
@@ -4585,7 +4585,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Two doubles in 17 AB suggest Vinca uses the gaps to extend his already-high contact rate. With the speed implied by a +4 R_diff, he will turn gap singles into doubles when the outfield plays too deep."
+            "tip": "2 doubles, .588 AVG, +4 R_diff — will stretch singles to doubles if OF plays deep."
           }
         ]
       },
@@ -4605,7 +4605,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Only player on the roster with a triple; Adler will challenge right-center and left-center gaps and has the speed to leg out extra bases. Do not loaf on balls hit in the alleys when he is up."
+            "tip": "Only triple on the roster — has speed to leg out extra bases. Don't loaf in the alleys."
           },
           {
             "playerId": "frank-chris",
@@ -4619,7 +4619,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Frank's triple is a reminder that he can pull the ball hard or drive it in the gap despite modest peripherals. Outfield depth matters when he is up with the bases empty -- a triple here becomes a tying or go-ahead run with one swing."
+            "tip": "Triple shows gap power despite modest peripherals — outfield depth matters when he's up."
           }
         ]
       },
@@ -4719,7 +4719,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Ding has the highest ISO on the team in just 8 AB -- barely scouted, batting well over .600, with a home run. He is the most under-the-radar danger in this lineup."
+            "tip": "ISO .375 in 8 AB, batting .625 with a HR — barely scouted, most under-the-radar danger."
           },
           {
             "playerId": "carvillo-joe",
@@ -4733,7 +4733,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Carvillo scores at nearly 1.5 runs per game played -- only 4 appearances but already second on the team in runs. He has a higher floor than his modest hit total suggests."
+            "tip": "1.5 R/game in 4 appearances, already second on team in runs — higher floor than hit total suggests."
           }
         ]
       },
@@ -4753,7 +4753,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Bhargava's 1.25 RBI/H ratio is the best on the team by a wide margin -- when he connects he is almost always driving in multiple runners. His .286 average means he makes plenty of outs, but do not let him see a pitch to hit with runners in scoring position."
+            "tip": "1.25 RBI/H — best on team; almost every hit drives in multiple runners. Don't pitch to him with runners on."
           },
           {
             "playerId": "ortega-carlos",
@@ -4767,7 +4767,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Ortega combines the team's best ISO with an .83 RBI/H rate, making him the most complete RBI threat. He hits for extra bases and drives runners home -- the most dangerous combination in cleanup situations."
+            "tip": "ISO .308 + .83 RBI/H — extra-base power and RBI production. Most dangerous in cleanup spots."
           },
           {
             "playerId": "frank-chris",
@@ -4781,7 +4781,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Frank leads the team in RBI despite no home runs -- purely a situational RBI machine. His .75 RBI/H and a triple indicate he is hitting into gap situations with runners on base. Do not serve him a mistake with runners on."
+            "tip": "Team-high 6 RBI, no HR — purely situational. .75 RBI/H; don't serve a mistake with runners on."
           }
         ]
       },
@@ -4805,7 +4805,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Vinca leads the team in runs (7) and leads all table-setters in R_diff (+4). His 10 hits in 17 AB get him on base constantly, and he regularly turns singles into runs via the middle of the order. Getting him out in his first at-bat sets the tone for the inning."
+            "tip": "+4 R_diff, 7 R, 10 hits — leads all table-setters. Retire him first to disrupt their chain."
           },
           {
             "playerId": "carvillo-joe",
@@ -4823,7 +4823,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Carvillo scores in nearly every game he plays (6 R in 4 G) and is clearly batting near the top of a productive lineup. His +3 R_diff makes him the second-best table-setter on the team -- get him out and you disrupt their run-scoring chain."
+            "tip": "+3 R_diff, 6 R in 4 games — second-best table-setter. Get him out and break their chain."
           },
           {
             "playerId": "adler-nick",
@@ -4841,7 +4841,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Adler's +2 R_diff paired with his .615 average and gap power means he reaches base and scores more often than he drives in -- a table-setter who also punishes mistakes for extra bases. He is the most versatile threat in their lineup."
+            "tip": "+2 R_diff, .615 AVG, gap power — reaches, scores, and punishes mistakes. Most versatile threat."
           }
         ]
       },
@@ -4851,23 +4851,23 @@
         "gamePlan": [
           {
             "heading": "Neutralize the top of the order early.",
-            "tip": "Vinca (.588, 10 H) and Cockle (.562, 9 H) have been on-base machines -- both are 6-for-9 or 6-for-10 in their last three games. Getting two quick outs before they reach changes the entire inning calculus; if either reaches, expect Adler (.615) or Shapiro (.500, 1 HR) to drive them in."
+            "tip": "Vinca (.588, 10 H) and Cockle (.562, 6-for-9 last 3) are on-base machines — retire them fast before Adler (.615) or Shapiro (1 HR) can drive them in."
           },
           {
             "heading": "Shade the outfield for Ortega, Ding, and Adler.",
-            "tip": "These three account for all three team home runs and both triples, with ISOs of .308, .375, and .231 respectively. Play the outfield corners deep when any of them are up with runners on; a gap double here converts to 2 RBI at their .83, .60, and .25 RBI/H rates."
+            "tip": "These three account for all 3 HRs and both triples (ISOs .308, .375, .231). Play corners deep with runners on — a gap double here converts to 2 RBI."
           },
           {
             "heading": "Manage Frank and Bhargava with the bases empty.",
-            "tip": "Frank (.75 RBI/H, 6 RBI) and Bhargava (1.25 RBI/H, 5 RBI) are situational RBI threats, not on-base machines. Both have negative R_diff (-4 each), meaning they rarely score themselves. Force them to the plate with nobody on and their RBI threat drops dramatically -- they have to do all the work alone."
+            "tip": "Frank (.75 RBI/H) and Bhargava (1.25 RBI/H) are situational RBI machines, not on-base threats. Both have -4 R_diff — force them up with nobody on."
           },
           {
             "heading": "Exploit their big-inning volatility -- keep the game tight early.",
-            "tip": "Roosevelt Blue crushed Carey 18-6 (week 4) but got blasted 15-3 by St. Catherines (week 5), suggesting a lineup that either erupts as a unit or collapses. They beat Washington 9-6 most recently and carry modest momentum, but this is not a battle-tested team. Keeping the score within two runs through three innings historically has pressured this type of streaky offense into low-output innings."
+            "tip": "Blew out Carey 18-6 but lost 15-3 to St. Catherines — streaky lineup that erupts or collapses. Stay within two runs through three innings."
           },
           {
             "heading": "Target the lower third (Bhargava, Ganguly) for quick innings.",
-            "tip": "Bhargava (.286) and Ganguly (.333) are the two lowest-average regulars; combined they have 8 hits in 26 AB and zero home runs. Their ISOs (.000 and .083) mean soft contact is fine -- any out here prevents the middle of the order from seeing a big-RBI situation. Do not walk either one into position for Vinca or Adler to come up with runners on."
+            "tip": "Bhargava (.286) and Ganguly (.333) have 8 hits in 26 AB combined, zero HRs — soft contact is fine. Don't walk either into position for Vinca or Adler."
           }
         ]
       }
@@ -4901,8 +4901,8 @@
             "cls": ""
           }
         ],
-        "tip": "O'Hare is the single biggest threat on this roster in terms of raw power. His 1.000 ISO from 7 AB (1 HR, 2 triples) is a major outlier — he hit one HR against Hoover in week 7 and has multi-base hits in nearly every game he appears. With 3 R and 2 RBI already, he does real damage in limited appearances.",
-        "pitchTip": "Keep everything low and away; he has demonstrated he can drive elevated pitches over the fence and pull gap shots into triples. Do not let him get an inside pitch he can extend on."
+        "tip": "1.000 ISO in 7 AB — 1 HR + 2 3B, including a HR against Hoover in week 7. Most dangerous raw power bat on the roster.",
+        "pitchTip": "Keep everything low and away — he drives elevated pitches over the fence and pulls gaps into triples."
       },
       {
         "playerId": "batenchuch-ryan",
@@ -4920,8 +4920,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Batenchuch has the second-highest ISO on the team at .600, built entirely on doubles — 3 in just 5 AB — giving him a .800 AVG and a +3 R differential. He went 4-for-5 in his last three games and has shown he can turn on any pitch into the gaps. Small sample but every AB counts.",
-        "pitchTip": "He is a pure gap hitter right now. Pitch him away and down, and shade your outfield deep toward the alleys. Do not let him see a belt-high pitch middle-away."
+        "tip": ".600 ISO, .800 AVG — 3 doubles in 5 AB. A part-time bat who can change a game instantly.",
+        "pitchTip": "Pure gap hitter — pitch away and down. Shade OF deep toward the alleys."
       },
       {
         "playerId": "acton-marc",
@@ -4943,8 +4943,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Acton leads the team in hits (8) and is their most consistent table-setter — 7 R against only 2 RBI signals he scores far more than he drives in, making him the catalyst at the top of the order. His .250 ISO (3 doubles in 12 AB) shows he has gap power, and he went 5-for-9 over his last three games including the near-upset of Washington.",
-        "pitchTip": "Acton is a contact machine — do not nibble. Challenge him with hard stuff away and force weak contact. Getting him out early changes the inning dynamic since he ignites their offense."
+        "tip": "Team leader in hits (8). +5 R vs RBI — classic table-setter, 5-for-9 last 3G. Has gap power (.250 ISO, 3 2B).",
+        "pitchTip": "Elite contact rate — challenge hard away to force weak contact. Getting him out early kills their offense."
       },
       {
         "playerId": "barabin-travis",
@@ -4962,8 +4962,8 @@
             "cls": ""
           }
         ],
-        "tip": "Barabin is in scorching recent form — 6-for-7 over his last three games, the hottest streak on the team. He carries a .700 season average with 5 R and 4 RBI in 10 AB, and his +1 R differential indicates he hits in traffic. He was productive in both the near-miss against Washington and the win over Burlingame.",
-        "pitchTip": "Do not give him anything comfortable — he is seeing the ball extremely well right now. Work him hard away and try to get him to roll over on a low pitch. Avoid leaving anything in the middle of the zone."
+        "tip": "Hottest bat on the team — 6-for-7 last 3G, .700 season AVG. Productive in both the Washington near-miss and the Burlingame win.",
+        "pitchTip": "Work him hard away and low — he is locked in right now. Nothing in the middle of the zone."
       },
       {
         "playerId": "haugen-austin",
@@ -4981,8 +4981,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Haugen has the highest AVG on the team at .833 in 2 games, going 5-for-6 in his last three games while posting an 0.80 RBI/H ratio — he drives runners in at an elite rate. His -3 R differential means he tends to bat with runners on and cash them rather than score himself. Dangerous RBI bat who shows up when it matters.",
-        "pitchTip": "Haugen is a run-producer, not a table-setter — the situation when he comes up will be critical. Pitch around him if the bases are loaded with two outs; otherwise work him low and inside to induce a ground ball."
+        "tip": ".833 AVG, 5-for-6 last 3G. Elite RBI bat — 0.80 RBI/H, -3 R differential means he bats with runners on and delivers.",
+        "pitchTip": "Pitch around him with bases loaded and two outs. Otherwise work low and inside for a ground ball."
       },
       {
         "playerId": "coleman-chris",
@@ -5000,8 +5000,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Coleman is an elite run producer in limited looks — 4 RBI in just 7 AB with a .714 average. His 0.80 RBI/H ties Haugen for the run-producing title on the roster. With only a .143 ISO he does not hit for extra bases often, but his ability to come through with runners on makes him one of the most clutch bats in the lineup.",
-        "pitchTip": "Coleman thrives with runners on. Pitch him away and try to get soft contact — he does not have significant extra-base power so a ground ball to the right side is your best case. Do not groove anything."
+        "tip": "4 RBI in 7 AB, .714 AVG — 0.80 RBI/H ties Haugen for best run-producer ratio on the roster.",
+        "pitchTip": "Pitch away for soft contact — minimal extra-base power, but lethal with runners on."
       },
       {
         "playerId": "chow-ryan",
@@ -5019,8 +5019,8 @@
             "cls": ""
           }
         ],
-        "tip": "Chow is their most complete hitter across a full schedule — 7 H in 13 AB over 5 games with 1 HR, 1 double, 4 RBI, and a .308 ISO. He is the only multi-game regular with meaningful extra-base power alongside contact, and his even R differential (+0) means he both scores and drives in runs. He went 5-for-8 over his last three games.",
-        "pitchTip": "Chow has legitimate home run pop — keep the ball down and avoid hanging breaking balls. He is their most disciplined power bat, so do not try to blow elevated fastballs by him."
+        "tip": "Most complete regular starter — 1 HR, .308 ISO across 5 games. Only multi-game bat with sustained power and contact.",
+        "pitchTip": "Keep it down — he has legitimate HR pop and is their most disciplined power bat."
       },
       {
         "playerId": "colaco-pudge",
@@ -5038,8 +5038,8 @@
             "cls": ""
           }
         ],
-        "tip": "Colaco has a perfect 1.00 RBI/H ratio — every hit he gets drives in a run. His .400 ISO (1 triple in 5 AB) shows gap-to-gap power in small sample. With 3 RBI in just 5 AB he is quietly one of the most dangerous run-producing bats when he plays, and his -2 R differential confirms he is used as a deep RBI bat.",
-        "pitchTip": "Treat Colaco like a clean-up hitter even if he bats lower in the order. Pitch around him with runners in scoring position if you can afford it; if not, work low and away and hope for a flyout rather than a triple."
+        "tip": "Perfect 1.00 RBI/H — every hit drives in a run. .400 ISO (1 3B in 5 AB). Dangerous deep RBI bat.",
+        "pitchTip": "Treat him like a clean-up hitter. Pitch around with runners in scoring position; otherwise low and away."
       },
       {
         "playerId": "wicks-simon",
@@ -5057,8 +5057,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Wicks is a pure contact and speed threat — .714 average, 5-for-7 over his last three games, zero extra-base hits but a +3 R differential showing he gets on base and scores consistently. He creates chaos at the top of the order by simply reaching base at an elite clip and then putting pressure on the defense.",
-        "pitchTip": "Wicks has no ISO so there is no extra-base threat, but his contact rate is exceptional. Throw him hard stuff with movement and make him hit it into the ground — he is not going to beat you with power but he will beat you by reaching base every time."
+        "tip": ".714 AVG, 5-for-7 last 3G. No ISO — pure contact and speed threat who reaches base at an elite clip.",
+        "pitchTip": "Hard stuff with movement — no extra-base threat, but he will beat you by reaching every time."
       },
       {
         "playerId": "wilkinson-jeremy",
@@ -5076,8 +5076,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Wilkinson has produced in limited playing time — .667 average in 2 games, 4-for-6 over his last three games, with 2 RBI and an 0.50 RBI/H ratio. His -1 R differential suggests he bats in the middle of the order and produces in traffic rather than setting the table.",
-        "pitchTip": "Wilkinson has shown a .167 ISO (one double) so there is some gap threat. Work him away with off-speed pitches and keep the ball out of the heart of the zone."
+        "tip": ".667 AVG in 2G, 4-for-6 last 3G. 2 RBI, .167 ISO — bats in traffic, not a table-setter.",
+        "pitchTip": "Work away with off-speed — some gap threat (.167 ISO). Keep ball out of the heart of the zone."
       },
       {
         "playerId": "jewett-peter",
@@ -5091,8 +5091,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Jewett is a pure singles hitter with zero ISO but solid contact at .556 in 9 AB. He went 4-for-7 over his last three games and has a +1 R differential, meaning he does his job as a table-setter consistently. He was productive during the Burlingame win.",
-        "pitchTip": "No extra-base threat at all — pitch him aggressively in the zone and look for soft contact. Infield shift is a viable option given his ground ball tendency."
+        "tip": "Pure singles hitter, zero ISO — .556 AVG, 4-for-7 last 3G. Reliable table-setter, no extra-base risk.",
+        "pitchTip": "No extra-base threat — attack in the zone and look for soft contact."
       },
       {
         "playerId": "barr-nick",
@@ -5106,8 +5106,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Barr is a part-time contributor with a modest .400 average in 10 AB but a +2 R differential — he scores runs when he reaches. One double in 10 AB shows minimal extra-base power. He contributes most when used as a table-setter rather than a run-producer.",
-        "pitchTip": "Barr is the least threatening regular in the lineup. Pitch him standard stuff in the zone and let your defense work. Get the out and move on."
+        "tip": ".400 AVG, +2 R vs RBI — minimal power (1 2B in 10 AB). Contributes as a table-setter, not a run-producer.",
+        "pitchTip": "Least threatening regular in the lineup — pitch in the zone and let your defense work."
       }
     ],
     "sections": [
@@ -5131,7 +5131,7 @@
                 "cls": ""
               }
             ],
-            "tip": "O'Hare is a small-sample monster — his 1.000 ISO is the highest on the team and one of the most dangerous figures in the league. Three extra-base hits in 7 AB including a home run against Hoover in week 7. He does not play every game but when he does, he has multi-base hit upside in any at-bat."
+            "tip": "1.000 ISO, 7 AB — 1 HR + 2 3B. Most dangerous small-sample power bat in the league."
           },
           {
             "playerId": "batenchuch-ryan",
@@ -5149,7 +5149,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Batenchuch has turned 3 of his 4 hits into doubles, producing a .600 ISO in 5 AB. His .800 average and +3 R differential make him dangerous at the top of any lineup spot. Appeared in the Burlingame win and was a major factor."
+            "tip": ".600 ISO — 3 doubles in 5 AB. Every AB has extra-base upside."
           },
           {
             "playerId": "chow-ryan",
@@ -5167,7 +5167,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Chow is the only regular starter with a HR and a sustained .308 ISO across 5 games. He is the most durable power bat on the roster — available every game and capable of going yard."
+            "tip": "Only regular starter with sustained HR power — .308 ISO across 5 games."
           }
         ]
       },
@@ -5187,7 +5187,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Three doubles in 5 AB — he is beating the shift into the alleys consistently."
+            "tip": "3 doubles in 5 AB (.600 ISO) — consistently beating the shift into the alleys."
           },
           {
             "playerId": "acton-marc",
@@ -5201,7 +5201,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Acton has 3 doubles in 12 AB, leading all regulars in doubles. He reads the gap well and routinely turns singles into doubles."
+            "tip": "Team-high 3 doubles in 12 AB. Routinely turns singles into doubles."
           },
           {
             "playerId": "barabin-travis",
@@ -5215,7 +5215,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Barabin has gap power to complement his elite contact rate — 2 doubles in 10 AB and in the best form on the team right now."
+            "tip": "2 doubles in 10 AB — gap power to complement the hottest contact streak on the team."
           }
         ]
       },
@@ -5235,7 +5235,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "O'Hare has hit 2 triples in just 7 AB — the most alarming triple threat on this roster. His combination of HR and triple power makes him uniquely dangerous at any base count."
+            "tip": "2 triples in 7 AB — most alarming triple threat on the roster. HR + triple combo makes him uniquely dangerous."
           },
           {
             "playerId": "colaco-pudge",
@@ -5249,7 +5249,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Colaco hit a triple in 5 AB along with his strong RBI production — suggests he has enough speed and bat to reach the gaps."
+            "tip": "1 triple in 5 AB with strong RBI production — enough speed and bat to reach the gaps."
           }
         ]
       },
@@ -5317,7 +5317,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Only 3 games in but already has a HR and 2 triples. If O'Hare becomes a regular starter, he becomes the most dangerous bat on this team instantly."
+            "tip": "3G in, already 1 HR + 2 3B. If O'Hare becomes a regular, he's the most dangerous bat on this team."
           },
           {
             "playerId": "batenchuch-ryan",
@@ -5331,7 +5331,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Two games in and already 3 doubles — Batenchuch is a part-time bat who can change a game the moment he enters the lineup. Do not overlook him on the bench."
+            "tip": "2G in, already 3 doubles — a bench bat who can change a game the moment he enters."
           },
           {
             "playerId": "haugen-austin",
@@ -5345,7 +5345,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Haugen is 5-for-6 in limited appearances with 4 RBI. His RBI/H ratio of .80 makes him a threat the moment he enters the game as a pinch hitter or substitute starter."
+            "tip": "5-for-6 in limited appearances, 4 RBI. Dangerous pinch-hit or substitute-start threat."
           }
         ]
       },
@@ -5365,7 +5365,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Colaco has driven in a run on every single hit this season — a perfect 1.00 RBI/H in 5 AB. He bats with runners on and consistently delivers."
+            "tip": "Perfect 1.00 RBI/H in 5 AB — drives in a run on every hit."
           },
           {
             "playerId": "coleman-chris",
@@ -5379,7 +5379,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Coleman has 4 RBI in just 7 AB — he appears to bat in high-leverage spots and delivers. His .714 average compounds the run-production threat significantly."
+            "tip": "4 RBI in 7 AB (.714 AVG) — bats in high-leverage spots and consistently delivers."
           },
           {
             "playerId": "haugen-austin",
@@ -5393,7 +5393,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Haugen matches Coleman with a 0.80 RBI/H ratio and 4 RBI in only 6 hits. His -3 R differential confirms he bats deep with runners on — a classic clean-up role."
+            "tip": "0.80 RBI/H, 4 RBI — -3 R differential confirms a classic clean-up role."
           }
         ]
       },
@@ -5417,7 +5417,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Acton is their best leadoff option — 7 R and only 2 RBI is the largest positive differential on the team. He reaches base, advances, and scores with elite consistency. He was on base repeatedly during the near-miss against Washington."
+            "tip": "Best leadoff option — 7 R, 2 RBI (+5 differential). Reaches base and scores at elite consistency."
           },
           {
             "playerId": "wicks-simon",
@@ -5435,7 +5435,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Wicks scores 3 times without a single RBI — a pure table-setter who gets on and lets others drive him home. His .714 average and zero extra-base hits define his role."
+            "tip": "3 R, 0 RBI — pure table-setter, .714 AVG and zero extra-base hits define his role."
           },
           {
             "playerId": "batenchuch-ryan",
@@ -5453,7 +5453,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Despite his power numbers (.600 ISO), Batenchuch scores more than he drives in — 4 R to 1 RBI in 5 AB. When he leads off an inning with a double, Carey tends to score."
+            "tip": ".600 ISO but scores more than he drives in (4 R, 1 RBI) — when he leads off with a double, Carey scores."
           }
         ]
       },
@@ -5463,23 +5463,23 @@
         "gamePlan": [
           {
             "heading": "Shade the outfield deep for O'Hare and Batenchuch.",
-            "tip": "O'Hare has 2 triples and 1 HR in 7 AB (1.000 ISO) and Batenchuch has 3 doubles in 5 AB (.600 ISO). Both players can drive the ball to all fields with authority. When either steps in, pull your outfielders back and toward the gaps — giving up a single is far better than a triple or an inside-the-park HR."
+            "tip": "O'Hare (1.000 ISO) and Batenchuch (.600 ISO) can drive to all fields. Pull OF back and toward the alleys — a single beats a triple."
           },
           {
             "heading": "Neutralize the run-production core (Colaco, Coleman, Haugen) with runners on base.",
-            "tip": "All three post RBI/H ratios of .80 or higher — Colaco at 1.00, Coleman and Haugen at .80. These bats thrive in high-leverage at-bats. When Carey has runners at second or third with fewer than two outs, pitch away from these three or accept the walk to face a weaker bat."
+            "tip": "Colaco (1.00 RBI/H), Coleman (.80), and Haugen (.80) feast in high-leverage spots. Pitch away or take the walk to face a weaker bat."
           },
           {
             "heading": "Disrupt Acton and Wicks at the top of the order to cut off the run-scoring chain.",
-            "tip": "Acton (+5 R vs RBI) and Wicks (+3 R vs RBI) are Carey's ignition. Acton leads the team with 8 H across 4 games and is 5-for-9 in his last three. Getting both out in the first inning consistently will suppress their offense before the run-producers even bat."
+            "tip": "Acton (+5 R vs RBI, 8 H) and Wicks (+3 R vs RBI) are Carey's ignition. Get both out first inning and the run-producers never bat."
           },
           {
             "heading": "Exploit Carey's inconsistency — they were blown out twice (20-8, 18-6) but won 10-7.",
-            "tip": "Carey gave up 20 runs to Franklin and 18 to Roosevelt-Blue, suggesting their defense and pitching can be punished with aggressive base running and gap hitting. Their lone win came by 3 runs against Burlingame-Expansion. Push the tempo early and force defensive mistakes — they crack under sustained offensive pressure."
+            "tip": "Carey allowed 20 and 18 runs in blowout losses — push the tempo early, run aggressively, and force defensive mistakes."
           },
           {
             "heading": "Respect the small-sample danger bats rotating in and out of the lineup.",
-            "tip": "O'Hare (3G), Batenchuch (2G), Haugen (2G), and Wilkinson (2G) are all part-time players with elite stats in limited appearances. Do not let familiarity with the Carey lineup become complacency — a fresh bat entering in the fourth inning can have a .800 average and 4 RBI on the season. Always check who is newly in the lineup and adjust accordingly."
+            "tip": "O'Hare, Batenchuch, Haugen, and Wilkinson are all part-time bats with elite small-sample stats. Always check who is newly in the lineup."
           }
         ]
       }
@@ -5513,8 +5513,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Wright is McKinley 2's most reliable bat, going 11-for-14 on the season with an ISO of .286 and 6 runs scored. He is currently on a 9-for-10 tear over his last three games and has been productive in every game including the week 4 near-upset of Washington (.786 is the team high among full-time starters). His R_diff of +2 shows he scores at roughly the same rate he reaches, so he manufactures runs as well as drives them.",
-        "pitchTip": "Attack early in the count — he makes contact on everything. Keep pitches low and away to limit hard contact; do not groove anything belt-high or he will drive it. Mixing speeds is the best disruption tool."
+        "tip": "11-for-14 on the season, .786 AVG, 1 HR, .286 ISO — currently on a 9-for-10 tear. The most consistent bat in the lineup across all 5 games.",
+        "pitchTip": "Pitch low and away — do not groove anything belt-high or he will drive it."
       },
       {
         "playerId": "corde-chris",
@@ -5536,8 +5536,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Corde only appeared in one game — the week 7 tie with Lincoln Lions — but posted 2 hits, 1 HR, and 5 RBI in just 3 at-bats, an extraordinary ISO of 1.333 and 2.50 RBI/H. His R_diff of -3 means nearly all his plate appearances end with runners scoring; he is a pure run-producer. Small sample size, but the performance was not fluky — he clearly has legitimate pop.",
-        "pitchTip": "Do not let him get extended on anything inside. Pitch him away consistently and make him reach for it; a player with this much raw power will chase if you establish the outside corner early. Never throw him anything elevated."
+        "tip": "1 game, 3 AB — 2 hits, 1 HR, 5 RBI, 1.333 ISO. Pure power: treat him as a top-3 threat if he's in the lineup.",
+        "pitchTip": "Stay away, never elevated — he has serious power and will punish anything inside."
       },
       {
         "playerId": "parikh-sanjiv",
@@ -5551,8 +5551,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Parikh leads the team in batting average at .833 (5-for-6) in three games and has not recorded an RBI yet, meaning he is primarily a table-setter who gets on base at an elite clip. His ISO of .167 is modest, but his contact rate is exceptional. Watch for him to appear in more games as the season progresses — his 5-for-6 three-game stretch is entirely his season, so he has no cold stretches on record.",
-        "pitchTip": "He has not driven in a run all season — he is a contact hitter, not a power bat. Pitch him to make weak contact; he is unlikely to go deep but almost certain to put the ball in play, so your defense needs to be alert when he is up."
+        "tip": "Team-high .833 AVG (5-for-6 in 3 games) — elite contact rate, zero extra-base hits, pure table-setter.",
+        "pitchTip": "Contact hitter only — no power, no RBI. Pitch to weak contact; defense must be ready."
       },
       {
         "playerId": "dabrik-doug",
@@ -5570,8 +5570,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Dabrik went 7-for-9 over his last three games and owns a .700 average on the season with 5 RBI — tied for second on the team — and an RBI/H ratio of .71, qualifying him as a legitimate run producer. Two doubles show he can hit for some gap power (ISO .200). His R_diff of -3 is the second-worst on the team, meaning runners score at a high rate when he comes up.",
-        "pitchTip": "Keep the ball on the ground — his doubles suggest a level, line-drive swing. Avoid leaving anything middle-away; pound him inside to get him to pull weakly or jam him."
+        "tip": ".700 AVG, 5 RBI, .200 ISO — 7-for-9 last 3 games. Gap power with 2 doubles and a high R_diff.",
+        "pitchTip": "Pound him inside — his doubles suggest a level swing that covers the outer half."
       },
       {
         "playerId": "rodriguez-darwin",
@@ -5589,8 +5589,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Rodriguez has appeared in all five games and posts a .583 average with 5 RBI and 5 runs, making him one of the team's most complete offensive contributors. His RBI/H ratio of .71 ranks among the team's run producers, and two doubles indicate gap power. He is the most experienced and consistent threat in the lineup after Wright, showing up in the close week 4 loss and the week 7 tie alike.",
-        "pitchTip": "He is a balanced hitter — solid average with gap power but no HR. Use breaking balls early to disrupt his timing and avoid throwing straight fastballs on the outer half; he appears to drive those for doubles."
+        "tip": ".583 AVG with 5 RBI and 5 R across all 5 games — balanced gap hitter with 2 doubles.",
+        "pitchTip": "Mix in breaking balls — avoid straight stuff outer half, that's where doubles come from."
       },
       {
         "playerId": "johnston-matthew",
@@ -5608,8 +5608,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Johnston has a .75 RBI/H ratio — highest among full-season regulars — going 4-for-8 with 3 RBI in three games. His zero ISO suggests pure contact, but his run-production rate is elite: when he gets a hit, runners score. His R_diff of -2 confirms he drives in more than he scores, so he bats with runners on base frequently.",
-        "pitchTip": "He has zero extra-base hits but runners score when he singles, suggesting he hits to gaps or is well-placed in the lineup behind faster runners. Pitch carefully with runners on; a routine single can be costly. Challenge him to pull the ball by working inside."
+        "tip": ".75 RBI/H (highest among regulars) — 3 RBI on 4 hits. Runners score when he singles.",
+        "pitchTip": "Work inside to make him pull weakly — with runners on, even a routine single can score."
       },
       {
         "playerId": "anguera-joaquin",
@@ -5631,8 +5631,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Anguera is a gap threat — his one triple and .75 RBI/H ratio suggest he can clear the bases when he gets hold of one. Four hits in 11 at-bats is modest, but three RBI and three runs scored in four games means he contributes across the board. He featured in the week 4 near-upset of Washington and in the week 7 tie.",
-        "pitchTip": "His triple indicates he can drive the ball into the gaps; shade your outfielders toward the alleys when he bats. Pound him early with hard stuff inside to prevent him from extending his arms and going gap."
+        "tip": "1 triple, .75 RBI/H, 3 RBI, 3 R in 4 games — gap threat who contributes at both ends.",
+        "pitchTip": "Shade outfielders to the alleys; pound inside early to prevent extension."
       },
       {
         "playerId": "conti-david",
@@ -5646,8 +5646,8 @@
             "cls": "hot"
           }
         ],
-        "tip": "Conti scores far more than he drives in — 4 runs against just 1 RBI across five games gives him a +3 R_diff, the second-best table-setter differential on the team. He goes to bat regularly (11 AB) and hits .545, making him a consistent on-base presence who creates opportunities for the lineup behind him.",
-        "pitchTip": "Treat him as a table-setter: getting him out quickly matters more than striking him out, because the runners he scores come from the hitters behind him. Pitch him to induce weak ground balls and limit his on-base rate."
+        "tip": ".545 AVG, +3 R_diff over 5 games — table-setter who gets on base and lets the lineup do the damage.",
+        "pitchTip": "Induce weak ground balls — retiring him quickly starves the run-producers of baserunners."
       },
       {
         "playerId": "williams-justin",
@@ -5665,8 +5665,8 @@
             "cls": ""
           }
         ],
-        "tip": "Williams leads the team with a +4 R_diff — he scored 5 runs against just 1 RBI across five games, the clearest table-setter profile on the roster. He has appeared in every game and hits .417 with a single double, showing he is consistently on base. His 5-for-9 stretch over his last three games confirms he is staying on base at a high rate recently.",
-        "pitchTip": "He is a pure runner — keep him off base and you neutralize his contribution entirely. Pitch him aggressively early in the count; do not walk him. If he gets on, watch for him to move aggressively on the bases."
+        "tip": "+4 R_diff leads the team — 5 R vs 1 RBI across 5 games. Primary table-setter, currently 5-for-9 last 3.",
+        "pitchTip": "Keep him off base — pitch aggressively early, no walks."
       },
       {
         "playerId": "whittier-rob",
@@ -5684,8 +5684,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Whittier posts a .333 ISO — second-highest on the team after Corde among players with meaningful ABs — powered by two doubles and a triple in 12 at-bats. His .500 average and gap-power profile make him a legitimate extra-base threat. He appeared in the close week 4 loss to Washington and his triple suggests he can take an extra base aggressively.",
-        "pitchTip": "His ISO is driven by extra-base hits, not HRs, so he is pulling the ball or going to the gaps. Play your outfield deep and slightly toward the gaps. Pitch him inside early to limit extension; he is more dangerous when he can get his arms out."
+        "tip": ".500 AVG, .333 ISO — 2 doubles and a triple in 12 AB. Second-best ISO on the team; play OF deep.",
+        "pitchTip": "Pitch inside early to limit extension — his XBH come when he extends his arms."
       },
       {
         "playerId": "sparhawk-mark",
@@ -5699,8 +5699,8 @@
             "cls": ""
           }
         ],
-        "tip": "Sparhawk has appeared in four games going 3-for-10 with 2 RBI and zero extra-base hits. His contribution is modest — an even RBI/H of .67 — but he is a consistent presence in the lineup. His R_diff of 0 means he is neither a runner nor a driver, sitting squarely in the middle of the lineup by role.",
-        "pitchTip": "No extra-base hits and no ISO means he is a singles hitter. Pitch him up in the zone or way outside — make him work for contact. He is unlikely to do serious damage on his own."
+        "tip": "3-for-10, 2 RBI, zero XBH — modest singles hitter with no power threat.",
+        "pitchTip": "Challenge up or way outside — no ISO, unlikely to do serious damage."
       }
     ],
     "sections": [
@@ -5724,7 +5724,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Wright is the team's top power-contact hybrid: .786 average with a .286 ISO and 1 HR across 14 at-bats. He is currently red-hot (9-for-10 last 3 games) and is the most consistent bat on the roster across all five games played."
+            "tip": ".786 AVG, 1 HR, .286 ISO — red-hot (9-for-10 last 3). Best contact-power combo on the roster."
           },
           {
             "playerId": "corde-chris",
@@ -5742,7 +5742,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Corde has the highest ISO on the team by a massive margin at 1.333 — his 1 HR and 5 RBI in just 3 at-bats during the week 7 tie with Lincoln Lions represents the most explosive single-game performance on the team this season. Treat him as a cleanup-level threat."
+            "tip": "1.333 ISO, 1 HR, 5 RBI in 3 AB (week 7 tie vs Lincoln) — most explosive single game on the team. Cleanup-level threat."
           },
           {
             "playerId": "whittier-rob",
@@ -5760,7 +5760,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Whittier owns the second-highest ISO among regular starters at .333, producing 2 doubles and a triple in 12 at-bats. His extra-base hit rate (3 XBH in 12 AB = 25%) is the best on the team outside of Corde's one-game sample."
+            "tip": ".333 ISO, 2 doubles, 1 triple in 12 AB — 25% XBH rate. Second-best ISO among regulars."
           }
         ]
       },
@@ -5784,7 +5784,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Dabrik's two doubles and .700 average make him a dangerous gap hitter who hits the ball hard and consistently. His 7-for-9 last-three-games stretch suggests he is timing pitches well right now."
+            "tip": "2 doubles, .700 AVG — dangerous gap bat currently 7-for-9 over his last 3 games."
           },
           {
             "playerId": "rodriguez-darwin",
@@ -5802,7 +5802,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Rodriguez pairs consistent contact (.583 AVG across 5 games) with gap power from two doubles, making him a reliable threat to drive runners in from scoring position."
+            "tip": ".583 AVG across 5 games with 2 doubles — reliable threat to drive runners from scoring position."
           },
           {
             "playerId": "anguera-joaquin",
@@ -5816,7 +5816,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Anguera's triple and ISO of .182 place him in the gap-hitter tier — he can take the ball the other way or pull it for extra bases, and he scores at a similar rate to his RBI production."
+            "tip": "Triple and .182 ISO — hits to gaps and scores at roughly the same rate he drives in."
           }
         ]
       },
@@ -5836,7 +5836,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Whittier is one of two players on the roster with a triple this season, and his overall .333 ISO shows the triple was not an accident — he hits the ball with authority and runs well enough to stretch hits."
+            "tip": ".333 ISO backs up the triple — hits with authority and has the legs to stretch it."
           },
           {
             "playerId": "anguera-joaquin",
@@ -5850,7 +5850,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Anguera also has a triple and has scored 3 runs in 4 games, showing he is a threat to take an extra base and has the speed to score from second on singles."
+            "tip": "Triple plus 3 R in 4 games — threat to take an extra base and score from second on singles."
           }
         ]
       },
@@ -5926,7 +5926,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Corde appeared in only one game — the week 7 14-14 tie with Lincoln Lions — and produced 2 hits, 1 HR, and 5 RBI in 3 at-bats. That is a 2.50 RBI/H ratio and 1.333 ISO, both the highest on the team by a significant margin. If he is in the lineup, he belongs in your top-3 concerns regardless of the limited sample size. Do not pitch to him carelessly."
+            "tip": "5 RBI, 1 HR, 1.333 ISO in 3 AB (week 7 vs Lincoln) — top-3 concern if he's in the lineup. Do not pitch to him carelessly."
           },
           {
             "playerId": "parikh-sanjiv",
@@ -5940,7 +5940,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Parikh has only appeared in three games but leads the team in batting average at .833 with no cold stretches on record. If he gets more playing time down the stretch, he could be a dangerous contact bat to watch."
+            "tip": "Team-high .833 AVG in 3 games, zero cold stretches — dangerous contact bat if he gets more time."
           }
         ]
       },
@@ -5960,7 +5960,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Corde's 2.50 RBI/H is nearly the entire team in a single game — every time he gets a hit, multiple runners score. The highest RBI/H on the roster by an extreme margin."
+            "tip": "2.50 RBI/H — every hit scores multiple runners. Highest RBI/H on the roster by a wide margin."
           },
           {
             "playerId": "johnston-matthew",
@@ -5974,7 +5974,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Johnston's .75 RBI/H is the highest among multi-game regulars, driving in 3 runs on 4 hits across three games. He is a pure run-producer who consistently bats with runners on base."
+            "tip": ".75 RBI/H (highest among multi-game regulars) — 3 RBI on 4 hits. Batters with runners on frequently."
           },
           {
             "playerId": "anguera-joaquin",
@@ -5988,7 +5988,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Anguera matches Johnston's .75 RBI/H ratio with 3 RBI on 4 hits and also chips in 3 runs scored — he contributes at both ends of the lineup."
+            "tip": ".75 RBI/H, 3 RBI and 3 R on 4 hits — contributes at both ends of the lineup."
           },
           {
             "playerId": "rodriguez-darwin",
@@ -6002,7 +6002,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Rodriguez has the most RBI among returning regulars (5) and a .71 RBI/H across five full games, making him the most consistent run-producer on the roster over the full season."
+            "tip": "5 RBI, .71 RBI/H across 5 full games — most consistent run-producer on the roster."
           },
           {
             "playerId": "dabrik-doug",
@@ -6016,7 +6016,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "Dabrik matches Rodriguez at .71 RBI/H with the same 5 RBI total but in one fewer game (4 vs 5), making him marginally more efficient. His current 7-for-9 hot streak means he is seeing the ball well and could add more run production fast."
+            "tip": "5 RBI in 4 games, .71 RBI/H — marginally more efficient than Rodriguez and currently on a 7-for-9 hot streak."
           }
         ]
       },
@@ -6040,7 +6040,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Williams leads the team in R_diff at +4, scoring 5 runs against just 1 RBI across all five games. He is the primary table-setter — he gets on base and lets the lineup behind him do the damage. His 5-for-9 last-three-games form means he is currently getting on base at a high rate."
+            "tip": "+4 R_diff, 5 R vs 1 RBI across 5 games — primary table-setter, currently on a 5-for-9 run."
           },
           {
             "playerId": "conti-david",
@@ -6058,7 +6058,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Conti also scores far more than he drives in (+3 R_diff over 5 games), batting .545 and getting on base consistently. He and Williams together form a two-player table-setting unit at the top of the order that the run-producing middle of the lineup feeds off."
+            "tip": "+3 R_diff over 5 games, .545 AVG — pairs with Williams as a two-player table-setting unit at the top."
           }
         ]
       },
@@ -6068,23 +6068,23 @@
         "gamePlan": [
           {
             "heading": "Neutralize Wright early — he is scorching hot.",
-            "tip": "Wright is 9-for-10 over his last three games with a .786 season average and 1 HR. He makes consistent hard contact, so pitch him low and away early in the count to avoid letting him get extended. Do not groove fastballs belt-high; he will punish them. Getting him out in the first at-bat sets a tone for the whole game."
+            "tip": "9-for-10 last 3 games, .786 AVG, 1 HR — pitch low and away, no belt-high fastballs. Getting him out first AB sets the tone."
           },
           {
             "heading": "Treat Corde as a cleanup hitter if he is in the lineup.",
-            "tip": "Corde's one-game sample (5 RBI, 1 HR, 1.333 ISO in the week 7 tie vs Lincoln) is not noise — it is a signal. He has legitimate power and a dangerous swing. Pitch him away consistently, never elevated, and consider pitching around him with runners on base rather than challenging him in a high-leverage spot."
+            "tip": "5 RBI, 1 HR, 1.333 ISO in one game — pitch away, never elevated. Consider pitching around him in high-leverage spots with runners on."
           },
           {
             "heading": "Do not underestimate them based on the 1-3-1 record.",
-            "tip": "McKinley 2 lost to Washington Wildkittens by a single run (15-14) in week 4 and tied Lincoln Lions 14-14 in week 7. Two of their four non-wins were decided by one run or a tie — this is a competitive team that can put up big numbers when it clicks."
+            "tip": "Lost to Washington by 1 run (week 4) and tied Lincoln 14-14 (week 7) — two of four non-wins decided by a run or a tie. Do not underestimate."
           },
           {
             "heading": "Shade the outfield to the gaps against Whittier and Anguera.",
-            "tip": "Whittier's .333 ISO (2 doubles, 1 triple in 12 AB) and Anguera's triple indicate both can drive balls into the alleys. Play your outfielders slightly deeper and toward the gaps when either is batting, especially with runners on base where an extra-base hit is most costly."
+            "tip": "Whittier (.333 ISO, triple) and Anguera (triple) can drive balls into the alleys — play OF slightly deeper and toward the gaps for both."
           },
           {
             "heading": "Keep Williams and Conti off base — they are your table-setter problem.",
-            "tip": "Williams (+4 R_diff) and Conti (+3 R_diff) are the top of the order who start rallies. Williams scores 5 times for every 1 RBI, meaning the damage comes from the hitters behind him. Retire Williams and Conti quickly to face the run-producers with the bases empty, limiting the damage Dabrik, Rodriguez, and Johnston can do."
+            "tip": "Williams (+4 R_diff) and Conti (+3 R_diff) start rallies at the top. Retire them quickly so Dabrik, Rodriguez, and Johnston face empty bases."
           }
         ]
       }
