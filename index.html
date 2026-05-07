@@ -5867,15 +5867,14 @@ init();
 
 // ── Pull-to-refresh (mobile only) ──
 (function() {
-  var THRESHOLD = 72;   // px of pull needed to trigger
-  var MAX_PULL  = 96;   // px cap on indicator travel
+  var THRESHOLD = 72;
+  var MAX_PULL  = 96;
   var el = document.getElementById('ptr-indicator');
-  var startY = 0, pulling = false, triggered = false;
+  var startY = 0, startScrollY = 0, pulling = false, triggered = false;
 
   document.addEventListener('touchstart', function(e) {
-    // Only start a pull when the page is already scrolled to the top
-    if (window.scrollY > 0) return;
     startY = e.touches[0].clientY;
+    startScrollY = window.scrollY;
     pulling = false;
     triggered = false;
   }, { passive: true });
@@ -5883,17 +5882,16 @@ init();
   document.addEventListener('touchmove', function(e) {
     if (triggered) return;
     var dy = e.touches[0].clientY - startY;
-    if (dy <= 0) { pulling = false; return; }
-    // Only suppress native scroll / overscroll while we're pulling down from top
-    if (window.scrollY === 0 && dy > 0) {
-      e.preventDefault();
-      pulling = true;
-      var progress = Math.min(dy, MAX_PULL);
-      var offset = Math.round(progress * 0.75); // dampen travel
-      el.style.transform = 'translateX(-50%) translateY(' + (offset - 64) + 'px)';
-      el.classList.toggle('visible', offset > 20);
-      el.classList.toggle('ready', dy >= THRESHOLD);
-    }
+    // Only engage if the touch started at the very top and is dragging down
+    if (startScrollY > 0 || dy <= 0) return;
+    // Suppress native overscroll so it doesn't fight us
+    e.preventDefault();
+    pulling = true;
+    var progress = Math.min(dy, MAX_PULL);
+    var offset = Math.round(progress * 0.75);
+    el.style.transform = 'translateX(-50%) translateY(' + (offset - 64) + 'px)';
+    el.classList.toggle('visible', offset > 20);
+    el.classList.toggle('ready', dy >= THRESHOLD);
   }, { passive: false });
 
   document.addEventListener('touchend', function() {
