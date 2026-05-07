@@ -1083,16 +1083,12 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   perspective: 800px;
   height: 140px;
   transition: height .45s ease;
-  /* Tells the browser this element handles its own tap (no double-tap zoom),
-     so it can start scrolling immediately without the 300ms tap-delay. */
-  touch-action: manipulation;
 }
 .atrc-flip-inner {
   position: relative; width: 100%; height: 100%;
   transform-style: preserve-3d;
   transition: transform .45s ease;
   cursor: pointer;
-  touch-action: manipulation;
 }
 .atrc-flip.flipped .atrc-flip-inner { transform: rotateY(180deg); }
 .atrc-front, .atrc-back {
@@ -1105,7 +1101,10 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
   box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
   overflow: hidden;
 }
-.atrc-back { transform: rotateY(180deg); padding: 10px 12px; overflow-y: auto; }
+.atrc-back { transform: rotateY(180deg); padding: 10px 12px; overflow-y: hidden; }
+/* Only allow back-face scrolling when the card is actually flipped — otherwise
+   iOS routes touch-scroll events to the hidden back element instead of the page. */
+.atrc-flip.flipped .atrc-back { overflow-y: auto; }
 .atrc-back-label {
   font-size: 10px; font-weight: 800; letter-spacing: .7px;
   text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
@@ -4565,9 +4564,11 @@ function atrcFlip(el) {
 
 function atrcBindFlip(container) {
   container.querySelectorAll('.atrc-flip').forEach(el => {
-    var t0x = 0, t0y = 0, lastTouchFlip = 0;
+    var t0x = 0, t0y = 0, m0x = 0, m0y = 0;
 
-    // Both listeners are passive — they NEVER block scroll, no matter what.
+    // Mobile: passive touchstart/touchend never block scroll.
+    // No `click` listener — iOS pauses scroll to decide if a touch is a tap
+    // whenever a click handler is present, even with touch-action:manipulation.
     el.addEventListener('touchstart', function(e) {
       t0x = e.touches[0].clientX;
       t0y = e.touches[0].clientY;
@@ -4576,16 +4577,14 @@ function atrcBindFlip(container) {
     el.addEventListener('touchend', function(e) {
       var t = e.changedTouches[0];
       if (Math.abs(t.clientX - t0x) < 8 && Math.abs(t.clientY - t0y) < 8) {
-        lastTouchFlip = Date.now();
         atrcFlip(el);
       }
     }, { passive: true });
 
-    // Desktop mouse clicks. The guard skips the synthetic click that iOS/Android
-    // fire ~300ms after touchend — by then 300ms will have elapsed since lastTouchFlip.
-    el.addEventListener('click', function() {
-      if (Date.now() - lastTouchFlip < 600) return;
-      atrcFlip(el);
+    // Desktop: mousedown/mouseup instead of click — no scroll penalty.
+    el.addEventListener('mousedown', function(e) { m0x = e.clientX; m0y = e.clientY; });
+    el.addEventListener('mouseup', function(e) {
+      if (Math.abs(e.clientX - m0x) < 8 && Math.abs(e.clientY - m0y) < 8) atrcFlip(el);
     });
   });
 }
@@ -6100,16 +6099,10 @@ init();
   }
 
   document.addEventListener('touchstart', function(e) {
-    // Only arm pull-to-refresh when the page is at the very top AND the touch
-    // itself started near the top edge of the screen (within 80px). Without the
-    // y-position check, any touch anywhere on the page while scrollY===0 would
-    // attach the non-passive touchmove listener, blocking scroll for that gesture.
     if (window.scrollY !== 0) return;
-    if (e.touches[0].clientY > 80) return;
     startY = e.touches[0].clientY;
     pulling = false;
     triggered = false;
-    // Attach the non-passive blocking listener only for this specific gesture.
     document.addEventListener('touchmove', onMove, { passive: false });
     document.addEventListener('touchend', onEnd, { once: true });
     document.addEventListener('touchcancel', onEnd, { once: true });
