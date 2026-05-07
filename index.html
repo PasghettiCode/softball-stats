@@ -4565,7 +4565,7 @@ function atrcFlip(el) {
 
 function atrcBindFlip(container) {
   container.querySelectorAll('.atrc-flip').forEach(el => {
-    var t0x = 0, t0y = 0, m0x = 0, m0y = 0;
+    var t0x = 0, t0y = 0, m0x = 0, m0y = 0, lastTouch = 0;
 
     // Mobile: passive touchstart/touchend never block scroll.
     // No `click` listener — iOS pauses scroll to decide if a touch is a tap
@@ -4578,13 +4578,17 @@ function atrcBindFlip(container) {
     el.addEventListener('touchend', function(e) {
       var t = e.changedTouches[0];
       if (Math.abs(t.clientX - t0x) < 8 && Math.abs(t.clientY - t0y) < 8) {
+        lastTouch = Date.now();
         atrcFlip(el);
       }
     }, { passive: true });
 
     // Desktop: mousedown/mouseup instead of click — no scroll penalty.
+    // Skip if a touch just fired — the browser synthesizes mouse events after
+    // touchend and we don't want to flip twice.
     el.addEventListener('mousedown', function(e) { m0x = e.clientX; m0y = e.clientY; });
     el.addEventListener('mouseup', function(e) {
+      if (Date.now() - lastTouch < 600) return;
       if (Math.abs(e.clientX - m0x) < 8 && Math.abs(e.clientY - m0y) < 8) atrcFlip(el);
     });
   });
