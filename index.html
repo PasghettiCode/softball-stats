@@ -3635,6 +3635,7 @@ function viewStandings() {
     'Doubles':     DATA.players.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
     'Triples':     DATA.players.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
     'Home Runs':   DATA.players.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
+    'XBH':         DATA.players.map(p => ({ p, v: (p.seasonStats.D||0) + (p.seasonStats.T||0) + (p.seasonStats.HR||0) })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
     'Walks':       DATA.players.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 5),
   };
   const advancedLeaders = {
@@ -3685,7 +3686,8 @@ function viewStandings() {
     'Runs Created': 'Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team',
     'oWAR':         'Offensive Wins Above Replacement|Estimates how many wins this player\'s bat contributed vs. a replacement-level player',
   };
-  const leadersHtml = renderLeagueLeadersCats(leaders, fmtLeagueBasic);
+  const basicTips = { 'XBH': 'Extra-Base Hits: 2B + 3B + HR|Total hits that go for extra bases — a measure of raw power and gap-to-gap ability' };
+  const leadersHtml = renderLeagueLeadersCats(leaders, fmtLeagueBasic, basicTips);
   const advancedLeadersHtml = renderLeagueLeadersCats(advancedLeaders, fmtLeagueAdvanced, advancedTips);
 
   const lastUpdated = DATA.league && DATA.league.lastUpdated
@@ -4138,6 +4140,7 @@ function viewTeam(teamId) {
     'Doubles':     players.map(p => ({ p, v: p.seasonStats.D })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
     'Triples':     players.map(p => ({ p, v: p.seasonStats.T })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
     'Home Runs':   players.map(p => ({ p, v: p.seasonStats.HR })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
+    'XBH':         players.map(p => ({ p, v: (p.seasonStats.D||0) + (p.seasonStats.T||0) + (p.seasonStats.HR||0) })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
     'Walks':       players.map(p => ({ p, v: p.seasonStats.BB })).filter(i => i.v > 0).sort((a, b) => b.v - a.v).slice(0, 3),
   };
   const teamAdvancedLeaders = {
@@ -4188,7 +4191,8 @@ function viewTeam(teamId) {
     'Runs Created': 'Runs Created: (H+BB) × Total Bases ÷ (AB+BB)|Estimates the total offensive runs a player produced for their team',
     'oWAR':         'Offensive Wins Above Replacement|Estimates how many wins this player\'s bat contributed vs. a replacement-level player',
   };
-  const teamLeadersHtml = renderLeadersCats(teamLeaders, fmtBasic);
+  const teamBasicTips = { 'XBH': 'Extra-Base Hits: 2B + 3B + HR|Total hits that go for extra bases — a measure of raw power and gap-to-gap ability' };
+  const teamLeadersHtml = renderLeadersCats(teamLeaders, fmtBasic, teamBasicTips);
   const teamAdvancedHtml = renderLeadersCats(teamAdvancedLeaders, fmtAdvanced, teamAdvancedTips);
 
   document.getElementById('team-leaders').innerHTML = `
