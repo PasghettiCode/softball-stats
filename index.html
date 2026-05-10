@@ -883,6 +883,29 @@ a.player-link:hover, a.team-link:hover, a.game-link:hover {
 .badge[data-tip]:hover::after,
 .badge[data-tip]:hover::before { opacity: 1; }
 
+/* ── Game milestones ── */
+.milestones-card { margin-bottom: 24px; }
+.milestone-list { display: flex; flex-direction: column; gap: 0; }
+.milestone-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+.milestone-item:last-child { border-bottom: none; }
+.milestone-icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
+.milestone-text { flex: 1; min-width: 0; }
+.milestone-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.milestone-desc { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
+.milestone-tag {
+  font-size: 11px; font-weight: 800; letter-spacing: .5px;
+  padding: 2px 8px; border-radius: 10px; flex-shrink: 0;
+  text-transform: uppercase;
+}
+.milestone-tag.gold { background: rgba(255,210,0,.18); color: #c8950a; border: 1px solid rgba(255,210,0,.5); }
+.milestone-tag.fire { background: rgba(255,80,40,.15); color: #c83010; border: 1px solid rgba(255,80,40,.4); }
+.milestone-tag.blue { background: rgba(60,160,255,.15); color: #1a70c8; border: 1px solid rgba(60,160,255,.4); }
+.milestone-tag.green { background: rgba(34,197,94,.15); color: #14803a; border: 1px solid rgba(34,197,94,.4); }
+
 /* ── Player search ── */
 .search-bar {
   display: flex;
@@ -6208,6 +6231,7 @@ function viewGamePreview(game) {
       <div class="card-body padded" style="line-height:1.75">${previewAnalysis}</div>
     </div>` : ''}
     ${lastMeetingHtml}
+    <div id="milestone-watchlist-placeholder"></div>
     <div class="card">
       <div class="card-header">Team Comparison</div>
       <div class="card-body"><div class="table-wrap">
@@ -6222,6 +6246,97 @@ function viewGamePreview(game) {
       </div></div>
     </div>
   `;
+
+  _loadOldSeasons().then(() => {
+    const el = document.getElementById('milestone-watchlist-placeholder');
+    if (el) el.outerHTML = milestoneWatchlistHtml(game);
+  });
+}
+
+function milestoneWatchlistHtml(game) {
+  const teamIds = [game.homeTeamId, game.awayTeamId];
+  const KEYS = ['H','HR','BI','R','D','T','AB','PA','BB'];
+  const careerTotals = {};
+
+  Object.entries(SEASONS).forEach(([sid, sd]) => {
+    const isCurrent = sd === DATA;
+    if (!isCurrent) {
+      (sd.players || []).forEach(p => {
+        const s = p.seasonStats; if (!s || !s.G) return;
+        if (!careerTotals[p.id]) careerTotals[p.id] = {H:0,HR:0,BI:0,R:0,D:0,T:0,AB:0,PA:0,BB:0};
+        const t = careerTotals[p.id];
+        KEYS.forEach(k => t[k] += (s[k] || 0));
+      });
+    } else {
+      (sd.games || []).forEach(g => {
+        if (g.homeScore === undefined) return;
+        [...(g.homeStats||[]), ...(g.awayStats||[])].forEach(ps => {
+          if (!careerTotals[ps.playerId]) careerTotals[ps.playerId] = {H:0,HR:0,BI:0,R:0,D:0,T:0,AB:0,PA:0,BB:0};
+          const t = careerTotals[ps.playerId];
+          KEYS.forEach(k => t[k] += (ps[k] || 0));
+        });
+      });
+    }
+  });
+
+  const watches = [];
+  teamIds.forEach(teamId => {
+    getTeamPlayers(teamId).forEach(p => {
+      const c = careerTotals[p.id] || {H:0,HR:0,BI:0};
+      const name = displayName(p.name);
+      // HR: within 1 of next milestone
+      const hrMilestones = [5,10,15,20,25,30];
+      for (const n of hrMilestones) {
+        if (c.HR < n && n - c.HR <= 1) {
+          watches.push({ pid: p.id, name, teamId, desc: `${n - c.HR === 0 ? 'needs 1' : 'needs 1'} HR to reach ${n} career HR (currently ${c.HR})`, icon: '🚀', need: n - c.HR });
+          break;
+        }
+      }
+      // Hits: within 5 of next milestone
+      const hMilestones = [50,100,150,200,250,300];
+      for (const n of hMilestones) {
+        if (c.H < n && n - c.H <= 5) {
+          watches.push({ pid: p.id, name, teamId, desc: `${n - c.H} hit${n - c.H !== 1 ? 's' : ''} away from ${n} career hits (currently ${c.H})`, icon: '🎯', need: n - c.H });
+          break;
+        }
+      }
+      // RBI: within 5 of next milestone
+      const biMilestones = [50,100,150,200,250,300];
+      for (const n of biMilestones) {
+        if (c.BI < n && n - c.BI <= 5) {
+          watches.push({ pid: p.id, name, teamId, desc: `${n - c.BI} RBI away from ${n} career RBI (currently ${c.BI})`, icon: '🔥', need: n - c.BI });
+          break;
+        }
+      }
+      // Runs: within 5 of next milestone
+      const rMilestones = [50,100,150,200,250,300];
+      for (const n of rMilestones) {
+        if (c.R < n && n - c.R <= 5) {
+          watches.push({ pid: p.id, name, teamId, desc: `${n - c.R} run${n - c.R !== 1 ? 's' : ''} away from ${n} career runs (currently ${c.R})`, icon: '⚡', need: n - c.R });
+          break;
+        }
+      }
+    });
+  });
+
+  if (watches.length === 0) return '';
+
+  watches.sort((a, b) => a.need - b.need || a.name.localeCompare(b.name));
+
+  const items = watches.map(w => `
+    <div class="milestone-item">
+      <div class="milestone-icon">${w.icon}</div>
+      <div class="milestone-text">
+        <div class="milestone-name"><a class="player-link" href="#/player/${w.pid}">${w.name}</a></div>
+        <div class="milestone-desc">${w.desc}</div>
+      </div>
+      <div class="milestone-tag green">Watch</div>
+    </div>`).join('');
+
+  return `<div class="card milestones-card">
+    <div class="card-header">&#128064; Milestone Watch</div>
+    <div class="milestone-list">${items}</div>
+  </div>`;
 }
 
 function linkifyRecap(html, players) {
@@ -6249,6 +6364,120 @@ function getRecap(id, cb) {
   if (window.location.protocol === 'file:') { cb(''); return; }
   if (!_recapsPromise) _recapsPromise = fetch('recaps.json').then(r => r.json()).then(d => { _recaps = d; });
   _recapsPromise.then(() => cb(_recaps[id] || ''));
+}
+
+function computeMilestones(game) {
+  const milestones = [];
+  const allStats = [
+    ...(game.homeStats || []).map(s => ({ ...s, teamId: game.homeTeamId })),
+    ...(game.awayStats || []).map(s => ({ ...s, teamId: game.awayTeamId }))
+  ];
+
+  // Build cumulative CAREER stats before this game.
+  // Historical seasons: use seasonStats (authoritative totals from stats site).
+  // Current season: re-sum per-game box scores for games before this game's date.
+  const priorTotals = {};
+  const KEYS = ['H','HR','BI','R','D','T','AB','PA','BB'];
+
+  Object.entries(SEASONS).forEach(([sid, sd]) => {
+    const isCurrent = sd === DATA;
+    if (!isCurrent) {
+      // Use stored seasonStats for historical seasons — box scores may be incomplete
+      (sd.players || []).forEach(p => {
+        const s = p.seasonStats; if (!s || !s.G) return;
+        if (!priorTotals[p.id]) priorTotals[p.id] = { H:0, HR:0, BI:0, R:0, D:0, T:0, AB:0, PA:0, BB:0 };
+        const t = priorTotals[p.id];
+        KEYS.forEach(k => t[k] += (s[k] || 0));
+      });
+    } else {
+      // Current season: sum box scores for games strictly before this game
+      (sd.games || []).forEach(g => {
+        if (g.homeScore === undefined) return;
+        if (g.id === game.id || g.date > game.date) return;
+        const accumulate = (stats) => {
+          (stats || []).forEach(ps => {
+            if (!priorTotals[ps.playerId]) priorTotals[ps.playerId] = { H:0, HR:0, BI:0, R:0, D:0, T:0, AB:0, PA:0, BB:0 };
+            const t = priorTotals[ps.playerId];
+            KEYS.forEach(k => t[k] += (ps[k] || 0));
+          });
+        };
+        accumulate(g.homeStats);
+        accumulate(g.awayStats);
+      });
+    }
+  });
+
+  allStats.forEach(ps => {
+    const p = DATA.players.find(x => x.id === ps.playerId);
+    const name = p ? displayName(p.name) : ps.playerId;
+    const pid = ps.playerId;
+    const prior = priorTotals[ps.playerId] || { H:0, HR:0, BI:0, R:0, D:0, T:0, AB:0, PA:0, BB:0 };
+
+    // In-game feats
+    if (ps.HR >= 2) {
+      milestones.push({ icon: '💥', name, pid, desc: `${ps.HR}-HR game`, tag: 'fire', label: 'Game', order: 1 });
+    }
+const singles = ps.H - ps.D - ps.T - ps.HR;
+    if (singles >= 1 && ps.D >= 1 && ps.T >= 1 && ps.HR >= 1) {
+      milestones.push({ icon: '🏆', name, pid, desc: 'Hit for the cycle!', tag: 'gold', label: 'Cycle', order: 0 });
+    }
+
+    // Career HR milestones
+    const hrBefore = prior.HR, hrAfter = prior.HR + ps.HR;
+    if (hrBefore === 0 && hrAfter >= 1) {
+      milestones.push({ icon: '🚀', name, pid, desc: '1st career home run', tag: 'gold', label: 'Career', order: 2 });
+    }
+    [5, 10, 15, 20, 25, 30].forEach(n => {
+      if (hrBefore < n && hrAfter >= n) {
+        milestones.push({ icon: '🚀', name, pid, desc: `${n}th career home run`, tag: 'gold', label: 'Career', order: 2 });
+      }
+    });
+
+    // Career hit milestones
+    const hBefore = prior.H, hAfter = prior.H + ps.H;
+    [50, 100, 150, 200, 250, 300].forEach(n => {
+      if (hBefore < n && hAfter >= n) {
+        milestones.push({ icon: '🎯', name, pid, desc: `${n}th career hit`, tag: 'blue', label: 'Career', order: 3 });
+      }
+    });
+
+    // Career RBI milestones
+    const biBefore = prior.BI, biAfter = prior.BI + ps.BI;
+    [50, 100, 150, 200, 250, 300].forEach(n => {
+      if (biBefore < n && biAfter >= n) {
+        milestones.push({ icon: '🔥', name, pid, desc: `${n}th career RBI`, tag: 'fire', label: 'Career', order: 2 });
+      }
+    });
+
+    // Career runs milestones
+    const rBefore = prior.R, rAfter = prior.R + ps.R;
+    [50, 100, 150, 200, 250, 300].forEach(n => {
+      if (rBefore < n && rAfter >= n) {
+        milestones.push({ icon: '⚡', name, pid, desc: `${n}th career run scored`, tag: 'green', label: 'Career', order: 3 });
+      }
+    });
+  });
+
+  milestones.sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+  return milestones;
+}
+
+function milestonesHtml(game) {
+  const ms = computeMilestones(game);
+  if (ms.length === 0) return '';
+  const items = ms.map(m => `
+    <div class="milestone-item">
+      <div class="milestone-icon">${m.icon}</div>
+      <div class="milestone-text">
+        <div class="milestone-name"><a class="player-link" href="#/player/${m.pid}">${m.name}</a></div>
+        <div class="milestone-desc">${m.desc}</div>
+      </div>
+      <div class="milestone-tag ${m.tag}">${m.label}</div>
+    </div>`).join('');
+  return `<div class="card milestones-card">
+    <div class="card-header">&#127942; Milestones &amp; Highlights</div>
+    <div class="milestone-list">${items}</div>
+  </div>`;
 }
 
 function viewBoxScore(gameId) {
@@ -6364,6 +6593,7 @@ function viewBoxScore(gameId) {
         </div>
       </div>
     </div>
+    <div id="milestones-placeholder"></div>
     <div id="recap-placeholder"></div>
     ${teamTable(game.awayStats, (away ? away.name : 'Away') + ' (Away)')}
     ${teamTable(game.homeStats, (home ? home.name : 'Home') + ' (Home)')}
@@ -6376,6 +6606,12 @@ function viewBoxScore(gameId) {
     <div class="card-body padded" style="line-height:1.7">${linkifyRecap(html, DATA.players)}</div>
     <div style="padding:8px 20px 12px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border-light)">All recaps are AI generated. If you don&rsquo;t like it, blame Claude&nbsp;;)</div>
   </div>`;
+  });
+
+  // Milestones require full career data — load old seasons first, then render
+  _loadOldSeasons().then(() => {
+    const el = document.getElementById('milestones-placeholder');
+    if (el) el.outerHTML = milestonesHtml(game);
   });
 
   // Build sticky mini-scoreboard
