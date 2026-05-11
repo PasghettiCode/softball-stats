@@ -6124,8 +6124,9 @@ function viewGamePreview(game) {
   }).join('');
 
   // Key players per team
-  function keyPlayers(teamId) {
-    const players = getTeamPlayers(teamId).filter(p => p.seasonStats.AB > 0);
+  function keyPlayers(teamId, tgp) {
+    const minPA = Math.max(1.5 * (tgp || 0), 15);
+    const players = getTeamPlayers(teamId).filter(p => p.seasonStats.PA >= minPA);
     const byAVG = [...players].sort((a, b) => (b.seasonStats.AB > 0 ? b.seasonStats.H/b.seasonStats.AB : 0) - (a.seasonStats.AB > 0 ? a.seasonStats.H/a.seasonStats.AB : 0));
     const byRBI = [...players].sort((a, b) => b.seasonStats.BI - a.seasonStats.BI);
     const byHR  = [...players].filter(p => p.seasonStats.HR > 0).sort((a, b) => b.seasonStats.HR - a.seasonStats.HR);
@@ -6156,8 +6157,10 @@ function viewGamePreview(game) {
     const offEdge = ts1.RPG > ts2.RPG ? name1 : ts2.RPG > ts1.RPG ? name2 : null;
     const defEdge = ts1.RAPG < ts2.RAPG ? name1 : ts2.RAPG < ts1.RAPG ? name2 : null;
 
-    const t1Players = getTeamPlayers(t1 ? t1.id : game.homeTeamId).filter(p => p.seasonStats.AB > 0);
-    const t2Players = getTeamPlayers(t2 ? t2.id : game.awayTeamId).filter(p => p.seasonStats.AB > 0);
+    const minPA1 = Math.max(1.5 * (ts1.G || 0), 15);
+    const minPA2 = Math.max(1.5 * (ts2.G || 0), 15);
+    const t1Players = getTeamPlayers(t1 ? t1.id : game.homeTeamId).filter(p => p.seasonStats.PA >= minPA1);
+    const t2Players = getTeamPlayers(t2 ? t2.id : game.awayTeamId).filter(p => p.seasonStats.PA >= minPA2);
     const topT1 = [...t1Players].sort((a,b) => b.seasonStats.H/b.seasonStats.AB - a.seasonStats.H/a.seasonStats.AB)[0];
     const topT2 = [...t2Players].sort((a,b) => b.seasonStats.H/b.seasonStats.AB - a.seasonStats.H/a.seasonStats.AB)[0];
     const rbiT1 = [...t1Players].sort((a,b) => b.seasonStats.BI - a.seasonStats.BI)[0];
