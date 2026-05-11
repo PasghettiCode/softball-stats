@@ -2338,10 +2338,27 @@ function sparklineSVG(gameStats) {
 }
 
 // ── Career AVG trendline (season-over-season) ──
+function mergeSeasonEntries(allSeasons) {
+  // Combine entries for the same seasonId (multi-team players) into one combined stat line
+  const STAT_KEYS = ['G','PA','AB','H','R','E','D','T','HR','BB','SF','BI'];
+  const bySeasonId = {};
+  for (const os of allSeasons) {
+    if (!bySeasonId[os.seasonId]) {
+      bySeasonId[os.seasonId] = { ...os, player: { ...os.player, seasonStats: { ...os.player.seasonStats } } };
+    } else {
+      const tgt = bySeasonId[os.seasonId].player.seasonStats;
+      const src = os.player.seasonStats;
+      for (const k of STAT_KEYS) tgt[k] = (tgt[k] || 0) + (src[k] || 0);
+    }
+  }
+  return Object.values(bySeasonId);
+}
+
 function careerTrendlineSVG(allSeasons, currentSeason) {
-  if (allSeasons.length < 2) return '';
+  if (new Set(allSeasons.map(os => os.seasonId)).size < 2) return '';
   const SEASON_ORDER = ['fall-2021','spring-2022','fall-2022','spring-2023','fall-2023','spring-2024','fall-2024','spring-2025','fall-2025','spring-2026'];
-  const sorted = [...allSeasons].sort((a, b) => SEASON_ORDER.indexOf(a.seasonId) - SEASON_ORDER.indexOf(b.seasonId));
+  const merged = mergeSeasonEntries(allSeasons);
+  const sorted = [...merged].sort((a, b) => SEASON_ORDER.indexOf(a.seasonId) - SEASON_ORDER.indexOf(b.seasonId));
   const pts_data = sorted.map(os => {
     const s = os.player.seasonStats;
     return { label: os.seasonLabel.replace('Spring ','Sp ').replace('Fall ','Fa '), avg: s.AB > 0 ? s.H / s.AB : null, isCur: os.seasonId === currentSeason };
@@ -2408,7 +2425,8 @@ function careerTrendlineSVG(allSeasons, currentSeason) {
 
 // ── Career bar chart (multi-season) ──
 function careerChartHtml(allSeasons, currentSeason) {
-  if (allSeasons.length < 2) return '';
+  if (new Set(allSeasons.map(os => os.seasonId)).size < 2) return '';
+  const allSeasonsMerged = mergeSeasonEntries(allSeasons);
   // Scale each stat to the max achieved by any qualified player (>= half team's games) in completed seasons only
   const allPlayerStats = Object.values(SEASONS).flatMap(sd => {
     if (!sd.games.every(g => g.homeScore !== undefined)) return []; // skip in-progress seasons
@@ -2425,7 +2443,7 @@ function careerChartHtml(allSeasons, currentSeason) {
   const MAX_OPS = Math.max(...allPlayerStats.map(s => parseFloat(calcOPS(s))), 0.001);
   const MAX_RPG = Math.max(...allPlayerStats.map(s => s.G > 0 ? s.R / s.G : 0), 0.001);
   const MAX_BIG = Math.max(...allPlayerStats.map(s => s.G > 0 ? s.BI / s.G : 0), 0.001);
-  const rows = allSeasons.map(os => {
+  const rows = allSeasonsMerged.map(os => {
     const sd = SEASONS[os.seasonId];
     const teamGames = sd.games.filter(g => (g.homeTeamId === os.player.teamId || g.awayTeamId === os.player.teamId) && g.homeScore !== undefined).length;
     const qualified = teamGames > 0 && os.player.seasonStats.G >= teamGames / 2;
@@ -3214,11 +3232,43 @@ function getTeamGames(teamId) { return DATA.games.filter(g => g.homeTeamId === t
 // Find same player across all seasons by ID
 function findPlayerAcrossSeasons(playerId) {
   const results = [];
+  const STAT_KEYS = ['PA','AB','H','R','E','D','T','HR','BB','SF','BI'];
   for (const [seasonId, seasonData] of Object.entries(SEASONS)) {
     const p = seasonData.players.find(pl => pl.id === playerId);
-    if (p) {
+    if (!p) continue;
+    // Find all teams this player appeared for in this season
+    const teamCounts = {};
+    for (const g of seasonData.games) {
+      for (const side of ['homeStats','awayStats']) {
+        if (!g[side]) continue;
+        const tid = side === 'homeStats' ? g.homeTeamId : g.awayTeamId;
+        const row = g[side].find(r => r.playerId === playerId);
+        if (row) teamCounts[tid] = (teamCounts[tid] || 0) + 1;
+      }
+    }
+    const teamIds = Object.keys(teamCounts);
+    if (teamIds.length <= 1) {
       const team = seasonData.teams.find(t => t.id === p.teamId);
       results.push({ seasonId, seasonLabel: SEASON_LABELS[seasonId], player: p, team });
+    } else {
+      // Multi-team: compute per-team stats from game data
+      for (const tid of teamIds.sort((a, b) => teamCounts[b] - teamCounts[a])) {
+        const perTeamStats = { G: 0, ...Object.fromEntries(STAT_KEYS.map(k => [k, 0])) };
+        for (const g of seasonData.games) {
+          for (const side of ['homeStats','awayStats']) {
+            if (!g[side]) continue;
+            const gTid = side === 'homeStats' ? g.homeTeamId : g.awayTeamId;
+            if (gTid !== tid) continue;
+            const row = g[side].find(r => r.playerId === playerId);
+            if (!row) continue;
+            perTeamStats.G++;
+            for (const k of STAT_KEYS) perTeamStats[k] += row[k] || 0;
+          }
+        }
+        const syntheticPlayer = { ...p, teamId: tid, seasonStats: perTeamStats };
+        const team = seasonData.teams.find(t => t.id === tid);
+        results.push({ seasonId, seasonLabel: SEASON_LABELS[seasonId], player: syntheticPlayer, team });
+      }
     }
   }
   return results;
@@ -5943,7 +5993,8 @@ function viewPlayer(playerId) {
     </tr>`;
   }
 
-  const statsHeader = allSeasons.length > 1 ? 'Career Stats' : 'Season Stats';
+  const uniqueSeasonCount = new Set(allSeasons.map(os => os.seasonId)).size;
+  const statsHeader = uniqueSeasonCount > 1 ? 'Career Stats' : 'Season Stats';
   const statsHtml = `
   <div class="card">
     <div class="card-header" style="display:flex;align-items:center;justify-content:space-between"><span>${statsHeader}</span><button class="adv-toggle-btn" data-adv-key="advStatsPlayer" onclick="toggleAdvStats(this)"></button></div>
