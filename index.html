@@ -5999,6 +5999,7 @@ function playerRankings(player) {
       return bb - aa;
     }) : '—',
     rank(all, (a, b) => playerCombinedStats(b).R - playerCombinedStats(a).R),
+    rank(all, (a, b) => playerCombinedStats(b).BI - playerCombinedStats(a).BI),
     rank(all, (a, b) => playerCombinedStats(b).D - playerCombinedStats(a).D),
     rank(all, (a, b) => playerCombinedStats(b).T - playerCombinedStats(a).T),
     rank(all, (a, b) => playerCombinedStats(b).HR - playerCombinedStats(a).HR),
@@ -6408,7 +6409,7 @@ function viewPlayer(playerId) {
       <div class="card-header">League Rankings</div>
       <div class="card-body"><div class="table-wrap">
         <table><thead><tr>
-          <th class="num">H</th><th class="num">AVG</th><th class="num">R</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
+          <th class="num">H</th><th class="num">AVG</th><th class="num">R</th><th class="num">RBI</th><th class="num">2B</th><th class="num">3B</th><th class="num">HR</th><th class="num">BB</th><th class="num">SF</th>
         </tr></thead>
         <tbody><tr>
           ${playerRankings(player)}
