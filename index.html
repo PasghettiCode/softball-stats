@@ -5981,24 +5981,29 @@ function ordinal(n) {
 
 function playerRankings(player) {
   const all = DATA.players;
-  function rank(sortFn) {
-    const sorted = [...all].sort(sortFn);
+  const playerTeamId = playerPrimaryTeamId(player);
+  const teamGamesPlayed = DATA.games.filter(g => (g.homeTeamId === playerTeamId || g.awayTeamId === playerTeamId) && g.homeScore !== undefined).length;
+  const minAB = 1.5 * teamGamesPlayed;
+  const qualified = all.filter(p => playerCombinedStats(p).AB >= minAB);
+  function rank(pool, sortFn) {
+    const sorted = [...pool].sort(sortFn);
     const idx = sorted.findIndex(p => p.id === player.id);
-    return ordinal(idx + 1);
+    return idx === -1 ? '—' : ordinal(idx + 1);
   }
+  const playerAB = playerCombinedStats(player).AB;
   const cats = [
-    rank((a, b) => playerCombinedStats(b).H - playerCombinedStats(a).H),
-    rank((a, b) => {
+    rank(all, (a, b) => playerCombinedStats(b).H - playerCombinedStats(a).H),
+    playerAB >= minAB ? rank(qualified, (a, b) => {
       const aa = playerCombinedStats(a).AB === 0 ? 0 : playerCombinedStats(a).H / playerCombinedStats(a).AB;
       const bb = playerCombinedStats(b).AB === 0 ? 0 : playerCombinedStats(b).H / playerCombinedStats(b).AB;
       return bb - aa;
-    }),
-    rank((a, b) => playerCombinedStats(b).R - playerCombinedStats(a).R),
-    rank((a, b) => playerCombinedStats(b).D - playerCombinedStats(a).D),
-    rank((a, b) => playerCombinedStats(b).T - playerCombinedStats(a).T),
-    rank((a, b) => playerCombinedStats(b).HR - playerCombinedStats(a).HR),
-    rank((a, b) => playerCombinedStats(b).BB - playerCombinedStats(a).BB),
-    rank((a, b) => playerCombinedStats(b).SF - playerCombinedStats(a).SF),
+    }) : '—',
+    rank(all, (a, b) => playerCombinedStats(b).R - playerCombinedStats(a).R),
+    rank(all, (a, b) => playerCombinedStats(b).D - playerCombinedStats(a).D),
+    rank(all, (a, b) => playerCombinedStats(b).T - playerCombinedStats(a).T),
+    rank(all, (a, b) => playerCombinedStats(b).HR - playerCombinedStats(a).HR),
+    rank(all, (a, b) => playerCombinedStats(b).BB - playerCombinedStats(a).BB),
+    rank(all, (a, b) => playerCombinedStats(b).SF - playerCombinedStats(a).SF),
   ];
   return cats.map(r => `<td class="num">${r}</td>`).join('');
 }
