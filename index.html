@@ -259,6 +259,8 @@ h4[data-tip] { cursor: help; text-decoration: underline dotted rgba(0,0,0,.3); t
 .award-item.clickable:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.12); }
 
 th.num, td.num { text-align: right; }
+td.rank-tip span { cursor: help; text-decoration: underline dotted rgba(0,0,0,.35); text-underline-offset: 3px; }
+#rank-tip { display:none; position:fixed; z-index:10003; background:#1a1f2e; color:#e8eaf0; padding:5px 11px; border-radius:5px; font-size:11px; white-space:nowrap; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
 
 td {
   padding: 9px 12px;
@@ -5904,6 +5906,28 @@ document.addEventListener('keydown', e => {
   });
 })();
 
+// Rank cell tooltip: follows mouse for td.rank-tip elements
+(function() {
+  const tip = document.createElement('div');
+  tip.id = 'rank-tip';
+  document.body.appendChild(tip);
+  document.addEventListener('mouseover', e => {
+    const td = e.target && e.target.nodeType === 1 && e.target.closest('td.rank-tip');
+    if (!td) { tip.style.display = 'none'; return; }
+    tip.textContent = td.getAttribute('data-rank-tip');
+    tip.style.display = 'block';
+  });
+  document.addEventListener('mousemove', e => {
+    if (tip.style.display === 'none') return;
+    const x = e.clientX + 14, y = e.clientY - tip.offsetHeight - 8;
+    tip.style.left = Math.min(x, window.innerWidth - tip.offsetWidth - 8) + 'px';
+    tip.style.top = Math.max(y, 8) + 'px';
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target && e.target.nodeType === 1 && e.target.closest('td.rank-tip') && (!e.relatedTarget || !e.relatedTarget.closest('td.rank-tip'))) tip.style.display = 'none';
+  });
+})();
+
 // Last-10 record popup: hovering a [data-seq] element shows the W/L sequence
 // as colored dots. The data-seq attribute holds JSON-encoded [{r, sid}] pairs
 // where r is 'W'/'L'/'T' and sid is the season ID (for cross-season dividers).
@@ -5980,33 +6004,54 @@ function ordinal(n) {
 }
 
 function playerRankings(player) {
-  const all = DATA.players;
   const playerTeamId = playerPrimaryTeamId(player);
+  const playerLeague = getTeam(playerTeamId)?.league || null;
+  const leagueTeamIds = playerLeague
+    ? new Set(DATA.teams.filter(t => t.league === playerLeague).map(t => t.id))
+    : null;
+  const playedInLeague = leagueTeamIds
+    ? new Set(DATA.games.flatMap(g => {
+        const sides = [];
+        if (leagueTeamIds.has(g.homeTeamId)) sides.push(...(g.homeStats || []).map(s => s.playerId));
+        if (leagueTeamIds.has(g.awayTeamId)) sides.push(...(g.awayStats || []).map(s => s.playerId));
+        return sides;
+      }))
+    : null;
+  const all = playedInLeague
+    ? DATA.players.filter(p => playedInLeague.has(p.id))
+    : DATA.players;
   const teamGamesPlayed = DATA.games.filter(g => (g.homeTeamId === playerTeamId || g.awayTeamId === playerTeamId) && g.homeScore !== undefined).length;
   const minAB = 1.5 * teamGamesPlayed;
   const qualified = all.filter(p => playerCombinedStats(p).AB >= minAB);
-  function rank(pool, sortFn) {
+  function rankInfo(pool, sortFn) {
     const sorted = [...pool].sort(sortFn);
     const idx = sorted.findIndex(p => p.id === player.id);
-    return idx === -1 ? '—' : ordinal(idx + 1);
+    if (idx === -1) return null;
+    const pct = Math.round((1 - idx / pool.length) * 100);
+    return { label: ordinal(idx + 1), pct, total: pool.length };
+  }
+  function cell(info) {
+    if (!info) return `<td class="num">—</td>`;
+    const suffix = info.pct >= 90 ? ' 🔥' : '';
+    return `<td class="num rank-tip" data-rank-tip="${info.label} in the league — top ${info.pct}% of ${info.total} players"><span>${info.label}${suffix}</span></td>`;
   }
   const playerAB = playerCombinedStats(player).AB;
   const cats = [
-    rank(all, (a, b) => playerCombinedStats(b).H - playerCombinedStats(a).H),
-    playerAB >= minAB ? rank(qualified, (a, b) => {
+    rankInfo(all, (a, b) => playerCombinedStats(b).H - playerCombinedStats(a).H),
+    playerAB >= minAB ? rankInfo(qualified, (a, b) => {
       const aa = playerCombinedStats(a).AB === 0 ? 0 : playerCombinedStats(a).H / playerCombinedStats(a).AB;
       const bb = playerCombinedStats(b).AB === 0 ? 0 : playerCombinedStats(b).H / playerCombinedStats(b).AB;
       return bb - aa;
-    }) : '—',
-    rank(all, (a, b) => playerCombinedStats(b).R - playerCombinedStats(a).R),
-    rank(all, (a, b) => playerCombinedStats(b).BI - playerCombinedStats(a).BI),
-    rank(all, (a, b) => playerCombinedStats(b).D - playerCombinedStats(a).D),
-    rank(all, (a, b) => playerCombinedStats(b).T - playerCombinedStats(a).T),
-    rank(all, (a, b) => playerCombinedStats(b).HR - playerCombinedStats(a).HR),
-    rank(all, (a, b) => playerCombinedStats(b).BB - playerCombinedStats(a).BB),
-    rank(all, (a, b) => playerCombinedStats(b).SF - playerCombinedStats(a).SF),
+    }) : null,
+    rankInfo(all, (a, b) => playerCombinedStats(b).R - playerCombinedStats(a).R),
+    rankInfo(all, (a, b) => playerCombinedStats(b).BI - playerCombinedStats(a).BI),
+    rankInfo(all, (a, b) => playerCombinedStats(b).D - playerCombinedStats(a).D),
+    rankInfo(all, (a, b) => playerCombinedStats(b).T - playerCombinedStats(a).T),
+    rankInfo(all, (a, b) => playerCombinedStats(b).HR - playerCombinedStats(a).HR),
+    rankInfo(all, (a, b) => playerCombinedStats(b).BB - playerCombinedStats(a).BB),
+    rankInfo(all, (a, b) => playerCombinedStats(b).SF - playerCombinedStats(a).SF),
   ];
-  return cats.map(r => `<td class="num">${r}</td>`).join('');
+  return cats.map(cell).join('');
 }
 
 // ── Lineup position adjustment factors ──
@@ -7120,8 +7165,14 @@ function viewBoxScore(gameId) {
 }
 
 function viewAllPlayers() {
+  const leagueTeamIds = activeStandingsLeague
+    ? new Set(DATA.teams.filter(t => t.league === activeStandingsLeague).map(t => t.id))
+    : null;
+  const leaguePlayers = leagueTeamIds
+    ? DATA.players.filter(p => leagueTeamIds.has(playerPrimaryTeamId(p)))
+    : DATA.players;
   const allPlayersLeagueCtx = calcLeagueContext(DATA);
-  const rows = DATA.players.map(p => {
+  const rows = leaguePlayers.map(p => {
     const s = playerCombinedStats(p);
     const tids = playerTeamIds(p);
     const primaryTeamId = playerPrimaryTeamId(p);
