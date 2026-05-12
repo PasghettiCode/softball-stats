@@ -1,5 +1,5 @@
 {
-  "_comment": "AI-generated scouting reports keyed by teamId. Structured data — rendered to HTML by the app. Photos come from player_photos.json (players without a photo get the silhouette). Empty object = use rules-based fallback.",
+  "_comment": "AI-generated scouting reports keyed by teamId. Structured data \u2014 rendered to HTML by the app. Photos come from player_photos.json (players without a photo get the silhouette). Empty object = use rules-based fallback.",
   "hoover": {
     "summaryStats": {
       "rpg": "16.7",
@@ -27,8 +27,8 @@
             "cls": "power"
           }
         ],
-        "tip": "OF at maximum depth, alleys covered. Gets on base at will and scores every game — no weak at-bats anywhere in the count.",
-        "pitchTip": "Elite contact with real power — keep it low every pitch. No belt-high offerings."
+        "tip": "OF at maximum depth, alleys covered. Gets on base at will and scores every game \u2014 no weak at-bats anywhere in the count.",
+        "pitchTip": "Elite contact with real power \u2014 keep it low every pitch. No belt-high offerings."
       },
       {
         "playerId": "fabor-fred",
@@ -46,8 +46,8 @@
             "cls": ""
           }
         ],
-        "tip": "Gap contact is present but the HR is the headline — OF plays deep. A proven bat who matches Seacrest’s production game after game.",
-        "pitchTip": "Home run power on the season — keep it low. Don’t throw anything he can lift."
+        "tip": "Gap contact is present but the HR is the headline \u2014 OF plays deep. A proven bat who matches Seacrest\u2019s production game after game.",
+        "pitchTip": "Home run power on the season \u2014 keep it low. Don\u2019t throw anything he can lift."
       },
       {
         "playerId": "koblis-phillip",
@@ -65,8 +65,8 @@
             "cls": ""
           }
         ],
-        "tip": "Relentless gap contact all season — OF shades both alleys at full depth. No at-bat against him is routine.",
-        "pitchTip": "The premier gap threat on this roster — stay low, keep it off the belt."
+        "tip": "Relentless gap contact all season \u2014 OF shades both alleys at full depth. No at-bat against him is routine.",
+        "pitchTip": "The premier gap threat on this roster \u2014 stay low, keep it off the belt."
       },
       {
         "playerId": "dow-bryan",
@@ -84,7 +84,7 @@
             "cls": "power"
           }
         ],
-        "tip": "OF at maximum depth every at-bat — he has proven he can take pitches out in any direction. The most dangerous lower-order bat in the lineup.",
+        "tip": "OF at maximum depth every at-bat \u2014 he has proven he can take pitches out in any direction. The most dangerous lower-order bat in the lineup.",
         "pitchTip": "No free pitches. Pitch low; runners on means danger."
       },
       {
@@ -104,7 +104,7 @@
           }
         ],
         "tip": "Solid contact bat who keeps the offense moving. OF plays standard depth with a slight lean toward the alleys.",
-        "pitchTip": "Contact bat with gap pop — pitch low to limit extra-base contact. Don’t walk him."
+        "pitchTip": "Contact bat with gap pop \u2014 pitch low to limit extra-base contact. Don\u2019t walk him."
       },
       {
         "playerId": "lowenthal-sean",
@@ -122,8 +122,8 @@
             "cls": ""
           }
         ],
-        "tip": "Most-experienced player on the roster — RBI production continues even as average has dipped. OF shades alleys.",
-        "pitchTip": "Don’t get careless with runners on. Keep it low."
+        "tip": "Most-experienced player on the roster \u2014 RBI production continues even as average has dipped. OF shades alleys.",
+        "pitchTip": "Don\u2019t get careless with runners on. Keep it low."
       },
       {
         "playerId": "stepanian-levon",
@@ -137,8 +137,8 @@
             "cls": ""
           }
         ],
-        "tip": "Acts as a second leadoff spot at the bottom of the order. No extra-base hits — OF can play shallower. Getting him out breaks the rally cycle.",
-        "pitchTip": "No extra-base hits — pitch to contact. Getting him out breaks the top-of-order cycle."
+        "tip": "Acts as a second leadoff spot at the bottom of the order. No extra-base hits \u2014 OF can play shallower. Getting him out breaks the rally cycle.",
+        "pitchTip": "No extra-base hits \u2014 pitch to contact. Getting him out breaks the top-of-order cycle."
       },
       {
         "playerId": "koshie-sunil",
@@ -152,8 +152,8 @@
             "cls": ""
           }
         ],
-        "tip": "Reliable contact hitter with no extra-base hits — OF plays standard depth. Keeps at-bats short and makes contact consistently.",
-        "pitchTip": "No extra-base profile — pitch to contact and trust the defense."
+        "tip": "Reliable contact hitter with no extra-base hits \u2014 OF plays standard depth. Keeps at-bats short and makes contact consistently.",
+        "pitchTip": "No extra-base profile \u2014 pitch to contact and trust the defense."
       },
       {
         "playerId": "bryant-colin",
@@ -167,8 +167,8 @@
             "cls": ""
           }
         ],
-        "tip": "Solid contact hitter with no extra-base hits — OF plays standard depth. Limited sample but contributed at the plate when in the lineup.",
-        "pitchTip": "No power, limited sample — throw strikes, pitch to contact."
+        "tip": "Solid contact hitter with no extra-base hits \u2014 OF plays standard depth. Limited sample but contributed at the plate when in the lineup.",
+        "pitchTip": "No power, limited sample \u2014 throw strikes, pitch to contact."
       },
       {
         "playerId": "jenkins-brett",
@@ -178,8 +178,8 @@
             "cls": ""
           }
         ],
-        "tip": "One of the more neutral bats in the lineup. No extra-base hits — OF can play shallower.",
-        "pitchTip": "Lowest AVG on the roster — manageable out. Throw strikes, don’t walk him."
+        "tip": "One of the more neutral bats in the lineup. No extra-base hits \u2014 OF can play shallower.",
+        "pitchTip": "Lowest AVG on the roster \u2014 manageable out. Throw strikes, don\u2019t walk him."
       },
       {
         "playerId": "dicarlo-christian",
@@ -197,8 +197,8 @@
             "cls": ""
           }
         ],
-        "tip": "Takes walks and has RBI production via singles with runners on. No extra-base hits — OF plays standard depth.",
-        "pitchTip": "Patient hitter who works counts — throw strikes to avoid walks. No power, pitch to contact."
+        "tip": "Takes walks and has RBI production via singles with runners on. No extra-base hits \u2014 OF plays standard depth.",
+        "pitchTip": "Patient hitter who works counts \u2014 throw strikes to avoid walks. No power, pitch to contact."
       },
       {
         "playerId": "straesslar-nick",
@@ -213,7 +213,7 @@
           }
         ],
         "tip": "SF production means he makes contact in the air with runners on. No hits but has produced via sacrifice flies.",
-        "pitchTip": "SF production means he makes contact when it counts — stay focused with runners on."
+        "pitchTip": "SF production means he makes contact when it counts \u2014 stay focused with runners on."
       }
     ],
     "sections": [
@@ -233,7 +233,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .333, .619 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .333, .619 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "fabor-fred",
@@ -247,7 +247,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .142, .607 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .142, .607 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "seacrest-cayman",
@@ -261,7 +261,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .333, .833 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .333, .833 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -277,7 +277,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "5 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "seacrest-cayman",
@@ -291,7 +291,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "lowenthal-sean",
@@ -301,7 +301,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -321,7 +321,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "seacrest-cayman",
@@ -335,7 +335,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "snyder-marc",
@@ -349,7 +349,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "dilaura-paul",
@@ -363,7 +363,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -430,7 +430,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -449,7 +449,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".1000 AVG in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".1000 AVG in 1 game \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "cohendet-chris",
@@ -467,7 +467,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1.17 RBI/H in 3 games in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "1.17 RBI/H in 3 games in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "null-brad",
@@ -485,7 +485,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".888 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".888 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "dilaura-paul",
@@ -503,7 +503,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".666 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".666 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -523,7 +523,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.23 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.23 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "cohendet-chris",
@@ -537,7 +537,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.17 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.17 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "dicarlo-christian",
@@ -551,7 +551,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "ramirez-adam",
@@ -565,7 +565,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.80 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.80 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -589,7 +589,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "szafranski-jim",
@@ -607,7 +607,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "koshie-sunil",
@@ -625,7 +625,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -635,19 +635,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "18 doubles, 4 triples, and 3 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "18 doubles, 4 triples, and 3 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Bryan is up.",
-            "tip": "16 RBI in 5 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "16 RBI in 5 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Brad.",
-            "tip": ".888 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".888 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Levon out early.",
-            "tip": "+8 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+8 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }
@@ -656,13 +656,13 @@
   "franklin": {
     "summaryStats": {
       "rpg": "15.4",
-      "avg": ".571",
-      "slg": ".805",
+      "avg": ".572",
+      "slg": ".806",
       "hr": 1,
       "doubles": 30,
       "record": "3-4"
     },
-    "summaryNote": "The Franklin Falcons are a genuinely dangerous offense — 30 doubles and 16 triples make them the most prolific extra-base hit team in the league. Lanam and Pierce anchor one of the best top-twos in the league, and VanZandt leads the team in RBI (17) despite batting deep in the order. The 3-4 record understates how close these games have been — Franklin can erupt for 13+ runs in any given inning.",
+    "summaryNote": "The Franklin Falcons are a genuinely dangerous offense \u2014 30 doubles and 16 triples make them the most prolific extra-base hit team in the league. Lanam and Pierce anchor one of the best top-twos in the league, and VanZandt leads the team in RBI (17) despite batting deep in the order. The 3-4 record understates how close these games have been \u2014 Rokovich and Sosnick are both at 14 RBI, and Franklin can erupt for 13+ runs in any inning.",
     "lineup": [
       {
         "playerId": "lanam-todd",
@@ -680,8 +680,8 @@
             "cls": ""
           }
         ],
-        "tip": "OF at maximum depth every at-bat, both alleys covered. The most lethal gap hitter on the roster — targets alleys equally.",
-        "pitchTip": "Elite gap threat — keep it low every single pitch."
+        "tip": "OF at maximum depth every at-bat, both alleys covered. The most lethal gap hitter on the roster \u2014 targets alleys equally.",
+        "pitchTip": "Elite gap threat \u2014 keep it low every single pitch."
       },
       {
         "playerId": "sosnick-jason",
@@ -699,8 +699,23 @@
             "cls": ""
           }
         ],
-        "tip": "Multiple XBH mean balls are getting through in multiple directions — OF shades alleys. Hits line drives and keeps the lineup moving.",
-        "pitchTip": "Multiple XBH — treat him like a middle-order bat. Stay low."
+        "tip": "Multiple XBH mean balls are getting through in multiple directions \u2014 OF shades alleys. Hits line drives and keeps the lineup moving.",
+        "pitchTip": "Multiple XBH \u2014 treat him like a middle-order bat. Stay low."
+      },
+      {
+        "playerId": "lawler-nate",
+        "chips": [
+          {
+            "text": ".500 AVG",
+            "cls": ""
+          },
+          {
+            "text": "5 R",
+            "cls": ""
+          }
+        ],
+        "tip": "Solid table-setter with no extra-base hits \u2014 OF plays standard depth. Stopping him from reaching limits damage from the top of the order.",
+        "pitchTip": "No XBH profile \u2014 pitch to contact. Don't walk him and let the lineup reset."
       },
       {
         "playerId": "pierce-ryan",
@@ -718,42 +733,8 @@
             "cls": "power"
           }
         ],
-        "tip": "OF must play at maximum depth — triple production confirms balls are regularly reaching the deep corners and alleys.",
-        "pitchTip": "5 triples and elite ISO — OF plays very deep. Keep it low; true gap threat."
-      },
-      {
-        "playerId": "lawler-nate",
-        "chips": [
-          {
-            "text": ".500 AVG",
-            "cls": ""
-          },
-          {
-            "text": "5 R",
-            "cls": ""
-          }
-        ],
-        "tip": "Solid table-setter with no extra-base hits — OF plays standard depth. Stopping him from reaching limits damage from the top of the order.",
-        "pitchTip": "No XBH profile — pitch to contact. Don’t walk him and let the lineup reset."
-      },
-      {
-        "playerId": "wong-uland",
-        "chips": [
-          {
-            "text": ".667 AVG",
-            "cls": ""
-          },
-          {
-            "text": "3 2B, 2 3B",
-            "cls": "power"
-          },
-          {
-            "text": "6 RBI",
-            "cls": ""
-          }
-        ],
-        "tip": "Versatile gap hitter who drives the ball all over the field — OF plays deep in both alleys.",
-        "pitchTip": "2 triples and 3 doubles — real extra-base threat. Keep it low."
+        "tip": "OF must play at maximum depth \u2014 triple production confirms balls are regularly reaching the deep corners and alleys.",
+        "pitchTip": "5 triples and elite ISO \u2014 OF plays very deep. Keep it low; true gap threat."
       },
       {
         "playerId": "rokovich-mike",
@@ -771,8 +752,27 @@
             "cls": "power"
           }
         ],
-        "tip": "OF at maximum depth every at-bat — hit for power in multiple directions this season.",
-        "pitchTip": "HR, doubles, and triples — power from all directions. Keep it low every time."
+        "tip": "OF at maximum depth every at-bat \u2014 hit for power in multiple directions this season.",
+        "pitchTip": "HR, doubles, and triples \u2014 power from all directions. Keep it low every time."
+      },
+      {
+        "playerId": "wong-uland",
+        "chips": [
+          {
+            "text": ".667 AVG",
+            "cls": ""
+          },
+          {
+            "text": "3 2B, 2 3B",
+            "cls": "power"
+          },
+          {
+            "text": "6 RBI",
+            "cls": ""
+          }
+        ],
+        "tip": "Versatile gap hitter who drives the ball all over the field \u2014 OF plays deep in both alleys.",
+        "pitchTip": "2 triples and 3 doubles \u2014 real extra-base threat. Keep it low."
       },
       {
         "playerId": "samuelson-robby",
@@ -790,8 +790,8 @@
             "cls": ""
           }
         ],
-        "tip": "Limited extra-base profile but makes contact at an elite rate. OF plays standard depth — he’ll find the gaps occasionally but relies on placement over power.",
-        "pitchTip": "Elite contact rate across 7 games — no free passes."
+        "tip": "Limited extra-base profile but makes contact at an elite rate. OF plays standard depth \u2014 he'll find the gaps occasionally but relies on placement over power.",
+        "pitchTip": "Elite contact rate across 7 games \u2014 no free passes."
       },
       {
         "playerId": "vanzandt-jonah",
@@ -801,16 +801,16 @@
             "cls": "power"
           },
           {
-            "text": "1 3B, 2 3B",
-            "cls": ""
+            "text": "1 2B, 3 3B",
+            "cls": "power"
           },
           {
             "text": "1.06 RBI/H",
             "cls": "power"
           }
         ],
-        "tip": "OF plays deep every at-bat — triple production confirms balls reaching the deep corners. Extremely dangerous with runners on.",
-        "pitchTip": "Team-high RBI and multiple triples — dangerous with runners on. Keep it low."
+        "tip": "OF plays deep every at-bat \u2014 3 triples confirm balls reaching the deepest corners. Extremely dangerous with runners on.",
+        "pitchTip": "Team-high RBI and 3 triples \u2014 dangerous with runners on. Keep it low."
       },
       {
         "playerId": "jing-mu",
@@ -828,8 +828,38 @@
             "cls": ""
           }
         ],
-        "tip": "Produces with runners on even in tough at-bats via sacrifice flies and singles. No extra-base hits — OF plays standard depth.",
-        "pitchTip": "Productive with runners on. Pitch carefully; don’t groove it."
+        "tip": "Produces with runners on even in tough at-bats via sacrifice flies and singles. No extra-base hits \u2014 OF plays standard depth.",
+        "pitchTip": "Productive with runners on. Pitch carefully; don't groove it."
+      },
+      {
+        "playerId": "detch-robert",
+        "chips": [
+          {
+            "text": ".364 AVG",
+            "cls": ""
+          },
+          {
+            "text": "3 R",
+            "cls": ""
+          }
+        ],
+        "tip": "No extra-base hits \u2014 OF plays standard depth. Focus on quick outs to prevent the lineup from cycling back.",
+        "pitchTip": "No XBH, limited sample \u2014 pitch to contact. Work efficiently."
+      },
+      {
+        "playerId": "hung-alvin",
+        "chips": [
+          {
+            "text": ".500 AVG",
+            "cls": ""
+          },
+          {
+            "text": "1 G",
+            "cls": ""
+          }
+        ],
+        "tip": "1 game appearance. No extra-base hits \u2014 OF plays standard depth. Treat as a contact bat.",
+        "pitchTip": "1 game only \u2014 pitch to contact. Don't overthink it."
       },
       {
         "playerId": "linge-mario",
@@ -843,8 +873,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent run-scorer at the bottom of the order. Gets on base and moves around the bases — OF plays standard depth.",
-        "pitchTip": "Contact bat — pitch to contact. Getting him out quickly limits the rally."
+        "tip": "Consistent run-scorer at the bottom of the order. Gets on base and moves around the bases \u2014 OF plays standard depth.",
+        "pitchTip": "Contact bat \u2014 pitch to contact. Getting him out quickly limits the rally."
       },
       {
         "playerId": "lagory-ed",
@@ -862,38 +892,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent extra-base threat at the bottom of the lineup — OF plays deep when he’s up.",
-        "pitchTip": "Triples in the lineup slot — OF plays deep. Keep it low."
-      },
-      {
-        "playerId": "detch-robert",
-        "chips": [
-          {
-            "text": ".364 AVG",
-            "cls": ""
-          },
-          {
-            "text": "3 R",
-            "cls": ""
-          }
-        ],
-        "tip": "No extra-base hits — OF plays standard depth. Focus on quick outs to prevent the lineup from cycling back.",
-        "pitchTip": "No XBH, limited sample — pitch to contact. Work efficiently."
-      },
-      {
-        "playerId": "hung-alvin",
-        "chips": [
-          {
-            "text": ".500 AVG",
-            "cls": ""
-          },
-          {
-            "text": "1 G",
-            "cls": ""
-          }
-        ],
-        "tip": "1 game appearance. No extra-base hits — OF plays standard depth. Treat as a contact bat.",
-        "pitchTip": "1 game only — pitch to contact. Don’t overthink it."
+        "tip": "Consistent extra-base threat at the bottom of the lineup \u2014 OF plays deep when he's up.",
+        "pitchTip": "Triples in the lineup slot \u2014 OF plays deep. Keep it low."
       }
     ],
     "sections": [
@@ -909,7 +909,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .523, .857 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "ISO .523, .857 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "pierce-ryan",
@@ -919,7 +919,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .538, .615 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "ISO .538, .615 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "rokovich-mike",
@@ -933,7 +933,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .428, .500 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .428, .500 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -953,7 +953,7 @@
                 "cls": ""
               }
             ],
-            "tip": "9 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "9 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "pierce-ryan",
@@ -967,7 +967,7 @@
                 "cls": ""
               }
             ],
-            "tip": "4 doubles and 5 triples — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "4 doubles and 5 triples \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "wong-uland",
@@ -981,7 +981,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles and 2 triples — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles and 2 triples \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "sosnick-jason",
@@ -995,7 +995,7 @@
                 "cls": ""
               }
             ],
-            "tip": "4 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "4 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -1015,7 +1015,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "pierce-ryan",
@@ -1029,7 +1029,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "5 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "wong-uland",
@@ -1043,7 +1043,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "vanzandt-jonah",
@@ -1057,7 +1057,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "3 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -1074,6 +1074,20 @@
               },
               {
                 "text": "season .857",
+                "cls": ""
+              }
+            ],
+            "tip": null
+          },
+          {
+            "playerId": "vanzandt-jonah",
+            "chips": [
+              {
+                "text": "last 3: .636",
+                "cls": "hot"
+              },
+              {
+                "text": "season .667",
                 "cls": ""
               }
             ],
@@ -1101,21 +1115,7 @@
                 "cls": "hot"
               },
               {
-                "text": "season .678",
-                "cls": ""
-              }
-            ],
-            "tip": null
-          },
-          {
-            "playerId": "vanzandt-jonah",
-            "chips": [
-              {
-                "text": "last 3: .636",
-                "cls": "hot"
-              },
-              {
-                "text": "season .666",
+                "text": "season .679",
                 "cls": ""
               }
             ],
@@ -1124,7 +1124,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -1143,7 +1143,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".500 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".500 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "lawler-nate",
@@ -1161,7 +1161,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".500 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".500 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "hung-alvin",
@@ -1175,7 +1175,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".500 AVG in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".500 AVG in 1 game \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -1195,7 +1195,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.06 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.06 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "rokovich-mike",
@@ -1209,7 +1209,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "sosnick-jason",
@@ -1223,7 +1223,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.88 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.88 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "pierce-ryan",
@@ -1237,7 +1237,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.81 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.81 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -1261,7 +1261,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "lagory-ed",
@@ -1279,7 +1279,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "linge-mario",
@@ -1297,7 +1297,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "lawler-nate",
@@ -1315,7 +1315,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -1325,19 +1325,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "31 doubles, 16 triples, and 1 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "31 doubles, 16 triples, and 1 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Jonah is up.",
-            "tip": "17 RBI in 6 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "17 RBI in 6 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Todd.",
-            "tip": ".857 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".857 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Uland out early.",
-            "tip": "+4 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+4 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }
@@ -1352,7 +1352,7 @@
       "doubles": 30,
       "record": "6-1"
     },
-    "summaryNote": "St. Catherines is the class of the league — 6-1, 18.3 runs per game, and a lineup with no obvious weak spots. Five home runs and 30 doubles reflect consistent hard contact up and down the order. Bandel and Besse are among the most dangerous bats in the league, and the top of the order sets the table relentlessly every inning.",
+    "summaryNote": "St. Catherines is the class of the league \u2014 6-1, 18.3 runs per game, and a lineup with no obvious weak spots. Five home runs and 30 doubles reflect consistent hard contact up and down the order. Bandel and Besse are among the most dangerous bats in the league, and the top of the order sets the table relentlessly every inning.",
     "lineup": [
       {
         "playerId": "bachwich-ethan",
@@ -1366,8 +1366,8 @@
             "cls": ""
           }
         ],
-        "tip": "No extra-base hits — OF plays standard depth. Gets on base at a high clip; ending at-bats quickly limits St. Cath’s run-scoring engine.",
-        "pitchTip": "No XBH this season — pitch to contact and trust the defense. Don’t walk him."
+        "tip": "No extra-base hits \u2014 OF plays standard depth. Gets on base at a high clip; ending at-bats quickly limits St. Cath\u2019s run-scoring engine.",
+        "pitchTip": "No XBH this season \u2014 pitch to contact and trust the defense. Don\u2019t walk him."
       },
       {
         "playerId": "delossantos-anthony",
@@ -1381,8 +1381,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Has not made an out this season — OF plays standard depth but must be locked in. A table-setter who reaches every single at-bat.",
-        "pitchTip": "Perfect on the season — make your best pitch every time. No free passes."
+        "tip": "Has not made an out this season \u2014 OF plays standard depth but must be locked in. A table-setter who reaches every single at-bat.",
+        "pitchTip": "Perfect on the season \u2014 make your best pitch every time. No free passes."
       },
       {
         "playerId": "malaspina-ray",
@@ -1400,8 +1400,8 @@
             "cls": ""
           }
         ],
-        "tip": "HR and triple suggest deep power — OF plays deep and shades the alleys. Dangerous with runners on.",
-        "pitchTip": "HR and triple on his resume — keep it low. Don’t elevate against this bat."
+        "tip": "HR and triple suggest deep power \u2014 OF plays deep and shades the alleys. Dangerous with runners on.",
+        "pitchTip": "HR and triple on his resume \u2014 keep it low. Don\u2019t elevate against this bat."
       },
       {
         "playerId": "bandel-joe",
@@ -1419,7 +1419,7 @@
             "cls": "power"
           }
         ],
-        "tip": "OF at maximum depth every at-bat — has proven he can go deep, to the gaps, and down the lines. The most dangerous RBI bat on the team.",
+        "tip": "OF at maximum depth every at-bat \u2014 has proven he can go deep, to the gaps, and down the lines. The most dangerous RBI bat on the team.",
         "pitchTip": "Multiple power directions in 6 games. Keep it low, no meatballs."
       },
       {
@@ -1438,8 +1438,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Balls find the deepest parts of the park consistently — OF plays at maximum depth, alleys and corners covered.",
-        "pitchTip": ".632 ISO in 5 games — don’t give him anything to drive. Pitch low, change speeds."
+        "tip": "Balls find the deepest parts of the park consistently \u2014 OF plays at maximum depth, alleys and corners covered.",
+        "pitchTip": ".632 ISO in 5 games \u2014 don\u2019t give him anything to drive. Pitch low, change speeds."
       },
       {
         "playerId": "germino-matt",
@@ -1453,8 +1453,8 @@
             "cls": ""
           }
         ],
-        "tip": "No extra-base hits — OF can play shallower. Takes walks occasionally; a reliable contact bat in the heart of the order.",
-        "pitchTip": "No power profile — pitch to contact. Don’t walk him and let the lineup reset."
+        "tip": "No extra-base hits \u2014 OF can play shallower. Takes walks occasionally; a reliable contact bat in the heart of the order.",
+        "pitchTip": "No power profile \u2014 pitch to contact. Don\u2019t walk him and let the lineup reset."
       },
       {
         "playerId": "tancilau-mo",
@@ -1472,8 +1472,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistently finding the gaps — OF shades toward the alleys when he’s at the plate. Limited playing time but productive every appearance.",
-        "pitchTip": "Gap contact confirmed by doubles production — stay low."
+        "tip": "Consistently finding the gaps \u2014 OF shades toward the alleys when he\u2019s at the plate. Limited playing time but productive every appearance.",
+        "pitchTip": "Gap contact confirmed by doubles production \u2014 stay low."
       },
       {
         "playerId": "mccallum-denzel",
@@ -1491,8 +1491,8 @@
             "cls": ""
           }
         ],
-        "tip": "Occasional gap contact — OF plays standard depth shading toward the alleys. Appeared in both recent games.",
-        "pitchTip": "Consistent contact, some gap power — keep it low. Make him earn each base."
+        "tip": "Occasional gap contact \u2014 OF plays standard depth shading toward the alleys. Appeared in both recent games.",
+        "pitchTip": "Consistent contact, some gap power \u2014 keep it low. Make him earn each base."
       },
       {
         "playerId": "ng-jerry",
@@ -1510,8 +1510,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent contact hitter who has been dangerous with runners on. No HR but gap contact is real — OF plays standard depth with alleys covered.",
-        "pitchTip": "High season average — no free pitches. Consistent contact; keep it low."
+        "tip": "Consistent contact hitter who has been dangerous with runners on. No HR but gap contact is real \u2014 OF plays standard depth with alleys covered.",
+        "pitchTip": "High season average \u2014 no free pitches. Consistent contact; keep it low."
       },
       {
         "playerId": "lin-james",
@@ -1529,8 +1529,8 @@
             "cls": ""
           }
         ],
-        "tip": "One of the most productive bats in the bottom third — balls going into the gaps consistently. OF shades alleys.",
-        "pitchTip": "Gap doubles production and high RBI — treat like a middle-order bat. Stay low."
+        "tip": "One of the most productive bats in the bottom third \u2014 balls going into the gaps consistently. OF shades alleys.",
+        "pitchTip": "Gap doubles production and high RBI \u2014 treat like a middle-order bat. Stay low."
       },
       {
         "playerId": "nunez-cj",
@@ -1548,8 +1548,8 @@
             "cls": "power"
           }
         ],
-        "tip": "HR and triple on his resume — OF plays deep every at-bat. Among the highest ISO on the roster despite limited games.",
-        "pitchTip": "HR and triple in 9 AB — real power threat. Don’t miss belt-high. Keep it low."
+        "tip": "HR and triple on his resume \u2014 OF plays deep every at-bat. Among the highest ISO on the roster despite limited games.",
+        "pitchTip": "HR and triple in 9 AB \u2014 real power threat. Don\u2019t miss belt-high. Keep it low."
       },
       {
         "playerId": "gomez-ricky",
@@ -1567,8 +1567,8 @@
             "cls": ""
           }
         ],
-        "tip": "Most-experienced player (7 games) with strong RBI production. Contact-only — OF plays standard depth. Gets on base consistently and keeps the lineup cycling.",
-        "pitchTip": "Contact bat, limited XBH — pitch to contact. Keep him off base to stop rally cycles."
+        "tip": "Most-experienced player (7 games) with strong RBI production. Contact-only \u2014 OF plays standard depth. Gets on base consistently and keeps the lineup cycling.",
+        "pitchTip": "Contact bat, limited XBH \u2014 pitch to contact. Keep him off base to stop rally cycles."
       },
       {
         "playerId": "wong-art",
@@ -1587,7 +1587,7 @@
           }
         ],
         "tip": "Iron-man presence in every game all season. OF shades the alleys slightly given his doubles production.",
-        "pitchTip": "3 doubles across 7 games — modest gap threat. Pitch down, induce grounders."
+        "pitchTip": "3 doubles across 7 games \u2014 modest gap threat. Pitch down, induce grounders."
       },
       {
         "playerId": "zlatunich-trevor",
@@ -1605,8 +1605,8 @@
             "cls": "power"
           }
         ],
-        "tip": "HR and triple in limited appearances — OF at maximum depth. One of the most dangerous bats on the roster per AB.",
-        "pitchTip": "Legitimate power in limited games — keep it low and don’t get comfortable."
+        "tip": "HR and triple in limited appearances \u2014 OF at maximum depth. One of the most dangerous bats on the roster per AB.",
+        "pitchTip": "Legitimate power in limited games \u2014 keep it low and don\u2019t get comfortable."
       },
       {
         "playerId": "bahamondes-danny",
@@ -1620,8 +1620,8 @@
             "cls": ""
           }
         ],
-        "tip": "No power profile — OF plays standard depth. Appears in the lower third; keep him off base to prevent the lineup cycling.",
-        "pitchTip": "No extra-base power — pitch to contact. Make him chase and keep the inning short."
+        "tip": "No power profile \u2014 OF plays standard depth. Appears in the lower third; keep him off base to prevent the lineup cycling.",
+        "pitchTip": "No extra-base power \u2014 pitch to contact. Make him chase and keep the inning short."
       },
       {
         "playerId": "phu-andrew",
@@ -1635,8 +1635,8 @@
             "cls": ""
           }
         ],
-        "tip": "Perfect contact in limited games. No extra-base hits — OF plays standard depth. Part of an already dangerous lower-order rotation.",
-        "pitchTip": "High contact rate in small sample — don’t groove pitches. Treat as a legitimate threat."
+        "tip": "Perfect contact in limited games. No extra-base hits \u2014 OF plays standard depth. Part of an already dangerous lower-order rotation.",
+        "pitchTip": "High contact rate in small sample \u2014 don\u2019t groove pitches. Treat as a legitimate threat."
       },
       {
         "playerId": "yanema-pete",
@@ -1650,8 +1650,8 @@
             "cls": ""
           }
         ],
-        "tip": "No extra-base hits — OF plays standard depth. Lower-order bat who has contributed when called upon.",
-        "pitchTip": "Limited games but high contact rate — pitch carefully. Don’t walk him."
+        "tip": "No extra-base hits \u2014 OF plays standard depth. Lower-order bat who has contributed when called upon.",
+        "pitchTip": "Limited games but high contact rate \u2014 pitch carefully. Don\u2019t walk him."
       },
       {
         "playerId": "driscoll-tim",
@@ -1665,8 +1665,8 @@
             "cls": ""
           }
         ],
-        "tip": "No extra-base hits — OF can play shallower. Has scored runs as a table-setter at the bottom of the order.",
-        "pitchTip": "No XBH — pitch to contact and keep it low. Let the defense work."
+        "tip": "No extra-base hits \u2014 OF can play shallower. Has scored runs as a table-setter at the bottom of the order.",
+        "pitchTip": "No XBH \u2014 pitch to contact and keep it low. Let the defense work."
       }
     ],
     "sections": [
@@ -1682,7 +1682,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .363, .727 AVG — OF plays deep. Keep pitches low."
+            "tip": "ISO .363, .727 AVG \u2014 OF plays deep. Keep pitches low."
           },
           {
             "playerId": "besse-paul",
@@ -1696,7 +1696,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .631, .736 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .631, .736 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "malaspina-ray",
@@ -1710,7 +1710,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .272, .772 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .272, .772 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "bandel-joe",
@@ -1724,7 +1724,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .473, .631 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .473, .631 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -1740,7 +1740,7 @@
                 "cls": ""
               }
             ],
-            "tip": "4 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "4 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "besse-paul",
@@ -1754,7 +1754,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 doubles and 2 triples — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "5 doubles and 2 triples \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "bandel-joe",
@@ -1768,7 +1768,7 @@
                 "cls": ""
               }
             ],
-            "tip": "4 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "4 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "lin-james",
@@ -1778,7 +1778,7 @@
                 "cls": ""
               }
             ],
-            "tip": "4 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "4 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -1798,7 +1798,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "malaspina-ray",
@@ -1812,7 +1812,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "bandel-joe",
@@ -1826,7 +1826,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "nunez-cj",
@@ -1840,7 +1840,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -1907,7 +1907,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -1926,7 +1926,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1.14 RBI/H in 3 games in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "1.14 RBI/H in 3 games in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "barr-matt",
@@ -1944,7 +1944,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".833 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".833 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "mccallum-denzel",
@@ -1962,7 +1962,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".666 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".666 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "delossantos-anthony",
@@ -1980,7 +1980,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".1000 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".1000 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -2000,7 +2000,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.42 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.42 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "zlatunich-trevor",
@@ -2014,7 +2014,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.14 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.14 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "besse-paul",
@@ -2028,7 +2028,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.07 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.07 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "wong-art",
@@ -2042,7 +2042,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -2066,7 +2066,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "delossantos-anthony",
@@ -2084,7 +2084,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "delossantos-anthony",
@@ -2102,7 +2102,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "malaspina-ray",
@@ -2120,7 +2120,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -2130,19 +2130,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "33 doubles, 6 triples, and 5 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "33 doubles, 6 triples, and 5 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Joe is up.",
-            "tip": "17 RBI in 6 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "17 RBI in 6 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Anthony.",
-            "tip": ".1000 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".1000 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Ethan out early.",
-            "tip": "+9 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+9 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }
@@ -2157,7 +2157,7 @@
       "doubles": 29,
       "record": "4-2-1"
     },
-    "summaryNote": "Lincoln Lions are a balanced, deep team at 4-2-1 — their 29 doubles reflect a lineup built for gap contact rather than home run power. Benveniste and Moorthy are the standout bats, but Katz and Kloster consistently set the table at the top. They can put up crooked numbers with runners on base and compete with anyone in the league.",
+    "summaryNote": "Lincoln Lions are a balanced, deep team at 4-2-1 \u2014 their 29 doubles reflect a lineup built for gap contact rather than home run power. Benveniste and Moorthy are the standout bats, but Katz and Kloster consistently set the table at the top. They can put up crooked numbers with runners on base and compete with anyone in the league.",
     "lineup": [
       {
         "playerId": "katz-elliot",
@@ -2175,8 +2175,8 @@
             "cls": ""
           }
         ],
-        "tip": "Triple production demands OF depth when he’s at the plate — balls are getting to the deepest parts of the park. Strong table-setter at the top of the order.",
-        "pitchTip": "2 triples on the season — OF plays deep. Keep pitches low to limit extra-base contact."
+        "tip": "Triple production demands OF depth when he\u2019s at the plate \u2014 balls are getting to the deepest parts of the park. Strong table-setter at the top of the order.",
+        "pitchTip": "2 triples on the season \u2014 OF plays deep. Keep pitches low to limit extra-base contact."
       },
       {
         "playerId": "kloster-jeff",
@@ -2190,8 +2190,8 @@
             "cls": ""
           }
         ],
-        "tip": "Contact-first approach — OF plays standard depth. Keeps the lineup moving; getting him out in 3 pitches is valuable.",
-        "pitchTip": "Contact bat with 1 double — pitch to contact, stay low. Don’t walk him."
+        "tip": "Contact-first approach \u2014 OF plays standard depth. Keeps the lineup moving; getting him out in 3 pitches is valuable.",
+        "pitchTip": "Contact bat with 1 double \u2014 pitch to contact, stay low. Don\u2019t walk him."
       },
       {
         "playerId": "martinez-francisco",
@@ -2209,8 +2209,8 @@
             "cls": ""
           }
         ],
-        "tip": "Drives the ball to all parts of the field — OF plays deep when he’s up, shading the alleys given his gap contact profile.",
-        "pitchTip": "HR and doubles — real XBH threat. Keep it low; don’t miss belt-high."
+        "tip": "Drives the ball to all parts of the field \u2014 OF plays deep when he\u2019s up, shading the alleys given his gap contact profile.",
+        "pitchTip": "HR and doubles \u2014 real XBH threat. Keep it low; don\u2019t miss belt-high."
       },
       {
         "playerId": "benveniste-mike",
@@ -2228,8 +2228,8 @@
             "cls": ""
           }
         ],
-        "tip": "The best pure hitter on the roster. Gap contact is real — OF shades the alleys when he’s at the plate. Appeared in both recent games.",
-        "pitchTip": "Elite average and RBI production — keep it low, no belt-high pitches."
+        "tip": "The best pure hitter on the roster. Gap contact is real \u2014 OF shades the alleys when he\u2019s at the plate. Appeared in both recent games.",
+        "pitchTip": "Elite average and RBI production \u2014 keep it low, no belt-high pitches."
       },
       {
         "playerId": "moorthy-arjun",
@@ -2247,8 +2247,8 @@
             "cls": ""
           }
         ],
-        "tip": "Team-high in doubles — the most consistent gap hitter on the roster. OF shades both alleys at full depth every at-bat.",
-        "pitchTip": "6 doubles on the season — pure gap hitter. Stay low; keep it away from the fat of the plate."
+        "tip": "Team-high in doubles \u2014 the most consistent gap hitter on the roster. OF shades both alleys at full depth every at-bat.",
+        "pitchTip": "6 doubles on the season \u2014 pure gap hitter. Stay low; keep it away from the fat of the plate."
       },
       {
         "playerId": "lau-chris",
@@ -2266,8 +2266,8 @@
             "cls": ""
           }
         ],
-        "tip": "Doubles and a triple across 5 games — balls find the gaps and the deep corners. OF plays deep and shades the alleys.",
-        "pitchTip": "3 doubles and a triple — significant gap threat. Keep it low."
+        "tip": "Doubles and a triple across 5 games \u2014 balls find the gaps and the deep corners. OF plays deep and shades the alleys.",
+        "pitchTip": "3 doubles and a triple \u2014 significant gap threat. Keep it low."
       },
       {
         "playerId": "gilmore-barlow",
@@ -2285,8 +2285,8 @@
             "cls": ""
           }
         ],
-        "tip": "Reliable gap contact throughout all 7 games — OF shades alleys and plays deep. Has been in the lineup every game.",
-        "pitchTip": "4 doubles and a triple — treat as gap threat. Pitch low, let the defense handle it."
+        "tip": "Reliable gap contact throughout all 7 games \u2014 OF shades alleys and plays deep. Has been in the lineup every game.",
+        "pitchTip": "4 doubles and a triple \u2014 treat as gap threat. Pitch low, let the defense handle it."
       },
       {
         "playerId": "huck-paul",
@@ -2300,8 +2300,8 @@
             "cls": ""
           }
         ],
-        "tip": "No extra-base hits — OF can play shallower. Focus on limiting walks to keep the lineup from cycling.",
-        "pitchTip": "No XBH profile — pitch to contact. Keep it low, generate weak contact."
+        "tip": "No extra-base hits \u2014 OF can play shallower. Focus on limiting walks to keep the lineup from cycling.",
+        "pitchTip": "No XBH profile \u2014 pitch to contact. Keep it low, generate weak contact."
       },
       {
         "playerId": "kim-kenny",
@@ -2319,8 +2319,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent gap contact from the lower order — OF shades the alleys slightly. Shows up every game.",
-        "pitchTip": "3 doubles in 6 games — modest but real gap threat. Stay low to limit extra bases."
+        "tip": "Consistent gap contact from the lower order \u2014 OF shades the alleys slightly. Shows up every game.",
+        "pitchTip": "3 doubles in 6 games \u2014 modest but real gap threat. Stay low to limit extra bases."
       },
       {
         "playerId": "french-nick",
@@ -2338,8 +2338,8 @@
             "cls": ""
           }
         ],
-        "tip": "Patient table-setter at the bottom of the order. Contact-only — OF plays standard depth. Keeping him off base is key to shutting down the top of the next inning.",
-        "pitchTip": "Patient bat with walks — throw strikes but be careful. No extra-base power."
+        "tip": "Patient table-setter at the bottom of the order. Contact-only \u2014 OF plays standard depth. Keeping him off base is key to shutting down the top of the next inning.",
+        "pitchTip": "Patient bat with walks \u2014 throw strikes but be careful. No extra-base power."
       },
       {
         "playerId": "csongradi-eric",
@@ -2357,8 +2357,8 @@
             "cls": ""
           }
         ],
-        "tip": "Solid two-way contributor — OF plays standard depth. Appeared in both recent games; reliable lower-order presence.",
-        "pitchTip": "Modest gap profile, 1 double — pitch to contact. Don’t walk him."
+        "tip": "Solid two-way contributor \u2014 OF plays standard depth. Appeared in both recent games; reliable lower-order presence.",
+        "pitchTip": "Modest gap profile, 1 double \u2014 pitch to contact. Don\u2019t walk him."
       },
       {
         "playerId": "hsieh-jackson",
@@ -2376,8 +2376,8 @@
             "cls": ""
           }
         ],
-        "tip": "Patient approach — takes pitches and works counts. No extra-base hits; OF plays standard depth.",
-        "pitchTip": "3 walks in 5 games — throw strikes. Avoid falling behind in the count."
+        "tip": "Patient approach \u2014 takes pitches and works counts. No extra-base hits; OF plays standard depth.",
+        "pitchTip": "3 walks in 5 games \u2014 throw strikes. Avoid falling behind in the count."
       },
       {
         "playerId": "ou-peter",
@@ -2395,8 +2395,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent lower-order contact bat — OF plays standard depth. Has contributed at the bottom of the order in multiple games.",
-        "pitchTip": "Contact bat, 1 double — pitch down. Keep it out of the hitting zone."
+        "tip": "Consistent lower-order contact bat \u2014 OF plays standard depth. Has contributed at the bottom of the order in multiple games.",
+        "pitchTip": "Contact bat, 1 double \u2014 pitch down. Keep it out of the hitting zone."
       },
       {
         "playerId": "reynolds-brett",
@@ -2410,8 +2410,8 @@
             "cls": ""
           }
         ],
-        "tip": "Most productive with runners on despite modest average. No extra-base hits — OF plays standard depth. His RBI/H is the highest on the team; dangerous in clutch situations.",
-        "pitchTip": "High RBI/H with no XBH — keep baserunners off. Pitch carefully with runners on."
+        "tip": "Most productive with runners on despite modest average. No extra-base hits \u2014 OF plays standard depth. His RBI/H is the highest on the team; dangerous in clutch situations.",
+        "pitchTip": "High RBI/H with no XBH \u2014 keep baserunners off. Pitch carefully with runners on."
       },
       {
         "playerId": "kapoor-aashrey",
@@ -2425,8 +2425,8 @@
             "cls": ""
           }
         ],
-        "tip": "No extra-base hits — OF plays standard depth. Lower-order bat; focus on quick outs to prevent the lineup from cycling.",
-        "pitchTip": "No power profile — pitch to contact. Throw strikes and work efficiently."
+        "tip": "No extra-base hits \u2014 OF plays standard depth. Lower-order bat; focus on quick outs to prevent the lineup from cycling.",
+        "pitchTip": "No power profile \u2014 pitch to contact. Throw strikes and work efficiently."
       },
       {
         "playerId": "zeman-jan",
@@ -2436,8 +2436,8 @@
             "cls": ""
           }
         ],
-        "tip": "Fills out the bottom of the lineup. No extra-base hits — OF plays standard depth. Focus on keeping the lineup from turning over.",
-        "pitchTip": "No XBH this season — pitch to contact and keep the inning short."
+        "tip": "Fills out the bottom of the lineup. No extra-base hits \u2014 OF plays standard depth. Focus on keeping the lineup from turning over.",
+        "pitchTip": "No XBH this season \u2014 pitch to contact and keep the inning short."
       }
     ],
     "sections": [
@@ -2453,7 +2453,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .384, .615 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "ISO .384, .615 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "martinez-francisco",
@@ -2467,7 +2467,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .333, .523 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .333, .523 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -2487,7 +2487,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "benveniste-mike",
@@ -2497,7 +2497,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "gilmore-barlow",
@@ -2511,7 +2511,7 @@
                 "cls": ""
               }
             ],
-            "tip": "4 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "4 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "kim-kenny",
@@ -2521,7 +2521,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -2541,7 +2541,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "gilmore-barlow",
@@ -2551,7 +2551,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "katz-elliot",
@@ -2561,7 +2561,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -2628,7 +2628,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -2643,7 +2643,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".500 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".500 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -2663,7 +2663,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.25 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.25 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "lau-chris",
@@ -2677,7 +2677,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.88 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.88 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "benveniste-mike",
@@ -2691,7 +2691,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.79 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.79 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -2715,7 +2715,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "huck-paul",
@@ -2733,7 +2733,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "kloster-jeff",
@@ -2751,7 +2751,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "martinez-francisco",
@@ -2769,7 +2769,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -2779,19 +2779,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "29 doubles, 4 triples, and 1 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "29 doubles, 4 triples, and 1 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Mike is up.",
-            "tip": "11 RBI in 6 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "11 RBI in 6 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Mike.",
-            "tip": ".823 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".823 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Elliot out early.",
-            "tip": "+5 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+5 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }
@@ -2806,7 +2806,7 @@
       "doubles": 20,
       "record": "3-5"
     },
-    "summaryNote": "Washington Wildkittens have gone 3-5 and are struggling to find consistency, but their lineup is more dangerous than the record suggests. Saifher and Geheran are fixtures at the top, and the offense has scored 11+ per game on average. No home runs but 7 triples and 20 doubles — a contact-first, gap-heavy approach. Their last three games have all been losses.",
+    "summaryNote": "Washington Wildkittens have gone 3-5 and are struggling to find consistency, but their lineup is more dangerous than the record suggests. Saifher and Geheran are fixtures at the top, and the offense has scored 11+ per game on average. No home runs but 7 triples and 20 doubles \u2014 a contact-first, gap-heavy approach. Their last three games have all been losses.",
     "lineup": [
       {
         "playerId": "geheran-chris",
@@ -2824,7 +2824,7 @@
             "cls": ""
           }
         ],
-        "tip": "Has played every game — a fixture at the top of the lineup. Gap contact from doubles and a triple; OF shades the alleys.",
+        "tip": "Has played every game \u2014 a fixture at the top of the lineup. Gap contact from doubles and a triple; OF shades the alleys.",
         "pitchTip": "Dangerous with runners on. Pitch down, generate weak contact."
       },
       {
@@ -2843,8 +2843,8 @@
             "cls": ""
           }
         ],
-        "tip": "Iron-man presence with consistent gap contact all season — OF shades alleys at standard depth.",
-        "pitchTip": "3 doubles and a triple — real gap threat. Keep it low; don’t let him extend."
+        "tip": "Iron-man presence with consistent gap contact all season \u2014 OF shades alleys at standard depth.",
+        "pitchTip": "3 doubles and a triple \u2014 real gap threat. Keep it low; don\u2019t let him extend."
       },
       {
         "playerId": "roth-brian",
@@ -2862,8 +2862,8 @@
             "cls": ""
           }
         ],
-        "tip": "The highest ISO bat on the team — OF plays deep with alleys fully covered when he’s up.",
-        "pitchTip": "5 doubles and 2 triples — the team’s top gap threat. Play OF deep."
+        "tip": "The highest ISO bat on the team \u2014 OF plays deep with alleys fully covered when he\u2019s up.",
+        "pitchTip": "5 doubles and 2 triples \u2014 the team\u2019s top gap threat. Play OF deep."
       },
       {
         "playerId": "sando-dave",
@@ -2882,7 +2882,7 @@
           }
         ],
         "tip": "Produces via contact with runners on despite no extra-base hits. OF plays standard depth. Consistent presence mid-lineup.",
-        "pitchTip": "Strong RBI production with no XBH — controls runners. Pitch down."
+        "pitchTip": "Strong RBI production with no XBH \u2014 controls runners. Pitch down."
       },
       {
         "playerId": "adams-gareth",
@@ -2900,8 +2900,8 @@
             "cls": ""
           }
         ],
-        "tip": "Patient and productive — takes walks and has a triple. OF plays standard depth with a slight lean toward the alleys.",
-        "pitchTip": "Patient bat with walks and a triple — throw strikes; avoid falling behind."
+        "tip": "Patient and productive \u2014 takes walks and has a triple. OF plays standard depth with a slight lean toward the alleys.",
+        "pitchTip": "Patient bat with walks and a triple \u2014 throw strikes; avoid falling behind."
       },
       {
         "playerId": "miles-darren",
@@ -2919,8 +2919,8 @@
             "cls": ""
           }
         ],
-        "tip": "Steady mid-lineup presence from gap contact — OF shades the alleys. Appeared in both recent games.",
-        "pitchTip": "3 doubles and strong RBI — treat as a legitimate mid-order threat. Keep it low."
+        "tip": "Steady mid-lineup presence from gap contact \u2014 OF shades the alleys. Appeared in both recent games.",
+        "pitchTip": "3 doubles and strong RBI \u2014 treat as a legitimate mid-order threat. Keep it low."
       },
       {
         "playerId": "sandell-chris",
@@ -2938,8 +2938,8 @@
             "cls": ""
           }
         ],
-        "tip": "Solid lower-order contributor with modest gap contact — OF plays standard depth.",
-        "pitchTip": "2 doubles in 5 games — modest gap threat. Pitch to contact, stay low."
+        "tip": "Solid lower-order contributor with modest gap contact \u2014 OF plays standard depth.",
+        "pitchTip": "2 doubles in 5 games \u2014 modest gap threat. Pitch to contact, stay low."
       },
       {
         "playerId": "poucher-bill",
@@ -2957,8 +2957,8 @@
             "cls": ""
           }
         ],
-        "tip": "High-contact bat with a triple — a stabilizing force who’s been in the lineup all season. OF plays standard to deep depth.",
-        "pitchTip": "Triple on the resume — keep OF at moderate depth. Pitch carefully."
+        "tip": "High-contact bat with a triple \u2014 a stabilizing force who\u2019s been in the lineup all season. OF plays standard to deep depth.",
+        "pitchTip": "Triple on the resume \u2014 keep OF at moderate depth. Pitch carefully."
       },
       {
         "playerId": "matsurra-kentaro",
@@ -2972,8 +2972,8 @@
             "cls": ""
           }
         ],
-        "tip": "Gets on base frequently — keeping him off prevents the lineup from cycling back to the top-order threats. No extra-base hits; OF plays standard depth.",
-        "pitchTip": "No XBH — pitch to contact. Keep the inning short and efficient."
+        "tip": "Gets on base frequently \u2014 keeping him off prevents the lineup from cycling back to the top-order threats. No extra-base hits; OF plays standard depth.",
+        "pitchTip": "No XBH \u2014 pitch to contact. Keep the inning short and efficient."
       },
       {
         "playerId": "mello-josh",
@@ -2991,8 +2991,8 @@
             "cls": ""
           }
         ],
-        "tip": "Highly productive with runners on despite modest average. Appeared in all recent games — dangerous in clutch situations. OF shades alleys slightly.",
-        "pitchTip": "High RBI/H — extremely productive with runners on. Pitch down, runners add danger."
+        "tip": "Highly productive with runners on despite modest average. Appeared in all recent games \u2014 dangerous in clutch situations. OF shades alleys slightly.",
+        "pitchTip": "High RBI/H \u2014 extremely productive with runners on. Pitch down, runners add danger."
       },
       {
         "playerId": "sison-francis",
@@ -3006,8 +3006,8 @@
             "cls": ""
           }
         ],
-        "tip": "Appeared in every game — gets on base via patience more than contact. OF plays standard depth.",
-        "pitchTip": "3 walks, no XBH — throw strikes. Don’t walk him; he reaches base via patience alone."
+        "tip": "Appeared in every game \u2014 gets on base via patience more than contact. OF plays standard depth.",
+        "pitchTip": "3 walks, no XBH \u2014 throw strikes. Don\u2019t walk him; he reaches base via patience alone."
       },
       {
         "playerId": "ciccarelli-nick",
@@ -3025,8 +3025,8 @@
             "cls": ""
           }
         ],
-        "tip": "Occasional deep-ball threat despite modest average — OF plays slightly deeper when he’s up.",
-        "pitchTip": "Triple and RBI production in limited games — don’t discount the power. Keep it low."
+        "tip": "Occasional deep-ball threat despite modest average \u2014 OF plays slightly deeper when he\u2019s up.",
+        "pitchTip": "Triple and RBI production in limited games \u2014 don\u2019t discount the power. Keep it low."
       }
     ],
     "sections": [
@@ -3042,7 +3042,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .391, .565 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "ISO .391, .565 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -3062,7 +3062,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "roth-brian",
@@ -3076,7 +3076,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 doubles and 2 triples — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "5 doubles and 2 triples \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "saifher-darryl",
@@ -3090,7 +3090,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles and 1 triple — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles and 1 triple \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "miles-darren",
@@ -3100,7 +3100,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -3116,7 +3116,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "geheran-chris",
@@ -3130,7 +3130,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "poucher-bill",
@@ -3144,7 +3144,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "roth-brian",
@@ -3154,7 +3154,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -3221,7 +3221,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -3240,7 +3240,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".666 AVG in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".666 AVG in 1 game \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "simmons-drew",
@@ -3258,7 +3258,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".545 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".545 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "woo-collin",
@@ -3272,7 +3272,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".571 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".571 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -3292,7 +3292,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.12 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.12 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "mello-josh",
@@ -3306,7 +3306,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "ciccarelli-nick",
@@ -3320,7 +3320,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "geheran-chris",
@@ -3334,7 +3334,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.79 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.79 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -3358,7 +3358,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "roth-brian",
@@ -3376,7 +3376,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "matsurra-kentaro",
@@ -3394,7 +3394,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "simmons-drew",
@@ -3412,7 +3412,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -3422,19 +3422,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "20 doubles, 7 triples, and 0 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "20 doubles, 7 triples, and 0 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Chris is up.",
-            "tip": "15 RBI in 8 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "15 RBI in 8 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "Get Francis out early.",
-            "tip": "+7 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+7 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           },
           {
             "heading": "Respect the triples threat from Brian.",
-            "tip": "2 triples between them — balls are reaching the deepest corners. OF must play very deep when these bats come up."
+            "tip": "2 triples between them \u2014 balls are reaching the deepest corners. OF must play very deep when these bats come up."
           }
         ]
       }
@@ -3449,7 +3449,7 @@
       "doubles": 12,
       "record": "2-5"
     },
-    "summaryNote": "Burlingame Expansion are 2-5 but have two of the most explosive offensive performances of the season — a 26-10 win over Franklin and a 26-2 blowout of McKinley. Their lineup is deep and inconsistent, capable of erupting at any moment. Gallant and Maguire are the headline threats, but the roster rotates heavily and produces from unexpected spots.",
+    "summaryNote": "Burlingame Expansion are 2-5 but have two of the most explosive offensive performances of the season \u2014 a 26-10 win over Franklin and a 26-2 blowout of McKinley. Their lineup is deep and inconsistent, capable of erupting at any moment. Gallant and Maguire are the headline threats, but the roster rotates heavily and produces from unexpected spots.",
     "lineup": [
       {
         "playerId": "jauregui-rudy",
@@ -3468,7 +3468,7 @@
           }
         ],
         "tip": "Patient leadoff who gets on base via patience as much as contact. OF plays standard depth.",
-        "pitchTip": "3 walks on the season — throw strikes. Avoid handing him a free base."
+        "pitchTip": "3 walks on the season \u2014 throw strikes. Avoid handing him a free base."
       },
       {
         "playerId": "gallant-nolan",
@@ -3486,8 +3486,8 @@
             "cls": "power"
           }
         ],
-        "tip": "OF plays at maximum depth, alleys fully covered. Can hit the ball out of any park in any direction — treat him like a cleanup hitter every at-bat.",
-        "pitchTip": "Elite ISO — premier power threat. Keep it low; no belt-high pitches."
+        "tip": "OF plays at maximum depth, alleys fully covered. Can hit the ball out of any park in any direction \u2014 treat him like a cleanup hitter every at-bat.",
+        "pitchTip": "Elite ISO \u2014 premier power threat. Keep it low; no belt-high pitches."
       },
       {
         "playerId": "murphy-steve",
@@ -3501,8 +3501,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent mid-lineup contributor who doesn’t miss many pitches. OF plays standard depth.",
-        "pitchTip": "Contact-first bat — pitch low to contain. Don’t let him get extended."
+        "tip": "Consistent mid-lineup contributor who doesn\u2019t miss many pitches. OF plays standard depth.",
+        "pitchTip": "Contact-first bat \u2014 pitch low to contain. Don\u2019t let him get extended."
       },
       {
         "playerId": "lasky-jason",
@@ -3520,8 +3520,8 @@
             "cls": ""
           }
         ],
-        "tip": "The team’s most consistent run-producer by volume. Reaches base constantly and scores from anywhere. OF plays standard depth.",
-        "pitchTip": "High run and RBI total with no XBH — productive hitter. Pitch carefully; don’t walk him."
+        "tip": "The team\u2019s most consistent run-producer by volume. Reaches base constantly and scores from anywhere. OF plays standard depth.",
+        "pitchTip": "High run and RBI total with no XBH \u2014 productive hitter. Pitch carefully; don\u2019t walk him."
       },
       {
         "playerId": "maguire-jack",
@@ -3539,8 +3539,8 @@
             "cls": ""
           }
         ],
-        "tip": "Has not made an out in this league. No extra-base hits this season but his perfect contact rate is unprecedented — every at-bat is a battle.",
-        "pitchTip": "1.000 AVG on the season — he has not made an out. Pitch your best stuff every time."
+        "tip": "Has not made an out in this league. No extra-base hits this season but his perfect contact rate is unprecedented \u2014 every at-bat is a battle.",
+        "pitchTip": "1.000 AVG on the season \u2014 he has not made an out. Pitch your best stuff every time."
       },
       {
         "playerId": "gallant-vic",
@@ -3558,8 +3558,8 @@
             "cls": ""
           }
         ],
-        "tip": "Elite contact rate with occasional deep-ball capability — OF plays slightly deeper when he’s up. Primarily a table-setter.",
-        "pitchTip": "High average and a triple — OF plays deep. No free pitches against this bat."
+        "tip": "Elite contact rate with occasional deep-ball capability \u2014 OF plays slightly deeper when he\u2019s up. Primarily a table-setter.",
+        "pitchTip": "High average and a triple \u2014 OF plays deep. No free pitches against this bat."
       },
       {
         "playerId": "camacho-martin",
@@ -3577,8 +3577,8 @@
             "cls": ""
           }
         ],
-        "tip": "Capable of extra-base damage in any direction — OF plays deep. Don’t treat him as a bottom-of-the-order free out.",
-        "pitchTip": "HR on his resume — keep it low. Respect his power in the lower order."
+        "tip": "Capable of extra-base damage in any direction \u2014 OF plays deep. Don\u2019t treat him as a bottom-of-the-order free out.",
+        "pitchTip": "HR on his resume \u2014 keep it low. Respect his power in the lower order."
       },
       {
         "playerId": "soto-kurt",
@@ -3592,8 +3592,8 @@
             "cls": ""
           }
         ],
-        "tip": "Gets on base consistently — OF plays standard depth. His contact at the bottom of the order keeps the lineup turning over.",
-        "pitchTip": "Contact bat — pitch to contact. Work quickly and don’t let him extend."
+        "tip": "Gets on base consistently \u2014 OF plays standard depth. His contact at the bottom of the order keeps the lineup turning over.",
+        "pitchTip": "Contact bat \u2014 pitch to contact. Work quickly and don\u2019t let him extend."
       },
       {
         "playerId": "koch-mark",
@@ -3611,8 +3611,8 @@
             "cls": ""
           }
         ],
-        "tip": "Part of a rotating lower order that has produced unexpectedly — treat every Burl bat as a threat on their good days. OF plays standard depth.",
-        "pitchTip": "1 double in 4 games — pitch to contact. Keep it low."
+        "tip": "Part of a rotating lower order that has produced unexpectedly \u2014 treat every Burl bat as a threat on their good days. OF plays standard depth.",
+        "pitchTip": "1 double in 4 games \u2014 pitch to contact. Keep it low."
       },
       {
         "playerId": "marguilies-elliott",
@@ -3630,8 +3630,8 @@
             "cls": ""
           }
         ],
-        "tip": "Most-experienced player on the roster — consistent presence at the bottom of the order. OF plays standard depth.",
-        "pitchTip": "Contact bat — pitch down. Get outs efficiently."
+        "tip": "Most-experienced player on the roster \u2014 consistent presence at the bottom of the order. OF plays standard depth.",
+        "pitchTip": "Contact bat \u2014 pitch down. Get outs efficiently."
       },
       {
         "playerId": "kraska-bob",
@@ -3649,8 +3649,8 @@
             "cls": ""
           }
         ],
-        "tip": "RBI production is real — don’t let him get comfortable with runners on. OF plays standard depth.",
-        "pitchTip": "2 doubles and RBI production — don’t relax with runners on. Keep it low."
+        "tip": "RBI production is real \u2014 don\u2019t let him get comfortable with runners on. OF plays standard depth.",
+        "pitchTip": "2 doubles and RBI production \u2014 don\u2019t relax with runners on. Keep it low."
       },
       {
         "playerId": "armanini-mike",
@@ -3664,8 +3664,8 @@
             "cls": ""
           }
         ],
-        "tip": "Solid contact bat in all recent games. No extra-base hits — OF plays standard depth.",
-        "pitchTip": "No extra-base hits — pitch to contact. Keep outs coming."
+        "tip": "Solid contact bat in all recent games. No extra-base hits \u2014 OF plays standard depth.",
+        "pitchTip": "No extra-base hits \u2014 pitch to contact. Keep outs coming."
       },
       {
         "playerId": "miglio-mike",
@@ -3683,8 +3683,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Produces disproportionately with runners on — his RBI rate is elite despite modest contact. OF plays standard depth.",
-        "pitchTip": "High RBI/H — be careful with runners on. Pitch down and make him earn it."
+        "tip": "Produces disproportionately with runners on \u2014 his RBI rate is elite despite modest contact. OF plays standard depth.",
+        "pitchTip": "High RBI/H \u2014 be careful with runners on. Pitch down and make him earn it."
       },
       {
         "playerId": "doll-michael",
@@ -3698,8 +3698,8 @@
             "cls": ""
           }
         ],
-        "tip": "Limited appearances with a low average. No extra-base hits — OF plays standard depth.",
-        "pitchTip": "No power, low average — pitch to contact. Work efficiently."
+        "tip": "Limited appearances with a low average. No extra-base hits \u2014 OF plays standard depth.",
+        "pitchTip": "No power, low average \u2014 pitch to contact. Work efficiently."
       }
     ],
     "sections": [
@@ -3719,7 +3719,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "2 HR, ISO .823, .647 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "2 HR, ISO .823, .647 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "camacho-martin",
@@ -3733,7 +3733,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .266, .533 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .266, .533 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -3758,7 +3758,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "3 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "gallant-vic",
@@ -3772,7 +3772,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -3839,7 +3839,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -3858,7 +3858,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1.50 RBI/H in 1 games in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "1.50 RBI/H in 1 games in 1 game \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "maguire-jack",
@@ -3876,7 +3876,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".1000 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".1000 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "camacho-mj",
@@ -3894,7 +3894,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".750 AVG in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".750 AVG in 1 game \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -3914,7 +3914,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.50 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.50 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "miglio-mike",
@@ -3928,7 +3928,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.20 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.20 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "gallant-nolan",
@@ -3942,7 +3942,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.82 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.82 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "lasky-jason",
@@ -3956,7 +3956,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.80 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.80 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -3980,7 +3980,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "easterday-matt",
@@ -3998,7 +3998,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "lasky-jason",
@@ -4016,7 +4016,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "murphy-steve",
@@ -4034,7 +4034,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -4044,19 +4044,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "12 doubles, 4 triples, and 3 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "12 doubles, 4 triples, and 3 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Nolan is up.",
-            "tip": "9 RBI in 5 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "9 RBI in 5 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Jack.",
-            "tip": ".1000 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".1000 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Rudy out early.",
-            "tip": "+3 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+3 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }
@@ -4071,7 +4071,7 @@
       "doubles": 14,
       "record": "4-3"
     },
-    "summaryNote": "Roosevelt Blue are 4-3 and trending up — they've won three of their last four. Adler and Bhargava provide the power, Ortega and Ding are versatile run-producers, and the lineup scores in multiple ways. 3 home runs and 6 triples mean OF depth is mandatory. A well-coached team that plays to their strengths.",
+    "summaryNote": "Roosevelt Blue are 4-3 and trending up \u2014 they've won three of their last four. Adler and Bhargava provide the power, Ortega and Ding are versatile run-producers, and the lineup scores in multiple ways. 3 home runs and 6 triples mean OF depth is mandatory. A well-coached team that plays to their strengths.",
     "lineup": [
       {
         "playerId": "vinca-david",
@@ -4089,8 +4089,8 @@
             "cls": ""
           }
         ],
-        "tip": "Reaches base and scores at an elite rate — stopping him from getting on limits the damage. OF shades alleys at standard depth.",
-        "pitchTip": "He reaches and scores consistently. Keep it low; don’t walk him."
+        "tip": "Reaches base and scores at an elite rate \u2014 stopping him from getting on limits the damage. OF shades alleys at standard depth.",
+        "pitchTip": "He reaches and scores consistently. Keep it low; don\u2019t walk him."
       },
       {
         "playerId": "adler-nick",
@@ -4108,8 +4108,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent gap hitter with real all-field power — OF plays deep with alleys fully covered.",
-        "pitchTip": "2 triples and 2 doubles — deep gap threat. OF plays deep; pitch low."
+        "tip": "Consistent gap hitter with real all-field power \u2014 OF plays deep with alleys fully covered.",
+        "pitchTip": "2 triples and 2 doubles \u2014 deep gap threat. OF plays deep; pitch low."
       },
       {
         "playerId": "ortega-carlos",
@@ -4131,8 +4131,8 @@
             "cls": ""
           }
         ],
-        "tip": "Versatile power and gap threat — OF plays deep. Dangerous at all times in the lineup.",
-        "pitchTip": "HR and doubles — OF plays deep. Don’t miss up in the zone."
+        "tip": "Versatile power and gap threat \u2014 OF plays deep. Dangerous at all times in the lineup.",
+        "pitchTip": "HR and doubles \u2014 OF plays deep. Don\u2019t miss up in the zone."
       },
       {
         "playerId": "ding-david",
@@ -4150,8 +4150,8 @@
             "cls": ""
           }
         ],
-        "tip": "Hits for power in multiple directions — OF at maximum depth when he’s up. Lethal with runners on.",
-        "pitchTip": "HR and triple — real power. Keep it low; don’t give him anything to lift."
+        "tip": "Hits for power in multiple directions \u2014 OF at maximum depth when he\u2019s up. Lethal with runners on.",
+        "pitchTip": "HR and triple \u2014 real power. Keep it low; don\u2019t give him anything to lift."
       },
       {
         "playerId": "frank-chris",
@@ -4169,7 +4169,7 @@
             "cls": ""
           }
         ],
-        "tip": "The ball occasionally reaches the deep corners — OF plays at slight depth. Produces steadily without dominating individual games.",
+        "tip": "The ball occasionally reaches the deep corners \u2014 OF plays at slight depth. Produces steadily without dominating individual games.",
         "pitchTip": "Consistent RBI production every game. Pitch low, generate grounders."
       },
       {
@@ -4184,8 +4184,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent mid-lineup presence — OF plays standard depth. Getting him out quickly limits the run-scoring machine from churning.",
-        "pitchTip": "High contact, 1 double — pitch to contact and trust the defense."
+        "tip": "Consistent mid-lineup presence \u2014 OF plays standard depth. Getting him out quickly limits the run-scoring machine from churning.",
+        "pitchTip": "High contact, 1 double \u2014 pitch to contact and trust the defense."
       },
       {
         "playerId": "oleary-joe",
@@ -4204,7 +4204,7 @@
           }
         ],
         "tip": "Consistent mid-order presence who makes contact and keeps runners moving. OF plays standard depth.",
-        "pitchTip": "Contact bat, 1 double — pitch down. Keep him from getting on base."
+        "pitchTip": "Contact bat, 1 double \u2014 pitch down. Keep him from getting on base."
       },
       {
         "playerId": "bhargava-ankush",
@@ -4226,8 +4226,8 @@
             "cls": "power"
           }
         ],
-        "tip": "The most dangerous RBI bat on the roster with a triple — OF plays deep when he’s up. Extremely dangerous with runners on.",
-        "pitchTip": "Team-high RBI and a triple — the premier run-producer. Keep it low with runners on."
+        "tip": "The most dangerous RBI bat on the roster with a triple \u2014 OF plays deep when he\u2019s up. Extremely dangerous with runners on.",
+        "pitchTip": "Team-high RBI and a triple \u2014 the premier run-producer. Keep it low with runners on."
       },
       {
         "playerId": "carvillo-joe",
@@ -4245,8 +4245,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent gap contact from the lower order — OF shades alleys at standard depth. One of the more reliable lower-order bats in the league.",
-        "pitchTip": "3 doubles in 6 games — treat as gap threat. Pitch low."
+        "tip": "Consistent gap contact from the lower order \u2014 OF shades alleys at standard depth. One of the more reliable lower-order bats in the league.",
+        "pitchTip": "3 doubles in 6 games \u2014 treat as gap threat. Pitch low."
       },
       {
         "playerId": "tobias-dave",
@@ -4260,8 +4260,8 @@
             "cls": ""
           }
         ],
-        "tip": "Reaches base and moves around well without many hits. No extra-base hits — OF plays standard depth.",
-        "pitchTip": "Limited sample — pitch to contact. Make quick outs."
+        "tip": "Reaches base and moves around well without many hits. No extra-base hits \u2014 OF plays standard depth.",
+        "pitchTip": "Limited sample \u2014 pitch to contact. Make quick outs."
       },
       {
         "playerId": "ganguly-bishu",
@@ -4276,7 +4276,7 @@
           }
         ],
         "tip": "Gets on base and keeps the lineup cycling toward the top. OF plays standard depth.",
-        "pitchTip": "Contact bat — pitch to contact and work efficiently."
+        "pitchTip": "Contact bat \u2014 pitch to contact and work efficiently."
       },
       {
         "playerId": "shapiro-benjamin",
@@ -4294,8 +4294,8 @@
             "cls": ""
           }
         ],
-        "tip": "Genuine power threat even in the lower order — OF plays deep when he’s up. Don’t let him catch one at the belt.",
-        "pitchTip": "Home run power in limited games — don’t discount. Keep it low."
+        "tip": "Genuine power threat even in the lower order \u2014 OF plays deep when he\u2019s up. Don\u2019t let him catch one at the belt.",
+        "pitchTip": "Home run power in limited games \u2014 don\u2019t discount. Keep it low."
       },
       {
         "playerId": "kirk-john",
@@ -4313,8 +4313,8 @@
             "cls": ""
           }
         ],
-        "tip": "Limited sample but highly productive. OF plays deep when he’s in.",
-        "pitchTip": "Triple in limited games — keep OF at depth. Pitch carefully."
+        "tip": "Limited sample but highly productive. OF plays deep when he\u2019s in.",
+        "pitchTip": "Triple in limited games \u2014 keep OF at depth. Pitch carefully."
       }
     ],
     "sections": [
@@ -4334,7 +4334,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .187, .500 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .187, .500 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "ding-david",
@@ -4348,7 +4348,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .294, .588 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .294, .588 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "ortega-carlos",
@@ -4362,7 +4362,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .227, .636 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .227, .636 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -4378,7 +4378,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "carvillo-joe",
@@ -4388,7 +4388,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -4408,7 +4408,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "bhargava-ankush",
@@ -4418,7 +4418,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "ding-david",
@@ -4428,7 +4428,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "frank-chris",
@@ -4438,7 +4438,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -4505,7 +4505,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -4524,7 +4524,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".625 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".625 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "chang-brian",
@@ -4542,7 +4542,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".666 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".666 AVG in 2 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "tobias-dave",
@@ -4556,7 +4556,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1.00 RBI/H in 3 games in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "1.00 RBI/H in 3 games in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -4576,7 +4576,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.91 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.91 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "ding-david",
@@ -4590,7 +4590,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.90 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.90 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "frank-chris",
@@ -4604,7 +4604,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.73 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.73 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -4628,7 +4628,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "kirk-john",
@@ -4646,7 +4646,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "shapiro-benjamin",
@@ -4664,7 +4664,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "carvillo-joe",
@@ -4682,7 +4682,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -4692,19 +4692,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "14 doubles, 6 triples, and 3 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "14 doubles, 6 triples, and 3 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Ankush is up.",
-            "tip": "10 RBI in 7 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "10 RBI in 7 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "Get David out early.",
-            "tip": "+8 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+8 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           },
           {
             "heading": "Respect the triples threat from Nick.",
-            "tip": "2 triples between them — balls are reaching the deepest corners. OF must play very deep when these bats come up."
+            "tip": "2 triples between them \u2014 balls are reaching the deepest corners. OF must play very deep when these bats come up."
           }
         ]
       }
@@ -4719,7 +4719,7 @@
       "doubles": 26,
       "record": "3-4"
     },
-    "summaryNote": "Carey are 3-4 with a deep, rotating roster — 26 doubles across the lineup show consistent hard contact all over the field. Batenchuk and Boice are the power bats, and Colaco and Barabin provide reliable middle-order production. Their lineups vary game to game but the offense can put up big numbers in any given inning.",
+    "summaryNote": "Carey are 3-4 with a deep, rotating roster \u2014 26 doubles across the lineup show consistent hard contact all over the field. Batenchuk and Boice are the power bats, and Colaco and Barabin provide reliable middle-order production. Their lineups vary game to game but the offense can put up big numbers in any given inning.",
     "lineup": [
       {
         "playerId": "chow-ryan",
@@ -4741,8 +4741,8 @@
             "cls": ""
           }
         ],
-        "tip": "Lead-off bat with genuine pop — OF plays deep every at-bat. Has played every game this season.",
-        "pitchTip": "HR in the lead-off slot — keep it low; no belt-high pitches."
+        "tip": "Lead-off bat with genuine pop \u2014 OF plays deep every at-bat. Has played every game this season.",
+        "pitchTip": "HR in the lead-off slot \u2014 keep it low; no belt-high pitches."
       },
       {
         "playerId": "acton-marc",
@@ -4760,8 +4760,8 @@
             "cls": ""
           }
         ],
-        "tip": "Elite gap hitter at the top of the order — OF shades both alleys at full depth.",
-        "pitchTip": "5 doubles in 5 games — pure gap hitter. Keep it low; shades both alleys."
+        "tip": "Elite gap hitter at the top of the order \u2014 OF shades both alleys at full depth.",
+        "pitchTip": "5 doubles in 5 games \u2014 pure gap hitter. Keep it low; shades both alleys."
       },
       {
         "playerId": "batenchuch-ryan",
@@ -4779,8 +4779,8 @@
             "cls": ""
           }
         ],
-        "tip": "OF at maximum depth, alleys covered — consistently making hard contact all season.",
-        "pitchTip": "Elite form recently — pitch low every time."
+        "tip": "OF at maximum depth, alleys covered \u2014 consistently making hard contact all season.",
+        "pitchTip": "Elite form recently \u2014 pitch low every time."
       },
       {
         "playerId": "colaco-pudge",
@@ -4798,8 +4798,8 @@
             "cls": ""
           }
         ],
-        "tip": "Dangerous in the cleanup spot — makes consistent contact and delivers with runners on. OF plays deep when he’s up.",
-        "pitchTip": "Triple on his resume — OF plays deep. Pitch carefully; he’s in form."
+        "tip": "Dangerous in the cleanup spot \u2014 makes consistent contact and delivers with runners on. OF plays deep when he\u2019s up.",
+        "pitchTip": "Triple on his resume \u2014 OF plays deep. Pitch carefully; he\u2019s in form."
       },
       {
         "playerId": "coleman-chris",
@@ -4821,8 +4821,8 @@
             "cls": ""
           }
         ],
-        "tip": "Patient and productive with runners on — takes pitches and works counts. OF shades alleys.",
-        "pitchTip": "Patient bat with walks — throw strikes; don’t fall behind."
+        "tip": "Patient and productive with runners on \u2014 takes pitches and works counts. OF shades alleys.",
+        "pitchTip": "Patient bat with walks \u2014 throw strikes; don\u2019t fall behind."
       },
       {
         "playerId": "barabin-travis",
@@ -4840,8 +4840,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent extra-base contact — OF plays deep and covers alleys. One of the more consistent gap hitters on the roster.",
-        "pitchTip": "2 doubles and a triple — gap and deep threat. OF plays deep; pitch low."
+        "tip": "Consistent extra-base contact \u2014 OF plays deep and covers alleys. One of the more consistent gap hitters on the roster.",
+        "pitchTip": "2 doubles and a triple \u2014 gap and deep threat. OF plays deep; pitch low."
       },
       {
         "playerId": "haugen-austin",
@@ -4856,7 +4856,7 @@
           }
         ],
         "tip": "High contact rate in limited games. OF plays standard depth.",
-        "pitchTip": "High contact rate in small sample — pitch low. Don’t groove pitches."
+        "pitchTip": "High contact rate in small sample \u2014 pitch low. Don\u2019t groove pitches."
       },
       {
         "playerId": "jan-de-voogd-robert",
@@ -4875,7 +4875,7 @@
           }
         ],
         "tip": "Consistent lower-order contact bat who appeared in both recent games. OF shades alleys slightly.",
-        "pitchTip": "2 doubles in 5 games — pitch low. Keep the ball out of the gap zone."
+        "pitchTip": "2 doubles in 5 games \u2014 pitch low. Keep the ball out of the gap zone."
       },
       {
         "playerId": "jewett-peter",
@@ -4893,7 +4893,7 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent all-season presence at the bottom of the order — delivers with runners on despite limited XBH. OF plays standard depth.",
+        "tip": "Consistent all-season presence at the bottom of the order \u2014 delivers with runners on despite limited XBH. OF plays standard depth.",
         "pitchTip": "Productive with runners on. Pitch down."
       },
       {
@@ -4912,8 +4912,8 @@
             "cls": "power"
           }
         ],
-        "tip": "Dangerous power threat in the lower order — OF plays deep when he’s up. Can take over an inning without warning.",
-        "pitchTip": "Real power — keep it low; don’t miss up."
+        "tip": "Dangerous power threat in the lower order \u2014 OF plays deep when he\u2019s up. Can take over an inning without warning.",
+        "pitchTip": "Real power \u2014 keep it low; don\u2019t miss up."
       },
       {
         "playerId": "wuerfel-kevin",
@@ -4931,8 +4931,8 @@
             "cls": ""
           }
         ],
-        "tip": "Solid lower-order contributor with gap contact — keep him honest. OF shades alleys.",
-        "pitchTip": "2 doubles and productive RBI — treat as gap threat. Pitch low."
+        "tip": "Solid lower-order contributor with gap contact \u2014 keep him honest. OF shades alleys.",
+        "pitchTip": "2 doubles and productive RBI \u2014 treat as gap threat. Pitch low."
       },
       {
         "playerId": "morganroth-kyle",
@@ -4954,8 +4954,8 @@
             "cls": "power"
           }
         ],
-        "tip": "OF plays deep for his at-bats. Every hit becomes an RBI opportunity — extremely dangerous with runners on.",
-        "pitchTip": "Triple and elite RBI/H — OF plays deep. Keep it low; runners on means danger."
+        "tip": "OF plays deep for his at-bats. Every hit becomes an RBI opportunity \u2014 extremely dangerous with runners on.",
+        "pitchTip": "Triple and elite RBI/H \u2014 OF plays deep. Keep it low; runners on means danger."
       },
       {
         "playerId": "ohare-rob",
@@ -4977,8 +4977,8 @@
             "cls": ""
           }
         ],
-        "tip": "The best power-plus-patience bat on the team. OF at maximum depth despite a lower average — extra-base pop and walk rate make him a genuine threat every at-bat.",
-        "pitchTip": "2 triples, 1 HR, 3 walks — OF plays deep; pitch carefully."
+        "tip": "The best power-plus-patience bat on the team. OF at maximum depth despite a lower average \u2014 extra-base pop and walk rate make him a genuine threat every at-bat.",
+        "pitchTip": "2 triples, 1 HR, 3 walks \u2014 OF plays deep; pitch carefully."
       },
       {
         "playerId": "wicks-simon",
@@ -4996,8 +4996,8 @@
             "cls": ""
           }
         ],
-        "tip": "High contact rate and strong run-scoring — reaches base and advances aggressively. No extra-base hits; OF plays standard depth.",
-        "pitchTip": "No XBH — pitch to contact. Keep the inning from extending."
+        "tip": "High contact rate and strong run-scoring \u2014 reaches base and advances aggressively. No extra-base hits; OF plays standard depth.",
+        "pitchTip": "No XBH \u2014 pitch to contact. Keep the inning from extending."
       },
       {
         "playerId": "williams-david",
@@ -5012,7 +5012,7 @@
           }
         ],
         "tip": "Lower-order bat with limited production. OF plays standard depth; focus on quick outs.",
-        "pitchTip": "No XBH, modest average — pitch to contact. Work efficiently."
+        "pitchTip": "No XBH, modest average \u2014 pitch to contact. Work efficiently."
       }
     ],
     "sections": [
@@ -5028,7 +5028,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .625, .875 AVG — OF plays deep. Keep pitches low."
+            "tip": "ISO .625, .875 AVG \u2014 OF plays deep. Keep pitches low."
           },
           {
             "playerId": "boice-michael",
@@ -5042,7 +5042,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .428, .857 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .428, .857 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "ohare-rob",
@@ -5056,7 +5056,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .538, .384 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .538, .384 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "chow-ryan",
@@ -5070,7 +5070,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .250, .500 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .250, .500 AVG \u2014 OF at maximum depth. Keep pitches low."
           }
         ]
       },
@@ -5086,7 +5086,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "5 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           },
           {
             "playerId": "batenchuch-ryan",
@@ -5096,7 +5096,7 @@
                 "cls": ""
               }
             ],
-            "tip": "5 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "5 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -5116,7 +5116,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "ohare-rob",
@@ -5126,7 +5126,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2 triples on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "barabin-travis",
@@ -5140,7 +5140,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "morganroth-kyle",
@@ -5150,7 +5150,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -5217,7 +5217,7 @@
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
           {
@@ -5232,7 +5232,7 @@
                 "cls": ""
               }
             ],
-            "tip": "2.00 RBI/H in 3 games in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "2.00 RBI/H in 3 games in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "batenchuch-ryan",
@@ -5250,7 +5250,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".875 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".875 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "boice-michael",
@@ -5268,7 +5268,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".857 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".857 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           },
           {
             "playerId": "haugen-austin",
@@ -5286,7 +5286,7 @@
                 "cls": ""
               }
             ],
-            "tip": ".636 AVG in 3 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".636 AVG in 3 games \u2014 limited data but worth tracking. Can become a factor if he earns more starts."
           }
         ]
       },
@@ -5306,7 +5306,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "morganroth-kyle",
@@ -5320,7 +5320,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.00 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -5344,7 +5344,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "wicks-simon",
@@ -5362,7 +5362,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "ohare-rob",
@@ -5380,7 +5380,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "batenchuch-ryan",
@@ -5398,7 +5398,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -5408,19 +5408,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "26 doubles, 5 triples, and 3 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "26 doubles, 5 triples, and 3 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Chris is up.",
-            "tip": "6 RBI in 5 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "6 RBI in 5 games \u2014 the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Ryan.",
-            "tip": ".875 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".875 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Marc out early.",
-            "tip": "+5 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+5 R vs RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }
@@ -5435,8 +5435,27 @@
       "doubles": 18,
       "record": "1-5-1"
     },
-    "summaryNote": "McKinley 2 are 1-5-1 and struggling to score consistently, but their week 7 tie with Lincoln Lions (14-14) and near-miss against Carey (16-17) show they can compete. Wright is the clear offensive anchor, Rodriguez and Parikh are reliable producers, and two new faces — Sullivan and Lundy — made an immediate impact in the Carey game. Don't sleep on them in any given inning.",
+    "summaryNote": "McKinley 2 are 1-5-1 and struggling to find consistency \u2014 a 2-26 blowout against Burlingame Expansion in week 8 followed a promising tie with the Lincoln Lions (14-14) and a near-miss against Carey (16-17). Wright is the clear offensive anchor, Rodriguez and Parikh are reliable producers, and the revolving cast of newcomers \u2014 Sullivan, Lundy, and Gilmore \u2014 have added flashes of impact off the bench. They can still score in bunches; the question is whether the lineup stays healthy and consistent enough to pull off another upset.",
     "lineup": [
+      {
+        "playerId": "anguera-joaquin",
+        "chips": [
+          {
+            "text": ".357 AVG",
+            "cls": ""
+          },
+          {
+            "text": "3 RBI",
+            "cls": ""
+          },
+          {
+            "text": "1 3B",
+            "cls": ""
+          }
+        ],
+        "tip": "Consistent leadoff bat with a triple on his resume \u2014 OF shades alleys slightly when he bats.",
+        "pitchTip": "Triple on his resume \u2014 don't play OF shallow. Pitch down."
+      },
       {
         "playerId": "wright-brandon",
         "chips": [
@@ -5453,8 +5472,8 @@
             "cls": ""
           }
         ],
-        "tip": "The team’s best all-around bat — hits for power in multiple directions. OF plays deep, alleys covered. Has been in the lineup all season.",
-        "pitchTip": "HR and triple — real power. OF plays deep; keep it low every pitch."
+        "tip": "The team's best all-around bat \u2014 hits for power in multiple directions. OF plays deep, alleys covered. Has been in the lineup all season.",
+        "pitchTip": "HR and triple \u2014 real power. OF plays deep; keep it low every pitch."
       },
       {
         "playerId": "rodriguez-darwin",
@@ -5470,14 +5489,44 @@
           {
             "text": "7 RBI",
             "cls": ""
+          }
+        ],
+        "tip": "Patient and productive with gap contact \u2014 OF shades alleys. Delivers with runners on consistently.",
+        "pitchTip": "3 doubles and strong RBI \u2014 don't relax with runners on. Throw strikes."
+      },
+      {
+        "playerId": "sterrett-ryan",
+        "chips": [
+          {
+            "text": ".286 AVG",
+            "cls": ""
           },
           {
-            "text": "2 BB",
+            "text": "1 3B",
             "cls": ""
           }
         ],
-        "tip": "Patient and productive with gap contact — OF shades alleys. Delivers with runners on consistently.",
-        "pitchTip": "3 doubles and strong RBI — don’t relax with runners on. Throw strikes."
+        "tip": "Limited sample with legitimate deep-ball pop \u2014 OF plays at moderate depth when he's in the lineup.",
+        "pitchTip": "Triple in limited games \u2014 keep OF at depth. Pitch carefully."
+      },
+      {
+        "playerId": "gilmore-mike",
+        "chips": [
+          {
+            "text": ".429 AVG",
+            "cls": ""
+          },
+          {
+            "text": "1 2B",
+            "cls": ""
+          },
+          {
+            "text": "2 G",
+            "cls": ""
+          }
+        ],
+        "tip": "2-game sample with gap contact \u2014 OF shades alleys slightly. Watch list if he keeps appearing.",
+        "pitchTip": "Double in 2 games \u2014 modest gap threat. Pitch to contact."
       },
       {
         "playerId": "sullivan-colin",
@@ -5495,8 +5544,8 @@
             "cls": "power"
           }
         ],
-        "tip": "New face who made an immediate impact — OF plays deep when he’s in the lineup. Treat him as a middle-order threat.",
-        "pitchTip": "Triple and 5 RBI in his first game — don’t underestimate. Keep it low."
+        "tip": "New face who made an immediate impact \u2014 OF plays deep when he's in the lineup. Treat him as a middle-order threat.",
+        "pitchTip": "Triple and 5 RBI in his first game \u2014 don't underestimate. Keep it low."
       },
       {
         "playerId": "dabrik-doug",
@@ -5514,8 +5563,23 @@
             "cls": ""
           }
         ],
-        "tip": "Reliable mid-lineup contributor who appeared in all recent games — OF shades alleys slightly.",
-        "pitchTip": "2 doubles and solid RBI — modest gap threat. Keep it low."
+        "tip": "Reliable mid-lineup contributor who has appeared in most games \u2014 OF shades alleys slightly.",
+        "pitchTip": "2 doubles and solid RBI \u2014 modest gap threat. Keep it low."
+      },
+      {
+        "playerId": "williams-benton",
+        "chips": [
+          {
+            "text": "2/2 AB",
+            "cls": ""
+          },
+          {
+            "text": "1 G only",
+            "cls": ""
+          }
+        ],
+        "tip": "1-game appearance with perfect contact in 2 AB \u2014 minimal data. OF plays standard depth.",
+        "pitchTip": "1 game, 2 AB \u2014 pitch to contact. Don't overthink it."
       },
       {
         "playerId": "whittier-rob",
@@ -5533,27 +5597,8 @@
             "cls": ""
           }
         ],
-        "tip": "Consistent gap hitter with high contact rate — OF shades alleys and plays at moderate depth.",
-        "pitchTip": "Triple and 2 doubles — OF plays slightly deeper. Pitch low."
-      },
-      {
-        "playerId": "parikh-sanjiv",
-        "chips": [
-          {
-            "text": ".750 AVG",
-            "cls": "power"
-          },
-          {
-            "text": "2 2B",
-            "cls": ""
-          },
-          {
-            "text": "4 RBI",
-            "cls": ""
-          }
-        ],
-        "tip": "One of the hottest bats on the roster — OF shades alleys when he’s up.",
-        "pitchTip": "High average in recent games — don’t let him get comfortable. Stay low."
+        "tip": "Consistent gap hitter with high contact rate \u2014 OF shades alleys and plays at moderate depth. Scorching hot in recent games.",
+        "pitchTip": "Triple and 2 doubles \u2014 OF plays slightly deeper. Pitch low."
       },
       {
         "playerId": "lundy-connor",
@@ -5571,8 +5616,57 @@
             "cls": ""
           }
         ],
-        "tip": "New face with immediate gap impact — OF shades alleys when he bats. If he’s in the lineup regularly, treat him as a legitimate gap threat.",
-        "pitchTip": "2 doubles in his first game — real gap contact. Keep it low."
+        "tip": "New face with immediate gap impact \u2014 OF shades alleys when he bats. If he's in the lineup regularly, treat him as a legitimate gap threat.",
+        "pitchTip": "2 doubles in his first game \u2014 real gap contact. Keep it low."
+      },
+      {
+        "playerId": "johnston-matthew",
+        "chips": [
+          {
+            "text": ".500 AVG",
+            "cls": ""
+          },
+          {
+            "text": "3 RBI",
+            "cls": ""
+          }
+        ],
+        "tip": "Consistent lower-order presence \u2014 OF plays standard depth.",
+        "pitchTip": "Contact bat, no XBH \u2014 pitch down and get the out."
+      },
+      {
+        "playerId": "parikh-sanjiv",
+        "chips": [
+          {
+            "text": ".750 AVG",
+            "cls": "power"
+          },
+          {
+            "text": "2 2B",
+            "cls": ""
+          },
+          {
+            "text": "4 RBI",
+            "cls": ""
+          }
+        ],
+        "tip": "One of the hottest bats on the roster \u2014 OF shades alleys when he's up.",
+        "pitchTip": "High average in recent games \u2014 don't let him get comfortable. Stay low."
+      },
+      {
+        "playerId": "sparhawk-mark",
+        "chips": [
+          {
+            "text": ".333 AVG",
+            "cls": ""
+          },
+          {
+            "text": "2 RBI",
+            "cls": ""
+          }
+        ],
+        "tip": "No extra-base hits \u2014 OF plays standard depth. Focus on quick outs to prevent the lineup from resetting.",
+        "pitchTip": "No extra-base hits \u2014 pitch to contact. Work efficiently."
       },
       {
         "playerId": "blohowiak-aaron",
@@ -5586,8 +5680,8 @@
             "cls": ""
           }
         ],
-        "tip": "Reaches base via patience — most important thing is don’t walk him. No extra-base hits; OF plays standard depth.",
-        "pitchTip": "2 walks, no XBH — throw strikes. Don’t let him on base for free."
+        "tip": "Reaches base via patience \u2014 most important thing is don't walk him. No extra-base hits; OF plays standard depth.",
+        "pitchTip": "2 walks, no XBH \u2014 throw strikes. Don't let him on base for free."
       },
       {
         "playerId": "williams-justin",
@@ -5605,42 +5699,8 @@
             "cls": ""
           }
         ],
-        "tip": "Strong run-scorer relative to hit total — reaches base and advances aggressively. OF plays standard depth.",
+        "tip": "Strong run-scorer relative to hit total \u2014 reaches base and advances aggressively. OF plays standard depth.",
         "pitchTip": "He gets around the bases. Keep him off base."
-      },
-      {
-        "playerId": "stennet-ryan",
-        "chips": [
-          {
-            "text": ".286 AVG",
-            "cls": ""
-          },
-          {
-            "text": "1 3B",
-            "cls": ""
-          }
-        ],
-        "tip": "Limited sample with legitimate deep-ball pop — OF plays at moderate depth when he’s in the lineup.",
-        "pitchTip": "Triple in limited games — keep OF at depth. Pitch carefully."
-      },
-      {
-        "playerId": "anguera-joaquin",
-        "chips": [
-          {
-            "text": ".357 AVG",
-            "cls": ""
-          },
-          {
-            "text": "3 RBI",
-            "cls": ""
-          },
-          {
-            "text": "1 3B",
-            "cls": ""
-          }
-        ],
-        "tip": "Consistent lower-order bat with a triple — OF plays at standard to moderate depth. Appeared in all recent games.",
-        "pitchTip": "Triple on his resume — don’t play OF shallow. Pitch down."
       },
       {
         "playerId": "conti-david",
@@ -5654,38 +5714,8 @@
             "cls": ""
           }
         ],
-        "tip": "Occasional gap contact from the lower order — OF shades alleys slightly.",
-        "pitchTip": "2 doubles in 5 games — modest but real gap threat. Pitch low."
-      },
-      {
-        "playerId": "sparhawk-mark",
-        "chips": [
-          {
-            "text": ".333 AVG",
-            "cls": ""
-          },
-          {
-            "text": "2 RBI",
-            "cls": ""
-          }
-        ],
-        "tip": "No extra-base hits — OF plays standard depth. Focus on quick outs to prevent the lineup from resetting.",
-        "pitchTip": "No extra-base hits — pitch to contact. Work efficiently."
-      },
-      {
-        "playerId": "johnston-matthew",
-        "chips": [
-          {
-            "text": ".500 AVG",
-            "cls": ""
-          },
-          {
-            "text": "3 RBI",
-            "cls": ""
-          }
-        ],
-        "tip": "Consistent lower-order presence — OF plays standard depth.",
-        "pitchTip": "Contact bat, no XBH — pitch down and get the out."
+        "tip": "Occasional gap contact from the lower order \u2014 OF shades alleys slightly.",
+        "pitchTip": "2 doubles in 5 games \u2014 modest but real gap threat. Pitch low."
       }
     ],
     "sections": [
@@ -5705,7 +5735,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "1 HR, ISO .333, .714 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "1 HR, ISO .333, .714 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "sullivan-colin",
@@ -5715,7 +5745,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .750, .750 AVG — OF at maximum depth. Keep pitches low."
+            "tip": "ISO .750, .750 AVG \u2014 OF at maximum depth. Keep pitches low."
           },
           {
             "playerId": "lundy-connor",
@@ -5725,7 +5755,7 @@
                 "cls": "power"
               }
             ],
-            "tip": "ISO .500, .750 AVG — OF plays deep. Keep pitches low."
+            "tip": "ISO .500, .750 AVG \u2014 OF plays deep. Keep pitches low."
           }
         ]
       },
@@ -5741,7 +5771,7 @@
                 "cls": ""
               }
             ],
-            "tip": "3 doubles — consistent gap contact. OF shades alleys; keep it low."
+            "tip": "3 doubles \u2014 consistent gap contact. OF shades alleys; keep it low."
           }
         ]
       },
@@ -5761,7 +5791,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "anguera-joaquin",
@@ -5771,7 +5801,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
             "playerId": "whittier-rob",
@@ -5785,17 +5815,17 @@
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           },
           {
-            "playerId": "stennet-ryan",
+            "playerId": "sterrett-ryan",
             "chips": [
               {
                 "text": "1 3B",
                 "cls": ""
               }
             ],
-            "tip": "1 triple on the season — balls reach the deepest corners. OF plays very deep."
+            "tip": "1 triple on the season \u2014 balls reach the deepest corners. OF plays very deep."
           }
         ]
       },
@@ -5803,6 +5833,20 @@
         "title": "Hot Right Now",
         "full": false,
         "players": [
+          {
+            "playerId": "whittier-rob",
+            "chips": [
+              {
+                "text": "last 3: .800",
+                "cls": "hot"
+              },
+              {
+                "text": "season .611",
+                "cls": ""
+              }
+            ],
+            "tip": null
+          },
           {
             "playerId": "wright-brandon",
             "chips": [
@@ -5832,10 +5876,10 @@
             "tip": null
           },
           {
-            "playerId": "lundy-connor",
+            "playerId": "parikh-sanjiv",
             "chips": [
               {
-                "text": "last 3: .750",
+                "text": "last 3: .667",
                 "cls": "hot"
               },
               {
@@ -5844,50 +5888,18 @@
               }
             ],
             "tip": null
-          },
-          {
-            "playerId": "whittier-rob",
-            "chips": [
-              {
-                "text": "last 3: .800",
-                "cls": "hot"
-              },
-              {
-                "text": "season .611",
-                "cls": ""
-              }
-            ],
-            "tip": null
           }
         ]
       },
       {
-        "title": "Watch List — Surprise Bats",
+        "title": "Watch List \u2014 Surprise Bats",
         "full": false,
         "players": [
-          {
-            "playerId": "corde-chris",
-            "chips": [
-              {
-                "text": "2.50 RBI/H",
-                "cls": "power"
-              },
-              {
-                "text": ".666 AVG",
-                "cls": ""
-              },
-              {
-                "text": "1 G only",
-                "cls": ""
-              }
-            ],
-            "tip": "2.50 RBI/H in 1 games in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
-          },
           {
             "playerId": "sullivan-colin",
             "chips": [
               {
-                "text": "1.67 RBI/H",
+                "text": "ISO .750",
                 "cls": "power"
               },
               {
@@ -5899,7 +5911,7 @@
                 "cls": ""
               }
             ],
-            "tip": "1.67 RBI/H in 1 games in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "ISO .750 and 5 RBI in his only game \u2014 don't underestimate if he's in the lineup. Treat as a legitimate middle-order threat."
           },
           {
             "playerId": "lundy-connor",
@@ -5909,21 +5921,21 @@
                 "cls": ""
               },
               {
-                "text": "1 G only",
+                "text": "2 2B",
                 "cls": ""
               },
               {
-                "text": "1 RBI",
+                "text": "1 G only",
                 "cls": ""
               }
             ],
-            "tip": ".750 AVG in 1 game — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": "2 doubles in his first game \u2014 gap threat when he plays. Limited data but real."
           },
           {
             "playerId": "gilmore-mike",
             "chips": [
               {
-                "text": ".428 AVG",
+                "text": ".429 AVG",
                 "cls": ""
               },
               {
@@ -5931,11 +5943,25 @@
                 "cls": ""
               },
               {
-                "text": "1 RBI",
+                "text": "1 2B",
                 "cls": ""
               }
             ],
-            "tip": ".428 AVG in 2 games — limited data but worth tracking. Can become a factor if he earns more starts."
+            "tip": ".429 AVG in 2 games with a double \u2014 worth tracking if he keeps appearing."
+          },
+          {
+            "playerId": "williams-benton",
+            "chips": [
+              {
+                "text": "2/2 AB",
+                "cls": ""
+              },
+              {
+                "text": "1 G only",
+                "cls": ""
+              }
+            ],
+            "tip": "Perfect contact in 2 at-bats \u2014 minimal data. Worth watching."
           }
         ]
       },
@@ -5955,7 +5981,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 1.67 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 1.67 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           },
           {
             "playerId": "rodriguez-darwin",
@@ -5969,7 +5995,7 @@
                 "cls": ""
               }
             ],
-            "tip": "Drives in 0.88 runs per hit — consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
+            "tip": "Drives in 0.88 runs per hit \u2014 consistently comes through with runners on. Extra vigilance when he comes up in scoring situations."
           }
         ]
       },
@@ -5993,7 +6019,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "williams-justin",
@@ -6011,7 +6037,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "conti-david",
@@ -6029,7 +6055,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           },
           {
             "playerId": "wright-brandon",
@@ -6047,7 +6073,7 @@
                 "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in — a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
+            "tip": "Scores runs at a higher rate than he drives them in \u2014 a table-setter who depends on the big bats behind him. Getting him out early disrupts the rally cycle."
           }
         ]
       },
@@ -6057,19 +6083,19 @@
         "gamePlan": [
           {
             "heading": "Play the OF deep across the board.",
-            "tip": "19 doubles, 5 triples, and 2 HR this season — extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
+            "tip": "18 doubles, 5 triples, and 1 HR this season \u2014 extra-base hits suggest balls are regularly getting past outfielders. A shallow OF will give up runs."
           },
           {
             "heading": "No free runners when Darwin is up.",
-            "tip": "7 RBI in 7 games — the most dangerous bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
+            "tip": "7 RBI in 7 games \u2014 the most consistent bat with runners on. Pitch carefully; don't groove anything when the bases are occupied."
           },
           {
             "heading": "No free passes against Sanjiv.",
-            "tip": ".750 AVG on the season — one of the hardest bats to retire in the league. Every walk is essentially a gift run."
+            "tip": ".750 AVG on the season \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run."
           },
           {
             "heading": "Get Rob out early.",
-            "tip": "+4 R vs RBI — he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "tip": "+4 R vs RBI and .800 in the last 3 games \u2014 he's hot and reaches base constantly. Retiring him quickly is the fastest way to break their rally cycle."
           }
         ]
       }

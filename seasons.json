@@ -5293,8 +5293,8 @@
         "teamId": "carey"
       },
       {
-        "id": "stennet-ryan",
-        "name": "Stennet, Ryan",
+        "id": "sterrett-ryan",
+        "name": "Sterrett, Ryan",
         "seasonStats": {
           "mckinley-2": {
             "G": 2,
@@ -17098,7 +17098,7 @@
             "BI": 3
           },
           {
-            "playerId": "stennet-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 4,
             "AB": 4,
             "H": 4,
@@ -19832,7 +19832,7 @@
             "BI": 1
           },
           {
-            "playerId": "stennet-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 3,
             "AB": 3,
             "H": 1,
@@ -27350,8 +27350,8 @@
         "teamId": "roosevelt-gold"
       },
       {
-        "id": "stennet-ryan",
-        "name": "Stennet, Ryan",
+        "id": "sterrett-ryan",
+        "name": "Sterrett, Ryan",
         "seasonStats": {
           "mckinley-2": {
             "G": 1,
@@ -42786,7 +42786,7 @@
             "BI": 2
           },
           {
-            "playerId": "stennet-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 4,
             "AB": 4,
             "H": 2,
@@ -113416,8 +113416,8 @@
         "teamId": "mckinley-1"
       },
       {
-        "id": "stennett-ryan",
-        "name": "Stennett, Ryan",
+        "id": "sterrett-ryan",
+        "name": "Sterrett, Ryan",
         "seasonStats": {
           "mckinley-1": {
             "G": 9,
@@ -117163,7 +117163,7 @@
             "BB": 1
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 2,
             "AB": 2,
             "R": 1,
@@ -117986,7 +117986,7 @@
             "BB": 3
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 5,
             "AB": 5,
             "H": 1,
@@ -118352,7 +118352,7 @@
             "BI": 2
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 5,
             "AB": 5,
             "H": 2,
@@ -119436,7 +119436,7 @@
             "BI": 1
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 4,
             "AB": 3,
             "H": 1,
@@ -120092,7 +120092,7 @@
             "R": 1
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 3,
             "AB": 3,
             "H": 1,
@@ -121085,7 +121085,7 @@
             "D": 1
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 4,
             "AB": 4,
             "H": 2,
@@ -122809,7 +122809,7 @@
             "BI": 1
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 4,
             "AB": 4,
             "H": 2,
@@ -124209,7 +124209,7 @@
             "BI": 1
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 3,
             "AB": 3,
             "H": 2,
@@ -124784,7 +124784,7 @@
             "BI": 2
           },
           {
-            "playerId": "stennett-ryan",
+            "playerId": "sterrett-ryan",
             "PA": 3,
             "AB": 3,
             "H": 2
