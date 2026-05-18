@@ -3418,9 +3418,9 @@ function renderNav() {
 
 function renderTicker() {
   const el = document.getElementById('scores-ticker');
-  const _bKeyT = (typeof BRACKETS !== 'undefined') && (BRACKETS[currentSeason + '-' + activeStandingsLeague] ? currentSeason + '-' + activeStandingsLeague : BRACKETS[currentSeason] ? currentSeason : null);
-  const seedMap = {};
-  if (_bKeyT && BRACKETS[_bKeyT]) { (BRACKETS[_bKeyT].r1 || []).forEach(g => { if (g.t1seed) seedMap[g.t1] = g.t1seed; if (g.t2seed) seedMap[g.t2] = g.t2seed; }); }
+  const _tickerSeedCache = {};
+  const _tickerSeed = (gameId, teamId) => { if (!_tickerSeedCache[gameId]) _tickerSeedCache[gameId] = getPlayoffSeedMap(gameId); return _tickerSeedCache[gameId][teamId]; };
+  const seedMap = { _forGame: (gameId, teamId) => _tickerSeed(gameId, teamId) };
   const leagueTeamIds = activeStandingsLeague
     ? new Set(DATA.teams.filter(t => t.league === activeStandingsLeague).map(t => t.id))
     : null;
@@ -3435,8 +3435,8 @@ function renderTicker() {
     const hw = g.homeScore > g.awayScore;
     return `<a class="ticker-game" href="#/game/${g.id}" style="text-decoration:none;color:inherit">
       <div class="ticker-label">Wk ${g.week} &middot; Final</div>
-      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${teamLogoImg(away.id)}${(g.quarterfinal||g.semifinal||g.championship) && seedMap[away.id] ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap[away.id] + '</span>' : ''}${away.name}</span><span class="ticker-right"><span class="ticker-score">${g.awayScore}</span><span class="ticker-ind ${!hw ? 'winner' : ''}">&#9664;</span></span></div>
-      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${teamLogoImg(home.id)}${(g.quarterfinal||g.semifinal||g.championship) && seedMap[home.id] ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap[home.id] + '</span>' : ''}${home.name}</span><span class="ticker-right"><span class="ticker-score">${g.homeScore}</span><span class="ticker-ind ${hw ? 'winner' : ''}">&#9664;</span></span></div>
+      <div class="ticker-row ${!hw ? 'winner' : ''}"><span>${teamLogoImg(away.id)}${seedMap._forGame(g.id,away.id) ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap._forGame(g.id,away.id) + '</span>' : ''}${away.name}</span><span class="ticker-right"><span class="ticker-score">${g.awayScore}</span><span class="ticker-ind ${!hw ? 'winner' : ''}">&#9664;</span></span></div>
+      <div class="ticker-row ${hw ? 'winner' : ''}"><span>${teamLogoImg(home.id)}${seedMap._forGame(g.id,home.id) ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap._forGame(g.id,home.id) + '</span>' : ''}${home.name}</span><span class="ticker-right"><span class="ticker-score">${g.homeScore}</span><span class="ticker-ind ${hw ? 'winner' : ''}">&#9664;</span></span></div>
     </a>`;
   }).join('');
 }
@@ -3519,10 +3519,10 @@ const BRACKETS = {
       title: 'Fall 2023 Combined Playoffs',
       size: 8,
       r1: [
-        { id: 'fl23-game42', t1: 'mckinley-1',            t1seed: 4, t1s: 16, t2: 'washington-wildcats',    t2seed: 5, t2s: 4  },
-        { id: 'fl23-game41', t1: 'taylor-bulldogs',        t1seed: 3, t1s: 10, t2: 'lincoln-lions',          t2seed: 6, t2s: 7  },
-        { id: 'fl23-game75', t1: 'roosevelt-gold',         t1seed: 2, t1s: 16, t2: 'mckinley-ii',            t2seed: 8, t2s: 3  },
-        { id: 'fl23-game74', t1: 'washington-wildkittens', t1seed: 7, t1s: 15, t2: 'bhs',                   t2seed: 1, t2s: 12 },
+        { id: 'fl23-game42', t1: 'mckinley-1',            t1seed: 2, t1s: 16, t2: 'washington-wildcats',    t2seed: 3, t2s: 4  },
+        { id: 'fl23-game41', t1: 'taylor-bulldogs',        t1seed: 1, t1s: 10, t2: 'lincoln-lions',          t2seed: 4, t2s: 7  },
+        { id: 'fl23-game75', t1: 'roosevelt-gold',         t1seed: 2, t1s: 16, t2: 'mckinley-ii',            t2seed: 3, t2s: 3  },
+        { id: 'fl23-game74', t1: 'washington-wildkittens', t1seed: 4, t1s: 15, t2: 'bhs',                   t2seed: 1, t2s: 12 },
       ],
       r2: [
         { id: 'fl23-game45', t1: 'taylor-bulldogs', t1s: 9,  t2: 'mckinley-1',            t2s: 7  },
@@ -3639,14 +3639,14 @@ const BRACKETS = {
       title: 'Spring 2019 Playoffs',
       size: 8,
       r1: [
-        { id: 'sp19-game34', t1: 'lincoln-legends',        t1seed: 4, t1s: 14, t2: 'lincoln',               t2seed: 6, t2s: 9  },
+        { isBye: true, t1: 'mckinley', t1seed: 1 },
+        { id: 'sp19-game35', t1: 'washington-wildkittens', t1seed: 5, t1s: 13, t2: 'roosevelt',              t2seed: 4, t2s: 11 },
+        { id: 'sp19-game34', t1: 'lincoln-legends',        t1seed: 3, t1s: 14, t2: 'lincoln',               t2seed: 6, t2s: 9  },
         { isBye: true, t1: 'washington-wildcats', t1seed: 2 },
-        { id: 'sp19-game35', t1: 'washington-wildkittens', t1seed: 5, t1s: 13, t2: 'roosevelt',              t2seed: 3, t2s: 11 },
-        { isBye: true, t1: 'mckinley', t1seed: 2 },
       ],
       r2: [
-        { id: 'sp19-game36', t1: 'washington-wildcats',    t1s: 17, t2: 'lincoln-legends',        t2s: 6  },
         { id: 'sp19-game38', t1: 'mckinley',               t1s: 8,  t2: 'washington-wildkittens', t2s: 5  },
+        { id: 'sp19-game36', t1: 'washington-wildcats',    t1s: 17, t2: 'lincoln-legends',        t2s: 6  },
       ],
       r3: { id: 'sp19-game37', t1: 'mckinley', t1s: 11, t2: 'washington-wildcats', t2s: 9 },
     },
@@ -3654,14 +3654,14 @@ const BRACKETS = {
       title: 'Fall 2019 Playoffs',
       size: 8,
       r1: [
-        { id: 'fl19-game30', t1: 'washington-wildkittens', t1seed: 4, t1s: 16, t2: 'lincoln',          t2seed: 3, t2s: 11 },
-        { isBye: true, t1: 'mckinley', t1seed: 1 },
-        { id: 'fl19-game29', t1: 'lincoln-legends',        t1seed: 5, t1s: 11, t2: 'hoover',           t2seed: 6, t2s: 10 },
         { isBye: true, t1: 'roosevelt', t1seed: 1 },
+        { id: 'fl19-game29', t1: 'lincoln-legends',        t1seed: 4, t1s: 11, t2: 'hoover',           t2seed: 5, t2s: 10 },
+        { id: 'fl19-game30', t1: 'washington-wildkittens', t1seed: 6, t1s: 16, t2: 'lincoln',          t2seed: 3, t2s: 11 },
+        { isBye: true, t1: 'mckinley', t1seed: 2 },
       ],
       r2: [
-        { id: 'fl19-game31', t1: 'washington-wildkittens', t1s: 13, t2: 'mckinley',        t2s: 6  },
         { id: 'fl19-game32', t1: 'roosevelt',              t1s: 29, t2: 'lincoln-legends', t2s: 9  },
+        { id: 'fl19-game31', t1: 'washington-wildkittens', t1s: 13, t2: 'mckinley',        t2s: 6  },
       ],
       r3: { id: 'fl19-game33', t1: 'roosevelt', t1s: 17, t2: 'washington-wildkittens', t2s: 12 },
     },
@@ -3669,8 +3669,8 @@ const BRACKETS = {
       title: 'Fall 2021 Playoffs',
       size: 4,
       r1: [
-        { id: 'fl21-game46', t1: 'mckinley-1',            t1seed: 1, t1s: 12, t2: 'roosevelt',                t2seed: 3, t2s: 1  },
-        { id: 'fl21-game47', t1: 'hoover',                 t1seed: 2, t1s: 9,  t2: 'millbrae-spring-valley',   t2seed: 4, t2s: 6  },
+        { id: 'fl21-game47', t1: 'hoover',                 t1seed: 1, t1s: 9,  t2: 'millbrae-spring-valley',   t2seed: 4, t2s: 6  },
+        { id: 'fl21-game46', t1: 'mckinley-1',            t1seed: 2, t1s: 12, t2: 'roosevelt',                t2seed: 3, t2s: 1  },
       ],
       r2: { id: 'fl21-game48', t1: 'mckinley-1', t1s: 16, t2: 'hoover', t2s: 4 },
     },
@@ -3678,8 +3678,8 @@ const BRACKETS = {
       title: 'Fall 2022 Playoffs',
       size: 4,
       r1: [
-        { id: 'fl22-game55', t1: 'roosevelt-gold',          t1seed: 1, t1s: 26, t2: 'hoover',                   t2seed: 3, t2s: 6  },
-        { id: 'fl22-game56', t1: 'washington-wildkittens',  t1seed: 2, t1s: 14, t2: 'millbrae-spring-valley',    t2seed: 4, t2s: 13 },
+        { id: 'fl22-game55', t1: 'roosevelt-gold',          t1seed: 1, t1s: 26, t2: 'hoover',                   t2seed: 4, t2s: 6  },
+        { id: 'fl22-game56', t1: 'washington-wildkittens',  t1seed: 3, t1s: 14, t2: 'millbrae-spring-valley',   t2seed: 2, t2s: 13 },
       ],
       r2: { id: 'fl22-game57', t1: 'roosevelt-gold', t1s: 16, t2: 'washington-wildkittens', t2s: 9 },
     },
@@ -3687,9 +3687,9 @@ const BRACKETS = {
       title: 'Spring 2023 Playoffs',
       size: 8,
       r1: [
-        { id: 'sp23-game85', t1: 'mckinley-1',            t1seed: 2, t1s: 12, t2: 'washington-wildcats',     t2seed: 6, t2s: 10 },
-        { isBye: true,       t1: 'roosevelt-gold', t1seed: 5 },
-        { id: 'sp23-game86', t1: 'millbrae-sv-red',        t1seed: 3, t1s: 15, t2: 'hoover',                 t2seed: 4, t2s: 13 },
+        { id: 'sp23-game85', t1: 'mckinley-1',            t1seed: 3, t1s: 12, t2: 'washington-wildcats',     t2seed: 6, t2s: 10 },
+        { isBye: true,       t1: 'roosevelt-gold', t1seed: 2 },
+        { id: 'sp23-game86', t1: 'millbrae-sv-red',        t1seed: 4, t1s: 15, t2: 'hoover',                 t2seed: 5, t2s: 13 },
         { isBye: true,       t1: 'washington-wildkittens', t1seed: 1 },
       ],
       r2: [
@@ -3731,9 +3731,7 @@ const BRACKETS = {
     },
    }
 
-
-function playoffBracketHtml() {
-  const CONSOLATION_BRACKETS = {
+const CONSOLATION_BRACKETS = {
     'spring-2024': {
       title: 'Spring 2024 Consolation Bracket',
       size: 8,
@@ -3753,10 +3751,10 @@ function playoffBracketHtml() {
       title: 'Fall 2023 Consolation Bracket',
       size: 8,
       r1: [
-        { id: 'fl23-game37', t1: 'hoover',          t1s: 10, t2: 'bis',           t2s: 5  },
-        { id: 'fl23-game39', t1: 'roosevelt-blue',   t1s: 17, t2: 'lincoln-lager', t2s: 1  },
-        { id: 'fl23-game40', t1: 'ola',              t1s: 19, t2: 'lincoln-legends',t2s: 9  },
-        { id: 'fl23-game38', t1: 'millbrae-sv-gray', t1s: 17, t2: 'carey',         t2s: 9  },
+        { id: 'fl23-game37', t1: 'hoover',          t1seed: 6, t1s: 10, t2: 'bis',            t2seed: 7, t2s: 5  },
+        { id: 'fl23-game40', t1: 'ola',              t1seed: 5, t1s: 19, t2: 'lincoln-legends', t2seed: 8, t2s: 9  },
+        { id: 'fl23-game39', t1: 'roosevelt-blue',   t1seed: 6, t1s: 17, t2: 'lincoln-lager',  t2seed: 7, t2s: 1  },
+        { id: 'fl23-game38', t1: 'millbrae-sv-gray', t1seed: 5, t1s: 17, t2: 'carey',          t2seed: 8, t2s: 9  },
       ],
       r2: [
         { id: 'fl23-game43', t1: 'ola',              t1s: 9,  t2: 'hoover',        t2s: 6  },
@@ -3779,8 +3777,49 @@ function playoffBracketHtml() {
       ],
       r3: { id: 'fl24-game56', t1: 'carey', t1s: 13, t2: 'bis', t2s: 11 },
     },
-  };
+};
 
+function getPlayoffRoundLabel(gameId) {
+  for (const [, cfg] of Object.entries(CONSOLATION_BRACKETS)) {
+    const r1ids = (cfg.r1||[]).map(g=>g.id);
+    const r2ids = Array.isArray(cfg.r2) ? cfg.r2.map(g=>g.id) : (cfg.r2 ? [cfg.r2.id] : []);
+    const r3id  = cfg.r3 ? cfg.r3.id : null;
+    if (r1ids.includes(gameId)) return cfg.size === 8 ? 'Consolation Quarterfinal' : 'Consolation Semifinal';
+    if (r2ids.includes(gameId)) return cfg.size === 8 ? 'Consolation Semifinal' : 'Consolation Championship';
+    if (r3id === gameId) return 'Consolation Championship';
+  }
+  for (const [, cfg] of Object.entries(BRACKETS)) {
+    const r1ids = (cfg.r1||[]).filter(g=>g.id).map(g=>g.id);
+    const r2ids = Array.isArray(cfg.r2) ? cfg.r2.filter(g=>g.id).map(g=>g.id) : (cfg.r2 && cfg.r2.id ? [cfg.r2.id] : []);
+    const r3id  = cfg.r3 && cfg.r3.id ? cfg.r3.id : null;
+    if (r1ids.includes(gameId)) return cfg.size === 8 ? 'Quarterfinal' : 'Semifinal';
+    if (r2ids.includes(gameId)) return cfg.size === 8 ? 'Semifinal' : 'Championship';
+    if (r3id === gameId) return 'Championship';
+  }
+  return null;
+}
+
+function getPlayoffSeedMap(gameId) {
+  const allBrackets = [BRACKETS, CONSOLATION_BRACKETS];
+  const seasons = [currentSeason + '-' + activeStandingsLeague, currentSeason];
+  for (const bMap of allBrackets) {
+    for (const s of seasons) {
+      const cfg = bMap[s];
+      if (!cfg) continue;
+      const r1 = cfg.r1 || [];
+      const allGames = [...r1, ...(Array.isArray(cfg.r2) ? cfg.r2 : cfg.r2 ? [cfg.r2] : []), ...(cfg.r3 ? [cfg.r3] : [])];
+      const inBracket = allGames.some(g => g.id === gameId);
+      if (inBracket) {
+        const map = {};
+        r1.forEach(g => { if (g.t1seed) map[g.t1] = g.t1seed; if (g.t2seed) map[g.t2] = g.t2seed; });
+        return map;
+      }
+    }
+  }
+  return {};
+}
+
+function playoffBracketHtml() {
   const bracketKey = BRACKETS[currentSeason + '-' + activeStandingsLeague] ? currentSeason + '-' + activeStandingsLeague
     : BRACKETS[currentSeason] ? currentSeason : null;
   const cfg = bracketKey ? BRACKETS[bracketKey] : null;
@@ -6578,9 +6617,7 @@ function buildTeamSeasonStats(teamId) {
 function viewGamePreview(game) {
   const home = getTeam(game.homeTeamId);
   const away = getTeam(game.awayTeamId);
-  const _bKey = (typeof BRACKETS !== 'undefined') && (BRACKETS[currentSeason + '-' + activeStandingsLeague] ? currentSeason + '-' + activeStandingsLeague : BRACKETS[currentSeason] ? currentSeason : null);
-  const _seedMap = {};
-  if (_bKey && BRACKETS[_bKey]) { (BRACKETS[_bKey].r1 || []).forEach(g => { if (g.t1seed) _seedMap[g.t1] = g.t1seed; if (g.t2seed) _seedMap[g.t2] = g.t2seed; }); }
+  const _seedMap = getPlayoffSeedMap(game.id);
   const _seedLabel = (id) => _seedMap[id] ? `<span style="opacity:.5;font-size:.85em;margin-right:3px">#${_seedMap[id]}</span>` : '';
   const hs = buildTeamSeasonStats(game.homeTeamId);
   const as_ = buildTeamSeasonStats(game.awayTeamId);
@@ -6770,11 +6807,11 @@ function viewGamePreview(game) {
   document.getElementById('app').innerHTML = `
     <a class="back-link" href="#/schedule">&larr; Schedule</a>
     <div class="scoreboard" ${pvSbStyle}>
-      <div class="scoreboard-meta">Week ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}</div>
+      <div class="scoreboard-meta">Week ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}${(() => { const _r = (!game.championship&&!game.semifinal&&!game.quarterfinal&&!game.consolation) ? getPlayoffRoundLabel(game.id) : null; const _rl = game.championship ? 'Championship' : game.semifinal ? 'Semifinal' : game.quarterfinal ? 'Quarterfinal' : game.consolation ? consolationRoundLabel(game.id) : _r; return _rl ? ` &middot; <span class="game-type-label ${_rl.startsWith('Consolation') ? 'consolation' : _rl.toLowerCase()}">${_rl === 'Championship' ? '🏆 ' : ''}${_rl}</span>` : ''; })()}</div>
       <div class="scoreboard-main">
         <div class="scoreboard-team winner">
           <a href="#/team/${away ? away.id : ''}">${pvAwayLogoHtml}</a>
-          <div class="scoreboard-team-name"><a href="#/team/${away ? away.id : ''}">${away ? (((game.quarterfinal||game.semifinal||game.championship) ? _seedLabel(away.id) : '') + away.name) : 'Away'}</a></div>
+          <div class="scoreboard-team-name"><a href="#/team/${away ? away.id : ''}">${away ? (_seedLabel(away.id) + away.name) : 'Away'}</a></div>
           <div class="scoreboard-team-record">${pvAwayRec}</div>
           <div class="scoreboard-team-label">Away</div>
           <button class="scout-btn" style="margin-top:8px" onclick="showScoutingReport('${game.awayTeamId}')">&#128269; Scout</button>
@@ -6787,7 +6824,7 @@ function viewGamePreview(game) {
         </div>
         <div class="scoreboard-team winner">
           <a href="#/team/${home ? home.id : ''}">${pvHomeLogoHtml}</a>
-          <div class="scoreboard-team-name"><a href="#/team/${home ? home.id : ''}">${home ? (((game.quarterfinal||game.semifinal||game.championship) ? _seedLabel(home.id) : '') + home.name) : 'Home'}</a></div>
+          <div class="scoreboard-team-name"><a href="#/team/${home ? home.id : ''}">${home ? (_seedLabel(home.id) + home.name) : 'Home'}</a></div>
           <div class="scoreboard-team-record">${pvHomeRec}</div>
           <div class="scoreboard-team-label">Home</div>
           <button class="scout-btn" style="margin-top:8px" onclick="showScoutingReport('${game.homeTeamId}')">&#128269; Scout</button>
@@ -6805,9 +6842,9 @@ function viewGamePreview(game) {
       <div class="card-body"><div class="table-wrap">
         <table style="width:100%;border-collapse:collapse;font-size:13px">
           <thead><tr>
-            <th style="text-align:right;background:var(--mlb-blue)">${away ? teamLogoImg(away.id) + ((game.quarterfinal||game.semifinal||game.championship) ? _seedLabel(away.id) : '') + away.name : 'Away'}</th>
+            <th style="text-align:right;background:var(--mlb-blue)">${away ? teamLogoImg(away.id) + _seedLabel(away.id) + away.name : 'Away'}</th>
             <th style="text-align:center;background:#1a2a4a;width:110px">Stat</th>
-            <th style="text-align:left;background:var(--mlb-red)">${home ? teamLogoImg(home.id) + ((game.quarterfinal||game.semifinal||game.championship) ? _seedLabel(home.id) : '') + home.name : 'Home'}</th>
+            <th style="text-align:left;background:var(--mlb-red)">${home ? teamLogoImg(home.id) + _seedLabel(home.id) + home.name : 'Home'}</th>
           </tr></thead>
           <tbody>${cmpRows}</tbody>
         </table>
@@ -7067,10 +7104,8 @@ function viewBoxScore(gameId) {
   const home = getTeam(game.homeTeamId);
   const away = getTeam(game.awayTeamId);
 
-  const _bsKey = (typeof BRACKETS !== 'undefined') && (BRACKETS[currentSeason + '-' + activeStandingsLeague] ? currentSeason + '-' + activeStandingsLeague : BRACKETS[currentSeason] ? currentSeason : null);
-  const _bsSeedMap = {};
-  if (_bsKey && BRACKETS[_bsKey]) { (BRACKETS[_bsKey].r1 || []).forEach(g => { if (g.t1seed) _bsSeedMap[g.t1] = g.t1seed; if (g.t2seed) _bsSeedMap[g.t2] = g.t2seed; if (g.isBye && g.t1seed) _bsSeedMap[g.t1] = g.t1seed; }); }
-  const _bsSeedLabel = (id) => (game.quarterfinal||game.semifinal||game.championship) && _bsSeedMap[id] ? `<span style="opacity:.5;font-size:.85em;margin-right:3px">#${_bsSeedMap[id]}</span>` : '';
+  const _bsSeedMap = getPlayoffSeedMap(gameId);
+  const _bsSeedLabel = (id) => _bsSeedMap[id] ? `<span style="opacity:.5;font-size:.85em;margin-right:3px">#${_bsSeedMap[id]}</span>` : '';
 
   function teamTable(stats, teamName) {
     if (!stats || stats.length === 0) return `<div class="card"><div class="card-header">${teamName}</div><div class="card-body padded"><em>No box score available</em></div></div>`;
@@ -7152,7 +7187,7 @@ function viewBoxScore(gameId) {
   document.getElementById('app').innerHTML = `
     <div style="display:flex;align-items:center"><a class="back-link" href="#/schedule">&larr; Schedule</a>${shareBtn()}</div>
     <div class="scoreboard" ${sbStyle}>
-      <div class="scoreboard-meta">Week ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}</div>
+      <div class="scoreboard-meta">Week ${game.week} &middot; ${fmtDate(game.date)}${game.location ? ' &middot; ' + game.location : ''}${(() => { const _r = (!game.championship&&!game.semifinal&&!game.quarterfinal&&!game.consolation) ? getPlayoffRoundLabel(gameId) : null; const _rl = game.championship ? 'Championship' : game.semifinal ? 'Semifinal' : game.quarterfinal ? 'Quarterfinal' : game.consolation ? consolationRoundLabel(gameId) : _r; return _rl ? ` &middot; <span class="game-type-label ${_rl.startsWith('Consolation') ? 'consolation' : _rl.toLowerCase()}">${_rl === 'Championship' ? '🏆 ' : ''}${_rl}</span>` : ''; })()}</div>
       <div class="scoreboard-main">
         <div class="scoreboard-team ${!hw ? 'winner' : ''}">
           <a href="#/team/${away ? away.id : ''}">${awayLogoHtml}</a>
@@ -7388,9 +7423,8 @@ function viewSchedule(scrollToWeek) {
   });
 
   // Build seed lookup from bracket data for playoff game labels
-  const _scBracketKey = BRACKETS[currentSeason + '-' + activeStandingsLeague] ? currentSeason + '-' + activeStandingsLeague : BRACKETS[currentSeason] ? currentSeason : null;
-  const seedMap = {};
-  if (_scBracketKey) { (BRACKETS[_scBracketKey].r1 || []).forEach(g => { if (g.t1seed) seedMap[g.t1] = g.t1seed; if (g.t2seed) seedMap[g.t2] = g.t2seed; }); }
+  const _scSeedCache = {};
+  const seedMap = { _forGame: (gameId, teamId) => { if (!_scSeedCache[gameId]) _scSeedCache[gameId] = getPlayoffSeedMap(gameId); return _scSeedCache[gameId][teamId]; } };
   const html = Object.entries(weeks).sort((a, b) => a[1].date < b[1].date ? -1 : a[1].date > b[1].date ? 1 : a[0] - b[0]).map(([wk, w]) => {
         const gamesHtml = w.games.map(g => {
       const home = getTeam(g.homeTeamId);
@@ -7410,17 +7444,18 @@ function viewSchedule(scrollToWeek) {
       const _homeleague = home && home.league, _awyleague = away && away.league;
       const _interleague = _homeleague && _awyleague && _homeleague !== _awyleague;
       const _pills = [];
-      if (g.championship) _pills.push(`<span class="game-type-label championship">🏆 Championship</span>`);
-      if (g.semifinal)    _pills.push(`<span class="game-type-label semifinal">Semifinal</span>`);
-      if (g.quarterfinal) _pills.push(`<span class="game-type-label quarterfinal">Quarterfinal</span>`);
-      if (g.consolation)  _pills.push(`<span class="game-type-label consolation">${consolationRoundLabel(g.id)}</span>`);
+      const _derivedRound = (!g.championship && !g.semifinal && !g.quarterfinal && !g.consolation) ? getPlayoffRoundLabel(g.id) : null;
+      if (g.championship || _derivedRound === 'Championship') _pills.push(`<span class="game-type-label championship">🏆 Championship</span>`);
+      if (g.semifinal    || _derivedRound === 'Semifinal')    _pills.push(`<span class="game-type-label semifinal">Semifinal</span>`);
+      if (g.quarterfinal || _derivedRound === 'Quarterfinal') _pills.push(`<span class="game-type-label quarterfinal">Quarterfinal</span>`);
+      if (g.consolation  || (_derivedRound && _derivedRound.startsWith('Consolation'))) _pills.push(`<span class="game-type-label consolation">${g.consolation ? consolationRoundLabel(g.id) : _derivedRound}</span>`);
       if (_interleague)   _pills.push(`<span class="game-type-label interleague">Interleague</span>`);
       const gameTypeLabel = _pills.join('');
       return `<div class="score-box${played ? '' : ' unplayed'}" ${clickable}>
         <div class="teams">
           ${gameTypeLabel ? `<div class="game-type-label-row">${gameTypeLabel}</div>` : ''}
-          <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${teamLogoImg(away.id)}${(g.quarterfinal||g.semifinal||g.championship) && seedMap[away.id] ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap[away.id] + '</span>' : ''}${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score-right"><span class="score">${g.awayScore}</span><span class="score-box-ind ${!hw ? 'winner' : ''}">&#9664;</span></span>` : ''}</div>
-          <div class="team-row ${played && hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${teamLogoImg(home.id)}${(g.quarterfinal||g.semifinal||g.championship) && seedMap[home.id] ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap[home.id] + '</span>' : ''}${home.name}</a> <span class="record-inline">${homeRec}</span></span>${played ? `<span class="score-right"><span class="score">${g.homeScore}</span><span class="score-box-ind ${hw ? 'winner' : ''}">&#9664;</span></span>` : ''}</div>
+          <div class="team-row ${played && !hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${away.id}">${teamLogoImg(away.id)}${seedMap._forGame(g.id,away.id) ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap._forGame(g.id,away.id) + '</span>' : ''}${away.name}</a> <span class="record-inline">${awayRec}</span></span>${played ? `<span class="score-right"><span class="score">${g.awayScore}</span><span class="score-box-ind ${!hw ? 'winner' : ''}">&#9664;</span></span>` : ''}</div>
+          <div class="team-row ${played && hw ? 'winner' : ''}"><span class="team-name-rec"><a class="team-link" href="#/team/${home.id}">${teamLogoImg(home.id)}${seedMap._forGame(g.id,home.id) ? '<span style="opacity:.5;font-size:.85em;margin-right:3px">#' + seedMap._forGame(g.id,home.id) + '</span>' : ''}${home.name}</a> <span class="record-inline">${homeRec}</span></span>${played ? `<span class="score-right"><span class="score">${g.homeScore}</span><span class="score-box-ind ${hw ? 'winner' : ''}">&#9664;</span></span>` : ''}</div>
         </div>
         ${previewLink}
       </div>`;
