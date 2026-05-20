@@ -3918,16 +3918,105 @@ function playoffBracketHtml() {
       </div>`;
     }
     if (g.noLink) {
-      const t1label = g.l1 || (g.t1 !== 'tbd' ? (getTeam(g.t1) ? getTeam(g.t1).name : g.t1) : '');
-      const t2label = g.l2 || (g.t2 !== 'tbd' ? (getTeam(g.t2) ? getTeam(g.t2).name : g.t2) : '');
+      // Try to resolve each slot to a real team: winner if played, higher seed if not
+      // Resolve a bracket slot to { teamId, seed, decided }.
+      // For noLink slots (future rounds), recursively resolve from their r1 feeders.
+      function resolveSlot(feedGames) {
+        if (!feedGames || feedGames.length === 0) return null;
+        const winners = [];
+        for (const fg of feedGames) {
+          if (fg.isBye) { winners.push({ teamId: fg.t1, seed: fg.t1seed || _bracketSeedMap[fg.t1], decided: true }); continue; }
+          if (fg.noLink) {
+            // Recursively resolve this future slot from its r1 feeders
+            const r1g = (cfg).r1 || [];
+            const fi1 = fg.l1 && fg.l1.includes('1') ? 0 : fg.l1 && fg.l1.includes('2') ? 1 : fg.l1 && fg.l1.includes('3') ? 2 : fg.l1 && fg.l1.includes('4') ? 3 : null;
+            const fi2 = fg.l2 && fg.l2.includes('3') ? 2 : fg.l2 && fg.l2.includes('4') ? 3 : fg.l2 && fg.l2.includes('1') ? 0 : fg.l2 && fg.l2.includes('2') ? 1 : null;
+            const sub1 = fi1 !== null ? resolveSlot([r1g[fi1]]) : null;
+            const sub2 = fi2 !== null ? resolveSlot([r1g[fi2]]) : null;
+            // The winner of this semi is whoever won/is favored from both sub-slots
+            // We can't know without the game being played, so show the top seed from the pair
+            if (sub1 && sub1[0] && sub2 && sub2[0]) {
+              if (sub1[0].decided && sub2[0].decided) {
+                // Both feeders decided but semi not yet played — show slash
+                winners.push({ bothIds: [sub1[0].teamId, sub2[0].teamId], seeds: [sub1[0].seed||99, sub2[0].seed||99], decided: false });
+              } else {
+                return null;
+              }
+            } else {
+              return null;
+            }
+            continue;
+          }
+          const played = fg.t1s !== undefined && fg.t2s !== undefined;
+          if (played) {
+            const wonT1 = fg.t1s > fg.t2s;
+            winners.push({ teamId: wonT1 ? fg.t1 : fg.t2, seed: wonT1 ? (fg.t1seed||_bracketSeedMap[fg.t1]) : (fg.t2seed||_bracketSeedMap[fg.t2]), decided: true });
+          } else {
+            const s1 = fg.t1seed || _bracketSeedMap[fg.t1] || 99;
+            const s2 = fg.t2seed || _bracketSeedMap[fg.t2] || 99;
+            winners.push({ bothIds: [fg.t1, fg.t2], seeds: [s1, s2], decided: false });
+          }
+        }
+        return winners;
+      }
+
+      function slotHtml(slot, isChampSlot) {
+        if (!slot) return null;
+        if (slot.decided) {
+          const t = getTeam(slot.teamId);
+          const name = t ? t.name : (slot.teamId || '—');
+          const seedSpan = slot.seed ? `<span style="opacity:.5;font-size:.85em;margin-right:3px">#${slot.seed}</span>` : '';
+          return `<span class="bracket-game-tname">${teamLogoImg(slot.teamId)}${seedSpan}${name}${isChampSlot ? ' 🏆' : ''}</span>`;
+        } else if (slot.bothIds) {
+          const [id1, id2] = slot.bothIds;
+          const [s1, s2] = slot.seeds;
+          const t1 = getTeam(id1), t2 = getTeam(id2);
+          const n1 = t1 ? t1.name : id1, n2 = t2 ? t2.name : id2;
+          const seed1 = s1 < 99 ? `<span style="opacity:.5;font-size:.85em;margin-right:2px">#${s1}</span>` : '';
+          const seed2 = s2 < 99 ? `<span style="opacity:.5;font-size:.85em;margin-right:2px">#${s2}</span>` : '';
+          return `<span class="bracket-game-tname" style="opacity:.6;font-size:11px">${seed1}${n1} / ${seed2}${n2}${isChampSlot ? ' 🏆' : ''}</span>`;
+        }
+        return null;
+      }
+
+      // Each noLink slot shows 2 teams. Derive which r1 games feed each team slot.
+      // l1 = "Winner of Bracket Game 1" -> r1[0]; l2 = "Winner of Bracket Game 2" -> r1[1], etc.
+      const r1games = (cfg).r1 || [];
+      function r1Idx(label) {
+        if (!label) return null;
+        if (label.includes('Game 1') || label.includes('Bracket Game 1')) return 0;
+        if (label.includes('Game 2') || label.includes('Bracket Game 2')) return 1;
+        if (label.includes('Game 3') || label.includes('Bracket Game 3')) return 2;
+        if (label.includes('Game 4') || label.includes('Bracket Game 4')) return 3;
+        return null;
+      }
+      const r2games = cfg.r2 || [];
+      const t1feedIdx = r1Idx(g.l1);
+      const t2feedIdx = r1Idx(g.l2);
+      // r2 semifinal slots feed from r1; r3 championship feeds from r2
+      let t1feeder, t2feeder;
+      if (t1feedIdx !== null) {
+        t1feeder = [r1games[t1feedIdx]];
+        t2feeder = t2feedIdx !== null ? [r1games[t2feedIdx]] : null;
+      } else if (r2games.length >= 2) {
+        // Championship slot — feeders are the two r2 semis
+        t1feeder = [r2games[0]];
+        t2feeder = [r2games[1]];
+      } else {
+        t1feeder = null; t2feeder = null;
+      }
+      const slot1 = t1feeder ? resolveSlot(t1feeder) : null;
+      const slot2 = t2feeder ? resolveSlot(t2feeder) : null;
+
+      const t1resolved = slot1 && slot1[0] ? slotHtml(slot1[0], isChamp) : null;
+      const t2resolved = slot2 && slot2[0] ? slotHtml(slot2[0], false) : null;
+      const t1html = t1resolved || `<span class="bracket-game-tname" style="font-style:italic;opacity:.45">${g.l1 || 'TBD'}${isChamp ? ' 🏆' : ''}</span>`;
+      const t2html = t2resolved || `<span class="bracket-game-tname" style="font-style:italic;opacity:.45">${g.l2 || 'TBD'}</span>`;
+
       return `<div class="bracket-slot" style="height:${slotH}px">
         <div class="bracket-game${isChamp ? ' bracket-champ' : ''}" style="cursor:default">
-          <div class="bracket-game-team">
-            <span class="bracket-game-tname" style="font-style:italic;opacity:.6">${t1label}${isChamp ? ' 🏆' : ''}</span>
-          </div>
-          <div class="bracket-game-team">
-            <span class="bracket-game-tname" style="font-style:italic;opacity:.6">${t2label}</span>
-          </div>
+          <div class="bracket-game-team">${t1html}</div>
+          <div class="bracket-game-team">${t2html}</div>
         </div>
       </div>`;
     }
