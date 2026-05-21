@@ -1656,6 +1656,12 @@ td.result-col { text-align: left; white-space: nowrap; }
   .spray-lineup-inner { border:1px solid var(--border-light); border-radius:6px; overflow:hidden; background:var(--white); }
   .spray-legend { width:100%; height:auto; display:block; border-bottom:1px solid var(--border-light); margin-bottom:0; }
   .spray-no-data { font-size:11px; color:var(--text-muted); text-align:center; padding:6px 0 2px; }
+  @media (max-width: 600px) {
+    .spray-chart-body { flex-wrap:wrap !important; }
+    .spray-field-wrap { order:3; width:100% !important; flex:0 0 100% !important; min-width:0 !important; }
+    .away-lineup { order:1; flex:1 1 0 !important; width:auto !important; min-width:0 !important; }
+    .home-lineup { order:2; flex:1 1 0 !important; width:auto !important; min-width:0 !important; }
+  }
   .spray-dot-group { transition:opacity 0.15s; }
 
 </style>
@@ -7526,31 +7532,39 @@ function _initSprayChartEvents(card, gameId) {
   if (!card) return;
   const body = card.querySelector('.spray-chart-body');
   if (!body) return;
+  let locked = null;
 
   function showDots(selector) {
     card.querySelectorAll('.spray-dot-group').forEach(g => { g.style.opacity = '0'; });
-    if (selector) {
-      card.querySelectorAll(selector).forEach(g => { g.style.opacity = '1'; });
-    }
+    if (selector) card.querySelectorAll(selector).forEach(g => { g.style.opacity = '1'; });
   }
 
-  body.addEventListener('mouseover', e => {
+  function activate(el, selector) {
+    body.querySelectorAll('.spray-team-name,.spray-player').forEach(e => e.classList.remove('sc-active'));
+    el.classList.add('sc-active');
+    showDots(selector);
+  }
+
+  body.addEventListener('click', e => {
     const tn = e.target.closest('.spray-team-name');
     const pp = e.target.closest('.spray-player');
-    if (tn) {
-      const team = tn.dataset.team;
-      body.querySelectorAll('.spray-team-name,.spray-player').forEach(el => el.classList.remove('sc-active'));
-      tn.classList.add('sc-active');
-      showDots(`.sc-team-${team}`);
-    } else if (pp) {
-      const pid = pp.dataset.player;
-      body.querySelectorAll('.spray-team-name,.spray-player').forEach(el => el.classList.remove('sc-active'));
-      pp.classList.add('sc-active');
-      showDots(`.sc-player-${CSS.escape(pid)}`);
-    }
+    const el = tn || pp;
+    if (!el) { locked = null; body.querySelectorAll('.spray-team-name,.spray-player').forEach(e => e.classList.remove('sc-active')); showDots(null); return; }
+    const selector = tn ? `.sc-team-${tn.dataset.team}` : `.sc-player-${CSS.escape(pp.dataset.player)}`;
+    if (locked === selector) { locked = null; body.querySelectorAll('.spray-team-name,.spray-player').forEach(e => e.classList.remove('sc-active')); showDots(null); }
+    else { locked = selector; activate(el, selector); }
+  });
+
+  body.addEventListener('mouseover', e => {
+    if (locked) return;
+    const tn = e.target.closest('.spray-team-name');
+    const pp = e.target.closest('.spray-player');
+    if (tn) activate(tn, `.sc-team-${tn.dataset.team}`);
+    else if (pp) activate(pp, `.sc-player-${CSS.escape(pp.dataset.player)}`);
   });
 
   body.addEventListener('mouseleave', () => {
+    if (locked) return;
     body.querySelectorAll('.spray-team-name,.spray-player').forEach(el => el.classList.remove('sc-active'));
     showDots(null);
   });
