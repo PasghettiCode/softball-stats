@@ -1639,7 +1639,26 @@ td.result-col { text-align: left; white-space: nowrap; }
 .scout-lineup-table .games { font-size: 11px; color: var(--text-muted); width: 30px; text-align: right; }
 .scout-lineup-footnote { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
 
-  </style>
+  
+  /* Spray Chart */
+  .spray-chart-body { display:flex; flex-wrap:nowrap; align-items:flex-start; gap:12px; overflow-x:auto; }
+  .spray-lineup { flex:0 0 160px; width:160px; min-width:160px; flex-shrink:0; font-size:12px; line-height:1.9; }
+  .away-lineup { text-align:right; }
+  .home-lineup { text-align:left; }
+  .spray-field-wrap { flex:1 1 0; min-width:0; }
+  .spray-svg { width:100%; height:auto; display:block; }
+  .spray-team-name { font-weight:700; font-size:11px; letter-spacing:.3px; text-transform:uppercase; cursor:pointer; padding:6px 8px; border-radius:4px; margin-bottom:4px; border-bottom:1px solid var(--border-light); }
+  .spray-player { cursor:pointer; padding:3px 8px; border-radius:3px; font-size:12px; color:var(--link-blue); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .spray-player:hover { color:var(--mlb-red); text-decoration:underline; }
+  .spray-player.sc-active,.spray-team-name.sc-active { background:var(--row-hover); }
+  .spray-team-name:hover { background:var(--row-alt); text-decoration:underline; }
+  .away-lineup .spray-team-name,.away-lineup .spray-player { text-align:right; }
+  .spray-lineup-inner { border:1px solid var(--border-light); border-radius:6px; overflow:hidden; background:var(--white); }
+  .spray-legend { width:100%; height:auto; display:block; border-bottom:1px solid var(--border-light); margin-bottom:0; }
+  .spray-no-data { font-size:11px; color:var(--text-muted); text-align:center; padding:6px 0 2px; }
+  .spray-dot-group { transition:opacity 0.15s; }
+
+</style>
 </head>
 <body>
   <header>
@@ -7125,6 +7144,7 @@ function viewGamePreview(game) {
     </div>` : ''}
     ${lastMeetingHtml}
     <div id="milestone-watchlist-placeholder"></div>
+    <div id="spray-chart-placeholder-preview"></div>
     <div class="card">
       <div class="card-header">Team Comparison</div>
       <div class="card-body"><div class="table-wrap">
@@ -7143,6 +7163,16 @@ function viewGamePreview(game) {
   _loadOldSeasons().then(() => {
     const el = document.getElementById('milestone-watchlist-placeholder');
     if (el) el.outerHTML = milestoneWatchlistHtml(game);
+  });
+
+  getSprayChart(game.id, chartData => {
+    const el = document.getElementById('spray-chart-placeholder-preview');
+    if (el) {
+      const html = renderSprayChart(game.id, chartData, away, home, null, null);
+      el.outerHTML = html;
+      const card = document.querySelector('.spray-chart-card[data-gameid="' + game.id + '"]');
+      _initSprayChartEvents(card, game.id);
+    }
   });
 }
 
@@ -7262,6 +7292,270 @@ function getRecap(id, cb) {
   if (!_recapsPromise) _recapsPromise = fetch('recaps.json').then(r => r.json()).then(d => { _recaps = d; });
   _recapsPromise.then(() => cb(_recaps[id] || ''));
 }
+
+let _sprayCharts = null;
+let _sprayChartsPromise = null;
+function getSprayChart(gameId, cb) {
+  if (_sprayCharts) { cb(_sprayCharts[gameId] || null); return; }
+  if (window.location.protocol === 'file:') { cb(null); return; }
+  if (!_sprayChartsPromise) _sprayChartsPromise = fetch('spray_charts.json').then(r => r.json()).then(d => { _sprayCharts = d; });
+  _sprayChartsPromise.then(() => cb(_sprayCharts[gameId] || null));
+}
+
+// Zone base coordinates (viewBox 0 0 300 280, home plate at 150,260)
+const SPRAY_ZONES = {
+  'P':       { x:150, y:195 },
+  '1B':      { x:195, y:215 },
+  '2B':      { x:168, y:188 },
+  '3B':      { x:105, y:215 },
+  'SS':      { x:132, y:188 },
+  'LF':      { x:65,  y:158 },
+  'LC':      { x:105, y:125 },
+  'CF':      { x:150, y:108 },
+  'RC':      { x:195, y:125 },
+  'RF':      { x:235, y:158 },
+  '1B-line': { x:215, y:190 },
+  '3B-line': { x:85,  y:190 },
+  'wall-LF': { x:35,  y:125 },
+  'wall-CF': { x:150, y:65  },
+  'wall-RF': { x:265, y:125 },
+  'foul-LF': { x:20,  y:200 },
+  'foul-RF': { x:280, y:200 },
+  'home':    { x:150, y:255 },
+};
+const HOME_PLATE = { x:150, y:260 };
+
+function _sprayZoneCoords(zone, depth) {
+  const base = SPRAY_ZONES[zone] || SPRAY_ZONES['CF'];
+  // depth shift: move along vector from home toward zone
+  const dx = base.x - HOME_PLATE.x, dy = base.y - HOME_PLATE.y;
+  const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+  const shift = depth === 'deep' ? 30 : depth === 'shallow' ? -35 : 0;
+  return { x: base.x + (dx/dist)*shift, y: base.y + (dy/dist)*shift };
+}
+
+function _sprayHitMarker(x, y, type, color, opacity, speed) {
+  const r = speed === 'hard' ? 6 : speed === 'soft' ? 2.5 : 4;
+  const dot = `<circle cx="${x}" cy="${y}" r="${r}" fill="${color}" fill-opacity="1" stroke="${color}" stroke-width="1"/>`;
+  let marker = '';
+  const hx = 150, hy = 260;
+  if (type === 'liner') {
+    marker = `<line x1="${hx}" y1="${hy}" x2="${x}" y2="${y}" stroke="${color}" stroke-width="1.5" stroke-linecap="round" opacity="1"/>`;
+  } else if (type === 'grounder') {
+    marker = `<line x1="${hx}" y1="${hy}" x2="${x}" y2="${y}" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 3" opacity="0.7"/>`;
+  } else if (type === 'fly' || type === 'popup' || type === 'pop' || type === 'bloop') {
+    const cx1 = hx + (x - hx) * 0.3 - (y - hy) * 0.3, cy1 = hy + (y - hy) * 0.3 + (x - hx) * 0.3;
+    marker = `<path d="M${hx},${hy} Q${cx1},${cy1} ${x},${y}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" opacity="1"/>`;
+  }
+ return `<g opacity="${opacity}">${dot}${marker}</g>`;
+}
+
+
+function _jitterHits(hits) {
+  // Compute base coords for each hit
+  const positioned = hits.map(h => {
+    const { x, y } = _sprayZoneCoords(h.zone, h.depth);
+    return [h, x, y];
+  });
+  // Group by rounded position (within 6px counts as same spot)
+  const groups = {};
+  positioned.forEach(([h, x, y]) => {
+    const key = Math.round(x / 6) + ',' + Math.round(y / 6);
+    if (!groups[key]) groups[key] = [];
+    groups[key].push([h, x, y]);
+  });
+  // Spread overlapping hits in a small arc
+  const result = [];
+  Object.values(groups).forEach(group => {
+    if (group.length === 1) { result.push(group[0]); return; }
+    const [, bx, by] = group[0];
+    const spread = 7;
+    group.forEach(([h, x, y], i) => {
+      const angle = (2 * Math.PI * i) / group.length - Math.PI / 2;
+      result.push([h, bx + spread * Math.cos(angle), by + spread * Math.sin(angle)]);
+    });
+  });
+  return result;
+}
+
+function renderSprayChart(gameId, chartData, awayTeam, homeTeam, awayLineup, homeLineup) {
+  const awayColor = 'var(--mlb-blue)';
+  const homeColor = 'var(--mlb-red)';
+  const awayName = awayTeam ? awayTeam.name : 'Away';
+  const homeName = homeTeam ? homeTeam.name : 'Home';
+
+  // Legend SVG
+
+  const legendSvg = `<svg class="spray-legend" viewBox="0 0 300 28" xmlns="http://www.w3.org/2000/svg">
+    <!-- Hit Type title -->
+    <text x="4" y="8" font-size="6" font-weight="700" fill="var(--text-muted)" font-family="sans-serif" letter-spacing="0.5">HIT TYPE</text>
+    <!-- Liner -->
+    <line x1="4" y1="20" x2="16" y2="20" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="16" cy="20" r="2.5" fill="#555"/>
+    <text x="21" y="23" font-size="6.5" fill="var(--text-muted)" font-family="sans-serif">Liner</text>
+    <!-- Grounder -->
+    <line x1="58" y1="20" x2="70" y2="20" stroke="#555" stroke-width="1.5" stroke-dasharray="3 2" stroke-linecap="round"/>
+    <circle cx="70" cy="20" r="2.5" fill="#555"/>
+    <text x="75" y="23" font-size="6.5" fill="var(--text-muted)" font-family="sans-serif">Grounder</text>
+    <!-- Fly -->
+    <path d="M118,25 Q125,13 132,25" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="132" cy="25" r="2.5" fill="#555"/>
+    <text x="137" y="23" font-size="6.5" fill="var(--text-muted)" font-family="sans-serif">Fly/Pop</text>
+    <!-- Divider -->
+    <line x1="182" y1="2" x2="182" y2="30" stroke="var(--border)" stroke-width="1"/>
+    <!-- Exit Speed title -->
+    <text x="188" y="8" font-size="6" font-weight="700" fill="var(--text-muted)" font-family="sans-serif" letter-spacing="0.5">EXIT SPEED</text>
+    <!-- Soft -->
+    <circle cx="194" cy="20" r="3" fill="#555"/>
+    <text x="200" y="23" font-size="6.5" fill="var(--text-muted)" font-family="sans-serif">Soft</text>
+    <!-- Med -->
+    <circle cx="228" cy="20" r="5" fill="#555"/>
+    <text x="236" y="23" font-size="6.5" fill="var(--text-muted)" font-family="sans-serif">Med</text>
+    <!-- Hard -->
+    <circle cx="265" cy="20" r="7" fill="#555"/>
+    <text x="275" y="23" font-size="6.5" fill="var(--text-muted)" font-family="sans-serif">Hard</text>
+  </svg>`;
+
+  // Field SVG
+  const fieldSvg = `<svg class="spray-svg" viewBox="0 40 300 240" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="sc-field-clip">
+        <path d="M150,260 L20,200 Q20,60 150,50 Q280,60 280,200 Z"/>
+      </clipPath>
+    </defs>
+    <!-- Outfield grass -->
+    <path d="M150,260 L20,200 Q20,60 150,50 Q280,60 280,200 Z" fill="#2d5a1b" stroke="#1a3a0f" stroke-width="1"/>
+    <!-- Infield dirt -->
+    <ellipse cx="150" cy="210" rx="75" ry="58" fill="#8b6914" opacity="0.7"/>
+    <!-- Infield grass diamond -->
+    <polygon points="150,260 196,218 150,176 104,218" fill="#2d5a1b"/>
+    <!-- Baselines -->
+    <line x1="150" y1="260" x2="196" y2="218" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <line x1="196" y1="218" x2="150" y2="176" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <line x1="150" y1="176" x2="104" y2="218" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <line x1="104" y1="218" x2="150" y2="260" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <!-- Foul lines -->
+    <line x1="150" y1="260" x2="20" y2="200" stroke="white" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+    <line x1="150" y1="260" x2="280" y2="200" stroke="white" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+    <!-- Pitcher circle -->
+    <circle cx="150" cy="218" r="10" fill="#8b6914" stroke="#6b4f10" stroke-width="1"/>
+    <!-- Bases -->
+    <rect x="191" y="214" width="9" height="9" fill="white" transform="rotate(45,196,218)"/>
+    <rect x="146" y="172" width="9" height="9" fill="white" transform="rotate(45,150,176)"/>
+    <rect x="100" y="214" width="9" height="9" fill="white" transform="rotate(45,104,218)"/>
+    <!-- Home plate -->
+    <polygon points="150,266 144,261 144,255 156,255 156,261" fill="white"/>
+    <!-- Position labels -->
+    <text x="150" y="218" text-anchor="middle" dominant-baseline="middle" font-size="7" fill="rgba(255,255,255,0.4)" font-family="sans-serif">P</text>
+    <text x="200" y="205" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.35)" font-family="sans-serif">1B</text>
+    <text x="178" y="183" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.35)" font-family="sans-serif">2B</text>
+    <text x="100" y="205" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.35)" font-family="sans-serif">3B</text>
+    <text x="122" y="183" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.35)" font-family="sans-serif">SS</text>
+    <text x="52" y="138" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="sans-serif">LF</text>
+    <text x="93" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="sans-serif">LC</text>
+    <text x="150" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="sans-serif">CF</text>
+    <text x="207" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="sans-serif">RC</text>
+    <text x="249" y="138" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="sans-serif">RF</text>
+    <!-- Dots layer (populated by JS) -->
+    <g id="sc-dots-${gameId}"></g>
+  </svg>`;
+
+  // Build hit dot SVG elements grouped by team+player
+  let dotGroups = '';
+  if (chartData) {
+    const teams = [
+      { key: 'away', hits: chartData.away || [], color: '#4a90d9' },
+      { key: 'home', hits: chartData.home || [], color: '#d94a4a' },
+    ];
+    for (const { key, hits, color } of teams) {
+      // Group by player
+      const byPlayer = {};
+      hits.forEach(h => {
+        const pid = h.playerId || 'unknown';
+        if (!byPlayer[pid]) byPlayer[pid] = [];
+        byPlayer[pid].push(h);
+      });
+      // Team group (all hits)
+      const allDots = _jitterHits(hits).map(([h, jx, jy]) => _sprayHitMarker(jx, jy, h.type, color, 1, h.speed)).join('');
+      dotGroups += `<g class="spray-dot-group sc-team-${key}" data-team="${key}" style="opacity:0">${allDots}</g>`;
+      // Per-player groups
+      for (const [pid, phits] of Object.entries(byPlayer)) {
+        const pdots = _jitterHits(phits).map(([h, jx, jy]) => _sprayHitMarker(jx, jy, h.type, color, 1, h.speed)).join('');
+        dotGroups += `<g class="spray-dot-group sc-player-${pid}" data-player="${pid}" data-team="${key}" style="opacity:0">${pdots}</g>`;
+      }
+    }
+  }
+
+  // Lineup lists — use game stats order if provided
+  function lineupList(lineup, team, color) {
+    const isAway = team === 'away';
+    const teamObj = isAway ? awayTeam : homeTeam;
+    const tname = teamObj ? teamObj.name : (isAway ? 'Away' : 'Home');
+    const rows = lineup.map(pid => {
+      const p = getPlayer(pid);
+      const name = p ? displayName(p.name) : pid;
+      return `<div class="spray-player" data-team="${team}" data-player="${pid}">${name}</div>`;
+    }).join('');
+    return `<div class="spray-lineup-inner"><div class="spray-team-name" data-team="${team}" style="color:${color}">${tname}</div>${rows}</div>`;
+  }
+
+  // Determine lineup order: explicit lineup in chartData > game stats > hits order
+  const awayOrder = (chartData && chartData.awayLineup && chartData.awayLineup.length) ? chartData.awayLineup :
+    (awayLineup ? awayLineup.map(s => s.playerId) : (chartData && chartData.away ? [...new Set(chartData.away.map(h => h.playerId))] : []));
+  const homeOrder = (chartData && chartData.homeLineup && chartData.homeLineup.length) ? chartData.homeLineup :
+    (homeLineup ? homeLineup.map(s => s.playerId) : (chartData && chartData.home ? [...new Set(chartData.home.map(h => h.playerId))] : []));
+
+  const noDataNote = !chartData ? `<div class="spray-no-data">No spray chart data yet</div>` : '';
+
+  const fieldWithDots = fieldSvg.replace(`<g id="sc-dots-${gameId}"></g>`, `<g id="sc-dots-${gameId}">${dotGroups}</g>`);
+
+  return `<div class="card spray-chart-card" data-gameid="${gameId}">
+    <div class="card-header">Spray Chart</div>
+    <div class="card-body padded">
+      ${noDataNote}
+      <div class="spray-chart-body" style="display:flex;flex-wrap:nowrap;align-items:flex-start;gap:12px">
+        <div class="spray-lineup away-lineup" style="flex:0 0 160px;width:160px;min-width:160px;flex-shrink:0">${lineupList(awayOrder, 'away', '#4a90d9')}</div>
+        <div class="spray-field-wrap" style="flex:1 1 0;min-width:0">${legendSvg}${fieldWithDots}</div>
+        <div class="spray-lineup home-lineup" style="flex:0 0 160px;width:160px;min-width:160px;flex-shrink:0">${lineupList(homeOrder, 'home', '#d94a4a')}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function _initSprayChartEvents(card, gameId) {
+  if (!card) return;
+  const body = card.querySelector('.spray-chart-body');
+  if (!body) return;
+
+  function showDots(selector) {
+    card.querySelectorAll('.spray-dot-group').forEach(g => { g.style.opacity = '0'; });
+    if (selector) {
+      card.querySelectorAll(selector).forEach(g => { g.style.opacity = '1'; });
+    }
+  }
+
+  body.addEventListener('mouseover', e => {
+    const tn = e.target.closest('.spray-team-name');
+    const pp = e.target.closest('.spray-player');
+    if (tn) {
+      const team = tn.dataset.team;
+      body.querySelectorAll('.spray-team-name,.spray-player').forEach(el => el.classList.remove('sc-active'));
+      tn.classList.add('sc-active');
+      showDots(`.sc-team-${team}`);
+    } else if (pp) {
+      const pid = pp.dataset.player;
+      body.querySelectorAll('.spray-team-name,.spray-player').forEach(el => el.classList.remove('sc-active'));
+      pp.classList.add('sc-active');
+      showDots(`.sc-player-${CSS.escape(pid)}`);
+    }
+  });
+
+  body.addEventListener('mouseleave', () => {
+    body.querySelectorAll('.spray-team-name,.spray-player').forEach(el => el.classList.remove('sc-active'));
+    showDots(null);
+  });
+}
+
 
 function computeMilestones(game) {
   const milestones = [];
@@ -7503,6 +7797,7 @@ function viewBoxScore(gameId) {
     <div id="recap-placeholder"></div>
     ${teamTable(game.awayStats, (away ? _bsSeedLabel(away.id) + away.name : 'Away') + ' (Away)')}
     ${teamTable(game.homeStats, (home ? _bsSeedLabel(home.id) + home.name : 'Home') + ' (Home)')}
+    <div id="spray-chart-placeholder"></div>
     ${(() => {
       const srcMap = DATA.gameSourceUrls && DATA.gameSourceUrls[gameId];
       if (!srcMap) return '';
@@ -7521,6 +7816,16 @@ function viewBoxScore(gameId) {
     <div class="card-body padded" style="line-height:1.7">${linkifyRecap(html, DATA.players)}</div>
     <div style="padding:8px 20px 12px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border-light)">All recaps are AI generated. If you don&rsquo;t like it, blame Claude&nbsp;;)</div>
   </div>`;
+  });
+
+  getSprayChart(gameId, chartData => {
+    const el = document.getElementById('spray-chart-placeholder');
+    if (el) {
+      const html = renderSprayChart(gameId, chartData, away, home, game.awayStats, game.homeStats);
+      el.outerHTML = html;
+      const card = document.querySelector('.spray-chart-card[data-gameid="' + gameId + '"]');
+      _initSprayChartEvents(card, gameId);
+    }
   });
 
   // Milestones require full career data — load old seasons first, then render
