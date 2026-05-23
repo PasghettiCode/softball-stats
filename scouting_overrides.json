@@ -655,100 +655,119 @@
   },
   "franklin": {
     "summaryStats": {
-      "rpg": "13.8",
-      "avg": ".581",
-      "slg": ".814",
-      "hr": 1,
-      "doubles": 30,
-      "record": "4-4"
+      "rpg": "15.3",
+      "avg": ".585",
+      "slg": ".813",
+      "hr": 2,
+      "doubles": 27,
+      "record": "5-4"
     },
-    "summaryNote": "The Franklin Falcons are 4-4 after nine games, a record that undersells how dangerous this lineup is. Thirty doubles and 18 triples make them one of the most prolific extra-base teams in the league. VanZandt leads in RBI (20) despite batting deep in the order, and Lanam (.840 AVG, 10 doubles) anchors the top of the lineup. Pierce and Rokovich both have elite ISO \u2014 don\u2019t sleep on this offense when they\u2019re hot.",
+    "summaryNote": "Franklin is a dangerous 5-seed coming off an 18-run playoff win over Roosevelt Blue. Pierce is the most explosive bat in the league \u2014 HR, five triples, and five doubles \u2014 and Lanam leads the team in average at .793 with 10 doubles. Vanzandt quietly has 20 RBI and four triples. No soft spots in the top eight.",
     "lineup": [
       {
         "playerId": "lanam-todd",
         "chips": [
           {
-            "text": ".840 AVG",
+            "text": ".793 AVG",
             "cls": "power"
           },
           {
-            "text": "10 2B, 1 3B",
+            "text": "10 2B, 2 3B",
             "cls": "power"
           },
           {
-            "text": "13 RBI",
+            "text": "16 RBI",
             "cls": ""
           }
         ],
-        "tip": "OF at maximum depth every at-bat \u2014 one of the best gap hitters in the league, working both alleys relentlessly. Hardest bat in the lineup to retire.",
-        "pitchTip": "Elite gap threat and the best AVG on the team \u2014 keep it low every single pitch."
+        "tip": "Best average on the team and leads in doubles \u2014 the ball finds gaps constantly. OF must shade alleys at full depth. Every hit he gets starts a dangerous inning.",
+        "pitchTip": "Elite contact with gap power. Keep it low, don't give him anything to drive into the alleys."
       },
       {
         "playerId": "sosnick-jason",
         "chips": [
           {
-            "text": ".545 AVG",
+            "text": ".594 AVG",
             "cls": ""
           },
           {
-            "text": "15 RBI",
+            "text": "2 3B, 3 2B",
+            "cls": ""
+          },
+          {
+            "text": "18 RBI",
             "cls": "power"
-          },
-          {
-            "text": "3 2B, 2 3B",
-            "cls": ""
           }
         ],
-        "tip": "Multiple XBH across the lineup slot \u2014 OF shades alleys and plays deep. Consistent run producer who keeps the lineup cycling through the heart of the order.",
-        "pitchTip": "5 XBH and 15 RBI batting second \u2014 treat him like a top-order danger. Stay low."
+        "tip": "18 RBI from the 2-hole makes him one of the most productive run producers in the league. Extra-base power in the gaps \u2014 OF plays at full depth.",
+        "pitchTip": "High RBI with extra-base contact. Keep it low, don't let him extend through the zone."
       },
       {
         "playerId": "pierce-ryan",
         "chips": [
           {
-            "text": ".630 AVG",
-            "cls": ""
-          },
-          {
-            "text": "5 3B",
+            "text": ".677 AVG",
             "cls": "power"
           },
           {
-            "text": "ISO .519",
+            "text": "1 HR, 5 3B, 5 2B",
+            "cls": "power"
+          },
+          {
+            "text": "20 RBI",
             "cls": "power"
           }
         ],
-        "tip": "OF must play at maximum depth \u2014 five triples confirm balls are regularly reaching the deepest corners and alleys. One of the most dangerous ISO bats in the league.",
-        "pitchTip": "5 triples and .519 ISO \u2014 OF plays very deep. True gap threat every pitch."
+        "tip": "Most dangerous bat on this roster. HR and five triples mean the ball reaches every corner of the field \u2014 OF at maximum depth, alleys fully covered. Every at-bat is a threat for extra bases.",
+        "pitchTip": "The premier power threat. Do not give him anything belt-high. Low every pitch, no exceptions."
+      },
+      {
+        "playerId": "lawler-nate",
+        "chips": [
+          {
+            "text": ".562 AVG",
+            "cls": ""
+          },
+          {
+            "text": "2 2B",
+            "cls": ""
+          },
+          {
+            "text": "3 RBI",
+            "cls": ""
+          }
+        ],
+        "tip": "Limited games but a solid contact bat in the cleanup spot. Gap doubles are present \u2014 OF plays at least standard depth. Fits naturally in the middle of this potent lineup.",
+        "pitchTip": "Gap contact in limited PA. Keep it low, play standard approach."
       },
       {
         "playerId": "wong-uland",
         "chips": [
           {
-            "text": ".667 AVG",
-            "cls": ""
-          },
-          {
-            "text": "3 2B, 2 3B",
+            "text": ".666 AVG",
             "cls": "power"
           },
           {
-            "text": "7 RBI",
+            "text": "4 2B, 2 3B",
+            "cls": "power"
+          },
+          {
+            "text": "10 RBI",
             "cls": ""
           }
         ],
-        "tip": "Versatile gap hitter who drives the ball into both alleys \u2014 OF plays deep. Scores runs at a high rate, making him a dangerous table-setter for the big bats behind him.",
-        "pitchTip": "2 triples and 3 doubles \u2014 real extra-base threat in the 4-hole. Keep it low and don\u2019t let him extend."
+        "tip": "Four doubles and two triples signal consistent gap contact \u2014 OF must shade alleys at full depth. High average with real extra-base power makes him dangerous in any count.",
+        "pitchTip": "Extra-base threat in every at-bat. Keep it low and don't let him see anything to drive."
       },
       {
         "playerId": "rokovich-mike",
         "chips": [
           {
-            "text": ".531 AVG",
+            "text": ".472 AVG",
             "cls": ""
           },
           {
-            "text": "5 2B, 2 3B, 1 HR",
+            "text": "1 HR, 5 2B, 2 3B",
             "cls": "power"
           },
           {
@@ -756,46 +775,42 @@
             "cls": "power"
           }
         ],
-        "tip": "OF at maximum depth every at-bat \u2014 has produced hard contact in multiple directions all season. The lone HR and high RBI total make him one of the most complete threats in the order.",
-        "pitchTip": "HR, doubles, and triples \u2014 power from all directions. Keep it low every time."
+        "tip": "Lower average but the most extra-base hits on the team \u2014 HR, five doubles, two triples, 17 RBI. OF at maximum depth. Dangerous with runners on, converts hits into runs at a 1:1 rate.",
+        "pitchTip": "Don't let his average fool you \u2014 real power. Keep it low, protect the alleys."
       },
       {
         "playerId": "samuelson-robby",
         "chips": [
           {
-            "text": ".688 AVG",
+            "text": ".657 AVG",
             "cls": "power"
           },
           {
             "text": "12 RBI",
             "cls": ""
-          },
-          {
-            "text": "22 H",
-            "cls": ""
           }
         ],
-        "tip": "Elite contact rate across 8 games with limited extra-base production \u2014 OF plays standard depth. Getting him out quickly prevents the lineup from cycling back to the top.",
-        "pitchTip": "Elite contact bat \u2014 no free passes. Pitch to contact and trust the defense."
+        "tip": "High average, consistent contact, 12 RBI from the 7-spot. No extra-base hits yet so OF can play standard depth, but treat every at-bat with respect.",
+        "pitchTip": "Pure contact bat, no XBH. Stay down, let the defense handle what he puts in play."
       },
       {
         "playerId": "vanzandt-jonah",
         "chips": [
           {
+            "text": ".566 AVG",
+            "cls": ""
+          },
+          {
+            "text": "4 3B, 1 2B",
+            "cls": "power"
+          },
+          {
             "text": "20 RBI",
-            "cls": "power"
-          },
-          {
-            "text": "1 2B, 4 3B",
-            "cls": "power"
-          },
-          {
-            "text": "1.18 RBI/H",
             "cls": "power"
           }
         ],
-        "tip": "OF plays deep every at-bat \u2014 four triples confirm balls reaching the deepest corners. Team-high 20 RBI despite batting deep; extraordinarily dangerous with runners on base.",
-        "pitchTip": "Team-high RBI and 4 triples \u2014 the most dangerous bat with runners on. Keep it low."
+        "tip": "Four triples and 20 RBI from the 8-hole is one of the biggest surprises in the lineup. OF must play at full depth \u2014 the ball is reaching the warning track. Extremely dangerous with runners on.",
+        "pitchTip": "Tied for most RBI on the team. Triples pop power \u2014 keep it low and don't give him anything to elevate."
       },
       {
         "playerId": "jing-mu",
@@ -805,65 +820,65 @@
             "cls": ""
           },
           {
-            "text": "11 RBI",
+            "text": "3 BB",
             "cls": ""
           },
           {
-            "text": "2 SF",
+            "text": "11 RBI",
             "cls": ""
           }
         ],
-        "tip": "Productive in RBI situations \u2014 drives in runs even on sacrifice flies and contact outs. No extra-base hits means OF plays standard depth, but don\u2019t let him beat you with runners on.",
-        "pitchTip": "Solid RBI bat without XBH \u2014 pitch to contact. Don\u2019t groove it with runners on."
+        "tip": "Draws walks and drives in runs at a strong rate for the 9-spot. No extra-base hits but 11 RBI shows he comes through with runners on. OF plays standard depth.",
+        "pitchTip": "Patient hitter who takes walks. Work the zone carefully \u2014 don't give him free bases."
       },
       {
         "playerId": "detch-robert",
         "chips": [
           {
-            "text": ".429 AVG",
+            "text": ".470 AVG",
             "cls": ""
           },
           {
-            "text": "4 G",
+            "text": "1 RBI",
             "cls": ""
           }
         ],
-        "tip": "Limited sample in 4 games \u2014 no extra-base hits, OF plays standard depth. Work quickly to prevent the lineup from cycling back to the top.",
-        "pitchTip": "No XBH in 4 games \u2014 pitch to contact and work efficiently. Don\u2019t let him turn the lineup over."
+        "tip": "Decent average in limited games, almost no RBI production \u2014 a table setter who gets on but rarely drives in. OF plays standard depth.",
+        "pitchTip": "Contact-only bat with no power on the season. Throw strikes and let the defense work."
       },
       {
         "playerId": "linge-mario",
         "chips": [
           {
-            "text": ".357 AVG",
+            "text": ".387 AVG",
             "cls": ""
           },
           {
-            "text": "9 R",
+            "text": "5 RBI",
             "cls": ""
           }
         ],
-        "tip": "Consistent run-scorer at the bottom of the order. Gets on base and moves around \u2014 OF plays standard depth. Getting him out quickly limits the rally cycle.",
-        "pitchTip": "Contact bat at the bottom of the order \u2014 pitch to contact. Work efficiently."
+        "tip": "Lower average in the lineup but draws walks to contribute. No extra-base hits \u2014 OF can shade in slightly. More value as a base-runner than a power threat.",
+        "pitchTip": "Below-average contact bat. Throw strikes, stay low, no need to nibble."
       },
       {
         "playerId": "lagory-ed",
         "chips": [
           {
-            "text": ".538 AVG",
+            "text": ".551 AVG",
             "cls": ""
           },
           {
-            "text": "1 2B, 2 3B",
-            "cls": "power"
+            "text": "2 3B, 1 2B",
+            "cls": ""
           },
           {
-            "text": "7 RBI",
+            "text": "8 RBI",
             "cls": ""
           }
         ],
-        "tip": "Extra-base threat at the bottom of the lineup \u2014 two triples confirm balls reaching the deep corners. OF plays deep when he comes up; better bat than his position suggests.",
-        "pitchTip": "Triples in the 11-hole \u2014 OF plays deep when he comes up. Keep it low; better than his slot suggests."
+        "tip": "Two triples from the bottom of the order is a real warning \u2014 the ball carries even here. Play OF deeper than expected for this lineup spot.",
+        "pitchTip": "Surprise extra-base power at the bottom. Keep it low \u2014 don't give him anything to lift."
       }
     ],
     "sections": [
@@ -875,45 +890,57 @@
             "playerId": "pierce-ryan",
             "chips": [
               {
-                "text": "ISO .519",
-                "cls": "power"
-              }
-            ],
-            "tip": "ISO .519 and 5 triples \u2014 OF at maximum depth. Balls reach the deepest parts of the park consistently."
-          },
-          {
-            "playerId": "lanam-todd",
-            "chips": [
-              {
-                "text": "ISO .480",
-                "cls": "power"
-              }
-            ],
-            "tip": "ISO .480 and 10 doubles \u2014 OF at maximum depth. Keep pitches low; gap threat in every direction."
-          },
-          {
-            "playerId": "rokovich-mike",
-            "chips": [
-              {
-                "text": "1 HR",
+                "text": "1 HR, 5 3B, 5 2B",
                 "cls": "power"
               },
               {
-                "text": "ISO .375",
+                "text": "20 RBI",
                 "cls": "power"
               }
             ],
-            "tip": "Only HR on the roster plus ISO .375 \u2014 OF at maximum depth. Multiple power directions across 8 games."
+            "tip": "Most explosive bat on this roster. Five triples and a HR mean the ball goes to every corner \u2014 OF at maximum depth every single pitch."
           },
           {
             "playerId": "vanzandt-jonah",
             "chips": [
               {
-                "text": "ISO .333",
+                "text": "4 3B",
+                "cls": "power"
+              },
+              {
+                "text": "20 RBI",
                 "cls": "power"
               }
             ],
-            "tip": "ISO .333 with 4 triples \u2014 OF plays very deep. Deep power threat despite batting low in the order."
+            "tip": "Tied for team-lead in RBI from the 8-hole. Four triples is not a coincidence \u2014 OF at full depth, especially the alleys."
+          },
+          {
+            "playerId": "rokovich-mike",
+            "chips": [
+              {
+                "text": "1 HR, 5 2B, 2 3B",
+                "cls": "power"
+              },
+              {
+                "text": "17 RBI",
+                "cls": "power"
+              }
+            ],
+            "tip": "Most total extra-base hits on the team. HR plus doubles and triples means every at-bat has multi-base potential."
+          },
+          {
+            "playerId": "lanam-todd",
+            "chips": [
+              {
+                "text": "10 2B, 2 3B",
+                "cls": "power"
+              },
+              {
+                "text": ".793 AVG",
+                "cls": "power"
+              }
+            ],
+            "tip": "Ten doubles through the leadoff spot is exceptional. Ball finds the gaps every game \u2014 OF shades alleys hard when he steps in."
           }
         ]
       },
@@ -926,56 +953,40 @@
             "chips": [
               {
                 "text": "10 2B",
-                "cls": ""
-              },
+                "cls": "power"
+              }
+            ],
+            "tip": "League-leading doubles count. Consistently drives the ball into gaps from the leadoff spot."
+          },
+          {
+            "playerId": "wong-uland",
+            "chips": [
               {
-                "text": "1 3B",
+                "text": "4 2B, 2 3B",
+                "cls": "power"
+              }
+            ],
+            "tip": "Six extra-base hits in 7 games. A persistent gap threat who complements the top of the order."
+          },
+          {
+            "playerId": "sosnick-jason",
+            "chips": [
+              {
+                "text": "3 2B, 2 3B",
                 "cls": ""
               }
             ],
-            "tip": "11 extra-base hits, 10 of them doubles \u2014 consistent gap contact. OF shades both alleys; keep it low."
+            "tip": "Five extra-base hits from the 2-hole. Ball carries to all parts of the field."
           },
           {
             "playerId": "pierce-ryan",
             "chips": [
               {
-                "text": "4 2B",
-                "cls": ""
-              },
-              {
-                "text": "5 3B",
-                "cls": ""
-              }
-            ],
-            "tip": "9 extra-base hits from both gap directions \u2014 OF shades both alleys and plays very deep."
-          },
-          {
-            "playerId": "rokovich-mike",
-            "chips": [
-              {
                 "text": "5 2B",
-                "cls": ""
-              },
-              {
-                "text": "2 3B",
-                "cls": ""
+                "cls": "power"
               }
             ],
-            "tip": "7 extra-base hits plus a HR \u2014 consistent gap contact in multiple directions. OF plays deep."
-          },
-          {
-            "playerId": "vanzandt-jonah",
-            "chips": [
-              {
-                "text": "1 2B",
-                "cls": ""
-              },
-              {
-                "text": "4 3B",
-                "cls": ""
-              }
-            ],
-            "tip": "5 extra-base hits, dominated by triples \u2014 deep corner threat in the lineup. OF shades alleys and plays very deep."
+            "tip": "Five doubles pair with five triples \u2014 one of the most complete XBH threats in the league."
           }
         ]
       },
@@ -988,28 +999,20 @@
             "chips": [
               {
                 "text": "5 3B",
-                "cls": ""
-              },
-              {
-                "text": ".630 AVG",
-                "cls": ""
+                "cls": "power"
               }
             ],
-            "tip": "5 triples \u2014 balls consistently reach the deepest corners. OF plays at maximum depth every time he\u2019s up."
+            "tip": "Five triples \u2014 most in the league. OF must be at warning-track depth before every pitch."
           },
           {
             "playerId": "vanzandt-jonah",
             "chips": [
               {
                 "text": "4 3B",
-                "cls": ""
-              },
-              {
-                "text": "20 RBI",
-                "cls": ""
+                "cls": "power"
               }
             ],
-            "tip": "4 triples \u2014 balls reach the deepest corners, and he drives in runs when he gets there. OF plays very deep."
+            "tip": "Four triples from the 8-spot. The bottom of this order has as much gap speed as the top."
           },
           {
             "playerId": "wong-uland",
@@ -1017,27 +1020,19 @@
               {
                 "text": "2 3B",
                 "cls": ""
-              },
-              {
-                "text": ".667 AVG",
-                "cls": ""
               }
             ],
-            "tip": "2 triples on the season \u2014 balls reach the deepest corners. OF plays very deep."
+            "tip": "Two triples from the middle of the order. OF can't cheat in against him."
           },
           {
-            "playerId": "rokovich-mike",
+            "playerId": "lagory-ed",
             "chips": [
               {
                 "text": "2 3B",
                 "cls": ""
-              },
-              {
-                "text": "1 HR",
-                "cls": ""
               }
             ],
-            "tip": "2 triples plus the team\u2019s only HR \u2014 balls reach the deep corners and go over the fence. OF plays at maximum depth."
+            "tip": "Two triples from the 12-spot is a genuine surprise. Even the very bottom of this order has gap pop."
           }
         ]
       },
@@ -1046,44 +1041,44 @@
         "full": false,
         "players": [
           {
-            "playerId": "lanam-todd",
+            "playerId": "sosnick-jason",
             "chips": [
               {
-                "text": "season .840",
-                "cls": "hot"
+                "text": "4-for-4, 3 RBI vs RB",
+                "cls": "power"
               }
             ],
-            "tip": null
-          },
-          {
-            "playerId": "samuelson-robby",
-            "chips": [
-              {
-                "text": "season .688",
-                "cls": "hot"
-              }
-            ],
-            "tip": null
-          },
-          {
-            "playerId": "wong-uland",
-            "chips": [
-              {
-                "text": "season .667",
-                "cls": "hot"
-              }
-            ],
-            "tip": null
+            "tip": "Went 4-for-4 with 3 RBIs in the QF win. Carrying momentum into the semis."
           },
           {
             "playerId": "pierce-ryan",
             "chips": [
               {
-                "text": "season .630",
-                "cls": "hot"
+                "text": "4-for-4, HR, 5 RBI vs RB",
+                "cls": "power"
               }
             ],
-            "tip": null
+            "tip": "Dominant QF performance \u2014 4-for-4, home run, 5 RBIs. Entering this game as the hottest bat in the bracket."
+          },
+          {
+            "playerId": "lanam-todd",
+            "chips": [
+              {
+                "text": "2-for-4, triple, 3 RBI vs RB",
+                "cls": ""
+              }
+            ],
+            "tip": "Tripled and drove in 3 in the QF. Consistently productive in big games all season."
+          },
+          {
+            "playerId": "wong-uland",
+            "chips": [
+              {
+                "text": "2-for-3, 2B, 3 RBI vs RB",
+                "cls": ""
+              }
+            ],
+            "tip": "Doubled and drove in 3 in the playoff opener. Middle-of-the-order production right on cue."
           }
         ]
       },
@@ -1092,46 +1087,60 @@
         "full": false,
         "players": [
           {
-            "playerId": "jefferson-steven",
+            "playerId": "vanzandt-jonah",
             "chips": [
               {
-                "text": ".500 AVG",
-                "cls": ""
+                "text": "20 RBI",
+                "cls": "power"
               },
               {
-                "text": "3 G only",
+                "text": "8-spot",
                 "cls": ""
               }
             ],
-            "tip": "Limited to 3 games but hitting .500 \u2014 worth tracking if he earns more starts. Can become a factor quickly."
+            "tip": "Twenty RBI from the 8-hole is extraordinary. He\u2019s the lineup\u2019s best-kept secret and the most dangerous \u2018bottom-order\u2019 bat in the AL."
           },
           {
-            "playerId": "lawler-nate",
+            "playerId": "lagory-ed",
             "chips": [
               {
-                "text": ".500 AVG",
+                "text": "2 3B",
                 "cls": ""
               },
               {
-                "text": "3 G only",
+                "text": "12-spot",
                 "cls": ""
               }
             ],
-            "tip": "Limited sample in 3 games \u2014 hitting .500 but no extra-base hits. Treat as a contact bat if he appears."
+            "tip": "Two triples from last in the order. Don\u2019t give away a relaxed at-bat \u2014 he puts real contact on the ball."
           },
           {
-            "playerId": "hung-alvin",
+            "playerId": "rokovich-mike",
             "chips": [
               {
-                "text": ".500 AVG",
+                "text": ".472 AVG",
                 "cls": ""
               },
               {
-                "text": "1 G only",
+                "text": "8 XBH",
+                "cls": "power"
+              }
+            ],
+            "tip": "Average looks modest but eight extra-base hits tell the real story. The ball travels when he connects."
+          },
+          {
+            "playerId": "jing-mu",
+            "chips": [
+              {
+                "text": "11 RBI",
+                "cls": ""
+              },
+              {
+                "text": "3 BB",
                 "cls": ""
               }
             ],
-            "tip": "Single-game appearance at .500 \u2014 far too limited to project, but worth keeping in mind if he returns."
+            "tip": "Patient at the plate, drives in runs at a solid clip from the 9-spot. Don\u2019t give him free bases."
           }
         ]
       },
@@ -1143,57 +1152,57 @@
             "playerId": "vanzandt-jonah",
             "chips": [
               {
-                "text": "1.18 RBI/H",
+                "text": "RBI/H: 1.18",
                 "cls": "power"
               },
               {
                 "text": "20 RBI",
-                "cls": ""
+                "cls": "power"
               }
             ],
-            "tip": "Drives in 1.18 runs per hit \u2014 the most dangerous RBI bat on the roster. Extra vigilance with runners on when he comes up."
+            "tip": "More RBI than hits on the season. When he makes contact, runs score \u2014 he\u2019s the most efficient run producer on the team."
           },
           {
             "playerId": "rokovich-mike",
             "chips": [
               {
-                "text": "1.00 RBI/H",
+                "text": "RBI/H: 1.00",
                 "cls": "power"
               },
               {
                 "text": "17 RBI",
-                "cls": ""
+                "cls": "power"
               }
             ],
-            "tip": "Drives in 1.00 runs per hit \u2014 consistently comes through in scoring situations. Extra vigilance when he comes up with runners on."
+            "tip": "One RBI per hit on the season. Extra-base power converts contact directly into runs."
           },
           {
             "playerId": "pierce-ryan",
             "chips": [
               {
-                "text": "0.88 RBI/H",
-                "cls": ""
+                "text": "RBI/H: 0.95",
+                "cls": "power"
               },
               {
-                "text": "15 RBI",
-                "cls": ""
+                "text": "20 RBI",
+                "cls": "power"
               }
             ],
-            "tip": "Drives in 0.88 runs per hit \u2014 elite ISO and elite RBI rate, a true middle-of-the-order producer from the 3-hole."
+            "tip": "Nearly one RBI per hit. With HR and triple power, every clean contact event is a multi-run threat."
           },
           {
             "playerId": "sosnick-jason",
             "chips": [
               {
-                "text": "0.83 RBI/H",
+                "text": "RBI/H: 0.82",
                 "cls": ""
               },
               {
-                "text": "15 RBI",
-                "cls": ""
+                "text": "18 RBI",
+                "cls": "power"
               }
             ],
-            "tip": "Drives in 0.83 runs per hit batting second \u2014 a run producer disguised in a table-setter\u2019s slot. Don\u2019t underestimate him with runners on."
+            "tip": "Consistent run producer from the 2-hole. Among the highest RBI totals on the team despite batting early in the order."
           }
         ]
       },
@@ -1202,76 +1211,44 @@
         "full": false,
         "players": [
           {
-            "playerId": "wong-uland",
+            "playerId": "lanam-todd",
             "chips": [
               {
-                "text": "13 R",
+                "text": "? R vs 16 RBI",
                 "cls": ""
-              },
-              {
-                "text": "7 RBI",
-                "cls": ""
-              },
-              {
-                "text": "+6 R vs RBI",
-                "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a much higher rate than he drives them in \u2014 a classic table-setter. Getting him out quickly disrupts the rally cycle before the big bats come up."
-          },
-          {
-            "playerId": "lagory-ed",
-            "chips": [
-              {
-                "text": "12 R",
-                "cls": ""
-              },
-              {
-                "text": "7 RBI",
-                "cls": ""
-              },
-              {
-                "text": "+5 R vs RBI",
-                "cls": "hot"
-              }
-            ],
-            "tip": "Scores runs at a higher rate than he drives them in \u2014 surprising production from the bottom of the lineup. Getting him out early limits late-inning rallies."
-          },
-          {
-            "playerId": "linge-mario",
-            "chips": [
-              {
-                "text": "9 R",
-                "cls": ""
-              },
-              {
-                "text": "4 RBI",
-                "cls": ""
-              },
-              {
-                "text": "+5 R vs RBI",
-                "cls": "hot"
-              }
-            ],
-            "tip": "Scores runs at a higher rate than he drives them in \u2014 a bottom-of-the-order table-setter who depends on the big bats. Getting him out quickly limits the rally cycle."
+            "tip": "Scores constantly from the leadoff spot and sets the table for Pierce and Sosnick. Getting him out is one of the most high-leverage outs in the AL."
           },
           {
             "playerId": "detch-robert",
             "chips": [
               {
-                "text": "4 R",
+                "text": "8 R vs 1 RBI",
                 "cls": ""
-              },
-              {
-                "text": "1 RBI",
-                "cls": ""
-              },
-              {
-                "text": "+3 R vs RBI",
-                "cls": "hot"
               }
             ],
-            "tip": "Scores runs at a higher rate than he drives them in his limited starts \u2014 table-setter profile. Quick outs prevent the lineup from cycling back."
+            "tip": "Gets on base but almost never drives in \u2014 a pure table-setter role. Stranding him is as valuable as retiring a middle-of-the-order bat."
+          },
+          {
+            "playerId": "linge-mario",
+            "chips": [
+              {
+                "text": "Draws BB",
+                "cls": ""
+              }
+            ],
+            "tip": "Draws walks and reaches base enough to matter at the bottom of the order. Low RBI output means he\u2019s a runner for the bats above him."
+          },
+          {
+            "playerId": "jing-mu",
+            "chips": [
+              {
+                "text": "3 BB",
+                "cls": ""
+              }
+            ],
+            "tip": "Takes pitches and reaches base via walk often. Gets on for the top of the order to knock in."
           }
         ]
       },
@@ -1280,20 +1257,20 @@
         "full": true,
         "gamePlan": [
           {
-            "heading": "Play the OF deep across the board.",
-            "tip": "30 doubles and 18 triples this season \u2014 extra-base hits confirm balls are regularly getting past outfielders. A shallow OF will give up runs in bunches."
+            "heading": "OF at maximum depth \u2014 this is a triples lineup",
+            "tip": "Pierce has 5 triples, VanZandt has 4, Wong has 2, Lagory has 2. This is the most triples-heavy lineup in the AL. Every outfielder starts at the warning track."
           },
           {
-            "heading": "No free runners when VanZandt is up.",
-            "tip": "20 RBI and 1.18 RBI/H \u2014 the most dangerous bat with runners on. Pitch carefully and don\u2019t let him see a pitch to drive in scoring situations."
+            "heading": "Pierce and VanZandt are the priority matchups",
+            "tip": "Combined 40 RBI and 9 triples between them. If you have to pitch around someone, these two are the choices. Keep the ball low and don\u2019t give them anything to elevate."
           },
           {
-            "heading": "No free passes against Todd.",
-            "tip": ".840 AVG and 10 doubles \u2014 one of the hardest bats to retire in the league. Every walk is essentially a gift run; make him earn it."
+            "heading": "Lanam sets the tone \u2014 retiring him is critical",
+            "tip": "Ten doubles and a .793 average from the leadoff spot. If he gets on, the middle of the order (Pierce, Rokovich, Sosnick) does the damage. Get him out first."
           },
           {
-            "heading": "Get Uland out early.",
-            "tip": "13 R vs 7 RBI \u2014 he reaches base and the big bats bring him in. Retiring him quickly is the fastest way to break their rally cycle."
+            "heading": "No safe innings at the bottom",
+            "tip": "VanZandt (20 RBI, 4 triples) and Lagory (2 triples) mean even innings starting with the 8-through-12 batters are high-risk. Stay sharp through the whole lineup."
           }
         ]
       }
