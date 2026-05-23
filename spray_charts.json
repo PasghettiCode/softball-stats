@@ -1,42 +1,231 @@
 {
   "week10-game3": {
     "away": [],
-    "awayLineup": ["camacho-martin","soto-kurt","gallant-vic","lasky-jason","armanini-mike","easterday-matt","koch-mark","kraska-bob","oleary-chris-burl","miglio-mike","alemany-tim","merlo-scott"],
-    "home": [
-      {"playerId":"bachwich-ethan","zone":"LC","depth":"shallow","type":"liner"},
-      {"playerId":"bachwich-ethan","zone":"2B","type":"grounder","speed":"hard"},
-      {"playerId":"bachwich-ethan","zone":"3B","type":"grounder"},
-      {"playerId":"delossantos-anthony","zone":"LC","depth":"deep","type":"fly","speed":"hard"},
-      {"playerId":"delossantos-anthony","zone":"RC","depth":"shallow","type":"bloop"},
-      {"playerId":"delossantos-anthony","zone":"3B","type":"grounder"},
-      {"playerId":"malaspina-ray","zone":"3B","type":"pop"},
-      {"playerId":"malaspina-ray","zone":"LF","depth":"shallow","type":"grounder","speed":"hard"},
-      {"playerId":"malaspina-ray","zone":"LC","depth":"shallow","type":"bloop"},
-      {"playerId":"bandel-joe","zone":"2B","depth":"shallow","type":"bloop"},
-      {"playerId":"bandel-joe","zone":"LF","type":"fly"},
-      {"playerId":"bandel-joe","zone":"CF","depth":"shallow","type":"grounder","speed":"hard"},
-      {"playerId":"besse-paul","zone":"LC","depth":"deep","type":"fly"},
-      {"playerId":"besse-paul","zone":"RF","depth":"deep","type":"fly"},
-      {"playerId":"besse-paul","zone":"1B","type":"grounder"},
-      {"playerId":"phu-andrew","zone":"SS","type":"grounder"},
-      {"playerId":"phu-andrew","zone":"CF","depth":"shallow","type":"bloop"},
-      {"playerId":"phu-andrew","zone":"LF","depth":"shallow","type":"grounder"},
-      {"playerId":"mccallum-denzel","zone":"CF","type":"fly"},
-      {"playerId":"mccallum-denzel","zone":"CF","depth":"shallow","type":"grounder","speed":"hard"},
-      {"playerId":"mccallum-denzel","zone":"1B","type":"grounder"},
-      {"playerId":"nunez-cj","zone":"SS","type":"grounder"},
-      {"playerId":"nunez-cj","zone":"SS","type":"grounder"},
-      {"playerId":"nunez-cj","zone":"SS","type":"liner","speed":"hard"},
-      {"playerId":"germino-matt","zone":"LC","type":"fly"},
-      {"playerId":"germino-matt","zone":"LF","type":"liner"},
-      {"playerId":"wong-art","zone":"LF","depth":"shallow","type":"grounder"},
-      {"playerId":"wong-art","zone":"SS","type":"liner","speed":"soft"},
-      {"playerId":"ng-jerry","zone":"LF","type":"liner","speed":"hard"},
-      {"playerId":"gomez-ricky","zone":"LC","depth":"shallow","type":"grounder","speed":"hard"},
-      {"playerId":"gomez-ricky","zone":"LF","depth":"deep","type":"fly"},
-      {"playerId":"yanema-pete","zone":"CF","depth":"shallow","type":"grounder","speed":"soft"},
-      {"playerId":"yanema-pete","zone":"3B","type":"grounder"}
+    "awayLineup": [
+      "jauregui-rudy",
+      "camacho-martin",
+      "murphy-steve",
+      "gallant-nolan",
+      "gallant-vic",
+      "merlo-scott",
+      "lasky-jason",
+      "soto-kurt",
+      "koch-mark",
+      "kraska-bob",
+      "miglio-mike",
+      "oleary-chris-burl",
+      "margulies-elliott",
+      "alemany-tim",
+      "doll-michael",
+      "ridge-matt"
     ],
-    "homeLineup": ["bachwich-ethan","delossantos-anthony","malaspina-ray","bandel-joe","besse-paul","phu-andrew","mccallum-denzel","nunez-cj","germino-matt","wong-art","ng-jerry","gomez-ricky","yanema-pete"]
+    "home": [
+      {
+        "playerId": "bachwich-ethan",
+        "zone": "LC",
+        "depth": "shallow",
+        "type": "liner"
+      },
+      {
+        "playerId": "bachwich-ethan",
+        "zone": "2B",
+        "type": "grounder",
+        "speed": "hard"
+      },
+      {
+        "playerId": "bachwich-ethan",
+        "zone": "3B",
+        "type": "grounder"
+      },
+      {
+        "playerId": "delossantos-anthony",
+        "zone": "LC",
+        "depth": "deep",
+        "type": "fly",
+        "speed": "hard"
+      },
+      {
+        "playerId": "delossantos-anthony",
+        "zone": "RC",
+        "depth": "shallow",
+        "type": "bloop"
+      },
+      {
+        "playerId": "delossantos-anthony",
+        "zone": "3B",
+        "type": "grounder"
+      },
+      {
+        "playerId": "malaspina-ray",
+        "zone": "3B",
+        "type": "pop"
+      },
+      {
+        "playerId": "malaspina-ray",
+        "zone": "LF",
+        "depth": "shallow",
+        "type": "grounder",
+        "speed": "hard"
+      },
+      {
+        "playerId": "malaspina-ray",
+        "zone": "LC",
+        "depth": "shallow",
+        "type": "bloop"
+      },
+      {
+        "playerId": "bandel-joe",
+        "zone": "2B",
+        "depth": "shallow",
+        "type": "bloop"
+      },
+      {
+        "playerId": "bandel-joe",
+        "zone": "LF",
+        "type": "fly"
+      },
+      {
+        "playerId": "bandel-joe",
+        "zone": "CF",
+        "depth": "shallow",
+        "type": "grounder",
+        "speed": "hard"
+      },
+      {
+        "playerId": "besse-paul",
+        "zone": "LC",
+        "depth": "deep",
+        "type": "fly"
+      },
+      {
+        "playerId": "besse-paul",
+        "zone": "RF",
+        "depth": "deep",
+        "type": "fly"
+      },
+      {
+        "playerId": "besse-paul",
+        "zone": "1B",
+        "type": "grounder"
+      },
+      {
+        "playerId": "phu-andrew",
+        "zone": "SS",
+        "type": "grounder"
+      },
+      {
+        "playerId": "phu-andrew",
+        "zone": "CF",
+        "depth": "shallow",
+        "type": "bloop"
+      },
+      {
+        "playerId": "phu-andrew",
+        "zone": "LF",
+        "depth": "shallow",
+        "type": "grounder"
+      },
+      {
+        "playerId": "mccallum-denzel",
+        "zone": "CF",
+        "type": "fly"
+      },
+      {
+        "playerId": "mccallum-denzel",
+        "zone": "CF",
+        "depth": "shallow",
+        "type": "grounder",
+        "speed": "hard"
+      },
+      {
+        "playerId": "mccallum-denzel",
+        "zone": "1B",
+        "type": "grounder"
+      },
+      {
+        "playerId": "nunez-cj",
+        "zone": "SS",
+        "type": "grounder"
+      },
+      {
+        "playerId": "nunez-cj",
+        "zone": "SS",
+        "type": "grounder"
+      },
+      {
+        "playerId": "nunez-cj",
+        "zone": "SS",
+        "type": "liner",
+        "speed": "hard"
+      },
+      {
+        "playerId": "germino-matt",
+        "zone": "LC",
+        "type": "fly"
+      },
+      {
+        "playerId": "germino-matt",
+        "zone": "LF",
+        "type": "liner"
+      },
+      {
+        "playerId": "wong-art",
+        "zone": "LF",
+        "depth": "shallow",
+        "type": "grounder"
+      },
+      {
+        "playerId": "wong-art",
+        "zone": "SS",
+        "type": "liner",
+        "speed": "soft"
+      },
+      {
+        "playerId": "ng-jerry",
+        "zone": "LF",
+        "type": "liner",
+        "speed": "hard"
+      },
+      {
+        "playerId": "gomez-ricky",
+        "zone": "LC",
+        "depth": "shallow",
+        "type": "grounder",
+        "speed": "hard"
+      },
+      {
+        "playerId": "gomez-ricky",
+        "zone": "LF",
+        "depth": "deep",
+        "type": "fly"
+      },
+      {
+        "playerId": "yanema-pete",
+        "zone": "CF",
+        "depth": "shallow",
+        "type": "grounder",
+        "speed": "soft"
+      },
+      {
+        "playerId": "yanema-pete",
+        "zone": "3B",
+        "type": "grounder"
+      }
+    ],
+    "homeLineup": [
+      "bachwich-ethan",
+      "delossantos-anthony",
+      "malaspina-ray",
+      "bandel-joe",
+      "besse-paul",
+      "phu-andrew",
+      "mccallum-denzel",
+      "nunez-cj",
+      "germino-matt",
+      "wong-art",
+      "ng-jerry",
+      "gomez-ricky",
+      "yanema-pete"
+    ]
   }
 }
