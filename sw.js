@@ -1,6 +1,6 @@
 // Service worker for Burlingame Dad's Softball PWA.
 // Bump CACHE_VERSION whenever shipping a meaningful change so old caches are evicted.
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE = `softball-${CACHE_VERSION}`;
 
 // Same-origin paths to pre-cache on install. Keep this small — bigger files
